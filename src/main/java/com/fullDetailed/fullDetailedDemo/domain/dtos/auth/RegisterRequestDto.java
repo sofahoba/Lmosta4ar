@@ -1,9 +1,6 @@
 package com.fullDetailed.fullDetailedDemo.domain.dtos.auth;
 
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 import lombok.Data;
 
 @Data
@@ -23,6 +20,7 @@ public class RegisterRequestDto {
     @Size(min = 6, message = "Password must be at least 6 characters")
     private String password;
 
-    @Min(value = 0, message = "Age must be positive")
+    @Min(value = 25, message = "Age must be at least 25")
+    @Max(value = 70, message = "Age must be at most 70")
     private int age;
 }

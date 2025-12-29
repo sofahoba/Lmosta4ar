@@ -60,6 +60,9 @@ public class User {
   @Enumerated(EnumType.STRING)
   private Role role;
 
+  @Column(nullable = true)
+  private int assignedCasesCount;
+
   @CreationTimestamp
   @Column(updatable = false,name = "created_at")
   private LocalDateTime createdAt;

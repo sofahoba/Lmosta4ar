@@ -39,6 +39,9 @@ public class CaseServiceImpl implements CaseService {
         User assignedBy = userContextService.getCurrentUser();
 
         Case c = CaseMapper.toEntity(dto, judge, assignedBy);
+        if(judge!=null) {
+            judge.setAssignedCasesCount(judge.getAssignedCasesCount()+1);
+        }
         return CaseMapper.toDto(caseRepository.save(c));
     }
 

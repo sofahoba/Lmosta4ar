@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/api/cases")
+@RequestMapping("/api/v1/cases")
 @RequiredArgsConstructor
 public class CaseController {
 

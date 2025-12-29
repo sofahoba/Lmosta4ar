@@ -36,7 +36,9 @@ public class SecurityConfig {
             .sessionManagement(sm->sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authorizeHttpRequests(auth->auth
                     .requestMatchers("/api/auth/**").permitAll()
-                    .requestMatchers("/api/cases/**").authenticated()
+                    .requestMatchers("/api/v1/cases/**").authenticated()
+                    .requestMatchers("/api/v1/judges/**").hasRole("JUDGE")
+                    .anyRequest().authenticated()
             )
             .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)
             .build();
