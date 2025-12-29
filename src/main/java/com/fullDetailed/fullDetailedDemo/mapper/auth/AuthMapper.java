@@ -27,6 +27,7 @@ public class AuthMapper {
                 .password(passwordEncoder.encode(dto.getPassword()))
                 .firstName(dto.getFirstName())
                 .lastName(dto.getLastName())
+                .assignedCasesCount(0)
                 .build();
     }
 
