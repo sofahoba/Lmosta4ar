@@ -31,12 +31,18 @@ public class JudgeServiceImpl implements JudgeService {
     public JudgeProfileDto getJudgeProfile() {
         UUID userId=userContextService.getCurrentUserId();
         User user=userRepo.findById(userId).orElseThrow(()->new NotFoundException("User not fount"));
+        if(user.isDeleted() || !user.isActive()){
+            throw new NotFoundException("User not fount");
+        }
         return JudgeMapper.toDto(user);
     }
 
     @Override
     public JudgeProfileDto updateJudgeProfile(JudgeProfileDto dto) {
         User currentUser=userContextService.getCurrentUser();
+        if(currentUser.isDeleted() || !currentUser.isActive()){
+            throw new NotFoundException("User not fount");
+        }
         JudgeMapper.updateEntity(currentUser,dto);
         User updatedUser=userRepo.save(currentUser);
         return JudgeMapper.toDto(updatedUser);
@@ -45,6 +51,9 @@ public class JudgeServiceImpl implements JudgeService {
     @Override
     public Page<CaseResponseDto> getJudgeCases(Pageable pageable) {
         User user=userContextService.getCurrentUser();
+        if(user.isDeleted() || !user.isActive()){
+            throw new NotFoundException("User not fount");
+        }
         Page<Case> c=caseRepository.findByJudge(user,pageable);
         return c.map(CaseMapper::toDto);
     }
@@ -53,6 +62,9 @@ public class JudgeServiceImpl implements JudgeService {
     public CaseResponseDto getCaseById(UUID caseId) {
         Case c =caseRepository.findById(caseId).orElseThrow(()->new NotFoundException("Case not found"));
         User user=userContextService.getCurrentUser();
+        if(user.isDeleted() || !user.isActive()){
+            throw new NotFoundException("User not fount");
+        }
         if(!c.getJudge().getId().equals(user.getId())) {
             throw new NotFoundException("case you are trying to access is not assigned to you");
         }

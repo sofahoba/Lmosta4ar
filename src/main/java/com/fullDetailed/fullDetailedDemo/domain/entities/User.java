@@ -15,11 +15,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.EntityListeners;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -62,6 +60,15 @@ public class User {
 
   @Column(nullable = true)
   private int assignedCasesCount;
+
+  @Column(name = "is_active", nullable = false)
+  private boolean isActive = true;
+
+  @Column(name = "is_deleted", nullable = false)
+  private boolean isDeleted = false;
+
+  @Column(name = "court", nullable = true)
+  private String court;
 
   @CreationTimestamp
   @Column(updatable = false,name = "created_at")

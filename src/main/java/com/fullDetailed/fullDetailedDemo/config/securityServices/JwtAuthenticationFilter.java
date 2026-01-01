@@ -3,7 +3,6 @@ package com.fullDetailed.fullDetailedDemo.config.securityServices;
 import java.io.IOException;
 import java.util.stream.Collectors;
 
-import lombok.AllArgsConstructor;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
@@ -19,7 +18,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 @Component
 @RequiredArgsConstructor
 public class JwtAuthenticationFilter extends OncePerRequestFilter{
-    private final JwtUtill jwtUtil;
+    private final JwtUtil jwtUtil;
     private final CustomUserServiceDetails userDetailsService;
 
     @Override
