@@ -22,5 +22,9 @@ public class JudgeProfileDto {
     @Max(value = 70, message = "Age must be at most 70")
     private int age;
 
+    private String court;
+
+    private Boolean isActive;
+
     private int assignedCasesCount;
 }

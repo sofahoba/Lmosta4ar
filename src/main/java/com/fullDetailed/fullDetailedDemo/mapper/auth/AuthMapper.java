@@ -28,6 +28,7 @@ public class AuthMapper {
                 .firstName(dto.getFirstName())
                 .lastName(dto.getLastName())
                 .assignedCasesCount(0)
+                .isActive(false)
                 .build();
     }
 

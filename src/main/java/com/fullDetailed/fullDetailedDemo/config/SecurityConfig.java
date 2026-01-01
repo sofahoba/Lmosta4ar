@@ -14,7 +14,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
 import com.fullDetailed.fullDetailedDemo.config.securityServices.CustomUserServiceDetails;
-import com.fullDetailed.fullDetailedDemo.config.securityServices.JwtUtill;
+import com.fullDetailed.fullDetailedDemo.config.securityServices.JwtUtil;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
@@ -26,18 +26,26 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class SecurityConfig {
 
   private final CustomUserServiceDetails userServiceDetails;
-  private final JwtUtill jwtUtill;
+  private final JwtUtil jwtUtil;
 
 
   @Bean
   public SecurityFilterChain securityFilterChain(HttpSecurity http)throws Exception{
-    JwtAuthenticationFilter jwtFilter=new JwtAuthenticationFilter(jwtUtill,userServiceDetails);
+    JwtAuthenticationFilter jwtFilter=new JwtAuthenticationFilter(jwtUtil,userServiceDetails);
     return http.csrf(csrf->csrf.disable())
             .sessionManagement(sm->sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authorizeHttpRequests(auth->auth
                     .requestMatchers("/api/auth/**").permitAll()
                     .requestMatchers("/api/v1/cases/**").authenticated()
                     .requestMatchers("/api/v1/judges/**").hasRole("JUDGE")
+                    .requestMatchers("/api/v1/admin/users/**").hasRole("ADMIN")
+                    .requestMatchers(
+                            "/v3/api-docs/**",
+                            "/swagger-ui/**",
+                            "/swagger-ui.html",
+                            "/swagger-resources/**",
+                            "/webjars/**"
+                    ).permitAll()
                     .anyRequest().authenticated()
             )
             .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)

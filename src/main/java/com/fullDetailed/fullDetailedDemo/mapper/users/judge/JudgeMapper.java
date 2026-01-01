@@ -15,6 +15,8 @@ public class JudgeMapper {
         dto.setFirstName(user.getFirstName());
         dto.setLastName(user.getLastName());
         dto.setAssignedCasesCount(user.getAssignedCasesCount());
+        dto.setCourt(user.getCourt());
+        dto.setIsActive(user.isActive());
 
         return dto;
     }
@@ -29,6 +31,8 @@ public class JudgeMapper {
         user.setFirstName(dto.getFirstName());
         user.setLastName(dto.getLastName());
         user.setAssignedCasesCount(dto.getAssignedCasesCount());
+        user.setCourt(dto.getCourt());
+
         return user;
     }
 
@@ -47,6 +51,9 @@ public class JudgeMapper {
         }
         if(dto.getLastName()!= null){
             user.setFirstName(dto.getLastName());
+        }
+        if(dto.getCourt()!= null){
+            user.setCourt(dto.getCourt());
         }
     }
 }

@@ -1,7 +1,7 @@
 package com.fullDetailed.fullDetailedDemo.services.impl;
 
 import com.fullDetailed.fullDetailedDemo.config.securityServices.CustomUserDetails;
-import com.fullDetailed.fullDetailedDemo.config.securityServices.JwtUtill;
+import com.fullDetailed.fullDetailedDemo.config.securityServices.JwtUtil;
 import com.fullDetailed.fullDetailedDemo.domain.dtos.auth.LoginRequestDto;
 import com.fullDetailed.fullDetailedDemo.domain.dtos.auth.LoginResponseDto;
 import com.fullDetailed.fullDetailedDemo.domain.dtos.auth.RegisterRequestDto;
@@ -18,15 +18,13 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.UUID;
-
 @Service
 @RequiredArgsConstructor
 public class AuthServiceImpl implements AuthService {
 
     private final UserRepo userRepo;
     private final PasswordEncoder passwordEncoder;
-    private final JwtUtill jwtUtil;
+    private final JwtUtil jwtUtil;
     private final AuthMapper authMapper;
     private final AuthenticationManager authenticationManager;
 
@@ -50,6 +48,13 @@ public class AuthServiceImpl implements AuthService {
         );
         var user = userRepo.findByEmail(request.getEmail())
                 .orElseThrow(() -> new NotFoundException("User not found"));
+
+        if(!user.isActive()){
+            throw new NotFoundException("Sorry your account is inActive please contact the admin");
+        }
+        if(user.isDeleted()){
+            throw new NotFoundException("the email you entered is incorrect");
+        }
         var accessToken = jwtUtil.generateToken(new CustomUserDetails(user));
         var refreshToken = jwtUtil.generateRefreshToken(new CustomUserDetails(user));
         LoginResponseDto res = new LoginResponseDto();
