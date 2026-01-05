@@ -20,7 +20,7 @@ public class SwaggerConfig {
                 .info(new Info()
                         .title("LMosta4ar API Documentation")
                         .version("1.0")
-                        .description("Complete API documentation for Tech Restore application")
+                        .description("Complete API documentation for LMosta4ar application")
                         .contact(new Contact()
                                 .name("Hoba")
                                 .email("youssefehab204@gmail.com"))

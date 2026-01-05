@@ -88,4 +88,22 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
     }
 
+    @ExceptionHandler(RuntimeException.class)
+    public ResponseEntity<ErrorResponse> handleRuntimeException(
+            RuntimeException ex,
+            HttpServletRequest request) {
+
+        ErrorResponse error = new ErrorResponse(
+                ex.getMessage(),
+                HttpStatus.INTERNAL_SERVER_ERROR.value(),
+                request.getRequestURI(),
+                LocalDateTime.now()
+        );
+
+        return ResponseEntity
+                .status(HttpStatus.INTERNAL_SERVER_ERROR)
+                .body(error);
+    }
+
+
 }
