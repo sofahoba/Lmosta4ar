@@ -9,4 +9,7 @@ public interface AuthService {
 
     RegisterResponseDto register(RegisterRequestDto request);
     LoginResponseDto login(LoginRequestDto request);
+    String sendOtpCode(String email,String otpCode);
+    String resendOtp(String email);
+
 }
