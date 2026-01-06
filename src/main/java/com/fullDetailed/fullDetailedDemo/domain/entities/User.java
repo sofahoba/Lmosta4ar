@@ -67,6 +67,12 @@ public class User {
   @Column(name = "is_deleted", nullable = false)
   private boolean isDeleted = false;
 
+  @Column(nullable = false, name = "otp_code")
+  private String otpCode;
+
+  @Column(name = "Otp_expiration_time", nullable = true)
+  private LocalDateTime otpExpirationTime;
+
   @Column(name = "court", nullable = true)
   private String court;
 

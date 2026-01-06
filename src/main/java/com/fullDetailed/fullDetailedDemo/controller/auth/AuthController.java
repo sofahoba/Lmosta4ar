@@ -1,9 +1,6 @@
 package com.fullDetailed.fullDetailedDemo.controller.auth;
 
-import com.fullDetailed.fullDetailedDemo.domain.dtos.auth.LoginRequestDto;
-import com.fullDetailed.fullDetailedDemo.domain.dtos.auth.LoginResponseDto;
-import com.fullDetailed.fullDetailedDemo.domain.dtos.auth.RegisterRequestDto;
-import com.fullDetailed.fullDetailedDemo.domain.dtos.auth.RegisterResponseDto;
+import com.fullDetailed.fullDetailedDemo.domain.dtos.auth.*;
 import com.fullDetailed.fullDetailedDemo.services.interfaces.AuthService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -31,6 +28,18 @@ public class AuthController {
     public ResponseEntity<LoginResponseDto> login(@Valid @RequestBody LoginRequestDto request) {
         LoginResponseDto response = authService.login(request);
         return ResponseEntity.ok(response);
+    }
+
+    @PostMapping("/resend-otp")
+    public ResponseEntity<String> resendOtpCode(@RequestBody ResendOtpRequest dto) {
+        String response = authService.resendOtp(dto.getEmail());
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
+    @PostMapping("/verify-otp")
+    public ResponseEntity<String> verifyOtpCode(@RequestBody VerifyOtpRequest dto) {
+        String response = authService.sendOtpCode(dto.getEmail(), dto.getOtpCode());
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
 }
