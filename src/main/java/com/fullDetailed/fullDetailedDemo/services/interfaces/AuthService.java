@@ -1,9 +1,6 @@
 package com.fullDetailed.fullDetailedDemo.services.interfaces;
 
-import com.fullDetailed.fullDetailedDemo.domain.dtos.auth.LoginRequestDto;
-import com.fullDetailed.fullDetailedDemo.domain.dtos.auth.LoginResponseDto;
-import com.fullDetailed.fullDetailedDemo.domain.dtos.auth.RegisterRequestDto;
-import com.fullDetailed.fullDetailedDemo.domain.dtos.auth.RegisterResponseDto;
+import com.fullDetailed.fullDetailedDemo.domain.dtos.auth.*;
 
 public interface AuthService {
 
@@ -11,5 +8,7 @@ public interface AuthService {
     LoginResponseDto login(LoginRequestDto request);
     String sendOtpCode(String email,String otpCode);
     String resendOtp(String email);
+    ForgotPasswordResponse forgotPassword(ForgotPasswordRequest dto);
+    String resetPassword(ResetPasswordRequest dto);
 
 }
