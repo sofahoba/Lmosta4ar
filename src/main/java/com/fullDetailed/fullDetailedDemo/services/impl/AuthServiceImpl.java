@@ -2,10 +2,7 @@ package com.fullDetailed.fullDetailedDemo.services.impl;
 
 import com.fullDetailed.fullDetailedDemo.config.securityServices.CustomUserDetails;
 import com.fullDetailed.fullDetailedDemo.config.securityServices.JwtUtil;
-import com.fullDetailed.fullDetailedDemo.domain.dtos.auth.LoginRequestDto;
-import com.fullDetailed.fullDetailedDemo.domain.dtos.auth.LoginResponseDto;
-import com.fullDetailed.fullDetailedDemo.domain.dtos.auth.RegisterRequestDto;
-import com.fullDetailed.fullDetailedDemo.domain.dtos.auth.RegisterResponseDto;
+import com.fullDetailed.fullDetailedDemo.domain.dtos.auth.*;
 import com.fullDetailed.fullDetailedDemo.domain.entities.User;
 import com.fullDetailed.fullDetailedDemo.exceptions.AlreadyExistsException;
 import com.fullDetailed.fullDetailedDemo.exceptions.NotFoundException;
@@ -115,6 +112,38 @@ public class AuthServiceImpl implements AuthService {
         user.setOtpExpirationTime(LocalDateTime.now().plusMinutes(10));
         userRepo.save(user);
         return "New OTP sent successfully";
+    }
+
+    @Override
+    public ForgotPasswordResponse forgotPassword(ForgotPasswordRequest dto) {
+        User user = userRepo.findByEmail(dto.getEmail())
+                .orElseThrow(() -> new NotFoundException("User not found"));
+        String otp= emailService.sendOtpEmail(user.getEmail());
+        user.setOtpCode(passwordEncoder.encode(otp));
+        user.setOtpExpirationTime(LocalDateTime.now().plusMinutes(10));
+        userRepo.save(user);
+        ForgotPasswordResponse response = new ForgotPasswordResponse();
+        response.setMessage("OTP sent to email if exists");
+        return response;
+    }
+
+    @Override
+    public String resetPassword(ResetPasswordRequest dto) {
+        User user = userRepo.findByEmail(dto.getEmail())
+                .orElseThrow(() -> new NotFoundException("User not found"));
+        if (user.getOtpCode() == null) {
+            throw new NotFoundException("No OTP found for this user");
+        }
+        if (user.getOtpExpirationTime().isBefore(LocalDateTime.now())) {
+            throw new NotFoundException("OTP expired");
+        }
+        boolean isOtpValid = passwordEncoder.matches(dto.getOtpCode(), user.getOtpCode());
+        if (!isOtpValid) {
+            throw new NotFoundException("Invalid OTP");
+        }
+        user.setPassword(passwordEncoder.encode(dto.getNewPassword()));
+        userRepo.save(user);
+        return "Password reset successfully";
     }
 
 
