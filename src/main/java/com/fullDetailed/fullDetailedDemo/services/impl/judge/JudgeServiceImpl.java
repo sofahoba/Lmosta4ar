@@ -10,6 +10,7 @@ import com.fullDetailed.fullDetailedDemo.mapper.users.judge.JudgeMapper;
 import com.fullDetailed.fullDetailedDemo.repository.CaseRepository;
 import com.fullDetailed.fullDetailedDemo.repository.UserRepo;
 import com.fullDetailed.fullDetailedDemo.services.interfaces.judge.JudgeService;
+import com.fullDetailed.fullDetailedDemo.util.PagenationHandler;
 import com.fullDetailed.fullDetailedDemo.util.UserContextService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -25,7 +26,6 @@ public class JudgeServiceImpl implements JudgeService {
     private final UserRepo userRepo;
     private final CaseRepository caseRepository;
     private final UserContextService userContextService;
-
 
     @Override
     public JudgeProfileDto getJudgeProfile() {
@@ -54,7 +54,7 @@ public class JudgeServiceImpl implements JudgeService {
         if(user.isDeleted() || !user.isActive()){
             throw new NotFoundException("User not fount");
         }
-        Page<Case> c=caseRepository.findByJudge(user,pageable);
+        Page<Case> c=caseRepository.findByJudge(user,PagenationHandler.createCleanPageable(pageable));
         return c.map(CaseMapper::toDto);
     }
 

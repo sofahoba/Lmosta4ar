@@ -1,10 +1,16 @@
 package com.fullDetailed.fullDetailedDemo.controller.admin;
 
+import com.fullDetailed.fullDetailedDemo.domain.dtos.UserProfileResponseDto;
+import com.fullDetailed.fullDetailedDemo.domain.dtos.judge.CreateUserDto;
 import com.fullDetailed.fullDetailedDemo.domain.dtos.judge.JudgeProfileDto;
+import com.fullDetailed.fullDetailedDemo.domain.dtos.judge.UserResponseDto;
+import com.fullDetailed.fullDetailedDemo.domain.dtos.lawyer.LawyerDto;
 import com.fullDetailed.fullDetailedDemo.services.interfaces.admin.AdminService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,6 +30,56 @@ public class AdminController {
         return ResponseEntity.ok(Map.of(
                 "message", "User deactivated successfully"
         ));
+    }
+    @GetMapping("/lawyers/active")
+    public ResponseEntity<Page<LawyerDto>> getAllActiveLawyers(Pageable pageable) {
+        return ResponseEntity.ok(adminService.getAllActivatedLawyers(pageable));
+    }
+
+    @GetMapping("/lawyers/deactivated")
+    public ResponseEntity<Page<LawyerDto>> getAllDeactivatedLawyers(Pageable pageable) {
+        return ResponseEntity.ok(adminService.getAllDeactivatedLawyers(pageable));
+    }
+
+    @GetMapping("/lawyers")
+    public ResponseEntity<Page<LawyerDto>> getAllLawyers(Pageable pageable) {
+        return ResponseEntity.ok(adminService.getAllLawyerProfile(pageable));
+    }
+
+    @PutMapping("/lawyers/{lawyerId}/approve")
+    public ResponseEntity<String> approveLawyer(@PathVariable UUID lawyerId) {
+        adminService.acceptLawyerApprovalById(lawyerId);
+        return ResponseEntity.ok("Lawyer approved successfully");
+    }
+
+    @PutMapping("/lawyers/{lawyerId}/reject")
+    public ResponseEntity<String> rejectLawyer(@PathVariable UUID lawyerId) {
+        adminService.rejectLawyerApprovalById(lawyerId);
+        return ResponseEntity.ok("Lawyer rejected successfully");
+    }
+
+    @GetMapping("/lawyers/approved")
+    public ResponseEntity<Page<LawyerDto>> getAllApprovedLawyers(Pageable pageable) {
+        Page<LawyerDto> approvedLawyers = adminService.getAllApprovedLawyers(pageable);
+        return ResponseEntity.ok(approvedLawyers);
+    }
+
+    @GetMapping("/lawyers/rejected")
+    public ResponseEntity<Page<LawyerDto>> getAllRejectedLawyers(Pageable pageable) {
+        Page<LawyerDto> rejectedLawyers = adminService.getAllRejectedLawyers(pageable);
+        return ResponseEntity.ok(rejectedLawyers);
+    }
+
+    @PostMapping("/users")
+    public ResponseEntity<UserResponseDto> createUser(@Valid @RequestBody CreateUserDto createUserDto) {
+        UserResponseDto createdUser = adminService.createUser(createUserDto);
+        return new ResponseEntity<>(createdUser, HttpStatus.CREATED);
+    }
+
+    @GetMapping("/users/{userId}")
+    public ResponseEntity<UserProfileResponseDto> getUserById(@PathVariable UUID userId) {
+        UserProfileResponseDto user = adminService.getUserById(userId);
+        return ResponseEntity.ok(user);
     }
 
     @PutMapping("/{userId}/activate")

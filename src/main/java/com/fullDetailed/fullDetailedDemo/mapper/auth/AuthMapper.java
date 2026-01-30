@@ -23,7 +23,7 @@ public class AuthMapper {
         return User.builder()
                 .age(dto.getAge())
                 .email(dto.getEmail())
-                .role(Role.JUDGE)
+                .role(Role.LAWYER)
                 .password(passwordEncoder.encode(dto.getPassword()))
                 .firstName(dto.getFirstName())
                 .lastName(dto.getLastName())

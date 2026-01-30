@@ -42,12 +42,15 @@ public class Case {
     @JoinColumn(name = "assigned_by_id")
     private User assignedBy;
 
+    @Column(name = "is_deleted", nullable = false)
+    private boolean isDeleted = false;
 
     @OneToMany(mappedBy = "caseEntity", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<CaseFile> files;
 
     private String modelSummary;
     private String modelJudgment;
+    private String finalDecision;
 
     private LocalDateTime createdAt;
 
