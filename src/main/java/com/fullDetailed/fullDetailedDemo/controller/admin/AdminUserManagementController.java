@@ -5,7 +5,7 @@ import com.fullDetailed.fullDetailedDemo.domain.dtos.judge.CreateUserDto;
 import com.fullDetailed.fullDetailedDemo.domain.dtos.judge.JudgeProfileDto;
 import com.fullDetailed.fullDetailedDemo.domain.dtos.judge.UserResponseDto;
 import com.fullDetailed.fullDetailedDemo.domain.dtos.lawyer.LawyerDto;
-import com.fullDetailed.fullDetailedDemo.services.interfaces.admin.AdminService;
+import com.fullDetailed.fullDetailedDemo.services.interfaces.admin.AdminUserManagementService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -20,9 +20,9 @@ import java.util.UUID;
 @RestController
 @RequestMapping("/api/v1/admin/users")
 @RequiredArgsConstructor
-public class AdminController {
+public class AdminUserManagementController {
 
-    private final AdminService adminService;
+    private final AdminUserManagementService adminService;
 
     @PutMapping("/{userId}/deactivate")
     public ResponseEntity<Map<String, String>> deactivateUser(@PathVariable UUID userId) {
