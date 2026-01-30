@@ -8,10 +8,9 @@ import com.fullDetailed.fullDetailedDemo.domain.dtos.lawyer.LawyerDto;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-import java.util.Objects;
 import java.util.UUID;
 
-public interface AdminService {
+public interface AdminUserManagementService {
 
     void acceptLawyerApprovalById(UUID userId);
 

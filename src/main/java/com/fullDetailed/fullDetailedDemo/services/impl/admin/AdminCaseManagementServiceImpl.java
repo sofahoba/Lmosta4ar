@@ -1,0 +1,223 @@
+package com.fullDetailed.fullDetailedDemo.services.impl.admin;
+
+import com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseRequestDto;
+import com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseResponseDto;
+import com.fullDetailed.fullDetailedDemo.domain.entities.Case;
+import com.fullDetailed.fullDetailedDemo.domain.entities.CaseFile;
+import com.fullDetailed.fullDetailedDemo.domain.entities.User;
+import com.fullDetailed.fullDetailedDemo.domain.enums.CaseStatus;
+import com.fullDetailed.fullDetailedDemo.domain.enums.FileType;
+import com.fullDetailed.fullDetailedDemo.domain.enums.Role;
+import com.fullDetailed.fullDetailedDemo.exceptions.DuplicateResourceException;
+import com.fullDetailed.fullDetailedDemo.exceptions.NotFoundException;
+import com.fullDetailed.fullDetailedDemo.mapper.cases.CaseMapper;
+import com.fullDetailed.fullDetailedDemo.repository.CaseFileRepository;
+import com.fullDetailed.fullDetailedDemo.repository.CaseRepository;
+import com.fullDetailed.fullDetailedDemo.repository.UserRepo;
+import com.fullDetailed.fullDetailedDemo.services.impl.FileStorageService;
+import com.fullDetailed.fullDetailedDemo.services.interfaces.admin.AdminCaseManagementService;
+import com.fullDetailed.fullDetailedDemo.util.PagenationHandler;
+import com.fullDetailed.fullDetailedDemo.util.UserContextService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+
+@Service
+@RequiredArgsConstructor
+@Transactional
+public class AdminCaseManagementServiceImpl implements AdminCaseManagementService {
+
+    private final UserRepo userRepo;
+    private final CaseRepository caseRepository;
+    private final UserContextService userContextService;
+    private final FileStorageService fileStorageService;
+    private final CaseFileRepository caseFileRepo;
+
+    @Override
+    public void assignCaseToJudge(UUID judgeId, UUID caseId) {
+        User judge = userRepo.findById(judgeId).orElseThrow(() -> new NotFoundException("User Not found"));
+        if (judge.getRole() != Role.JUDGE) {
+            throw new NotFoundException("Please assign only judges to this case");
+        }
+
+        Case caseEntity = caseRepository.findById(caseId).orElseThrow(() -> new NotFoundException("Case Not found"));
+        User currentUser = userContextService.getCurrentUser();
+
+        caseEntity.setJudge(judge);
+        caseEntity.setAssignedBy(currentUser);
+        judge.setAssignedCasesCount(judge.getAssignedCasesCount() + 1);
+
+        userRepo.save(judge);
+        caseRepository.save(caseEntity);
+    }
+
+    @Override
+    public CaseResponseDto createCase(CaseRequestDto request) {
+        if (caseRepository.existsByCaseNumber(request.getCaseNumber())) {
+            throw new DuplicateResourceException("Case with number " + request.getCaseNumber() + " already exists");
+        }
+
+        User adminUser = userContextService.getCurrentUser();
+
+        User judgeUser = null;
+        if (request.getJudgeId() != null) {
+            judgeUser = userRepo.findById(request.getJudgeId())
+                    .orElseThrow(() -> new NotFoundException("Judge not found with ID: " + request.getJudgeId()));
+
+            if (judgeUser.getRole() != Role.JUDGE) {
+                throw new IllegalArgumentException("User with ID " + request.getJudgeId() + " is not a Judge");
+            }
+        }
+
+        User lawyerUser = null;
+        if (request.getLawyerId() != null) {
+            lawyerUser = userRepo.findById(request.getLawyerId())
+                    .orElseThrow(() -> new NotFoundException("lawyer not found with ID: " + request.getLawyerId()));
+
+            if (lawyerUser.getRole() != Role.LAWYER) {
+                throw new IllegalArgumentException("User with ID " + request.getLawyerId() + " is not a Lawyer");
+            }
+        }
+
+        Case caseEntity = CaseMapper.toEntity(request, judgeUser, adminUser,lawyerUser);
+
+        caseEntity.setStatus(CaseStatus.PENDING);
+        caseEntity.setDeleted(false);
+
+        Case savedCase = caseRepository.save(caseEntity);
+
+        return CaseMapper.toDto(savedCase);
+    }
+
+    @Override
+    public void updateCase(UUID caseId, CaseRequestDto request) {
+        Case existingCase = caseRepository.findById(caseId)
+                .orElseThrow(() -> new NotFoundException("Case not found with ID: " + caseId));
+
+        if (existingCase.isDeleted()) {
+            throw new NotFoundException("Case not found (deleted)");
+        }
+
+        if (request.getCaseNumber() != null &&
+                !request.getCaseNumber().equals(existingCase.getCaseNumber())) {
+
+            if (caseRepository.existsByCaseNumber(request.getCaseNumber())) {
+                throw new DuplicateResourceException("Case number " + request.getCaseNumber() + " already exists");
+            }
+        }
+
+        User newJudge = null;
+        if (request.getJudgeId() != null) {
+            newJudge = userRepo.findById(request.getJudgeId())
+                    .orElseThrow(() -> new NotFoundException("Judge not found with ID: " + request.getJudgeId()));
+
+            if (newJudge.getRole() != Role.JUDGE) {
+                throw new IllegalArgumentException("User is not a Judge");
+            }
+        }
+
+        User lawyerUser = null;
+        if (request.getLawyerId() != null) {
+            lawyerUser = userRepo.findById(request.getLawyerId())
+                    .orElseThrow(() -> new NotFoundException("lawyer not found with ID: " + request.getLawyerId()));
+
+            if (lawyerUser.getRole() != Role.LAWYER) {
+                throw new IllegalArgumentException("User with ID " + request.getLawyerId() + " is not a Lawyer");
+            }
+        }
+
+
+        CaseMapper.updateEntity(existingCase, request, newJudge, lawyerUser);
+
+        caseRepository.save(existingCase);
+    }
+
+    @Override
+    public void deleteCase(UUID caseId) {
+        Case caseEntity = caseRepository.findById(caseId).orElseThrow(()->new NotFoundException("Case Not Found"));
+        caseEntity.setDeleted(true);
+        caseRepository.save(caseEntity);
+    }
+
+    @Override
+    public Page<CaseResponseDto> getAllCases(Pageable pageable) {
+        return caseRepository.findByIsDeletedFalse(PagenationHandler.createCleanPageable(pageable)).map(CaseMapper::toDto);
+    }
+
+    @Override
+    public CaseResponseDto getCaseById(UUID caseId) {
+        Case caseEntity=caseRepository.findById(caseId).orElseThrow(()->new NotFoundException("Case Nott Found"));
+        return CaseMapper.toDto(caseEntity);
+    }
+
+    @Override
+    public Page<CaseResponseDto> getCasesByStatus(CaseStatus status, Pageable pageable) {
+        return caseRepository.findByStatusAndIsDeletedFalse(status,PagenationHandler.createCleanPageable(pageable)).map(CaseMapper::toDto);
+    }
+
+    @Override
+    public List<String> uploadCaseFiles(UUID caseId, List<MultipartFile> files) {
+        // 1. Validate Case Exists
+        Case caseEntity = caseRepository.findById(caseId)
+                .orElseThrow(() -> new NotFoundException("Case not found with ID: " + caseId));
+
+        // 2. Get Current User (Admin)
+        // Assuming you have a way to get the logged-in user's email/ID from SecurityContext
+        User adminUser = userContextService.getCurrentUser();
+
+        List<String> fileUrls = new ArrayList<>();
+
+        // 3. Loop through files
+        for (MultipartFile file : files) {
+            if (file.isEmpty()) continue;
+
+            // A. Store file physically
+            String fileName = fileStorageService.storeFile(file);
+
+            // B. Generate a downloadable URL (See Step 4)
+            // Ideally: http://localhost:8080/api/v1/files/download/{fileName}
+            String fileDownloadUrl = "/api/v1/files/download/" + fileName;
+
+            // C. Create CaseFile Entity
+            CaseFile caseFile = CaseFile.builder()
+                    .caseEntity(caseEntity)
+                    .fileUrl(fileDownloadUrl)
+                    .fileType(determineFileType(file.getContentType()))
+                    .uploadedBy(adminUser)
+                    .build();
+
+            // D. Save to DB
+            caseFileRepo.save(caseFile);
+            fileUrls.add(fileDownloadUrl);
+        }
+
+        return fileUrls;
+    }
+
+    @Override
+    public Page<CaseResponseDto> getAllDeletedCases(Pageable pageable) {
+        return caseRepository.findByIsDeletedTrue(PagenationHandler.createCleanPageable(pageable)).map(CaseMapper::toDto);
+    }
+
+    @Override
+    public Page<CaseResponseDto> getAllFullyAssignedCases(Pageable pageable) {
+        return caseRepository.findByJudgeIsNotNullAndLawyerIsNotNullAndIsDeletedFalse(
+                PagenationHandler.createCleanPageable(pageable)
+        ).map(CaseMapper::toDto);
+    }
+
+    private FileType determineFileType(String contentType) {
+        if (contentType == null) return FileType.OTHER;
+        if (contentType.contains("pdf")) return FileType.PDF;
+        if (contentType.contains("image")) return FileType.IMAGE;
+        return FileType.DOCUMENT;
+    }
+
+}

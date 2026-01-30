@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.UUID;
 
 @Data
@@ -21,7 +22,10 @@ public class CaseResponseDto {
     private CaseStatus status;
     private UUID judgeId;
     private String judgeName;
+    private UUID lawyerId;
+    private String lawyerName;
     private UUID assignedById;
     private String assignedByName;
     private LocalDateTime createdAt;
+    private List<CaseFileDto> files;
 }

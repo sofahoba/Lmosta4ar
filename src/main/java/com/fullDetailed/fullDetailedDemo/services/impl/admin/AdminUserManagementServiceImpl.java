@@ -13,22 +13,19 @@ import com.fullDetailed.fullDetailedDemo.mapper.UserMapper;
 import com.fullDetailed.fullDetailedDemo.mapper.users.judge.JudgeMapper;
 import com.fullDetailed.fullDetailedDemo.mapper.users.lawyer.LawyerMapper;
 import com.fullDetailed.fullDetailedDemo.repository.UserRepo;
-import com.fullDetailed.fullDetailedDemo.services.interfaces.admin.AdminService;
+import com.fullDetailed.fullDetailedDemo.services.interfaces.admin.AdminUserManagementService;
 import com.fullDetailed.fullDetailedDemo.util.PagenationHandler;
-import com.fullDetailed.fullDetailedDemo.util.UserContextService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.Objects;
 import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
-public class AdminServiceImpl implements AdminService {
+public class AdminUserManagementServiceImpl implements AdminUserManagementService {
 
     private final UserRepo userRepo;
     private final PasswordEncoder passwordEncoder;

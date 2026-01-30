@@ -39,6 +39,10 @@ public class Case {
     private User judge;
 
     @ManyToOne
+    @JoinColumn(name = "lawyer_id")
+    private User lawyer;
+
+    @ManyToOne
     @JoinColumn(name = "assigned_by_id")
     private User assignedBy;
 
