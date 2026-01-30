@@ -4,6 +4,7 @@ import com.fullDetailed.fullDetailedDemo.config.securityServices.CustomUserDetai
 import com.fullDetailed.fullDetailedDemo.config.securityServices.JwtUtil;
 import com.fullDetailed.fullDetailedDemo.domain.dtos.auth.*;
 import com.fullDetailed.fullDetailedDemo.domain.entities.User;
+import com.fullDetailed.fullDetailedDemo.domain.enums.Role;
 import com.fullDetailed.fullDetailedDemo.exceptions.AlreadyExistsException;
 import com.fullDetailed.fullDetailedDemo.exceptions.NotFoundException;
 import com.fullDetailed.fullDetailedDemo.mapper.auth.AuthMapper;
@@ -58,6 +59,12 @@ public class AuthServiceImpl implements AuthService {
         }
         if(user.isDeleted()){
             throw new NotFoundException("the email you entered is incorrect");
+        }
+        if(user.getRole()== Role.JUDGE && !user.isPasswordReseted()){
+            throw new NotFoundException("Please reset your password");
+        }
+        if(user.getRole()==Role.LAWYER && user.isApproved()==false){
+            throw new NotFoundException("Please Contact admin for approval");
         }
         var accessToken = jwtUtil.generateToken(new CustomUserDetails(user));
         var refreshToken = jwtUtil.generateRefreshToken(new CustomUserDetails(user));
@@ -142,6 +149,9 @@ public class AuthServiceImpl implements AuthService {
             throw new NotFoundException("Invalid OTP");
         }
         user.setPassword(passwordEncoder.encode(dto.getNewPassword()));
+        if(!user.isPasswordReseted()){
+            user.setPasswordReseted(true);
+        }
         userRepo.save(user);
         return "Password reset successfully";
     }

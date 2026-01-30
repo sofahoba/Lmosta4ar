@@ -20,4 +20,8 @@ public interface UserRepo extends JpaRepository<User,UUID>{
   Page<User> findByRoleAndIsActiveFalseAndIsDeletedFalse(Role role, Pageable pageable);
 
   Page<User> findByRoleAndIsActiveTrueAndIsDeletedFalse(Role role, Pageable pageable);
+
+  Page<User> findByRoleAndIsApprovedTrueAndIsDeletedFalse(Role role, Pageable pageable);
+
+  Page<User> findByRoleAndIsApprovedFalseAndIsDeletedFalse(Role role, Pageable pageable);
 }

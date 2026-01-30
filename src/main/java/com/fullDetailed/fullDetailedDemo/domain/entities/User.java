@@ -61,11 +61,17 @@ public class User {
   @Column(nullable = true)
   private int assignedCasesCount;
 
-  @Column(name = "is_active", nullable = false)
+  @Column(name = "is_active", nullable = true)
   private boolean isActive = true;
 
-  @Column(name = "is_deleted", nullable = false)
+  @Column(name = "is_deleted", nullable = true)
   private boolean isDeleted = false;
+
+  @Column(name = "passwordReseted", nullable = true)
+  private boolean isPasswordReseted = false;
+
+  @Column(name = "isApproved", nullable = true)
+  private boolean isApproved = false;
 
   @Column(nullable = false, name = "otp_code")
   private String otpCode;

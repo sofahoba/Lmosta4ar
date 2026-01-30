@@ -25,7 +25,8 @@ public class CaseRequestDto {
     @NotNull(message = "status is required")
     private CaseStatus status;
 
-    @NotNull(message = "judge id is required")
     private UUID judgeId;
+
+    private UUID lawyerId;
 }
 
