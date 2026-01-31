@@ -16,6 +16,7 @@ import com.fullDetailed.fullDetailedDemo.repository.CaseRepository;
 import com.fullDetailed.fullDetailedDemo.repository.UserRepo;
 import com.fullDetailed.fullDetailedDemo.services.impl.FileStorageService;
 import com.fullDetailed.fullDetailedDemo.services.interfaces.admin.AdminCaseManagementService;
+import com.fullDetailed.fullDetailedDemo.services.interfaces.notification.NotificationService;
 import com.fullDetailed.fullDetailedDemo.util.PagenationHandler;
 import com.fullDetailed.fullDetailedDemo.util.UserContextService;
 import lombok.RequiredArgsConstructor;
@@ -39,6 +40,7 @@ public class AdminCaseManagementServiceImpl implements AdminCaseManagementServic
     private final UserContextService userContextService;
     private final FileStorageService fileStorageService;
     private final CaseFileRepository caseFileRepo;
+    private final NotificationService notificationService;
 
     @Override
     public void assignCaseToJudge(UUID judgeId, UUID caseId) {
@@ -49,13 +51,22 @@ public class AdminCaseManagementServiceImpl implements AdminCaseManagementServic
 
         Case caseEntity = caseRepository.findById(caseId).orElseThrow(() -> new NotFoundException("Case Not found"));
         User currentUser = userContextService.getCurrentUser();
-
+        if(caseEntity.getJudge()!=null){
+            throw new IllegalArgumentException("the case is already assigned to an existing judge");
+        }
         caseEntity.setJudge(judge);
         caseEntity.setAssignedBy(currentUser);
         judge.setAssignedCasesCount(judge.getAssignedCasesCount() + 1);
 
         userRepo.save(judge);
         caseRepository.save(caseEntity);
+
+        notificationService.createAndSend(
+                judge,
+                "New Case Assigned",
+                "You have been assigned to case number: " + caseEntity.getCaseNumber() + "\nCase ID: " + caseEntity.getId()
+        );
+
     }
 
     @Override
@@ -92,6 +103,14 @@ public class AdminCaseManagementServiceImpl implements AdminCaseManagementServic
         caseEntity.setDeleted(false);
 
         Case savedCase = caseRepository.save(caseEntity);
+
+        if (savedCase.getJudge() != null) {
+            notificationService.createAndSend(
+                    judgeUser,
+                    "New Case Assigned",
+                    "You have been assigned to case number: " + caseEntity.getCaseNumber() + "\nCase ID: " + caseEntity.getId()
+            );
+        }
 
         return CaseMapper.toDto(savedCase);
     }

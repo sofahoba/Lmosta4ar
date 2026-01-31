@@ -7,6 +7,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 public interface CaseRepository extends JpaRepository<Case, UUID> {
@@ -16,5 +17,11 @@ public interface CaseRepository extends JpaRepository<Case, UUID> {
     Page<Case> findByIsDeletedTrue(Pageable pageable);
     Page<Case> findByStatusAndIsDeletedFalse(CaseStatus status, Pageable pageable);
     Page<Case> findByJudgeIsNotNullAndLawyerIsNotNullAndIsDeletedFalse(Pageable pageable);
-
+    Page<Case> findByJudgeAndStatusAndIsDeletedFalse(User judge, CaseStatus status, Pageable pageable);
+    Page<Case> findByJudgeAndCreatedAtBetweenAndIsDeletedFalse(
+            User judge,
+            LocalDateTime startDate,
+            LocalDateTime endDate,
+            Pageable pageable
+    );
 }
