@@ -4,6 +4,7 @@ import com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseResponseDto;
 import com.fullDetailed.fullDetailedDemo.domain.dtos.judge.JudgeProfileDto;
 import com.fullDetailed.fullDetailedDemo.domain.entities.Case;
 import com.fullDetailed.fullDetailedDemo.domain.entities.User;
+import com.fullDetailed.fullDetailedDemo.domain.enums.CaseStatus;
 import com.fullDetailed.fullDetailedDemo.exceptions.NotFoundException;
 import com.fullDetailed.fullDetailedDemo.mapper.cases.CaseMapper;
 import com.fullDetailed.fullDetailedDemo.mapper.users.judge.JudgeMapper;
@@ -17,6 +18,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.UUID;
 
 @Service
@@ -69,5 +73,37 @@ public class JudgeServiceImpl implements JudgeService {
             throw new NotFoundException("case you are trying to access is not assigned to you");
         }
         return CaseMapper.toDto(c);
+    }
+
+    @Override
+    public Page<CaseResponseDto> getCasesByStatus(CaseStatus status,Pageable pageable) {
+
+        User judge = userContextService.getCurrentUser();
+        Page<Case> cases = caseRepository.findByJudgeAndStatusAndIsDeletedFalse(
+                judge,
+                status,
+                PagenationHandler.createCleanPageable(pageable)
+        );
+        return cases.map(CaseMapper::toDto);
+    }
+
+    @Override
+    public Page<CaseResponseDto> getMyCasesByDateRange(LocalDate fromDate, LocalDate toDate, Pageable pageable) {
+
+        User judge = userContextService.getCurrentUser();
+
+        LocalDateTime startDateTime = fromDate.atStartOfDay();
+        LocalDateTime endDateTime = toDate.atTime(LocalTime.MAX);
+
+        if (startDateTime.isAfter(endDateTime)) {
+            throw new IllegalArgumentException("Start date cannot be after end date");
+        }
+        Page<Case> cases = caseRepository.findByJudgeAndCreatedAtBetweenAndIsDeletedFalse(
+                judge,
+                startDateTime,
+                endDateTime,
+                PagenationHandler.createCleanPageable(pageable)
+        );
+        return cases.map(CaseMapper::toDto);
     }
 }

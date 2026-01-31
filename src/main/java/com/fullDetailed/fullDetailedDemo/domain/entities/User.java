@@ -59,7 +59,7 @@ public class User {
   private Role role;
 
   @Column(nullable = true)
-  private int assignedCasesCount;
+  private int assignedCasesCount=0;
 
   @Column(name = "is_active", nullable = true)
   private boolean isActive = true;

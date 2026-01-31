@@ -3,6 +3,7 @@ package com.fullDetailed.fullDetailedDemo.config;
 import com.fullDetailed.fullDetailedDemo.config.securityServices.JwtAuthenticationFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
@@ -18,6 +19,11 @@ import com.fullDetailed.fullDetailedDemo.config.securityServices.JwtUtil;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+
+import java.util.List;
 
 @Configuration
 @EnableWebSecurity
@@ -32,16 +38,21 @@ public class SecurityConfig {
   @Bean
   public SecurityFilterChain securityFilterChain(HttpSecurity http)throws Exception{
     JwtAuthenticationFilter jwtFilter=new JwtAuthenticationFilter(jwtUtil,userServiceDetails);
-    return http.csrf(csrf->csrf.disable())
+    return http
+            .cors(cors -> cors.configurationSource(corsConfigurationSource()))
+            .csrf(csrf->csrf.disable())
             .sessionManagement(sm->sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authorizeHttpRequests(auth->auth
                     .requestMatchers("/api/auth/**").permitAll()
                     .requestMatchers("/api/v1/cases/**").authenticated()
+                    .requestMatchers("/api/v1/notifications").authenticated()
                     .requestMatchers("/api/v1/judges/**").hasRole("JUDGE")
                     .requestMatchers(
                             "/api/v1/admin/users/**"
                                     ,"/api/v1/admin/cases"
                     ).hasRole("ADMIN")
+                    .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+                    .requestMatchers("/ws/**").permitAll()
                     .requestMatchers(
                             "/v3/api-docs/**",
                             "/swagger-ui/**",
@@ -54,6 +65,21 @@ public class SecurityConfig {
             .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)
             .build();
   }
+
+    @Bean
+    public CorsConfigurationSource corsConfigurationSource() {
+
+        CorsConfiguration configuration = new CorsConfiguration();
+        configuration.setAllowedOrigins(List.of("http://localhost:3000","http://127.0.0.1:5500",
+                "http://localhost:5500"));
+        configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+        configuration.setAllowedHeaders(List.of("*"));
+        configuration.setAllowCredentials(true);
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", configuration);
+        return source;
+
+    }
 
   @Bean
   public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
