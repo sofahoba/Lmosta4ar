@@ -1,0 +1,28 @@
+# Git
+.git
+.gitignore
+
+# Build directories
+target/
+build/
+!target/*.jar
+
+# IDE
+.idea/
+*.iml
+.vscode/
+*.swp
+
+# Logs
+*.log
+logs/
+
+# Docker
+Dockerfile
+docker-compose.yml
+
+# Environment files (optional - remove if you want to include)
+# .env
+
+# Uploaded files (will use Docker volume instead)
+uploads/
