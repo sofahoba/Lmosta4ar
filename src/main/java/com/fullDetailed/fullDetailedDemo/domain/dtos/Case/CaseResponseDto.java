@@ -27,5 +27,6 @@ public class CaseResponseDto {
     private UUID assignedById;
     private String assignedByName;
     private LocalDateTime createdAt;
-    private List<CaseFileDto> files;
+    private List<CaseFileDto> caseFiles;
+    private List<CaseFileDto> defenseFiles;
 }

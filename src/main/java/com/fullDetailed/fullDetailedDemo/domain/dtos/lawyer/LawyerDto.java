@@ -3,13 +3,17 @@ package com.fullDetailed.fullDetailedDemo.domain.dtos.lawyer;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.UUID;
 
 @Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class LawyerDto {
     private UUID id;
     private String firstName;
@@ -21,11 +25,11 @@ public class LawyerDto {
 
     @Min(value = 25, message = "Age must be at least 25")
     @Max(value = 70, message = "Age must be at most 70")
-    private int age;
+    private Integer  age;
 
     private Boolean isActive;
 
     private Boolean isApproved;
 
-    private int assignedCasesCount;
+    private Integer  assignedCasesCount;
 }

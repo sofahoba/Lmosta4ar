@@ -110,6 +110,8 @@ public class AdminCaseManagementServiceImpl implements AdminCaseManagementServic
                     "New Case Assigned",
                     "You have been assigned to case number: " + caseEntity.getCaseNumber() + "\nCase ID: " + caseEntity.getId()
             );
+            judgeUser.setAssignedCasesCount(judgeUser.getAssignedCasesCount() + 1);
+            userRepo.save(judgeUser);
         }
 
         return CaseMapper.toDto(savedCase);

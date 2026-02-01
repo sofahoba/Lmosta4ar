@@ -1,10 +1,12 @@
 package com.fullDetailed.fullDetailedDemo.controller.admin;
 
+import com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseRequestResponseDto;
 import com.fullDetailed.fullDetailedDemo.domain.dtos.UserProfileResponseDto;
 import com.fullDetailed.fullDetailedDemo.domain.dtos.judge.CreateUserDto;
 import com.fullDetailed.fullDetailedDemo.domain.dtos.judge.JudgeProfileDto;
 import com.fullDetailed.fullDetailedDemo.domain.dtos.judge.UserResponseDto;
 import com.fullDetailed.fullDetailedDemo.domain.dtos.lawyer.LawyerDto;
+import com.fullDetailed.fullDetailedDemo.domain.enums.RequestStatus;
 import com.fullDetailed.fullDetailedDemo.services.interfaces.admin.AdminUserManagementService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -123,4 +125,22 @@ public class AdminUserManagementController {
                 "message", "Judge profile updated successfully"
         ));
     }
+
+    @PutMapping("lawyer-access/{requestId}/approve")
+    public ResponseEntity<String> approveRequest(@PathVariable UUID requestId) {
+        adminService.approveCaseAccessRequest(requestId);
+        return ResponseEntity.ok("Request approved successfully. Lawyer assigned to case.");
+    }
+
+    @PutMapping("lawyer-access/{requestId}/reject")
+    public ResponseEntity<String> rejectRequest(@PathVariable UUID requestId) {
+        adminService.rejectCaseAccessRequest(requestId);
+        return ResponseEntity.ok("Request rejected successfully.");
+    }
+
+    @GetMapping("/lawyer-access/status")
+    public ResponseEntity<Page<CaseRequestResponseDto>> getAllCaseRequestsByStatus(@RequestParam RequestStatus status, Pageable pageable) {
+        return ResponseEntity.ok(adminService.getAllCaseRequestsByStatus(status,pageable));
+    }
+
 }
