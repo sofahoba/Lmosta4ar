@@ -44,7 +44,7 @@ public class JudgeServiceImpl implements JudgeService {
     @Override
     public JudgeProfileDto updateJudgeProfile(JudgeProfileDto dto) {
         User currentUser=userContextService.getCurrentUser();
-        if(currentUser.isDeleted() || !currentUser.isActive()){
+        if(currentUser.isDeleted() || !currentUser.isActive() || currentUser.isDeleted()){
             throw new NotFoundException("User not fount");
         }
         JudgeMapper.updateEntity(currentUser,dto);

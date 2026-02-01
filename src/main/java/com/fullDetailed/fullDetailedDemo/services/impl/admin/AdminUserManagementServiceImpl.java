@@ -1,25 +1,34 @@
 package com.fullDetailed.fullDetailedDemo.services.impl.admin;
 
+import com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseRequestResponseDto;
 import com.fullDetailed.fullDetailedDemo.domain.dtos.UserProfileResponseDto;
 import com.fullDetailed.fullDetailedDemo.domain.dtos.judge.CreateUserDto;
 import com.fullDetailed.fullDetailedDemo.domain.dtos.judge.JudgeProfileDto;
 import com.fullDetailed.fullDetailedDemo.domain.dtos.judge.UserResponseDto;
 import com.fullDetailed.fullDetailedDemo.domain.dtos.lawyer.LawyerDto;
+import com.fullDetailed.fullDetailedDemo.domain.entities.Case;
+import com.fullDetailed.fullDetailedDemo.domain.entities.CaseRequests;
 import com.fullDetailed.fullDetailedDemo.domain.entities.User;
+import com.fullDetailed.fullDetailedDemo.domain.enums.RequestStatus;
 import com.fullDetailed.fullDetailedDemo.domain.enums.Role;
 import com.fullDetailed.fullDetailedDemo.exceptions.DuplicateResourceException;
 import com.fullDetailed.fullDetailedDemo.exceptions.NotFoundException;
 import com.fullDetailed.fullDetailedDemo.mapper.UserMapper;
 import com.fullDetailed.fullDetailedDemo.mapper.users.judge.JudgeMapper;
 import com.fullDetailed.fullDetailedDemo.mapper.users.lawyer.LawyerMapper;
+import com.fullDetailed.fullDetailedDemo.repository.CaseRepository;
+import com.fullDetailed.fullDetailedDemo.repository.CaseRequestRepository;
 import com.fullDetailed.fullDetailedDemo.repository.UserRepo;
 import com.fullDetailed.fullDetailedDemo.services.interfaces.admin.AdminUserManagementService;
+import com.fullDetailed.fullDetailedDemo.services.interfaces.notification.NotificationService;
+import com.fullDetailed.fullDetailedDemo.util.HelperDtoConverter;
 import com.fullDetailed.fullDetailedDemo.util.PagenationHandler;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.UUID;
 
@@ -29,6 +38,9 @@ public class AdminUserManagementServiceImpl implements AdminUserManagementServic
 
     private final UserRepo userRepo;
     private final PasswordEncoder passwordEncoder;
+    private final CaseRequestRepository caseRequestRepository;
+    private final CaseRepository caseRepository;
+    private final NotificationService notificationService;
 
 
     @Override
@@ -46,6 +58,11 @@ public class AdminUserManagementServiceImpl implements AdminUserManagementServic
 
         user.setApproved(true);
         userRepo.save(user);
+        notificationService.createAndSend(
+                user,
+                "Account Approved",
+                "Congratulations! Your lawyer account has been approved by the administration. You can now access the system."
+        );
     }
 
     @Override
@@ -98,6 +115,12 @@ public class AdminUserManagementServiceImpl implements AdminUserManagementServic
         }
         JudgeMapper.updateEntity(user, judgeProfileDto);
         userRepo.save(user);
+
+        notificationService.createAndSend(
+                user,
+                "Profile Updated",
+                "Your judge profile details have been updated by the administrator."
+        );
     }
 
     /*
@@ -173,7 +196,7 @@ public class AdminUserManagementServiceImpl implements AdminUserManagementServic
                 .build();
 
         User savedUser = userRepo.save(user);
-        return mapToUserResponseDto(savedUser);
+        return HelperDtoConverter.mapToUserResponseDto(savedUser);
     }
 
     @Override
@@ -200,18 +223,62 @@ public class AdminUserManagementServiceImpl implements AdminUserManagementServic
         return UserMapper.toDto(user);
     }
 
-    private UserResponseDto mapToUserResponseDto(User user) {
-        return UserResponseDto.builder()
-                .id(user.getId())
-                .firstName(user.getFirstName())
-                .lastName(user.getLastName())
-                .email(user.getEmail())
-                .age(user.getAge())
-                .role(user.getRole())
-                .court(user.getCourt())
-                .isActive(user.isActive())
-                .createdAt(user.getCreatedAt())
-                .build();
+    @Override
+    @Transactional
+    public void approveCaseAccessRequest(UUID requestId) {
+        CaseRequests request = caseRequestRepository.findById(requestId)
+                .orElseThrow(() -> new NotFoundException("Request not found with id: " + requestId));
+
+        request.setStatus(RequestStatus.APPROVED);
+        caseRequestRepository.save(request);
+
+
+        Case legalCase = request.getLegalCase();
+
+        if(legalCase.getLawyer()!=null){
+            throw new IllegalArgumentException("the case already has lawyer");
+        }
+        legalCase.setLawyer(request.getLawyer());
+
+        User lawyer = request.getLawyer();
+        lawyer.setAssignedCasesCount(lawyer.getAssignedCasesCount() + 1);
+        userRepo.save(lawyer);
+
+        caseRepository.save(legalCase);
+
+        String caseInfo = (legalCase.getCaseNumber() != null) ? legalCase.getCaseNumber() : "the requested case";
+
+        notificationService.createAndSend(
+                lawyer,
+                "Case Access Granted",
+                "Your request to access case '" + caseInfo + "' has been APPROVED. You are now assigned to this case."
+        );
     }
+
+    @Override
+    public void rejectCaseAccessRequest(UUID requestId) {
+        CaseRequests request = caseRequestRepository.findById(requestId)
+                .orElseThrow(() -> new NotFoundException("Request not found with id: " + requestId));
+
+        request.setStatus(RequestStatus.REJECTED);
+        caseRequestRepository.save(request);
+
+        String caseInfo = (request.getLegalCase().getCaseNumber() != null)
+                ? request.getLegalCase().getCaseNumber()
+                : "the requested case";
+
+        notificationService.createAndSend(
+                request.getLawyer(),
+                "Case Access Denied",
+                "Your request to access case '" + caseInfo + "' has been REJECTED."
+        );
+    }
+
+    @Override
+    public Page<CaseRequestResponseDto> getAllCaseRequestsByStatus(RequestStatus status,Pageable pageable) {
+        return caseRequestRepository.findByStatus(status, PagenationHandler.createCleanPageable(pageable))
+                .map(HelperDtoConverter::mapToCaseRequestDto);
+    }
+
 
 }

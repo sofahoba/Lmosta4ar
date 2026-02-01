@@ -1,10 +1,12 @@
 package com.fullDetailed.fullDetailedDemo.services.interfaces.admin;
 
+import com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseRequestResponseDto;
 import com.fullDetailed.fullDetailedDemo.domain.dtos.UserProfileResponseDto;
 import com.fullDetailed.fullDetailedDemo.domain.dtos.judge.CreateUserDto;
 import com.fullDetailed.fullDetailedDemo.domain.dtos.judge.JudgeProfileDto;
 import com.fullDetailed.fullDetailedDemo.domain.dtos.judge.UserResponseDto;
 import com.fullDetailed.fullDetailedDemo.domain.dtos.lawyer.LawyerDto;
+import com.fullDetailed.fullDetailedDemo.domain.enums.RequestStatus;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -45,4 +47,9 @@ public interface AdminUserManagementService {
 
     UserProfileResponseDto getUserById(UUID userId);
 
+    void approveCaseAccessRequest(UUID requestId);
+
+    void rejectCaseAccessRequest(UUID requestId);
+
+    Page<CaseRequestResponseDto> getAllCaseRequestsByStatus(RequestStatus status, Pageable pageable);
 }

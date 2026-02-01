@@ -5,8 +5,12 @@ import com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseFileDto;
 import com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseRequestDto;
 import com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseResponseDto;
 import com.fullDetailed.fullDetailedDemo.domain.entities.Case;
+import com.fullDetailed.fullDetailedDemo.domain.entities.CaseFile;
 import com.fullDetailed.fullDetailedDemo.domain.entities.User;
+import com.fullDetailed.fullDetailedDemo.domain.enums.Role;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class CaseMapper {
@@ -38,24 +42,30 @@ public class CaseMapper {
             dto.setAssignedByName(caseEntity.getAssignedBy().getFirstName() + " " + caseEntity.getAssignedBy().getLastName());
         }
 
-        if (caseEntity.getFiles() != null && !caseEntity.getFiles().isEmpty()) {
-            dto.setFiles(caseEntity.getFiles().stream()
-                    .map(fileEntity -> {
-                        CaseFileDto fileDto = new CaseFileDto();
-                        fileDto.setId(fileEntity.getId());
-                        fileDto.setFileUrl(fileEntity.getFileUrl());
-                        fileDto.setFileType(fileEntity.getFileType());
-                        fileDto.setUploadedAt(fileEntity.getUploadedAt());
+        List<CaseFileDto> generalCaseFiles = new ArrayList<>();
+        List<CaseFileDto> defenseFiles = new ArrayList<>();
 
-                        if (fileEntity.getUploadedBy() != null) {
-                            fileDto.setUploadedByName(
-                                    fileEntity.getUploadedBy().getFirstName() + " " + fileEntity.getUploadedBy().getLastName()
-                            );
-                        }
-                        return fileDto;
-                    })
-                    .collect(Collectors.toList()));
+        if (caseEntity.getFiles() != null && !caseEntity.getFiles().isEmpty()) {
+
+            for (CaseFile fileEntity : caseEntity.getFiles()) {
+                CaseFileDto fileDto = mapFileToDto(fileEntity);
+
+                if (fileEntity.getUploadedBy() != null) {
+                    Role uploaderRole = fileEntity.getUploadedBy().getRole();
+
+                    if (uploaderRole == Role.LAWYER) {
+                        defenseFiles.add(fileDto);
+                    } else {
+                        generalCaseFiles.add(fileDto);
+                    }
+                } else {
+                    generalCaseFiles.add(fileDto);
+                }
+            }
         }
+
+        dto.setCaseFiles(generalCaseFiles);
+        dto.setDefenseFiles(defenseFiles);
 
         return dto;
     }
@@ -91,6 +101,21 @@ public class CaseMapper {
         if (lawyer != null) {
             entity.setLawyer(lawyer);
         }
+    }
+
+    private static CaseFileDto mapFileToDto(CaseFile fileEntity) {
+        CaseFileDto fileDto = new CaseFileDto();
+        fileDto.setId(fileEntity.getId());
+        fileDto.setFileUrl(fileEntity.getFileUrl());
+        fileDto.setFileType(fileEntity.getFileType());
+        fileDto.setUploadedAt(fileEntity.getUploadedAt());
+
+        if (fileEntity.getUploadedBy() != null) {
+            fileDto.setUploadedByName(
+                    fileEntity.getUploadedBy().getFirstName() + " " + fileEntity.getUploadedBy().getLastName()
+            );
+        }
+        return fileDto;
     }
 }
 
