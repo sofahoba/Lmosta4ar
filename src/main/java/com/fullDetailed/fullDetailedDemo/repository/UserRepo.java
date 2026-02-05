@@ -5,6 +5,8 @@ import java.util.UUID;
 
 import aj.org.objectweb.asm.commons.Remapper;
 import com.fullDetailed.fullDetailedDemo.domain.enums.Role;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -24,4 +26,6 @@ public interface UserRepo extends JpaRepository<User,UUID>{
   Page<User> findByRoleAndIsApprovedTrueAndIsDeletedFalse(Role role, Pageable pageable);
 
   Page<User> findByRoleAndIsApprovedFalseAndIsDeletedFalse(Role role, Pageable pageable);
+
+  boolean existsByNationalId(String nationalId);
 }

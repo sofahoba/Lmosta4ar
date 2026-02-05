@@ -24,6 +24,7 @@ public class CaseResponseDto {
     private String judgeName;
     private UUID lawyerId;
     private String lawyerName;
+    private String courtRuling;
     private UUID assignedById;
     private String assignedByName;
     private LocalDateTime createdAt;
