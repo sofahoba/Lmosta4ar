@@ -1,5 +1,6 @@
 package com.fullDetailed.fullDetailedDemo.services.interfaces.judge;
 
+import com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseRequestDto;
 import com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseResponseDto;
 import com.fullDetailed.fullDetailedDemo.domain.dtos.judge.JudgeProfileDto;
 import com.fullDetailed.fullDetailedDemo.domain.enums.CaseStatus;
@@ -16,4 +17,6 @@ public interface JudgeService {
     CaseResponseDto getCaseById(UUID caseId);
     Page<CaseResponseDto> getCasesByStatus(CaseStatus status,Pageable pageable);
     Page<CaseResponseDto> getMyCasesByDateRange(LocalDate fromDate, LocalDate toDate, Pageable pageable);
+    Page<CaseResponseDto> getAllCasesLast30Days(Pageable pageable);
+    CaseResponseDto updateCaseRuling(UUID caseId, CaseRequestDto dto);
 }

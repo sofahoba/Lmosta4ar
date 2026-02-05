@@ -32,8 +32,17 @@ public class AuthServiceImpl implements AuthService {
 
     @Override
     public RegisterResponseDto register(RegisterRequestDto request){
+
+        if (!request.getPassword().equals(request.getConfirmPassword())) {
+            throw new IllegalArgumentException("Password and Confirm Password do not match");
+        }
+
         if (userRepo.existsByEmail(request.getEmail())) {
             throw new AlreadyExistsException("Email already exists");
+        }
+
+        if (userRepo.existsByNationalId(request.getNationalId())) {
+            throw new AlreadyExistsException("National ID already exists");
         }
         User user = authMapper.toEntity(request);
         String otp= emailService.sendOtpEmail(user.getEmail());

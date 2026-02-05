@@ -28,5 +28,7 @@ public class CaseRequestDto {
     private UUID judgeId;
 
     private UUID lawyerId;
+
+    private String courtRuling;
 }
 

@@ -52,6 +52,9 @@ public class Case {
     @OneToMany(mappedBy = "caseEntity", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<CaseFile> files;
 
+    @Column(name = "court_ruling")
+    private String courtRuling;
+
     private String modelSummary;
     private String modelJudgment;
     private String finalDecision;

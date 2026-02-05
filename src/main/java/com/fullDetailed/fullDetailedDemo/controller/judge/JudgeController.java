@@ -1,5 +1,6 @@
 package com.fullDetailed.fullDetailedDemo.controller.judge;
 
+import com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseRequestDto;
 import com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseResponseDto;
 import com.fullDetailed.fullDetailedDemo.domain.dtos.judge.JudgeProfileDto;
 import com.fullDetailed.fullDetailedDemo.domain.enums.CaseStatus;
@@ -65,6 +66,19 @@ public class JudgeController {
             Pageable pageable
     ) {
         return ResponseEntity.ok(judgeService.getMyCasesByDateRange(fromDate, toDate, pageable));
+    }
+
+
+    @GetMapping("/cases/recent")
+    public ResponseEntity<Page<CaseResponseDto>> getRecentCases(Pageable pageable) {
+        Page<CaseResponseDto> cases = judgeService.getAllCasesLast30Days(pageable);
+        return ResponseEntity.ok(cases);
+    }
+
+    @PatchMapping("/cases/{caseId}/ruling")
+    public ResponseEntity<CaseResponseDto> updateCaseRuling(@PathVariable UUID caseId, @RequestBody CaseRequestDto dto) {
+        CaseResponseDto updatedCase = judgeService.updateCaseRuling(caseId, dto);
+        return ResponseEntity.ok(updatedCase);
     }
 
 

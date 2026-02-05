@@ -23,6 +23,7 @@ public class AuthMapper {
         return User.builder()
                 .age(dto.getAge())
                 .email(dto.getEmail())
+                .nationalId(dto.getNationalId())
                 .role(Role.LAWYER)
                 .password(passwordEncoder.encode(dto.getPassword()))
                 .firstName(dto.getFirstName())
@@ -38,6 +39,7 @@ public class AuthMapper {
                 .firstName(user.getFirstName())
                 .lastName(user.getLastName())
                 .email(user.getEmail())
+                .nationalId(user.getNationalId())
                 .age(user.getAge())
                 .build();
     }

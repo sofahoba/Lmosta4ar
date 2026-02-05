@@ -26,7 +26,7 @@ public class CaseMapper {
         dto.setStatus(caseEntity.getStatus());
         dto.setCreatedAt(caseEntity.getCreatedAt());
         dto.setCreatedAt(caseEntity.getCreatedAt());
-
+        dto.setCourtRuling(caseEntity.getCourtRuling());
         if (caseEntity.getJudge() != null) {
             dto.setJudgeId(caseEntity.getJudge().getId());
             dto.setJudgeName(caseEntity.getJudge().getFirstName() + " " + caseEntity.getJudge().getLastName());
@@ -79,6 +79,7 @@ public class CaseMapper {
         c.setJudge(judge);
         c.setLawyer(lawyer);
         c.setAssignedBy(assignedBy);
+        c.setCourtRuling(dto.getCourtRuling());
         return c;
     }
 
@@ -100,6 +101,9 @@ public class CaseMapper {
         }
         if (lawyer != null) {
             entity.setLawyer(lawyer);
+        }
+        if (dto.getCourtRuling() != null) {
+            entity.setCourtRuling(dto.getCourtRuling());
         }
     }
 
