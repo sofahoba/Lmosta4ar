@@ -1,10 +1,11 @@
 package com.fullDetailed.fullDetailedDemo.controller.auth;
 
+import com.fullDetailed.fullDetailedDemo.domain.dtos.ApiResponse;
 import com.fullDetailed.fullDetailedDemo.domain.dtos.auth.*;
 import com.fullDetailed.fullDetailedDemo.services.interfaces.AuthService;
+import com.fullDetailed.fullDetailedDemo.util.ResponseHelper;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,38 +20,44 @@ public class AuthController {
     private final AuthService authService;
 
     @PostMapping("/register")
-    public ResponseEntity<RegisterResponseDto> register(@Valid @RequestBody RegisterRequestDto request) {
+    public ResponseEntity<ApiResponse<RegisterResponseDto>> register(
+            @Valid @RequestBody RegisterRequestDto request) {
         RegisterResponseDto response = authService.register(request);
-        return ResponseEntity.ok(response);
+        return ResponseHelper.created(response, "Registration successful. Please verify your email with the OTP sent.");
     }
 
     @PostMapping("/login")
-    public ResponseEntity<LoginResponseDto> login(@Valid @RequestBody LoginRequestDto request) {
+    public ResponseEntity<ApiResponse<LoginResponseDto>> login(
+            @Valid @RequestBody LoginRequestDto request) {
         LoginResponseDto response = authService.login(request);
-        return ResponseEntity.ok(response);
+        return ResponseHelper.ok(response, "Login successful");
     }
 
     @PostMapping("/resend-otp")
-    public ResponseEntity<String> resendOtpCode(@RequestBody ResendOtpRequest dto) {
-        String response = authService.resendOtp(dto.getEmail());
-        return new ResponseEntity<>(response, HttpStatus.OK);
+    public ResponseEntity<ApiResponse<Void>> resendOtpCode(
+            @Valid @RequestBody ResendOtpRequest dto) {
+        authService.resendOtp(dto.getEmail());
+        return ResponseHelper.ok("OTP code has been resent to your email");
     }
 
     @PostMapping("/verify-otp")
-    public ResponseEntity<String> verifyOtpCode(@RequestBody VerifyOtpRequest dto) {
-        String response = authService.sendOtpCode(dto.getEmail(), dto.getOtpCode());
-        return new ResponseEntity<>(response, HttpStatus.OK);
+    public ResponseEntity<ApiResponse<Void>> verifyOtpCode(
+            @Valid @RequestBody VerifyOtpRequest dto) {
+        authService.sendOtpCode(dto.getEmail(), dto.getOtpCode());
+        return ResponseHelper.ok("OTP verified successfully. Your account is now active.");
     }
 
     @PostMapping("/forgot-password")
-    public ResponseEntity<ForgotPasswordResponse> forgotPassword(@RequestBody ForgotPasswordRequest dto) {
+    public ResponseEntity<ApiResponse<ForgotPasswordResponse>> forgotPassword(
+            @Valid @RequestBody ForgotPasswordRequest dto) {
         ForgotPasswordResponse response = authService.forgotPassword(dto);
-        return new ResponseEntity<>(response, HttpStatus.OK);
-    }
-    @PostMapping("/reset-password")
-    public ResponseEntity<String> resetPassword(@RequestBody ResetPasswordRequest dto) {
-        String response = authService.resetPassword(dto);
-        return new ResponseEntity<>(response, HttpStatus.OK);
+        return ResponseHelper.ok(response, "Password reset instructions sent to your email");
     }
 
+    @PostMapping("/reset-password")
+    public ResponseEntity<ApiResponse<Void>> resetPassword(
+            @Valid @RequestBody ResetPasswordRequest dto) {
+        authService.resetPassword(dto);
+        return ResponseHelper.ok("Password has been reset successfully");
+    }
 }

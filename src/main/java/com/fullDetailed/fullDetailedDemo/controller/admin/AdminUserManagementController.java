@@ -1,5 +1,6 @@
 package com.fullDetailed.fullDetailedDemo.controller.admin;
 
+import com.fullDetailed.fullDetailedDemo.domain.dtos.ApiResponse;
 import com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseRequestResponseDto;
 import com.fullDetailed.fullDetailedDemo.domain.dtos.UserProfileResponseDto;
 import com.fullDetailed.fullDetailedDemo.domain.dtos.judge.CreateUserDto;
@@ -8,15 +9,15 @@ import com.fullDetailed.fullDetailedDemo.domain.dtos.judge.UserResponseDto;
 import com.fullDetailed.fullDetailedDemo.domain.dtos.lawyer.LawyerDto;
 import com.fullDetailed.fullDetailedDemo.domain.enums.RequestStatus;
 import com.fullDetailed.fullDetailedDemo.services.interfaces.admin.AdminUserManagementService;
+import com.fullDetailed.fullDetailedDemo.util.ResponseHelper;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Map;
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -26,121 +27,131 @@ public class AdminUserManagementController {
 
     private final AdminUserManagementService adminService;
 
-    @PutMapping("/{userId}/deactivate")
-    public ResponseEntity<Map<String, String>> deactivateUser(@PathVariable UUID userId) {
-        adminService.deActivateUserById(userId);
-        return ResponseEntity.ok(Map.of(
-                "message", "User deactivated successfully"
-        ));
-    }
-    @GetMapping("/lawyers/active")
-    public ResponseEntity<Page<LawyerDto>> getAllActiveLawyers(Pageable pageable) {
-        return ResponseEntity.ok(adminService.getAllActivatedLawyers(pageable));
-    }
-
-    @GetMapping("/lawyers/deactivated")
-    public ResponseEntity<Page<LawyerDto>> getAllDeactivatedLawyers(Pageable pageable) {
-        return ResponseEntity.ok(adminService.getAllDeactivatedLawyers(pageable));
-    }
-
-    @GetMapping("/lawyers")
-    public ResponseEntity<Page<LawyerDto>> getAllLawyers(Pageable pageable) {
-        return ResponseEntity.ok(adminService.getAllLawyerProfile(pageable));
-    }
-
-    @PutMapping("/lawyers/{lawyerId}/approve")
-    public ResponseEntity<String> approveLawyer(@PathVariable UUID lawyerId) {
-        adminService.acceptLawyerApprovalById(lawyerId);
-        return ResponseEntity.ok("Lawyer approved successfully");
-    }
-
-    @PutMapping("/lawyers/{lawyerId}/reject")
-    public ResponseEntity<String> rejectLawyer(@PathVariable UUID lawyerId) {
-        adminService.rejectLawyerApprovalById(lawyerId);
-        return ResponseEntity.ok("Lawyer rejected successfully");
-    }
-
-    @GetMapping("/lawyers/approved")
-    public ResponseEntity<Page<LawyerDto>> getAllApprovedLawyers(Pageable pageable) {
-        Page<LawyerDto> approvedLawyers = adminService.getAllApprovedLawyers(pageable);
-        return ResponseEntity.ok(approvedLawyers);
-    }
-
-    @GetMapping("/lawyers/rejected")
-    public ResponseEntity<Page<LawyerDto>> getAllRejectedLawyers(Pageable pageable) {
-        Page<LawyerDto> rejectedLawyers = adminService.getAllRejectedLawyers(pageable);
-        return ResponseEntity.ok(rejectedLawyers);
-    }
+    // ==================== USER MANAGEMENT ====================
 
     @PostMapping("/users")
-    public ResponseEntity<UserResponseDto> createUser(@Valid @RequestBody CreateUserDto createUserDto) {
+    public ResponseEntity<ApiResponse<UserResponseDto>> createUser(
+            @Valid @RequestBody CreateUserDto createUserDto) {
         UserResponseDto createdUser = adminService.createUser(createUserDto);
-        return new ResponseEntity<>(createdUser, HttpStatus.CREATED);
+        return ResponseHelper.created(createdUser, "User created successfully");
     }
 
     @GetMapping("/users/{userId}")
-    public ResponseEntity<UserProfileResponseDto> getUserById(@PathVariable UUID userId) {
+    public ResponseEntity<ApiResponse<UserProfileResponseDto>> getUserById(
+            @PathVariable UUID userId) {
         UserProfileResponseDto user = adminService.getUserById(userId);
-        return ResponseEntity.ok(user);
+        return ResponseHelper.ok(user, "User retrieved successfully");
     }
 
     @PutMapping("/{userId}/activate")
-    public ResponseEntity<Map<String, String>> activateUser(@PathVariable UUID userId) {
+    public ResponseEntity<ApiResponse<Void>> activateUser(@PathVariable UUID userId) {
         adminService.activateUserById(userId);
-        return ResponseEntity.ok(Map.of(
-                "message", "User activated successfully"
-        ));
+        return ResponseHelper.ok("User activated successfully");
+    }
+
+    @PutMapping("/{userId}/deactivate")
+    public ResponseEntity<ApiResponse<Void>> deactivateUser(@PathVariable UUID userId) {
+        adminService.deActivateUserById(userId);
+        return ResponseHelper.ok("User deactivated successfully");
     }
 
     @DeleteMapping("/{userId}")
-    public ResponseEntity<Map<String, String>> deleteUser(@PathVariable UUID userId) {
+    public ResponseEntity<ApiResponse<Void>> deleteUser(@PathVariable UUID userId) {
         adminService.deleteUserById(userId);
-        return ResponseEntity.ok(Map.of(
-                "message", "User deleted successfully"
-        ));
+        return ResponseHelper.ok("User deleted successfully");
     }
 
+    // ==================== LAWYER MANAGEMENT ====================
+
+    @GetMapping("/lawyers")
+    public ResponseEntity<ApiResponse<List<LawyerDto>>> getAllLawyers(Pageable pageable) {
+        Page<LawyerDto> lawyers = adminService.getAllLawyerProfile(pageable);
+        return ResponseHelper.ok(lawyers, "Lawyers retrieved successfully");
+    }
+
+    @GetMapping("/lawyers/active")
+    public ResponseEntity<ApiResponse<List<LawyerDto>>> getAllActiveLawyers(Pageable pageable) {
+        Page<LawyerDto> lawyers = adminService.getAllActivatedLawyers(pageable);
+        return ResponseHelper.ok(lawyers, "Active lawyers retrieved successfully");
+    }
+
+    @GetMapping("/lawyers/deactivated")
+    public ResponseEntity<ApiResponse<List<LawyerDto>>> getAllDeactivatedLawyers(Pageable pageable) {
+        Page<LawyerDto> lawyers = adminService.getAllDeactivatedLawyers(pageable);
+        return ResponseHelper.ok(lawyers, "Deactivated lawyers retrieved successfully");
+    }
+
+    @GetMapping("/lawyers/approved")
+    public ResponseEntity<ApiResponse<List<LawyerDto>>> getAllApprovedLawyers(Pageable pageable) {
+        Page<LawyerDto> approvedLawyers = adminService.getAllApprovedLawyers(pageable);
+        return ResponseHelper.ok(approvedLawyers, "Approved lawyers retrieved successfully");
+    }
+
+    @GetMapping("/lawyers/rejected")
+    public ResponseEntity<ApiResponse<List<LawyerDto>>> getAllRejectedLawyers(Pageable pageable) {
+        Page<LawyerDto> rejectedLawyers = adminService.getAllRejectedLawyers(pageable);
+        return ResponseHelper.ok(rejectedLawyers, "Rejected lawyers retrieved successfully");
+    }
+
+    @PutMapping("/lawyers/{lawyerId}/approve")
+    public ResponseEntity<ApiResponse<Void>> approveLawyer(@PathVariable UUID lawyerId) {
+        adminService.acceptLawyerApprovalById(lawyerId);
+        return ResponseHelper.ok("Lawyer approved successfully");
+    }
+
+    @PutMapping("/lawyers/{lawyerId}/reject")
+    public ResponseEntity<ApiResponse<Void>> rejectLawyer(@PathVariable UUID lawyerId) {
+        adminService.rejectLawyerApprovalById(lawyerId);
+        return ResponseHelper.ok("Lawyer rejected successfully");
+    }
+
+    // ==================== JUDGE MANAGEMENT ====================
+
     @GetMapping("/judges")
-    public ResponseEntity<Page<JudgeProfileDto>> getAllJudges(Pageable pageable) {
-        return ResponseEntity.ok(adminService.getAllJudgesProfile(pageable));
+    public ResponseEntity<ApiResponse<List<JudgeProfileDto>>> getAllJudges(Pageable pageable) {
+        Page<JudgeProfileDto> judges = adminService.getAllJudgesProfile(pageable);
+        return ResponseHelper.ok(judges, "Judges retrieved successfully");
     }
 
     @GetMapping("/judges/active")
-    public ResponseEntity<Page<JudgeProfileDto>> getAllActiveJudges(Pageable pageable) {
-        return ResponseEntity.ok(adminService.getAllActivatedJudges(pageable));
+    public ResponseEntity<ApiResponse<List<JudgeProfileDto>>> getAllActiveJudges(Pageable pageable) {
+        Page<JudgeProfileDto> judges = adminService.getAllActivatedJudges(pageable);
+        return ResponseHelper.ok(judges, "Active judges retrieved successfully");
     }
 
     @GetMapping("/judges/deactivated")
-    public ResponseEntity<Page<JudgeProfileDto>> getAllDeactivatedJudges(Pageable pageable) {
-        return ResponseEntity.ok(adminService.getAllDeactivatedJudges(pageable));
+    public ResponseEntity<ApiResponse<List<JudgeProfileDto>>> getAllDeactivatedJudges(Pageable pageable) {
+        Page<JudgeProfileDto> judges = adminService.getAllDeactivatedJudges(pageable);
+        return ResponseHelper.ok(judges, "Deactivated judges retrieved successfully");
     }
 
     @PutMapping("/judges/{judgeId}")
-    public ResponseEntity<Map<String, String>> updateJudgeProfile(
+    public ResponseEntity<ApiResponse<Void>> updateJudgeProfile(
             @PathVariable UUID judgeId,
-            @RequestBody JudgeProfileDto judgeProfileDto
-    ) {
+            @Valid @RequestBody JudgeProfileDto judgeProfileDto) {
         adminService.updateJudgeProfile(judgeId, judgeProfileDto);
-        return ResponseEntity.ok(Map.of(
-                "message", "Judge profile updated successfully"
-        ));
+        return ResponseHelper.ok("Judge profile updated successfully");
     }
 
-    @PutMapping("lawyer-access/{requestId}/approve")
-    public ResponseEntity<String> approveRequest(@PathVariable UUID requestId) {
-        adminService.approveCaseAccessRequest(requestId);
-        return ResponseEntity.ok("Request approved successfully. Lawyer assigned to case.");
-    }
-
-    @PutMapping("lawyer-access/{requestId}/reject")
-    public ResponseEntity<String> rejectRequest(@PathVariable UUID requestId) {
-        adminService.rejectCaseAccessRequest(requestId);
-        return ResponseEntity.ok("Request rejected successfully.");
-    }
+    // ==================== CASE ACCESS REQUESTS ====================
 
     @GetMapping("/lawyer-access/status")
-    public ResponseEntity<Page<CaseRequestResponseDto>> getAllCaseRequestsByStatus(@RequestParam RequestStatus status, Pageable pageable) {
-        return ResponseEntity.ok(adminService.getAllCaseRequestsByStatus(status,pageable));
+    public ResponseEntity<ApiResponse<List<CaseRequestResponseDto>>> getAllCaseRequestsByStatus(
+            @RequestParam RequestStatus status,
+            Pageable pageable) {
+        Page<CaseRequestResponseDto> requests = adminService.getAllCaseRequestsByStatus(status, pageable);
+        return ResponseHelper.ok(requests, "Case requests retrieved successfully");
     }
 
+    @PutMapping("/lawyer-access/{requestId}/approve")
+    public ResponseEntity<ApiResponse<Void>> approveRequest(@PathVariable UUID requestId) {
+        adminService.approveCaseAccessRequest(requestId);
+        return ResponseHelper.ok("Request approved successfully. Lawyer assigned to case.");
+    }
+
+    @PutMapping("/lawyer-access/{requestId}/reject")
+    public ResponseEntity<ApiResponse<Void>> rejectRequest(@PathVariable UUID requestId) {
+        adminService.rejectCaseAccessRequest(requestId);
+        return ResponseHelper.ok("Request rejected successfully");
+    }
 }

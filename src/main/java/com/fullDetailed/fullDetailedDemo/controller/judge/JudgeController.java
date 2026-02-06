@@ -1,10 +1,12 @@
 package com.fullDetailed.fullDetailedDemo.controller.judge;
 
+import com.fullDetailed.fullDetailedDemo.domain.dtos.ApiResponse;
 import com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseRequestDto;
 import com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseResponseDto;
 import com.fullDetailed.fullDetailedDemo.domain.dtos.judge.JudgeProfileDto;
 import com.fullDetailed.fullDetailedDemo.domain.enums.CaseStatus;
 import com.fullDetailed.fullDetailedDemo.services.interfaces.judge.JudgeService;
+import com.fullDetailed.fullDetailedDemo.util.ResponseHelper;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -14,72 +16,75 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/v1/judges")
 @RequiredArgsConstructor
 public class JudgeController {
+
     private final JudgeService judgeService;
 
+    // ==================== PROFILE ====================
+
     @GetMapping("/profile")
-    public ResponseEntity<JudgeProfileDto>getJudgeProfile(){
-        JudgeProfileDto judgeProfileDto=judgeService.getJudgeProfile();
-        return ResponseEntity.ok(judgeProfileDto);
-    }
-
-    @GetMapping("/all-cases")
-    public ResponseEntity<Map<String, Object>>getJudgeCases(Pageable pageable){
-        Page<CaseResponseDto>cases=judgeService.getJudgeCases(pageable);
-        Map<String, Object> response = new HashMap<>();
-        response.put("cases", cases.getContent());
-        response.put("currentPage", cases.getNumber());
-        response.put("totalItems", cases.getTotalElements());
-        response.put("totalPages", cases.getTotalPages());
-
-        return ResponseEntity.ok(response);
-    }
-
-    @GetMapping("/case/{caseId}")
-    public ResponseEntity<CaseResponseDto>getCaseById(@PathVariable UUID caseId){
-        CaseResponseDto caseResponseDto=judgeService.getCaseById(caseId);
-        return ResponseEntity.ok(caseResponseDto);
+    public ResponseEntity<ApiResponse<JudgeProfileDto>> getJudgeProfile() {
+        JudgeProfileDto judgeProfileDto = judgeService.getJudgeProfile();
+        return ResponseHelper.ok(judgeProfileDto, "Judge profile retrieved successfully");
     }
 
     @PutMapping("/profile/update")
-    public ResponseEntity<JudgeProfileDto>updateJudgeProfile(@RequestBody @Valid JudgeProfileDto dto){
-        JudgeProfileDto updatedDto=judgeService.updateJudgeProfile(dto);
-        return ResponseEntity.ok(updatedDto);
+    public ResponseEntity<ApiResponse<JudgeProfileDto>> updateJudgeProfile(
+            @Valid @RequestBody JudgeProfileDto dto) {
+        JudgeProfileDto updatedDto = judgeService.updateJudgeProfile(dto);
+        return ResponseHelper.ok(updatedDto, "Judge profile updated successfully");
+    }
+
+    // ==================== CASES ====================
+
+    @GetMapping("/all-cases")
+    public ResponseEntity<ApiResponse<List<CaseResponseDto>>> getJudgeCases(Pageable pageable) {
+        Page<CaseResponseDto> cases = judgeService.getJudgeCases(pageable);
+        return ResponseHelper.ok(cases, "Judge cases retrieved successfully");
+    }
+
+    @GetMapping("/case/{caseId}")
+    public ResponseEntity<ApiResponse<CaseResponseDto>> getCaseById(@PathVariable UUID caseId) {
+        CaseResponseDto caseResponseDto = judgeService.getCaseById(caseId);
+        return ResponseHelper.ok(caseResponseDto, "Case retrieved successfully");
     }
 
     @GetMapping("/status/{status}")
-    public ResponseEntity<Page<CaseResponseDto>> getCasesByStatus(@PathVariable CaseStatus status, Pageable pageable) {
-        return ResponseEntity.ok(judgeService.getCasesByStatus(status, pageable));
+    public ResponseEntity<ApiResponse<List<CaseResponseDto>>> getCasesByStatus(
+            @PathVariable CaseStatus status,
+            Pageable pageable) {
+        Page<CaseResponseDto> cases = judgeService.getCasesByStatus(status, pageable);
+        return ResponseHelper.ok(cases, "Cases with status '" + status + "' retrieved successfully");
     }
 
     @GetMapping("/search-date")
-    public ResponseEntity<Page<CaseResponseDto>> getCasesByDateRange(
+    public ResponseEntity<ApiResponse<List<CaseResponseDto>>> getCasesByDateRange(
             @RequestParam("from") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fromDate,
             @RequestParam("to") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate toDate,
-            Pageable pageable
-    ) {
-        return ResponseEntity.ok(judgeService.getMyCasesByDateRange(fromDate, toDate, pageable));
+            Pageable pageable) {
+        Page<CaseResponseDto> cases = judgeService.getMyCasesByDateRange(fromDate, toDate, pageable);
+        return ResponseHelper.ok(cases, "Cases from " + fromDate + " to " + toDate + " retrieved successfully");
     }
-
 
     @GetMapping("/cases/recent")
-    public ResponseEntity<Page<CaseResponseDto>> getRecentCases(Pageable pageable) {
+    public ResponseEntity<ApiResponse<List<CaseResponseDto>>> getRecentCases(Pageable pageable) {
         Page<CaseResponseDto> cases = judgeService.getAllCasesLast30Days(pageable);
-        return ResponseEntity.ok(cases);
+        return ResponseHelper.ok(cases, "Recent cases (last 30 days) retrieved successfully");
     }
+
+    // ==================== RULING ====================
 
     @PatchMapping("/cases/{caseId}/ruling")
-    public ResponseEntity<CaseResponseDto> updateCaseRuling(@PathVariable UUID caseId, @RequestBody CaseRequestDto dto) {
+    public ResponseEntity<ApiResponse<CaseResponseDto>> updateCaseRuling(
+            @PathVariable UUID caseId,
+            @Valid @RequestBody CaseRequestDto dto) {
         CaseResponseDto updatedCase = judgeService.updateCaseRuling(caseId, dto);
-        return ResponseEntity.ok(updatedCase);
+        return ResponseHelper.ok(updatedCase, "Case ruling updated successfully");
     }
-
-
 }
