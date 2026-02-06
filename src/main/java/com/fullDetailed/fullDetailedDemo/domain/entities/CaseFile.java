@@ -24,6 +24,9 @@ public class CaseFile {
     @JoinColumn(name = "case_id")
     private Case caseEntity;
 
+    @Column(nullable = false)
+    private String fileName;
+
     private String fileUrl;
 
     @Enumerated(EnumType.STRING)

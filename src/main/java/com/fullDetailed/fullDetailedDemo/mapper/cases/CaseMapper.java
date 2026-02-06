@@ -25,7 +25,6 @@ public class CaseMapper {
         dto.setDescription(caseEntity.getDescription());
         dto.setStatus(caseEntity.getStatus());
         dto.setCreatedAt(caseEntity.getCreatedAt());
-        dto.setCreatedAt(caseEntity.getCreatedAt());
         dto.setCourtRuling(caseEntity.getCourtRuling());
         if (caseEntity.getJudge() != null) {
             dto.setJudgeId(caseEntity.getJudge().getId());
@@ -110,6 +109,7 @@ public class CaseMapper {
     private static CaseFileDto mapFileToDto(CaseFile fileEntity) {
         CaseFileDto fileDto = new CaseFileDto();
         fileDto.setId(fileEntity.getId());
+        fileDto.setFileName(fileEntity.getFileName());
         fileDto.setFileUrl(fileEntity.getFileUrl());
         fileDto.setFileType(fileEntity.getFileType());
         fileDto.setUploadedAt(fileEntity.getUploadedAt());

@@ -30,4 +30,5 @@ public class CaseResponseDto {
     private LocalDateTime createdAt;
     private List<CaseFileDto> caseFiles;
     private List<CaseFileDto> defenseFiles;
+    private List<CaseFileDto> fileNames;
 }
