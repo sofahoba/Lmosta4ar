@@ -1,5 +1,6 @@
 package com.fullDetailed.fullDetailedDemo.services.impl.admin;
 
+import com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseFileDownloadDto;
 import com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseRequestDto;
 import com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseResponseDto;
 import com.fullDetailed.fullDetailedDemo.domain.entities.Case;
@@ -20,12 +21,15 @@ import com.fullDetailed.fullDetailedDemo.services.interfaces.notification.Notifi
 import com.fullDetailed.fullDetailedDemo.util.PagenationHandler;
 import com.fullDetailed.fullDetailedDemo.util.UserContextService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.core.io.Resource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -202,13 +206,14 @@ public class AdminCaseManagementServiceImpl implements AdminCaseManagementServic
             // A. Store file physically
             String fileName = fileStorageService.storeFile(file);
 
-            // B. Generate a downloadable URL (See Step 4)
-            // Ideally: http://localhost:8080/api/v1/files/download/{fileName}
-            String fileDownloadUrl = "/api/v1/files/download/" + fileName;
+            String fileDownloadUrl = String.format("/api/v1/admin/cases/%s/files/%s",
+                    caseId.toString(),
+                    fileName);
 
             // C. Create CaseFile Entity
             CaseFile caseFile = CaseFile.builder()
                     .caseEntity(caseEntity)
+                    .fileName(fileName)
                     .fileUrl(fileDownloadUrl)
                     .fileType(determineFileType(file.getContentType()))
                     .uploadedBy(adminUser)

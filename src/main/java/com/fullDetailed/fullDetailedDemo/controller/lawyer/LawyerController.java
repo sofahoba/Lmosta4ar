@@ -1,15 +1,19 @@
 package com.fullDetailed.fullDetailedDemo.controller.lawyer;
 
 import com.fullDetailed.fullDetailedDemo.domain.dtos.ApiResponse;
+import com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseFileDownloadDto;
 import com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseResponseDto;
 import com.fullDetailed.fullDetailedDemo.domain.dtos.Case.RequestCaseDto;
 import com.fullDetailed.fullDetailedDemo.domain.dtos.lawyer.LawyerDto;
+import com.fullDetailed.fullDetailedDemo.services.impl.cassefiles.FilesServices;
 import com.fullDetailed.fullDetailedDemo.services.interfaces.lawyer.LawyerService;
 import com.fullDetailed.fullDetailedDemo.util.ResponseHelper;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.core.io.Resource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -24,6 +28,7 @@ import java.util.UUID;
 public class LawyerController {
 
     private final LawyerService lawyerService;
+    private final FilesServices filesServices;
 
     // ==================== PROFILE ====================
 
@@ -71,5 +76,17 @@ public class LawyerController {
             @RequestParam("files") List<MultipartFile> files) {
         List<String> uploadedUrls = lawyerService.uploadCaseFiles(caseId, files);
         return ResponseHelper.ok(uploadedUrls, files.size() + " defense file(s) uploaded successfully");
+    }
+
+    @GetMapping("/{caseId}/files/{filename}")
+    public ResponseEntity<Resource> openCaseFile(
+            @PathVariable UUID caseId,
+            @PathVariable String filename) {
+
+        CaseFileDownloadDto fileDto = filesServices.getCaseFile(caseId, filename);
+        return ResponseEntity.ok()
+                .contentType(MediaType.parseMediaType(fileDto.getContentType()))
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + fileDto.getResource().getFilename() + "\"")
+                .body(fileDto.getResource());
     }
 }

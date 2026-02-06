@@ -11,6 +11,7 @@ import java.util.UUID;
 @Setter
 public class CaseFileDto {
     private UUID id;
+    private String fileName;
     private String fileUrl;
     private FileType fileType;
     private String uploadedByName;

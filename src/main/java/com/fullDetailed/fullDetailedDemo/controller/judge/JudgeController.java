@@ -1,17 +1,22 @@
 package com.fullDetailed.fullDetailedDemo.controller.judge;
 
 import com.fullDetailed.fullDetailedDemo.domain.dtos.ApiResponse;
+import com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseFileDownloadDto;
 import com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseRequestDto;
 import com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseResponseDto;
 import com.fullDetailed.fullDetailedDemo.domain.dtos.judge.JudgeProfileDto;
 import com.fullDetailed.fullDetailedDemo.domain.enums.CaseStatus;
+import com.fullDetailed.fullDetailedDemo.services.impl.cassefiles.FilesServices;
 import com.fullDetailed.fullDetailedDemo.services.interfaces.judge.JudgeService;
 import com.fullDetailed.fullDetailedDemo.util.ResponseHelper;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.core.io.Resource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,6 +30,7 @@ import java.util.UUID;
 public class JudgeController {
 
     private final JudgeService judgeService;
+    private final FilesServices filesServices;
 
     // ==================== PROFILE ====================
 
@@ -86,5 +92,17 @@ public class JudgeController {
             @Valid @RequestBody CaseRequestDto dto) {
         CaseResponseDto updatedCase = judgeService.updateCaseRuling(caseId, dto);
         return ResponseHelper.ok(updatedCase, "Case ruling updated successfully");
+    }
+
+    @GetMapping("/{caseId}/files/{filename}")
+    public ResponseEntity<Resource> openCaseFile(
+            @PathVariable UUID caseId,
+            @PathVariable String filename) {
+
+        CaseFileDownloadDto fileDto = filesServices.getCaseFile(caseId, filename);
+        return ResponseEntity.ok()
+                .contentType(MediaType.parseMediaType(fileDto.getContentType()))
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + fileDto.getResource().getFilename() + "\"")
+                .body(fileDto.getResource());
     }
 }
