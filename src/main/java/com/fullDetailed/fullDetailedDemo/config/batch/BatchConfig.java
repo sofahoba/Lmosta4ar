@@ -27,8 +27,6 @@ import org.springframework.transaction.PlatformTransactionManager;
 
 @Configuration
 @RequiredArgsConstructor
-@EnableBatchProcessing(taskExecutorRef = "batchTaskExecutor")
-@EnableJdbcJobRepository(dataSourceRef = "batchDataSource", transactionManagerRef = "batchTransactionManager")
 public class BatchConfig {
 
     private final JobRepository jobRepository;
