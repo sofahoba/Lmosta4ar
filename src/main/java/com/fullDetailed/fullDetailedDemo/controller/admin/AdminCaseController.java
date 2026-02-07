@@ -8,12 +8,20 @@ import com.fullDetailed.fullDetailedDemo.domain.enums.CaseStatus;
 import com.fullDetailed.fullDetailedDemo.services.impl.cassefiles.FilesServices;
 import com.fullDetailed.fullDetailedDemo.services.interfaces.admin.AdminCaseManagementService;
 import com.fullDetailed.fullDetailedDemo.util.ResponseHelper;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.media.Content;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.batch.core.job.Job;
+import org.springframework.batch.core.job.parameters.JobParameters;
+import org.springframework.batch.core.job.parameters.JobParametersBuilder;
+import org.springframework.batch.core.launch.JobOperator;
 import org.springframework.core.io.Resource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -29,6 +37,8 @@ public class AdminCaseController {
 
     private final AdminCaseManagementService caseService;
     private final FilesServices filesServices;
+    private final JobOperator operator;
+    private final Job importCases;
 
     // ==================== CASE CRUD ====================
 
@@ -37,6 +47,43 @@ public class AdminCaseController {
             @Valid @RequestBody CaseRequestDto request) {
         CaseResponseDto createdCase = caseService.createCase(request);
         return ResponseHelper.created(createdCase, "Case created successfully");
+    }
+
+    @PostMapping(value = "/import-csv", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @Operation(summary = "Import cases from CSV file")
+    public ResponseEntity<String> importCases(
+            @Parameter(
+                    description = "CSV file to upload",
+                    content = @Content(mediaType = MediaType.MULTIPART_FORM_DATA_VALUE)
+            )
+            @RequestPart("file") MultipartFile file) {
+
+        if (file == null || file.isEmpty()) {
+            return ResponseEntity.badRequest().body("File is required");
+        }
+
+        String originalName = file.getOriginalFilename();
+        if (originalName == null || !originalName.toLowerCase().endsWith(".csv")) {
+            return ResponseEntity.badRequest().body("Only CSV files are allowed");
+        }
+
+        try {
+            java.nio.file.Path tempFile = java.nio.file.Files.createTempFile("cases-", ".csv");
+            file.transferTo(tempFile.toFile());
+
+            JobParameters params = new JobParametersBuilder()
+                    .addLong("startAt", System.currentTimeMillis()) // makes each run unique
+                    .addString("fileName", tempFile.toAbsolutePath().toString())
+                    .toJobParameters();
+
+            operator.start(importCases, params);
+
+            return ResponseEntity.ok("Import started successfully");
+
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Job failed to start: " + e.getMessage());
+        }
     }
 
     @GetMapping

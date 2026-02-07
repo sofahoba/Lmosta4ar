@@ -24,4 +24,5 @@ public interface AdminCaseManagementService {
     List<String> uploadCaseFiles(UUID caseId, List<MultipartFile> files);
     Page<CaseResponseDto> getAllDeletedCases(Pageable pageable);
     Page<CaseResponseDto> getAllFullyAssignedCases(Pageable pageable);
+    void importCasesFromCsv(MultipartFile file);
 }
