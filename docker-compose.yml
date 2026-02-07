@@ -72,6 +72,10 @@ services:
       # File uploads
       FILE_UPLOAD_DIR: /app/uploads/case-files
 
+      # Spring Batch
+      SPRING_BATCH_JDBC_INITIALIZE_SCHEMA: always
+      SPRING_BATCH_JOB_ENABLED: "false"
+
       # Admin
       APP_ADMIN_NOTIFICATION_EMAIL: ${ADMIN_EMAIL}
     volumes:

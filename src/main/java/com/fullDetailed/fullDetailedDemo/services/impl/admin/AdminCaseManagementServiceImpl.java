@@ -1,6 +1,5 @@
 package com.fullDetailed.fullDetailedDemo.services.impl.admin;
 
-import com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseFileDownloadDto;
 import com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseRequestDto;
 import com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseResponseDto;
 import com.fullDetailed.fullDetailedDemo.domain.entities.Case;
@@ -21,17 +20,22 @@ import com.fullDetailed.fullDetailedDemo.services.interfaces.notification.Notifi
 import com.fullDetailed.fullDetailedDemo.util.PagenationHandler;
 import com.fullDetailed.fullDetailedDemo.util.UserContextService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.core.io.Resource;
+import org.springframework.batch.core.job.Job;
+import org.springframework.batch.core.job.JobExecution;
+import org.springframework.batch.core.job.parameters.JobParameters;
+import org.springframework.batch.core.job.parameters.JobParametersBuilder;
+import org.springframework.batch.core.launch.JobOperator;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 import java.util.UUID;
 
 @Service
@@ -45,6 +49,8 @@ public class AdminCaseManagementServiceImpl implements AdminCaseManagementServic
     private final FileStorageService fileStorageService;
     private final CaseFileRepository caseFileRepo;
     private final NotificationService notificationService;
+    private final JobOperator jobOperator;
+    private final Job importCaseJob;
 
     @Override
     public void assignCaseToJudge(UUID judgeId, UUID caseId) {
@@ -237,6 +243,24 @@ public class AdminCaseManagementServiceImpl implements AdminCaseManagementServic
         return caseRepository.findByJudgeIsNotNullAndLawyerIsNotNullAndIsDeletedFalse(
                 PagenationHandler.createCleanPageable(pageable)
         ).map(CaseMapper::toDto);
+    }
+
+    @Override
+    public void importCasesFromCsv(MultipartFile file) {
+        try {
+            if (file.isEmpty() || !file.getOriginalFilename().toLowerCase().endsWith(".csv")) {
+                throw new IllegalArgumentException("Please upload a valid CSV file");
+            }
+            Path tempFile = Files.createTempFile("cases-import-", ".csv");
+            file.transferTo(tempFile);
+            JobParameters params = new JobParametersBuilder()
+                    .addLong("startAt", System.currentTimeMillis())
+                    .addString("fileName", file.getOriginalFilename())
+                    .toJobParameters();
+            JobExecution job= jobOperator.start(importCaseJob,params);
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to import cases from CSV: " + e.getMessage(), e);
+        }
     }
 
     private FileType determineFileType(String contentType) {
