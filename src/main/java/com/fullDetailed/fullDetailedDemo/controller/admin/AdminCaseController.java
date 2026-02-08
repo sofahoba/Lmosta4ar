@@ -13,6 +13,7 @@ import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.job.Job;
 import org.springframework.batch.core.job.parameters.JobParameters;
 import org.springframework.batch.core.job.parameters.JobParametersBuilder;
@@ -28,11 +29,13 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/v1/admin/cases")
 @RequiredArgsConstructor
+@Slf4j
 public class AdminCaseController {
 
     private final AdminCaseManagementService caseService;
@@ -49,41 +52,32 @@ public class AdminCaseController {
         return ResponseHelper.created(createdCase, "Case created successfully");
     }
 
-    @PostMapping(value = "/import-csv", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    @Operation(summary = "Import cases from CSV file")
-    public ResponseEntity<String> importCases(
+    @PostMapping(value = "/import", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @Operation(
+            summary = "Import cases from CSV file",
+            description = "Upload a CSV file to bulk import cases. The job runs asynchronously."
+    )
+    public ResponseEntity<Map<String, String>> importCasesFromCsv(
             @Parameter(
-                    description = "CSV file to upload",
+                    description = "CSV file containing case data",
+                    required = true,
                     content = @Content(mediaType = MediaType.MULTIPART_FORM_DATA_VALUE)
             )
-            @RequestPart("file") MultipartFile file) {
+            @RequestParam("file") MultipartFile file
+    ) {
+        log.info("fileeees recievedddd",
+                file.getOriginalFilename(),
+                file.getSize());
 
-        if (file == null || file.isEmpty()) {
-            return ResponseEntity.badRequest().body("File is required");
-        }
+        caseService.importCasesFromCsv(file);
 
-        String originalName = file.getOriginalFilename();
-        if (originalName == null || !originalName.toLowerCase().endsWith(".csv")) {
-            return ResponseEntity.badRequest().body("Only CSV files are allowed");
-        }
-
-        try {
-            java.nio.file.Path tempFile = java.nio.file.Files.createTempFile("cases-", ".csv");
-            file.transferTo(tempFile.toFile());
-
-            JobParameters params = new JobParametersBuilder()
-                    .addLong("startAt", System.currentTimeMillis()) // makes each run unique
-                    .addString("fileName", tempFile.toAbsolutePath().toString())
-                    .toJobParameters();
-
-            operator.start(importCases, params);
-
-            return ResponseEntity.ok("Import started successfully");
-
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body("Job failed to start: " + e.getMessage());
-        }
+        return ResponseEntity
+                .status(HttpStatus.ACCEPTED)
+                .body(Map.of(
+                        "status", "ACCEPTED",
+                        "message", "Import job started successfully",
+                        "fileName", file.getOriginalFilename()
+                ));
     }
 
     @GetMapping

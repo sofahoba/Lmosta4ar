@@ -20,11 +20,14 @@ import com.fullDetailed.fullDetailedDemo.services.interfaces.notification.Notifi
 import com.fullDetailed.fullDetailedDemo.util.PagenationHandler;
 import com.fullDetailed.fullDetailedDemo.util.UserContextService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.job.Job;
 import org.springframework.batch.core.job.JobExecution;
 import org.springframework.batch.core.job.parameters.JobParameters;
 import org.springframework.batch.core.job.parameters.JobParametersBuilder;
 import org.springframework.batch.core.launch.JobOperator;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -40,7 +43,7 @@ import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
-@Transactional
+@Slf4j
 public class AdminCaseManagementServiceImpl implements AdminCaseManagementService {
 
     private final UserRepo userRepo;
@@ -51,8 +54,11 @@ public class AdminCaseManagementServiceImpl implements AdminCaseManagementServic
     private final NotificationService notificationService;
     private final JobOperator jobOperator;
     private final Job importCaseJob;
+    public static final String CASES_CACHE = "cases";
 
+    @Transactional
     @Override
+    @CacheEvict(value = "cases", allEntries = true)
     public void assignCaseToJudge(UUID judgeId, UUID caseId) {
         User judge = userRepo.findById(judgeId).orElseThrow(() -> new NotFoundException("User Not found"));
         if (judge.getRole() != Role.JUDGE) {
@@ -80,6 +86,8 @@ public class AdminCaseManagementServiceImpl implements AdminCaseManagementServic
     }
 
     @Override
+    @Transactional
+    @CacheEvict(value = "cases", allEntries = true)
     public CaseResponseDto createCase(CaseRequestDto request) {
         if (caseRepository.existsByCaseNumber(request.getCaseNumber())) {
             throw new DuplicateResourceException("Case with number " + request.getCaseNumber() + " already exists");
@@ -128,6 +136,8 @@ public class AdminCaseManagementServiceImpl implements AdminCaseManagementServic
     }
 
     @Override
+    @Transactional
+    @CacheEvict(value = "cases", allEntries = true)
     public void updateCase(UUID caseId, CaseRequestDto request) {
         Case existingCase = caseRepository.findById(caseId)
                 .orElseThrow(() -> new NotFoundException("Case not found with ID: " + caseId));
@@ -171,6 +181,8 @@ public class AdminCaseManagementServiceImpl implements AdminCaseManagementServic
     }
 
     @Override
+    @Transactional
+    @CacheEvict(value = "cases", allEntries = true)
     public void deleteCase(UUID caseId) {
         Case caseEntity = caseRepository.findById(caseId).orElseThrow(()->new NotFoundException("Case Not Found"));
         caseEntity.setDeleted(true);
@@ -178,45 +190,50 @@ public class AdminCaseManagementServiceImpl implements AdminCaseManagementServic
     }
 
     @Override
+    @Transactional
+    @Cacheable(value = "cases", key = "'all:'+#pageable.pageNumber+':'+ #pageable.pageSize")
     public Page<CaseResponseDto> getAllCases(Pageable pageable) {
         return caseRepository.findByIsDeletedFalse(PagenationHandler.createCleanPageable(pageable)).map(CaseMapper::toDto);
     }
 
     @Override
+    @Transactional
+    @Cacheable(value = "cases", key = "'id:' + #caseId")
     public CaseResponseDto getCaseById(UUID caseId) {
         Case caseEntity=caseRepository.findById(caseId).orElseThrow(()->new NotFoundException("Case Nott Found"));
         return CaseMapper.toDto(caseEntity);
     }
 
     @Override
+    @Transactional
+    @Cacheable(
+            value = "cases",
+            key = "'status:' + #status + ':' + #pageable.pageNumber + ':' + #pageable.pageSize"
+    )
     public Page<CaseResponseDto> getCasesByStatus(CaseStatus status, Pageable pageable) {
         return caseRepository.findByStatusAndIsDeletedFalse(status,PagenationHandler.createCleanPageable(pageable)).map(CaseMapper::toDto);
     }
 
     @Override
+    @Transactional
+    @CacheEvict(value = "cases", allEntries = true)
     public List<String> uploadCaseFiles(UUID caseId, List<MultipartFile> files) {
-        // 1. Validate Case Exists
         Case caseEntity = caseRepository.findById(caseId)
                 .orElseThrow(() -> new NotFoundException("Case not found with ID: " + caseId));
 
-        // 2. Get Current User (Admin)
-        // Assuming you have a way to get the logged-in user's email/ID from SecurityContext
         User adminUser = userContextService.getCurrentUser();
 
         List<String> fileUrls = new ArrayList<>();
 
-        // 3. Loop through files
         for (MultipartFile file : files) {
             if (file.isEmpty()) continue;
 
-            // A. Store file physically
             String fileName = fileStorageService.storeFile(file);
 
             String fileDownloadUrl = String.format("/api/v1/admin/cases/%s/files/%s",
                     caseId.toString(),
                     fileName);
 
-            // C. Create CaseFile Entity
             CaseFile caseFile = CaseFile.builder()
                     .caseEntity(caseEntity)
                     .fileName(fileName)
@@ -225,7 +242,6 @@ public class AdminCaseManagementServiceImpl implements AdminCaseManagementServic
                     .uploadedBy(adminUser)
                     .build();
 
-            // D. Save to DB
             caseFileRepo.save(caseFile);
             fileUrls.add(fileDownloadUrl);
         }
@@ -234,11 +250,15 @@ public class AdminCaseManagementServiceImpl implements AdminCaseManagementServic
     }
 
     @Override
+    @Transactional
+    @Cacheable(value = "cases", key = "'deleted:' + #pageable.pageNumber")
     public Page<CaseResponseDto> getAllDeletedCases(Pageable pageable) {
         return caseRepository.findByIsDeletedTrue(PagenationHandler.createCleanPageable(pageable)).map(CaseMapper::toDto);
     }
 
     @Override
+    @Transactional
+    @Cacheable(value = "cases", key = "'fullyAssigned:' + #pageable.pageNumber")
     public Page<CaseResponseDto> getAllFullyAssignedCases(Pageable pageable) {
         return caseRepository.findByJudgeIsNotNullAndLawyerIsNotNullAndIsDeletedFalse(
                 PagenationHandler.createCleanPageable(pageable)
@@ -246,20 +266,38 @@ public class AdminCaseManagementServiceImpl implements AdminCaseManagementServic
     }
 
     @Override
+    @CacheEvict(value = "cases", allEntries = true)
     public void importCasesFromCsv(MultipartFile file) {
         try {
-            if (file.isEmpty() || !file.getOriginalFilename().toLowerCase().endsWith(".csv")) {
-                throw new IllegalArgumentException("Please upload a valid CSV file");
+            if (file.isEmpty()) {
+                throw new IllegalArgumentException("File is empty");
             }
-            Path tempFile = Files.createTempFile("cases-import-", ".csv");
+
+            String originalFilename = file.getOriginalFilename();
+            if (originalFilename == null || !originalFilename.toLowerCase().endsWith(".csv")) {
+                throw new IllegalArgumentException("Please upload a valid csv file");
+            }
+
+            Path uploadDir = Path.of("/app/uploads/case-files");
+            Files.createDirectories(uploadDir);
+
+            Path tempFile = uploadDir.resolve("import-" + System.currentTimeMillis() + ".csv");
             file.transferTo(tempFile);
+
+            log.info("File saved to: {}", tempFile.toAbsolutePath());
+
             JobParameters params = new JobParametersBuilder()
                     .addLong("startAt", System.currentTimeMillis())
-                    .addString("fileName", file.getOriginalFilename())
+                    .addString("filePath", tempFile.toAbsolutePath().toString())
                     .toJobParameters();
-            JobExecution job= jobOperator.start(importCaseJob,params);
+
+            jobOperator.start(importCaseJob, params);
+
+            log.info("Batch job completed");
+
         } catch (Exception e) {
-            throw new RuntimeException("Failed to import cases from CSV: " + e.getMessage(), e);
+            log.error("Failed to import cases from CSV", e);
+            throw new IllegalArgumentException("Failed to import cases: " + e.getMessage(), e);
         }
     }
 
