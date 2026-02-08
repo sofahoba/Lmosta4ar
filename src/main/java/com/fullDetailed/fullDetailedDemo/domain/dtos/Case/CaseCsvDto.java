@@ -15,9 +15,9 @@ public class CaseCsvDto {
     private String title;
     private String description;
     private String status;
-    private UUID judgeId;
-    private UUID lawyerId;
-    private UUID assignedById;
+    private String judgeId;
+    private String lawyerId;
+    private String assignedById;
     private String courtRuling;
 
 }
