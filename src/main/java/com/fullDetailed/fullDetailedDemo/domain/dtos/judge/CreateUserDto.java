@@ -25,6 +25,10 @@ public class CreateUserDto {
     @Max(value = 100, message = "Age must be at most 100")
     private int age;
 
+    @NotBlank(message = "National ID is required")
+    @Size(min = 10, max = 20, message = "National ID must be valid")
+    private String nationalId;
+
     @NotNull(message = "Role is required")
     private Role role;
 

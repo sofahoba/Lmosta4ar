@@ -24,6 +24,9 @@ import com.fullDetailed.fullDetailedDemo.services.interfaces.notification.Notifi
 import com.fullDetailed.fullDetailedDemo.util.HelperDtoConverter;
 import com.fullDetailed.fullDetailedDemo.util.PagenationHandler;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.cache.annotation.Caching;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -44,6 +47,10 @@ public class AdminUserManagementServiceImpl implements AdminUserManagementServic
 
 
     @Override
+    @Caching(evict = {
+            @CacheEvict(value = "user_profile", key = "#userId"),
+            @CacheEvict(value = "users_list", allEntries = true)
+    })
     public void acceptLawyerApprovalById(UUID userId) {
         User user = userRepo.findById(userId)
                 .orElseThrow(() -> new NotFoundException("User not found with id: " + userId));
@@ -66,6 +73,10 @@ public class AdminUserManagementServiceImpl implements AdminUserManagementServic
     }
 
     @Override
+    @Caching(evict = {
+            @CacheEvict(value = "user_profile", key = "#userId"),
+            @CacheEvict(value = "users_list", allEntries = true)
+    })
     public void rejectLawyerApprovalById(UUID userId) {
         User user = userRepo.findById(userId)
                 .orElseThrow(() -> new NotFoundException("User not found with id: " + userId));
@@ -83,6 +94,10 @@ public class AdminUserManagementServiceImpl implements AdminUserManagementServic
     }
 
     @Override
+    @Caching(evict = {
+            @CacheEvict(value = "user_profile", key = "#userId"),
+            @CacheEvict(value = "users_list", allEntries = true)
+    })
     public void deActivateUserById(UUID userId) {
         User user = userRepo.findById(userId)
                 .orElseThrow(() -> new NotFoundException("User not found"));
@@ -91,6 +106,10 @@ public class AdminUserManagementServiceImpl implements AdminUserManagementServic
     }
 
     @Override
+    @Caching(evict = {
+            @CacheEvict(value = "user_profile", key = "#userId"),
+            @CacheEvict(value = "users_list", allEntries = true)
+    })
     public void activateUserById(UUID userId) {
         User user = userRepo.findById(userId)
                 .orElseThrow(() -> new RuntimeException("User not found"));
@@ -99,6 +118,10 @@ public class AdminUserManagementServiceImpl implements AdminUserManagementServic
     }
 
     @Override
+    @Caching(evict = {
+            @CacheEvict(value = "user_profile", key = "#userId"),
+            @CacheEvict(value = "users_list", allEntries = true)
+    })
     public void deleteUserById(UUID userId) {
         User user = userRepo.findById(userId)
                 .orElseThrow(() -> new NotFoundException("User not found"));
@@ -107,6 +130,10 @@ public class AdminUserManagementServiceImpl implements AdminUserManagementServic
     }
 
     @Override
+    @Caching(evict = {
+            @CacheEvict(value = "user_profile", key = "#judgeId"),
+            @CacheEvict(value = "users_list", allEntries = true)
+    })
     public void updateJudgeProfile(UUID judgeId, JudgeProfileDto judgeProfileDto) {
         User user = userRepo.findById(judgeId)
                 .orElseThrow(() -> new NotFoundException("Judge not found"));
@@ -132,36 +159,42 @@ public class AdminUserManagementServiceImpl implements AdminUserManagementServic
      */
 
     @Override
+    @Cacheable(value = "users_list", key = "{#root.methodName, #pageable}")
     public Page<JudgeProfileDto> getAllJudgesProfile(Pageable pageable) {
         return userRepo.findByRoleAndIsDeletedFalse(Role.JUDGE, PagenationHandler.createCleanPageable(pageable))
                 .map(JudgeMapper::toDto);
     }
 
     @Override
+    @Cacheable(value = "users_list", key = "{#root.methodName, #pageable}")
     public Page<LawyerDto> getAllLawyerProfile(Pageable pageable) {
         return userRepo.findByRoleAndIsDeletedFalse(Role.LAWYER, PagenationHandler.createCleanPageable(pageable))
                 .map(LawyerMapper::toDto);
     }
 
     @Override
+    @Cacheable(value = "users_list", key = "{#root.methodName, #pageable}")
     public Page<JudgeProfileDto> getAllDeactivatedJudges(Pageable pageable) {
         return userRepo.findByRoleAndIsActiveFalseAndIsDeletedFalse(Role.JUDGE, PagenationHandler.createCleanPageable(pageable))
                 .map(JudgeMapper::toDto);
     }
 
     @Override
+    @Cacheable(value = "users_list", key = "{#root.methodName, #pageable}")
     public Page<LawyerDto> getAllDeactivatedLawyers(Pageable pageable) {
         return userRepo.findByRoleAndIsActiveFalseAndIsDeletedFalse(Role.LAWYER, PagenationHandler.createCleanPageable(pageable))
                 .map(LawyerMapper::toDto);
     }
 
     @Override
+    @Cacheable(value = "users_list", key = "{#root.methodName, #pageable}")
     public Page<JudgeProfileDto> getAllActivatedJudges(Pageable pageable) {
         return userRepo.findByRoleAndIsActiveTrueAndIsDeletedFalse(Role.JUDGE, PagenationHandler.createCleanPageable(pageable))
                 .map(JudgeMapper::toDto);
     }
 
     @Override
+    @Cacheable(value = "users_list", key = "{#root.methodName, #pageable}")
     public Page<LawyerDto> getAllActivatedLawyers(Pageable pageable) {
         return userRepo.findByRoleAndIsActiveTrueAndIsDeletedFalse(Role.LAWYER, PagenationHandler.createCleanPageable(pageable))
                 .map(LawyerMapper::toDto);
@@ -170,6 +203,7 @@ public class AdminUserManagementServiceImpl implements AdminUserManagementServic
 
 
     @Override
+    @CacheEvict(value = "users_list", allEntries = true)
     public UserResponseDto createUser(CreateUserDto createUserDto) {
         if (userRepo.existsByEmail(createUserDto.getEmail())) {
             throw new DuplicateResourceException("User with email " + createUserDto.getEmail() + " already exists");
@@ -188,6 +222,7 @@ public class AdminUserManagementServiceImpl implements AdminUserManagementServic
                 .age(createUserDto.getAge())
                 .role(createUserDto.getRole())
                 .court(createUserDto.getCourt())
+                .nationalId(createUserDto.getNationalId())
                 .isActive(true)
                 .isDeleted(false)
                 .isPasswordReseted(false)
@@ -200,18 +235,21 @@ public class AdminUserManagementServiceImpl implements AdminUserManagementServic
     }
 
     @Override
+    @Cacheable(value = "users_list", key = "{#root.methodName, #pageable}")
     public Page<LawyerDto> getAllApprovedLawyers(Pageable pageable) {
         return userRepo.findByRoleAndIsApprovedTrueAndIsDeletedFalse(Role.LAWYER, PagenationHandler.createCleanPageable(pageable))
                 .map(LawyerMapper::toDto);
     }
 
     @Override
+    @Cacheable(value = "users_list", key = "{#root.methodName, #pageable}")
     public Page<LawyerDto> getAllRejectedLawyers(Pageable pageable) {
         return userRepo.findByRoleAndIsApprovedFalseAndIsDeletedFalse(Role.LAWYER, PagenationHandler.createCleanPageable(pageable))
                 .map(LawyerMapper::toDto);
     }
 
     @Override
+    @Cacheable(value = "user_profile", key = "#userId")
     public UserProfileResponseDto getUserById(UUID userId) {
         User user = userRepo.findById(userId)
                 .orElseThrow(() -> new NotFoundException("User not found"));
@@ -225,6 +263,11 @@ public class AdminUserManagementServiceImpl implements AdminUserManagementServic
 
     @Override
     @Transactional
+    @Caching(evict = {
+            @CacheEvict(value = "case_requests", allEntries = true),
+            @CacheEvict(value = "users_list", allEntries = true),
+            @CacheEvict(value = "user_profile", allEntries = true)
+    })
     public void approveCaseAccessRequest(UUID requestId) {
         CaseRequests request = caseRequestRepository.findById(requestId)
                 .orElseThrow(() -> new NotFoundException("Request not found with id: " + requestId));
@@ -256,6 +299,7 @@ public class AdminUserManagementServiceImpl implements AdminUserManagementServic
     }
 
     @Override
+    @CacheEvict(value = "case_requests", allEntries = true)
     public void rejectCaseAccessRequest(UUID requestId) {
         CaseRequests request = caseRequestRepository.findById(requestId)
                 .orElseThrow(() -> new NotFoundException("Request not found with id: " + requestId));
@@ -275,6 +319,7 @@ public class AdminUserManagementServiceImpl implements AdminUserManagementServic
     }
 
     @Override
+    @Cacheable(value = "case_requests", key = "{#status, #pageable}")
     public Page<CaseRequestResponseDto> getAllCaseRequestsByStatus(RequestStatus status,Pageable pageable) {
         return caseRequestRepository.findByStatus(status, PagenationHandler.createCleanPageable(pageable))
                 .map(HelperDtoConverter::mapToCaseRequestDto);
