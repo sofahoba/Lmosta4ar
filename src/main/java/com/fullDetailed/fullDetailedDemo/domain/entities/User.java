@@ -54,8 +54,8 @@ public class User {
   @Column(nullable = false, unique = true)
   private String nationalId;
 
-  @Column(nullable = false)
-  private int age;
+  @Column(nullable = true)
+  private Integer age;
 
   @Column(nullable = false)
   @Enumerated(EnumType.STRING)

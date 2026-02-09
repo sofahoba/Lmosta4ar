@@ -27,7 +27,5 @@ public class RegisterRequestDto {
     @NotBlank(message = "Confirm Password is required")
     private String confirmPassword;
 
-    @Min(value = 25, message = "Age must be at least 25")
-    @Max(value = 70, message = "Age must be at most 70")
-    private int age;
+    private Integer age;
 }
