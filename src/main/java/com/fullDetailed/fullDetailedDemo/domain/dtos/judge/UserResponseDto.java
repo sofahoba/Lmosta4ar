@@ -14,7 +14,7 @@ public class UserResponseDto {
     private String firstName;
     private String lastName;
     private String email;
-    private int age;
+    private Integer age;
     private Role role;
     private String court;
     private boolean isActive;

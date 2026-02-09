@@ -15,5 +15,5 @@ public class RegisterResponseDto {
     private String lastName;
     private String email;
     private String nationalId;
-    private int age;
+    private Integer age;
 }

@@ -21,9 +21,7 @@ public class CreateUserDto {
     @Size(min = 8, message = "Password must be at least 8 characters")
     private String password;
 
-    @Min(value = 18, message = "Age must be at least 18")
-    @Max(value = 100, message = "Age must be at most 100")
-    private int age;
+    private Integer age;
 
     @NotBlank(message = "National ID is required")
     @Size(min = 10, max = 20, message = "National ID must be valid")

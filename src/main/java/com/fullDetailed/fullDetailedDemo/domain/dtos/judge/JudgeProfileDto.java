@@ -18,9 +18,7 @@ public class JudgeProfileDto {
     @Email(message = "Email should be valid")
     private String email;
 
-    @Min(value = 25, message = "Age must be at least 25")
-    @Max(value = 70, message = "Age must be at most 70")
-    private int age;
+    private Integer age;
 
     private String court;
 

@@ -9,6 +9,8 @@ import com.fullDetailed.fullDetailedDemo.domain.enums.CaseStatus;
 import com.fullDetailed.fullDetailedDemo.services.impl.cassefiles.FilesServices;
 import com.fullDetailed.fullDetailedDemo.services.interfaces.judge.JudgeService;
 import com.fullDetailed.fullDetailedDemo.util.ResponseHelper;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.io.Resource;
@@ -70,9 +72,29 @@ public class JudgeController {
     }
 
     @GetMapping("/search-date")
+    @Operation(
+            summary = "Search cases by date range",
+            description = "Retrieves cases within a specified date range. Date format: **yyyy-MM-dd** (e.g., 2026-01-15)"
+    )
     public ResponseEntity<ApiResponse<List<CaseResponseDto>>> getCasesByDateRange(
-            @RequestParam("from") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fromDate,
-            @RequestParam("to") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate toDate,
+            @RequestParam("from")
+            @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+            @Parameter(
+                    description = "Start date (format: yyyy-MM-dd)",
+                    example = "2026-01-01",
+                    required = true
+            )
+            LocalDate fromDate,
+
+            @RequestParam("to")
+            @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+            @Parameter(
+                    description = "End date (format: yyyy-MM-dd)",
+                    example = "2026-12-31",
+                    required = true
+            )
+            LocalDate toDate,
+
             Pageable pageable) {
         Page<CaseResponseDto> cases = judgeService.getMyCasesByDateRange(fromDate, toDate, pageable);
         return ResponseHelper.ok(cases, "Cases from " + fromDate + " to " + toDate + " retrieved successfully");
