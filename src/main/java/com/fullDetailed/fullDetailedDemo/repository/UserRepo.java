@@ -18,7 +18,6 @@ import org.springframework.data.jpa.repository.Query;
 public interface UserRepo extends JpaRepository<User,UUID>{
 
     @Query(value = "SELECT * FROM users u WHERE u.email = :email LIMIT 1", nativeQuery = true)
-    @Cacheable(value = "users", key = "#email")
     Optional<User>findByEmail(String email);
     Page<User> findByRoleAndIsDeletedFalse(Role role, Pageable pageable);
   boolean existsByEmail(String email);
