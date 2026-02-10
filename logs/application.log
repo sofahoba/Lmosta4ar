@@ -154,3 +154,1102 @@
 2026-02-10 03:02:05 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
 2026-02-10 03:02:05 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
 2026-02-10 03:02:05 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-02-10 14:09:47 [main] INFO  c.f.fullDetailedDemo.Elmostashar - Starting Elmostashar v0.0.1-SNAPSHOT using Java 21.0.10 with PID 1 (/app/app.jar started by spring in /app)
+2026-02-10 14:09:47 [main] DEBUG c.f.fullDetailedDemo.Elmostashar - Running with Spring Boot v4.0.0, Spring v7.0.1
+2026-02-10 14:09:47 [main] INFO  c.f.fullDetailedDemo.Elmostashar - No active profile set, falling back to 1 default profile: "default"
+2026-02-10 14:09:49 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-02-10 14:09:49 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 110 ms. Found 5 JPA repository interfaces.
+2026-02-10 14:09:51 [main] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-02-10 14:09:51 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-02-10 14:09:51 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.14]
+2026-02-10 14:09:51 [main] INFO  o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 3536 ms
+2026-02-10 14:09:51 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-02-10 14:09:51 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@5fb07347
+2026-02-10 14:09:51 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-02-10 14:09:52 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-02-10 14:09:52 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 7.1.8.Final
+2026-02-10 14:09:53 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-02-10 14:09:53 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-02-10 14:09:53 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://postgres:5432/fullDetails]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 16.11
+	Default catalog/schema: fullDetails/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DatasourceConnectionProviderImpl
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-02-10 14:09:54 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-02-10 14:09:55 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-02-10 14:09:55 [main] INFO  o.s.d.j.r.q.QueryEnhancerFactories - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-02-10 14:09:55 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'findByEmail' with operations: [Builder[public final java.util.Optional jdk.proxy2.$Proxy165.findByEmail(java.lang.String)] caches=[users] | key='#email' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
+2026-02-10 14:09:56 [main] DEBUG c.f.f.c.s.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2026-02-10 14:09:56 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'createCase' with operations: [Builder[public com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseResponseDto com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminCaseManagementServiceImpl.createCase(com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseRequestDto)] caches=[cases] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
+2026-02-10 14:09:56 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getAllCases' with operations: [Builder[public org.springframework.data.domain.Page com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminCaseManagementServiceImpl.getAllCases(org.springframework.data.domain.Pageable)] caches=[cases] | key=''all:'+#pageable.pageNumber+':'+ #pageable.pageSize' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
+2026-02-10 14:09:56 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getCaseById' with operations: [Builder[public com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseResponseDto com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminCaseManagementServiceImpl.getCaseById(java.util.UUID)] caches=[cases] | key=''id:' + #caseId' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
+2026-02-10 14:09:56 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'updateCase' with operations: [Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminCaseManagementServiceImpl.updateCase(java.util.UUID,com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseRequestDto)] caches=[cases] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
+2026-02-10 14:09:56 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'deleteCase' with operations: [Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminCaseManagementServiceImpl.deleteCase(java.util.UUID)] caches=[cases] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
+2026-02-10 14:09:56 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getAllFullyAssignedCases' with operations: [Builder[public org.springframework.data.domain.Page com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminCaseManagementServiceImpl.getAllFullyAssignedCases(org.springframework.data.domain.Pageable)] caches=[cases] | key=''fullyAssigned:' + #pageable.pageNumber' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
+2026-02-10 14:09:56 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'importCasesFromCsv' with operations: [Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminCaseManagementServiceImpl.importCasesFromCsv(org.springframework.web.multipart.MultipartFile)] caches=[cases] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
+2026-02-10 14:09:56 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getCasesByStatus' with operations: [Builder[public org.springframework.data.domain.Page com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminCaseManagementServiceImpl.getCasesByStatus(com.fullDetailed.fullDetailedDemo.domain.enums.CaseStatus,org.springframework.data.domain.Pageable)] caches=[cases] | key=''status:' + #status + ':' + #pageable.pageNumber + ':' + #pageable.pageSize' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
+2026-02-10 14:09:56 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getAllDeletedCases' with operations: [Builder[public org.springframework.data.domain.Page com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminCaseManagementServiceImpl.getAllDeletedCases(org.springframework.data.domain.Pageable)] caches=[cases] | key=''deleted:' + #pageable.pageNumber' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
+2026-02-10 14:09:56 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'assignCaseToJudge' with operations: [Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminCaseManagementServiceImpl.assignCaseToJudge(java.util.UUID,java.util.UUID)] caches=[cases] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
+2026-02-10 14:09:56 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'uploadCaseFiles' with operations: [Builder[public java.util.List com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminCaseManagementServiceImpl.uploadCaseFiles(java.util.UUID,java.util.List)] caches=[cases] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
+2026-02-10 14:09:57 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getAllJudgesProfile' with operations: [Builder[public org.springframework.data.domain.Page com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.getAllJudgesProfile(org.springframework.data.domain.Pageable)] caches=[users_list] | key='{#root.methodName, #pageable}' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
+2026-02-10 14:09:57 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'updateJudgeProfile' with operations: [Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.updateJudgeProfile(java.util.UUID,com.fullDetailed.fullDetailedDemo.domain.dtos.judge.JudgeProfileDto)] caches=[user_profile] | key='#judgeId' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',false,false, Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.updateJudgeProfile(java.util.UUID,com.fullDetailed.fullDetailedDemo.domain.dtos.judge.JudgeProfileDto)] caches=[users_list] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
+2026-02-10 14:09:57 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'createUser' with operations: [Builder[public com.fullDetailed.fullDetailedDemo.domain.dtos.judge.UserResponseDto com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.createUser(com.fullDetailed.fullDetailedDemo.domain.dtos.judge.CreateUserDto)] caches=[users_list] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
+2026-02-10 14:09:57 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getUserById' with operations: [Builder[public com.fullDetailed.fullDetailedDemo.domain.dtos.UserProfileResponseDto com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.getUserById(java.util.UUID)] caches=[user_profile] | key='#userId' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
+2026-02-10 14:09:57 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'activateUserById' with operations: [Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.activateUserById(java.util.UUID)] caches=[user_profile] | key='#userId' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',false,false, Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.activateUserById(java.util.UUID)] caches=[users_list] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
+2026-02-10 14:09:57 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'deActivateUserById' with operations: [Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.deActivateUserById(java.util.UUID)] caches=[user_profile] | key='#userId' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',false,false, Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.deActivateUserById(java.util.UUID)] caches=[users_list] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
+2026-02-10 14:09:57 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'deleteUserById' with operations: [Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.deleteUserById(java.util.UUID)] caches=[user_profile] | key='#userId' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',false,false, Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.deleteUserById(java.util.UUID)] caches=[users_list] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
+2026-02-10 14:09:57 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getAllLawyerProfile' with operations: [Builder[public org.springframework.data.domain.Page com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.getAllLawyerProfile(org.springframework.data.domain.Pageable)] caches=[users_list] | key='{#root.methodName, #pageable}' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
+2026-02-10 14:09:57 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getAllActivatedLawyers' with operations: [Builder[public org.springframework.data.domain.Page com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.getAllActivatedLawyers(org.springframework.data.domain.Pageable)] caches=[users_list] | key='{#root.methodName, #pageable}' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
+2026-02-10 14:09:57 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getAllDeactivatedLawyers' with operations: [Builder[public org.springframework.data.domain.Page com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.getAllDeactivatedLawyers(org.springframework.data.domain.Pageable)] caches=[users_list] | key='{#root.methodName, #pageable}' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
+2026-02-10 14:09:57 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getAllApprovedLawyers' with operations: [Builder[public org.springframework.data.domain.Page com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.getAllApprovedLawyers(org.springframework.data.domain.Pageable)] caches=[users_list] | key='{#root.methodName, #pageable}' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
+2026-02-10 14:09:57 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getAllRejectedLawyers' with operations: [Builder[public org.springframework.data.domain.Page com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.getAllRejectedLawyers(org.springframework.data.domain.Pageable)] caches=[users_list] | key='{#root.methodName, #pageable}' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
+2026-02-10 14:09:57 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'acceptLawyerApprovalById' with operations: [Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.acceptLawyerApprovalById(java.util.UUID)] caches=[user_profile] | key='#userId' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',false,false, Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.acceptLawyerApprovalById(java.util.UUID)] caches=[users_list] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
+2026-02-10 14:09:57 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'rejectLawyerApprovalById' with operations: [Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.rejectLawyerApprovalById(java.util.UUID)] caches=[user_profile] | key='#userId' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',false,false, Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.rejectLawyerApprovalById(java.util.UUID)] caches=[users_list] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
+2026-02-10 14:09:57 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getAllActivatedJudges' with operations: [Builder[public org.springframework.data.domain.Page com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.getAllActivatedJudges(org.springframework.data.domain.Pageable)] caches=[users_list] | key='{#root.methodName, #pageable}' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
+2026-02-10 14:09:57 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getAllDeactivatedJudges' with operations: [Builder[public org.springframework.data.domain.Page com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.getAllDeactivatedJudges(org.springframework.data.domain.Pageable)] caches=[users_list] | key='{#root.methodName, #pageable}' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
+2026-02-10 14:09:57 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getAllCaseRequestsByStatus' with operations: [Builder[public org.springframework.data.domain.Page com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.getAllCaseRequestsByStatus(com.fullDetailed.fullDetailedDemo.domain.enums.RequestStatus,org.springframework.data.domain.Pageable)] caches=[case_requests] | key='{#status, #pageable}' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
+2026-02-10 14:09:57 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'approveCaseAccessRequest' with operations: [Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.approveCaseAccessRequest(java.util.UUID)] caches=[case_requests] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false, Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.approveCaseAccessRequest(java.util.UUID)] caches=[users_list] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false, Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.approveCaseAccessRequest(java.util.UUID)] caches=[user_profile] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
+2026-02-10 14:09:57 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'rejectCaseAccessRequest' with operations: [Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.rejectCaseAccessRequest(java.util.UUID)] caches=[case_requests] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
+2026-02-10 14:09:57 [main] WARN  o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-02-10 14:09:57 [main] INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name customUserServiceDetails
+2026-02-10 14:09:59 [main] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - Starting...
+2026-02-10 14:09:59 [main] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@34817fcc]]
+2026-02-10 14:09:59 [main] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - Started.
+2026-02-10 14:09:59 [main] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2026-02-10 14:09:59 [main] INFO  c.f.fullDetailedDemo.Elmostashar - Started Elmostashar in 12.462 seconds (process running for 13.626)
+2026-02-10 14:10:23 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-02-10 14:10:23 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-02-10 14:10:23 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 9 ms
+2026-02-10 14:10:26 [http-nio-8080-exec-9] INFO  o.s.api.AbstractOpenApiResource - Init duration for springdoc-openapi is: 1287 ms
+2026-02-10 14:10:59 [MessageBroker-1] INFO  o.s.w.s.c.WebSocketMessageBrokerStats - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 1, active threads = 1, queued tasks = 0, completed tasks = 0]
+2026-02-10 14:11:17 [http-nio-8080-exec-10] INFO  c.f.f.AOP.LoggingAspect - ========================================
+2026-02-10 14:11:17 [http-nio-8080-exec-10] INFO  c.f.f.AOP.LoggingAspect - ==== ENTERING====: AuthServiceImpl.login
+2026-02-10 14:11:17 [http-nio-8080-exec-10] INFO  c.f.f.AOP.LoggingAspect -    Arg[0]: LoginRequestDto(email=habaehab204@gmail.com, password=111111111)
+2026-02-10 14:11:17 [http-nio-8080-exec-10] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'findByEmail' with operations: [Builder[public abstract java.util.Optional com.fullDetailed.fullDetailedDemo.repository.UserRepo.findByEmail(java.lang.String)] caches=[users] | key='#email' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
+2026-02-10 14:11:17 [http-nio-8080-exec-10] TRACE o.s.c.interceptor.CacheInterceptor - Computed cache key 'habaehab204@gmail.com' for operation Builder[public abstract java.util.Optional com.fullDetailed.fullDetailedDemo.repository.UserRepo.findByEmail(java.lang.String)] caches=[users] | key='#email' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false'
+2026-02-10 14:11:17 [http-nio-8080-exec-10] TRACE o.s.c.interceptor.CacheInterceptor - No cache entry for key 'habaehab204@gmail.com' in cache(s) [users]
+2026-02-10 14:11:17 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - 
+    SELECT
+        * 
+    FROM
+        users u 
+    WHERE
+        u.email = ? 
+    LIMIT
+        1
+2026-02-10 14:11:17 [http-nio-8080-exec-10] TRACE o.s.c.interceptor.CacheInterceptor - Creating cache entry for key 'habaehab204@gmail.com' in cache(s) [users]
+2026-02-10 14:11:17 [http-nio-8080-exec-10] INFO  c.f.f.services.impl.AuthServiceImpl - ##### query take ######: 231 ms
+2026-02-10 14:11:17 [http-nio-8080-exec-10] ERROR c.f.f.AOP.LoggingAspect - ==== FAILED ====: AuthServiceImpl.login
+2026-02-10 14:11:17 [http-nio-8080-exec-10] ERROR c.f.f.AOP.LoggingAspect -    Duration: 337 ms
+2026-02-10 14:11:17 [http-nio-8080-exec-10] ERROR c.f.f.AOP.LoggingAspect -    Exception: Invalid email or password
+2026-02-10 14:11:17 [http-nio-8080-exec-10] INFO  c.f.f.AOP.LoggingAspect - ========================================
+2026-02-10 14:11:17 [http-nio-8080-exec-10] ERROR c.f.f.AOP.ExceptionAspect - ### Exception in Method ###
+2026-02-10 14:11:17 [http-nio-8080-exec-10] ERROR c.f.f.AOP.ExceptionAspect - Method: LoginResponseDto com.fullDetailed.fullDetailedDemo.services.impl.AuthServiceImpl.login(LoginRequestDto)
+2026-02-10 14:11:17 [http-nio-8080-exec-10] ERROR c.f.f.AOP.ExceptionAspect - Exception: Invalid email or password
+2026-02-10 14:11:24 [http-nio-8080-exec-1] INFO  c.f.f.AOP.LoggingAspect - ========================================
+2026-02-10 14:11:24 [http-nio-8080-exec-1] INFO  c.f.f.AOP.LoggingAspect - ==== ENTERING====: AuthServiceImpl.login
+2026-02-10 14:11:24 [http-nio-8080-exec-1] INFO  c.f.f.AOP.LoggingAspect -    Arg[0]: LoginRequestDto(email=habaehab204@gmail.com, password=12345678)
+2026-02-10 14:11:24 [http-nio-8080-exec-1] TRACE o.s.c.interceptor.CacheInterceptor - Computed cache key 'habaehab204@gmail.com' for operation Builder[public abstract java.util.Optional com.fullDetailed.fullDetailedDemo.repository.UserRepo.findByEmail(java.lang.String)] caches=[users] | key='#email' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false'
+2026-02-10 14:11:24 [http-nio-8080-exec-1] TRACE o.s.c.interceptor.CacheInterceptor - Cache entry for key 'habaehab204@gmail.com' found in cache(s) [users]
+2026-02-10 14:11:24 [http-nio-8080-exec-1] INFO  c.f.f.services.impl.AuthServiceImpl - ##### query take ######: 4 ms
+2026-02-10 14:11:24 [http-nio-8080-exec-1] ERROR c.f.f.AOP.LoggingAspect - ==== FAILED ====: AuthServiceImpl.login
+2026-02-10 14:11:24 [http-nio-8080-exec-1] ERROR c.f.f.AOP.LoggingAspect -    Duration: 90 ms
+2026-02-10 14:11:24 [http-nio-8080-exec-1] ERROR c.f.f.AOP.LoggingAspect -    Exception: Invalid email or password
+2026-02-10 14:11:24 [http-nio-8080-exec-1] INFO  c.f.f.AOP.LoggingAspect - ========================================
+2026-02-10 14:11:24 [http-nio-8080-exec-1] ERROR c.f.f.AOP.ExceptionAspect - ### Exception in Method ###
+2026-02-10 14:11:24 [http-nio-8080-exec-1] ERROR c.f.f.AOP.ExceptionAspect - Method: LoginResponseDto com.fullDetailed.fullDetailedDemo.services.impl.AuthServiceImpl.login(LoginRequestDto)
+2026-02-10 14:11:24 [http-nio-8080-exec-1] ERROR c.f.f.AOP.ExceptionAspect - Exception: Invalid email or password
+2026-02-10 14:11:31 [http-nio-8080-exec-6] INFO  c.f.f.AOP.LoggingAspect - ========================================
+2026-02-10 14:11:31 [http-nio-8080-exec-6] INFO  c.f.f.AOP.LoggingAspect - ==== ENTERING====: AuthServiceImpl.login
+2026-02-10 14:11:31 [http-nio-8080-exec-6] INFO  c.f.f.AOP.LoggingAspect -    Arg[0]: LoginRequestDto(email=habaehab204@gmail.com, password=123456789)
+2026-02-10 14:11:31 [http-nio-8080-exec-6] TRACE o.s.c.interceptor.CacheInterceptor - Computed cache key 'habaehab204@gmail.com' for operation Builder[public abstract java.util.Optional com.fullDetailed.fullDetailedDemo.repository.UserRepo.findByEmail(java.lang.String)] caches=[users] | key='#email' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false'
+2026-02-10 14:11:31 [http-nio-8080-exec-6] TRACE o.s.c.interceptor.CacheInterceptor - Cache entry for key 'habaehab204@gmail.com' found in cache(s) [users]
+2026-02-10 14:11:31 [http-nio-8080-exec-6] INFO  c.f.f.services.impl.AuthServiceImpl - ##### query take ######: 2 ms
+2026-02-10 14:11:31 [http-nio-8080-exec-6] ERROR c.f.f.AOP.LoggingAspect - ==== FAILED ====: AuthServiceImpl.login
+2026-02-10 14:11:31 [http-nio-8080-exec-6] ERROR c.f.f.AOP.LoggingAspect -    Duration: 70 ms
+2026-02-10 14:11:31 [http-nio-8080-exec-6] ERROR c.f.f.AOP.LoggingAspect -    Exception: Invalid email or password
+2026-02-10 14:11:31 [http-nio-8080-exec-6] INFO  c.f.f.AOP.LoggingAspect - ========================================
+2026-02-10 14:11:31 [http-nio-8080-exec-6] ERROR c.f.f.AOP.ExceptionAspect - ### Exception in Method ###
+2026-02-10 14:11:31 [http-nio-8080-exec-6] ERROR c.f.f.AOP.ExceptionAspect - Method: LoginResponseDto com.fullDetailed.fullDetailedDemo.services.impl.AuthServiceImpl.login(LoginRequestDto)
+2026-02-10 14:11:31 [http-nio-8080-exec-6] ERROR c.f.f.AOP.ExceptionAspect - Exception: Invalid email or password
+2026-02-10 14:11:38 [http-nio-8080-exec-7] INFO  c.f.f.AOP.LoggingAspect - ========================================
+2026-02-10 14:11:38 [http-nio-8080-exec-7] INFO  c.f.f.AOP.LoggingAspect - ==== ENTERING====: AuthServiceImpl.login
+2026-02-10 14:11:38 [http-nio-8080-exec-7] INFO  c.f.f.AOP.LoggingAspect -    Arg[0]: LoginRequestDto(email=habaehab204@gmail.com, password=44444444)
+2026-02-10 14:11:38 [http-nio-8080-exec-7] TRACE o.s.c.interceptor.CacheInterceptor - Computed cache key 'habaehab204@gmail.com' for operation Builder[public abstract java.util.Optional com.fullDetailed.fullDetailedDemo.repository.UserRepo.findByEmail(java.lang.String)] caches=[users] | key='#email' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false'
+2026-02-10 14:11:38 [http-nio-8080-exec-7] TRACE o.s.c.interceptor.CacheInterceptor - Cache entry for key 'habaehab204@gmail.com' found in cache(s) [users]
+2026-02-10 14:11:38 [http-nio-8080-exec-7] INFO  c.f.f.services.impl.AuthServiceImpl - ##### query take ######: 2 ms
+2026-02-10 14:11:38 [http-nio-8080-exec-7] ERROR c.f.f.AOP.LoggingAspect - ==== FAILED ====: AuthServiceImpl.login
+2026-02-10 14:11:38 [http-nio-8080-exec-7] ERROR c.f.f.AOP.LoggingAspect -    Duration: 69 ms
+2026-02-10 14:11:38 [http-nio-8080-exec-7] ERROR c.f.f.AOP.LoggingAspect -    Exception: Invalid email or password
+2026-02-10 14:11:38 [http-nio-8080-exec-7] INFO  c.f.f.AOP.LoggingAspect - ========================================
+2026-02-10 14:11:38 [http-nio-8080-exec-7] ERROR c.f.f.AOP.ExceptionAspect - ### Exception in Method ###
+2026-02-10 14:11:38 [http-nio-8080-exec-7] ERROR c.f.f.AOP.ExceptionAspect - Method: LoginResponseDto com.fullDetailed.fullDetailedDemo.services.impl.AuthServiceImpl.login(LoginRequestDto)
+2026-02-10 14:11:38 [http-nio-8080-exec-7] ERROR c.f.f.AOP.ExceptionAspect - Exception: Invalid email or password
+2026-02-10 14:11:41 [http-nio-8080-exec-8] INFO  c.f.f.AOP.LoggingAspect - ========================================
+2026-02-10 14:11:41 [http-nio-8080-exec-8] INFO  c.f.f.AOP.LoggingAspect - ==== ENTERING====: AuthServiceImpl.login
+2026-02-10 14:11:41 [http-nio-8080-exec-8] INFO  c.f.f.AOP.LoggingAspect -    Arg[0]: LoginRequestDto(email=habaehab204@gmail.com, password=444444444)
+2026-02-10 14:11:41 [http-nio-8080-exec-8] TRACE o.s.c.interceptor.CacheInterceptor - Computed cache key 'habaehab204@gmail.com' for operation Builder[public abstract java.util.Optional com.fullDetailed.fullDetailedDemo.repository.UserRepo.findByEmail(java.lang.String)] caches=[users] | key='#email' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false'
+2026-02-10 14:11:41 [http-nio-8080-exec-8] TRACE o.s.c.interceptor.CacheInterceptor - Cache entry for key 'habaehab204@gmail.com' found in cache(s) [users]
+2026-02-10 14:11:41 [http-nio-8080-exec-8] INFO  c.f.f.services.impl.AuthServiceImpl - ##### query take ######: 3 ms
+2026-02-10 14:11:41 [http-nio-8080-exec-8] ERROR c.f.f.AOP.LoggingAspect - ==== FAILED ====: AuthServiceImpl.login
+2026-02-10 14:11:41 [http-nio-8080-exec-8] ERROR c.f.f.AOP.LoggingAspect -    Duration: 67 ms
+2026-02-10 14:11:41 [http-nio-8080-exec-8] ERROR c.f.f.AOP.LoggingAspect -    Exception: Invalid email or password
+2026-02-10 14:11:41 [http-nio-8080-exec-8] INFO  c.f.f.AOP.LoggingAspect - ========================================
+2026-02-10 14:11:41 [http-nio-8080-exec-8] ERROR c.f.f.AOP.ExceptionAspect - ### Exception in Method ###
+2026-02-10 14:11:41 [http-nio-8080-exec-8] ERROR c.f.f.AOP.ExceptionAspect - Method: LoginResponseDto com.fullDetailed.fullDetailedDemo.services.impl.AuthServiceImpl.login(LoginRequestDto)
+2026-02-10 14:11:41 [http-nio-8080-exec-8] ERROR c.f.f.AOP.ExceptionAspect - Exception: Invalid email or password
+2026-02-10 14:11:46 [http-nio-8080-exec-9] INFO  c.f.f.AOP.LoggingAspect - ========================================
+2026-02-10 14:11:46 [http-nio-8080-exec-9] INFO  c.f.f.AOP.LoggingAspect - ==== ENTERING====: AuthServiceImpl.login
+2026-02-10 14:11:46 [http-nio-8080-exec-9] INFO  c.f.f.AOP.LoggingAspect -    Arg[0]: LoginRequestDto(email=habaehab204@gmail.com, password=11111111)
+2026-02-10 14:11:46 [http-nio-8080-exec-9] TRACE o.s.c.interceptor.CacheInterceptor - Computed cache key 'habaehab204@gmail.com' for operation Builder[public abstract java.util.Optional com.fullDetailed.fullDetailedDemo.repository.UserRepo.findByEmail(java.lang.String)] caches=[users] | key='#email' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false'
+2026-02-10 14:11:46 [http-nio-8080-exec-9] TRACE o.s.c.interceptor.CacheInterceptor - Cache entry for key 'habaehab204@gmail.com' found in cache(s) [users]
+2026-02-10 14:11:46 [http-nio-8080-exec-9] INFO  c.f.f.services.impl.AuthServiceImpl - ##### query take ######: 2 ms
+2026-02-10 14:11:46 [http-nio-8080-exec-9] INFO  c.f.f.services.impl.AuthServiceImpl - ###### BCrypt took ######: 67 ms
+2026-02-10 14:11:46 [http-nio-8080-exec-9] INFO  c.f.f.services.impl.AuthServiceImpl - ###### Tokens took ######: 124 ms
+2026-02-10 14:11:46 [http-nio-8080-exec-9] INFO  c.f.f.AOP.LoggingAspect - ==== COMPLETED=====: AuthServiceImpl.login
+2026-02-10 14:11:46 [http-nio-8080-exec-9] INFO  c.f.f.AOP.LoggingAspect -    Duration: 195 ms
+2026-02-10 14:11:46 [http-nio-8080-exec-9] INFO  c.f.f.AOP.LoggingAspect -    Result: LoginResponseDto(access_token=eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJST0xFX0xBV1lFUiJdLCJzdWIiOiJoYWJhZWhhYjIwNEBnbWFpbC5jb20iLCJpYXQiOjE3NzA3MzI3MDYsImV4cCI6MTc3MDczNjMwNn0.IsZSSr3jnaZM7BM_aeort091k1YkJoJc_1thrmAkkGw, refresh_token=eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJST0xFX0xBV1lFUiJdLCJzdWIiOiJoYWJhZWhhYjIwNEBnbWFpbC5jb20iLCJpYXQiOjE3NzA3MzI3MDYsImV4cCI6MTc3MDc1NzkwNn0.dlnrJX25N2qSJyjFhKby-K0Zcjr7Ky2KBcgpmVEzWRk, role=LAWYER, id=68874794-3343-409d-92a6-6f9a934a39e9)
+2026-02-10 14:11:46 [http-nio-8080-exec-9] INFO  c.f.f.AOP.LoggingAspect - ========================================
+2026-02-10 14:24:13 [SpringApplicationShutdownHook] INFO  o.s.boot.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-02-10 14:24:13 [tomcat-shutdown] INFO  o.s.boot.tomcat.GracefulShutdown - Graceful shutdown complete
+2026-02-10 14:24:13 [SpringApplicationShutdownHook] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - Stopping...
+2026-02-10 14:24:13 [SpringApplicationShutdownHook] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@34817fcc]]
+2026-02-10 14:24:13 [SpringApplicationShutdownHook] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - Stopped.
+2026-02-10 14:24:13 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-02-10 14:24:13 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-02-10 14:24:13 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-02-10 14:24:17 [main] INFO  c.f.fullDetailedDemo.Elmostashar - Starting Elmostashar v0.0.1-SNAPSHOT using Java 21.0.10 with PID 1 (/app/app.jar started by spring in /app)
+2026-02-10 14:24:17 [main] DEBUG c.f.fullDetailedDemo.Elmostashar - Running with Spring Boot v4.0.0, Spring v7.0.1
+2026-02-10 14:24:17 [main] INFO  c.f.fullDetailedDemo.Elmostashar - No active profile set, falling back to 1 default profile: "default"
+2026-02-10 14:24:19 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-02-10 14:24:19 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 95 ms. Found 5 JPA repository interfaces.
+2026-02-10 14:24:20 [main] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-02-10 14:24:20 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-02-10 14:24:20 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.14]
+2026-02-10 14:24:20 [main] INFO  o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 3289 ms
+2026-02-10 14:24:21 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-02-10 14:24:21 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@5fb07347
+2026-02-10 14:24:21 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-02-10 14:24:21 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-02-10 14:24:21 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 7.1.8.Final
+2026-02-10 14:24:22 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-02-10 14:24:22 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-02-10 14:24:22 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://postgres:5432/fullDetails]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 16.11
+	Default catalog/schema: fullDetails/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DatasourceConnectionProviderImpl
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-02-10 14:24:23 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-02-10 14:24:23 [main] DEBUG org.hibernate.SQL - 
+    set client_min_messages = WARNING
+2026-02-10 14:24:23 [main] DEBUG org.hibernate.SQL - 
+    alter table if exists case_files 
+       drop constraint if exists FKga9g2n34bwd7xh4ccxsx98bfe
+2026-02-10 14:24:23 [main] DEBUG org.hibernate.SQL - 
+    alter table if exists case_files 
+       drop constraint if exists FKq97x10ysy310jckh02s0pdntv
+2026-02-10 14:24:24 [main] DEBUG org.hibernate.SQL - 
+    alter table if exists case_requests 
+       drop constraint if exists FKj7qqebncj0udvqdpntvx0yklb
+2026-02-10 14:24:24 [main] DEBUG org.hibernate.SQL - 
+    alter table if exists case_requests 
+       drop constraint if exists FKptewc89oihmrvk52bvwunvmcp
+2026-02-10 14:24:24 [main] DEBUG org.hibernate.SQL - 
+    alter table if exists cases 
+       drop constraint if exists FKeg3vv92i8tmpjd4boaeoi4f94
+2026-02-10 14:24:24 [main] DEBUG org.hibernate.SQL - 
+    alter table if exists cases 
+       drop constraint if exists FK6l9dqxm562pqp8o6bwer6oyba
+2026-02-10 14:24:24 [main] DEBUG org.hibernate.SQL - 
+    alter table if exists cases 
+       drop constraint if exists FK3xkk4p4hvu6kwe763a6i1hgu0
+2026-02-10 14:24:24 [main] DEBUG org.hibernate.SQL - 
+    alter table if exists model_results 
+       drop constraint if exists FKe3xqqgcmy88kh2kngkcumpbo9
+2026-02-10 14:24:24 [main] DEBUG org.hibernate.SQL - 
+    alter table if exists notifications 
+       drop constraint if exists FKqqnsjxlwleyjbxlmm213jaj3f
+2026-02-10 14:24:24 [main] DEBUG org.hibernate.SQL - 
+    drop table if exists case_files cascade
+2026-02-10 14:24:24 [main] DEBUG org.hibernate.SQL - 
+    drop table if exists case_requests cascade
+2026-02-10 14:24:24 [main] DEBUG org.hibernate.SQL - 
+    drop table if exists cases cascade
+2026-02-10 14:24:24 [main] DEBUG org.hibernate.SQL - 
+    drop table if exists model_results cascade
+2026-02-10 14:24:24 [main] DEBUG org.hibernate.SQL - 
+    drop table if exists notifications cascade
+2026-02-10 14:24:24 [main] DEBUG org.hibernate.SQL - 
+    drop table if exists users cascade
+2026-02-10 14:24:24 [main] DEBUG org.hibernate.SQL - 
+    create table case_files (
+        uploaded_at timestamp(6),
+        case_id uuid,
+        id uuid not null,
+        uploaded_by uuid,
+        file_name varchar(255) not null,
+        file_type varchar(255) check ((file_type in ('PDF','OTHER','DOCUMENT','IMAGE'))),
+        file_url varchar(255),
+        primary key (id)
+    )
+2026-02-10 14:24:24 [main] DEBUG org.hibernate.SQL - 
+    create table case_requests (
+        requested_at timestamp(6),
+        case_id uuid not null,
+        id uuid not null,
+        lawyer_id uuid not null,
+        status varchar(255) not null check ((status in ('PENDING','APPROVED','REJECTED'))),
+        primary key (id)
+    )
+2026-02-10 14:24:24 [main] DEBUG org.hibernate.SQL - 
+    create table cases (
+        is_deleted boolean not null,
+        created_at timestamp(6),
+        assigned_by_id uuid,
+        id uuid not null,
+        judge_id uuid,
+        lawyer_id uuid,
+        description varchar(2000),
+        case_number varchar(255) not null,
+        court_ruling varchar(255),
+        final_decision varchar(255),
+        model_judgment varchar(255),
+        model_summary varchar(255),
+        status varchar(255) not null check ((status in ('PENDING','UNDER_DISCUSSION','COMPLETED'))),
+        title varchar(255) not null,
+        primary key (id)
+    )
+2026-02-10 14:24:24 [main] DEBUG org.hibernate.SQL - 
+    create table model_results (
+        confidence_score float(53) not null,
+        created_at timestamp(6),
+        case_id uuid unique,
+        id uuid not null,
+        judgment varchar(2000),
+        summary varchar(5000),
+        primary key (id)
+    )
+2026-02-10 14:24:24 [main] DEBUG org.hibernate.SQL - 
+    create table notifications (
+        is_read boolean not null,
+        created_at timestamp(6),
+        id uuid not null,
+        recipient_id uuid not null,
+        message varchar(255) not null,
+        title varchar(255) not null,
+        primary key (id)
+    )
+2026-02-10 14:24:24 [main] DEBUG org.hibernate.SQL - 
+    create table users (
+        age integer,
+        assigned_cases_count integer,
+        is_active boolean,
+        is_approved boolean,
+        is_deleted boolean,
+        password_reseted boolean,
+        created_at timestamp(6),
+        otp_expiration_time timestamp(6),
+        updated_at timestamp(6),
+        id uuid not null,
+        court varchar(255),
+        email varchar(255) not null unique,
+        first_name varchar(255) not null,
+        last_name varchar(255) not null,
+        national_id varchar(255) not null unique,
+        otp_code varchar(255) not null,
+        password varchar(255) not null,
+        role varchar(255) not null check ((role in ('ADMIN','JUDGE','LAWYER','EMPTY'))),
+        primary key (id)
+    )
+2026-02-10 14:24:24 [main] DEBUG org.hibernate.SQL - 
+    alter table if exists case_files 
+       add constraint FKga9g2n34bwd7xh4ccxsx98bfe 
+       foreign key (case_id) 
+       references cases
+2026-02-10 14:24:24 [main] DEBUG org.hibernate.SQL - 
+    alter table if exists case_files 
+       add constraint FKq97x10ysy310jckh02s0pdntv 
+       foreign key (uploaded_by) 
+       references users
+2026-02-10 14:24:24 [main] DEBUG org.hibernate.SQL - 
+    alter table if exists case_requests 
+       add constraint FKj7qqebncj0udvqdpntvx0yklb 
+       foreign key (lawyer_id) 
+       references users
+2026-02-10 14:24:24 [main] DEBUG org.hibernate.SQL - 
+    alter table if exists case_requests 
+       add constraint FKptewc89oihmrvk52bvwunvmcp 
+       foreign key (case_id) 
+       references cases
+2026-02-10 14:24:24 [main] DEBUG org.hibernate.SQL - 
+    alter table if exists cases 
+       add constraint FKeg3vv92i8tmpjd4boaeoi4f94 
+       foreign key (assigned_by_id) 
+       references users
+2026-02-10 14:24:24 [main] DEBUG org.hibernate.SQL - 
+    alter table if exists cases 
+       add constraint FK6l9dqxm562pqp8o6bwer6oyba 
+       foreign key (judge_id) 
+       references users
+2026-02-10 14:24:24 [main] DEBUG org.hibernate.SQL - 
+    alter table if exists cases 
+       add constraint FK3xkk4p4hvu6kwe763a6i1hgu0 
+       foreign key (lawyer_id) 
+       references users
+2026-02-10 14:24:24 [main] DEBUG org.hibernate.SQL - 
+    alter table if exists model_results 
+       add constraint FKe3xqqgcmy88kh2kngkcumpbo9 
+       foreign key (case_id) 
+       references cases
+2026-02-10 14:24:24 [main] DEBUG org.hibernate.SQL - 
+    alter table if exists notifications 
+       add constraint FKqqnsjxlwleyjbxlmm213jaj3f 
+       foreign key (recipient_id) 
+       references users
+2026-02-10 14:24:24 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-02-10 14:24:24 [main] INFO  o.s.d.j.r.q.QueryEnhancerFactories - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-02-10 14:24:25 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'findByEmail' with operations: [Builder[public final java.util.Optional jdk.proxy2.$Proxy165.findByEmail(java.lang.String)] caches=[users] | key='#email' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
+2026-02-10 14:24:25 [main] DEBUG c.f.f.c.s.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2026-02-10 14:24:26 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'importCasesFromCsv' with operations: [Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminCaseManagementServiceImpl.importCasesFromCsv(org.springframework.web.multipart.MultipartFile)] caches=[cases] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
+2026-02-10 14:24:26 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getCasesByStatus' with operations: [Builder[public org.springframework.data.domain.Page com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminCaseManagementServiceImpl.getCasesByStatus(com.fullDetailed.fullDetailedDemo.domain.enums.CaseStatus,org.springframework.data.domain.Pageable)] caches=[cases] | key=''status:' + #status + ':' + #pageable.pageNumber + ':' + #pageable.pageSize' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
+2026-02-10 14:24:26 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getAllDeletedCases' with operations: [Builder[public org.springframework.data.domain.Page com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminCaseManagementServiceImpl.getAllDeletedCases(org.springframework.data.domain.Pageable)] caches=[cases] | key=''deleted:' + #pageable.pageNumber' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
+2026-02-10 14:24:26 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'assignCaseToJudge' with operations: [Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminCaseManagementServiceImpl.assignCaseToJudge(java.util.UUID,java.util.UUID)] caches=[cases] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
+2026-02-10 14:24:26 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'uploadCaseFiles' with operations: [Builder[public java.util.List com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminCaseManagementServiceImpl.uploadCaseFiles(java.util.UUID,java.util.List)] caches=[cases] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
+2026-02-10 14:24:26 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'createCase' with operations: [Builder[public com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseResponseDto com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminCaseManagementServiceImpl.createCase(com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseRequestDto)] caches=[cases] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
+2026-02-10 14:24:26 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getAllCases' with operations: [Builder[public org.springframework.data.domain.Page com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminCaseManagementServiceImpl.getAllCases(org.springframework.data.domain.Pageable)] caches=[cases] | key=''all:'+#pageable.pageNumber+':'+ #pageable.pageSize' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
+2026-02-10 14:24:26 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getCaseById' with operations: [Builder[public com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseResponseDto com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminCaseManagementServiceImpl.getCaseById(java.util.UUID)] caches=[cases] | key=''id:' + #caseId' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
+2026-02-10 14:24:26 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'updateCase' with operations: [Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminCaseManagementServiceImpl.updateCase(java.util.UUID,com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseRequestDto)] caches=[cases] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
+2026-02-10 14:24:26 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'deleteCase' with operations: [Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminCaseManagementServiceImpl.deleteCase(java.util.UUID)] caches=[cases] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
+2026-02-10 14:24:26 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getAllFullyAssignedCases' with operations: [Builder[public org.springframework.data.domain.Page com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminCaseManagementServiceImpl.getAllFullyAssignedCases(org.springframework.data.domain.Pageable)] caches=[cases] | key=''fullyAssigned:' + #pageable.pageNumber' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
+2026-02-10 14:24:26 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'activateUserById' with operations: [Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.activateUserById(java.util.UUID)] caches=[user_profile] | key='#userId' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',false,false, Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.activateUserById(java.util.UUID)] caches=[users_list] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
+2026-02-10 14:24:26 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'deActivateUserById' with operations: [Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.deActivateUserById(java.util.UUID)] caches=[user_profile] | key='#userId' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',false,false, Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.deActivateUserById(java.util.UUID)] caches=[users_list] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
+2026-02-10 14:24:26 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'deleteUserById' with operations: [Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.deleteUserById(java.util.UUID)] caches=[user_profile] | key='#userId' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',false,false, Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.deleteUserById(java.util.UUID)] caches=[users_list] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
+2026-02-10 14:24:26 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getAllLawyerProfile' with operations: [Builder[public org.springframework.data.domain.Page com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.getAllLawyerProfile(org.springframework.data.domain.Pageable)] caches=[users_list] | key='{#root.methodName, #pageable}' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
+2026-02-10 14:24:26 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getAllJudgesProfile' with operations: [Builder[public org.springframework.data.domain.Page com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.getAllJudgesProfile(org.springframework.data.domain.Pageable)] caches=[users_list] | key='{#root.methodName, #pageable}' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
+2026-02-10 14:24:26 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'updateJudgeProfile' with operations: [Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.updateJudgeProfile(java.util.UUID,com.fullDetailed.fullDetailedDemo.domain.dtos.judge.JudgeProfileDto)] caches=[user_profile] | key='#judgeId' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',false,false, Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.updateJudgeProfile(java.util.UUID,com.fullDetailed.fullDetailedDemo.domain.dtos.judge.JudgeProfileDto)] caches=[users_list] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
+2026-02-10 14:24:26 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getAllActivatedLawyers' with operations: [Builder[public org.springframework.data.domain.Page com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.getAllActivatedLawyers(org.springframework.data.domain.Pageable)] caches=[users_list] | key='{#root.methodName, #pageable}' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
+2026-02-10 14:24:26 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getAllDeactivatedLawyers' with operations: [Builder[public org.springframework.data.domain.Page com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.getAllDeactivatedLawyers(org.springframework.data.domain.Pageable)] caches=[users_list] | key='{#root.methodName, #pageable}' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
+2026-02-10 14:24:26 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getAllApprovedLawyers' with operations: [Builder[public org.springframework.data.domain.Page com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.getAllApprovedLawyers(org.springframework.data.domain.Pageable)] caches=[users_list] | key='{#root.methodName, #pageable}' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
+2026-02-10 14:24:26 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getAllRejectedLawyers' with operations: [Builder[public org.springframework.data.domain.Page com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.getAllRejectedLawyers(org.springframework.data.domain.Pageable)] caches=[users_list] | key='{#root.methodName, #pageable}' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
+2026-02-10 14:24:26 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'acceptLawyerApprovalById' with operations: [Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.acceptLawyerApprovalById(java.util.UUID)] caches=[user_profile] | key='#userId' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',false,false, Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.acceptLawyerApprovalById(java.util.UUID)] caches=[users_list] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
+2026-02-10 14:24:26 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'rejectLawyerApprovalById' with operations: [Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.rejectLawyerApprovalById(java.util.UUID)] caches=[user_profile] | key='#userId' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',false,false, Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.rejectLawyerApprovalById(java.util.UUID)] caches=[users_list] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
+2026-02-10 14:24:26 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getAllActivatedJudges' with operations: [Builder[public org.springframework.data.domain.Page com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.getAllActivatedJudges(org.springframework.data.domain.Pageable)] caches=[users_list] | key='{#root.methodName, #pageable}' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
+2026-02-10 14:24:26 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getAllDeactivatedJudges' with operations: [Builder[public org.springframework.data.domain.Page com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.getAllDeactivatedJudges(org.springframework.data.domain.Pageable)] caches=[users_list] | key='{#root.methodName, #pageable}' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
+2026-02-10 14:24:26 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getAllCaseRequestsByStatus' with operations: [Builder[public org.springframework.data.domain.Page com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.getAllCaseRequestsByStatus(com.fullDetailed.fullDetailedDemo.domain.enums.RequestStatus,org.springframework.data.domain.Pageable)] caches=[case_requests] | key='{#status, #pageable}' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
+2026-02-10 14:24:26 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'approveCaseAccessRequest' with operations: [Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.approveCaseAccessRequest(java.util.UUID)] caches=[case_requests] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false, Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.approveCaseAccessRequest(java.util.UUID)] caches=[users_list] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false, Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.approveCaseAccessRequest(java.util.UUID)] caches=[user_profile] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
+2026-02-10 14:24:26 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'rejectCaseAccessRequest' with operations: [Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.rejectCaseAccessRequest(java.util.UUID)] caches=[case_requests] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
+2026-02-10 14:24:26 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'createUser' with operations: [Builder[public com.fullDetailed.fullDetailedDemo.domain.dtos.judge.UserResponseDto com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.createUser(com.fullDetailed.fullDetailedDemo.domain.dtos.judge.CreateUserDto)] caches=[users_list] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
+2026-02-10 14:24:26 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getUserById' with operations: [Builder[public com.fullDetailed.fullDetailedDemo.domain.dtos.UserProfileResponseDto com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.getUserById(java.util.UUID)] caches=[user_profile] | key='#userId' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
+2026-02-10 14:24:27 [main] WARN  o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-02-10 14:24:27 [main] INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name customUserServiceDetails
+2026-02-10 14:24:29 [main] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - Starting...
+2026-02-10 14:24:29 [main] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@24305eca]]
+2026-02-10 14:24:29 [main] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - Started.
+2026-02-10 14:24:29 [main] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2026-02-10 14:24:29 [main] INFO  c.f.fullDetailedDemo.Elmostashar - Started Elmostashar in 13.216 seconds (process running for 14.281)
+2026-02-10 14:24:33 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-02-10 14:24:33 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-02-10 14:24:33 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 6 ms
+2026-02-10 14:24:37 [http-nio-8080-exec-8] INFO  o.s.api.AbstractOpenApiResource - Init duration for springdoc-openapi is: 2329 ms
+2026-02-10 14:25:29 [MessageBroker-1] INFO  o.s.w.s.c.WebSocketMessageBrokerStats - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 1, active threads = 1, queued tasks = 0, completed tasks = 0]
+2026-02-10 14:26:09 [http-nio-8080-exec-6] INFO  c.f.f.AOP.LoggingAspect - ========================================
+2026-02-10 14:26:09 [http-nio-8080-exec-6] INFO  c.f.f.AOP.LoggingAspect - ==== ENTERING====: AuthServiceImpl.register
+2026-02-10 14:26:09 [http-nio-8080-exec-6] INFO  c.f.f.AOP.LoggingAspect -    Arg[0]: RegisterRequestDto(firstName=يوسف, lastName=ايهاب, email=youssefehab204@gmail.com, nationalId=30408171201237, password=12345678, confirmPassword=12345678, age=0)
+2026-02-10 14:26:10 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id 
+    from
+        users u1_0 
+    where
+        u1_0.email=? 
+    fetch
+        first ? rows only
+2026-02-10 14:26:10 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id 
+    from
+        users u1_0 
+    where
+        u1_0.national_id=? 
+    fetch
+        first ? rows only
+2026-02-10 14:26:10 [http-nio-8080-exec-6] INFO  c.f.f.AOP.LoggingAspect - ========================================
+2026-02-10 14:26:10 [http-nio-8080-exec-6] INFO  c.f.f.AOP.LoggingAspect - ==== ENTERING====: EmailServiceImpl.sendOtpEmail
+2026-02-10 14:26:10 [http-nio-8080-exec-6] INFO  c.f.f.AOP.LoggingAspect -    Arg[0]: youssefehab204@gmail.com
+2026-02-10 14:26:13 [http-nio-8080-exec-6] INFO  c.f.f.AOP.LoggingAspect - ==== COMPLETED=====: EmailServiceImpl.sendOtpEmail
+2026-02-10 14:26:13 [http-nio-8080-exec-6] INFO  c.f.f.AOP.LoggingAspect -    Duration: 3024 ms
+2026-02-10 14:26:13 [http-nio-8080-exec-6] INFO  c.f.f.AOP.LoggingAspect -    Result: 582228
+2026-02-10 14:26:13 [http-nio-8080-exec-6] INFO  c.f.f.AOP.LoggingAspect - ========================================
+2026-02-10 14:26:13 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        users
+        (age, assigned_cases_count, court, created_at, email, first_name, is_active, is_approved, is_deleted, password_reseted, last_name, national_id, otp_code, otp_expiration_time, password, role, updated_at, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2026-02-10 14:26:13 [http-nio-8080-exec-6] INFO  c.f.f.AOP.LoggingAspect - ==== COMPLETED=====: AuthServiceImpl.register
+2026-02-10 14:26:13 [http-nio-8080-exec-6] INFO  c.f.f.AOP.LoggingAspect -    Duration: 4258 ms
+2026-02-10 14:26:13 [http-nio-8080-exec-6] INFO  c.f.f.AOP.LoggingAspect -    Result: RegisterResponseDto(id=0e883b96-a111-4ca3-ad69-f17b87b07927, firstName=يوسف, lastName=ايهاب, email=youssefehab204@gmail.com, nationalId=30408171201237, age=0)
+2026-02-10 14:26:13 [http-nio-8080-exec-6] INFO  c.f.f.AOP.LoggingAspect - ========================================
+2026-02-10 14:26:54 [http-nio-8080-exec-5] INFO  c.f.f.AOP.LoggingAspect - ========================================
+2026-02-10 14:26:54 [http-nio-8080-exec-5] INFO  c.f.f.AOP.LoggingAspect - ==== ENTERING====: AuthServiceImpl.login
+2026-02-10 14:26:54 [http-nio-8080-exec-5] INFO  c.f.f.AOP.LoggingAspect -    Arg[0]: LoginRequestDto(email=youssefehab204@gmail.com, password=12345678)
+2026-02-10 14:26:54 [http-nio-8080-exec-5] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'findByEmail' with operations: [Builder[public abstract java.util.Optional com.fullDetailed.fullDetailedDemo.repository.UserRepo.findByEmail(java.lang.String)] caches=[users] | key='#email' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
+2026-02-10 14:26:54 [http-nio-8080-exec-5] TRACE o.s.c.interceptor.CacheInterceptor - Computed cache key 'youssefehab204@gmail.com' for operation Builder[public abstract java.util.Optional com.fullDetailed.fullDetailedDemo.repository.UserRepo.findByEmail(java.lang.String)] caches=[users] | key='#email' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false'
+2026-02-10 14:26:54 [http-nio-8080-exec-5] TRACE o.s.c.interceptor.CacheInterceptor - No cache entry for key 'youssefehab204@gmail.com' in cache(s) [users]
+2026-02-10 14:26:54 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    SELECT
+        * 
+    FROM
+        users u 
+    WHERE
+        u.email = ? 
+    LIMIT
+        1
+2026-02-10 14:26:54 [http-nio-8080-exec-5] TRACE o.s.c.interceptor.CacheInterceptor - Creating cache entry for key 'youssefehab204@gmail.com' in cache(s) [users]
+2026-02-10 14:26:54 [http-nio-8080-exec-5] INFO  c.f.f.services.impl.AuthServiceImpl - ##### query take ######: 180 ms
+2026-02-10 14:26:54 [http-nio-8080-exec-5] INFO  c.f.f.services.impl.AuthServiceImpl - ###### BCrypt took ######: 82 ms
+2026-02-10 14:26:55 [http-nio-8080-exec-5] INFO  c.f.f.services.impl.AuthServiceImpl - ###### Tokens took ######: 146 ms
+2026-02-10 14:26:55 [http-nio-8080-exec-5] INFO  c.f.f.AOP.LoggingAspect - ==== COMPLETED=====: AuthServiceImpl.login
+2026-02-10 14:26:55 [http-nio-8080-exec-5] INFO  c.f.f.AOP.LoggingAspect -    Duration: 411 ms
+2026-02-10 14:26:55 [http-nio-8080-exec-5] INFO  c.f.f.AOP.LoggingAspect -    Result: LoginResponseDto(access_token=eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJST0xFX0xBV1lFUiJdLCJzdWIiOiJ5b3Vzc2VmZWhhYjIwNEBnbWFpbC5jb20iLCJpYXQiOjE3NzA3MzM2MTQsImV4cCI6MTc3MDczNzIxNH0.71jZ4pKKAEI8G2uk-OufOLy1y7wozZjlwUi6gzSwshc, refresh_token=eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJST0xFX0xBV1lFUiJdLCJzdWIiOiJ5b3Vzc2VmZWhhYjIwNEBnbWFpbC5jb20iLCJpYXQiOjE3NzA3MzM2MTUsImV4cCI6MTc3MDc1ODgxNX0.QZW39_hukyHpx0mbRunL89mCRuZm6YxsMI4eYd9aYcg, role=LAWYER, id=0e883b96-a111-4ca3-ad69-f17b87b07927)
+2026-02-10 14:26:55 [http-nio-8080-exec-5] INFO  c.f.f.AOP.LoggingAspect - ========================================
+2026-02-10 14:29:45 [http-nio-8080-exec-9] INFO  c.f.f.AOP.LoggingAspect - ========================================
+2026-02-10 14:29:45 [http-nio-8080-exec-9] INFO  c.f.f.AOP.LoggingAspect - ==== ENTERING====: AuthServiceImpl.login
+2026-02-10 14:29:45 [http-nio-8080-exec-9] INFO  c.f.f.AOP.LoggingAspect -    Arg[0]: LoginRequestDto(email=youssefehab204@gmail.com, password=12345678)
+2026-02-10 14:29:45 [http-nio-8080-exec-9] TRACE o.s.c.interceptor.CacheInterceptor - Computed cache key 'youssefehab204@gmail.com' for operation Builder[public abstract java.util.Optional com.fullDetailed.fullDetailedDemo.repository.UserRepo.findByEmail(java.lang.String)] caches=[users] | key='#email' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false'
+2026-02-10 14:29:45 [http-nio-8080-exec-9] TRACE o.s.c.interceptor.CacheInterceptor - Cache entry for key 'youssefehab204@gmail.com' found in cache(s) [users]
+2026-02-10 14:29:45 [http-nio-8080-exec-9] INFO  c.f.f.services.impl.AuthServiceImpl - ##### query take ######: 5 ms
+2026-02-10 14:29:45 [http-nio-8080-exec-9] INFO  c.f.f.services.impl.AuthServiceImpl - ###### BCrypt took ######: 78 ms
+2026-02-10 14:29:45 [http-nio-8080-exec-9] INFO  c.f.f.services.impl.AuthServiceImpl - ###### Tokens took ######: 1 ms
+2026-02-10 14:29:45 [http-nio-8080-exec-9] INFO  c.f.f.AOP.LoggingAspect - ==== COMPLETED=====: AuthServiceImpl.login
+2026-02-10 14:29:45 [http-nio-8080-exec-9] INFO  c.f.f.AOP.LoggingAspect -    Duration: 97 ms
+2026-02-10 14:29:45 [http-nio-8080-exec-9] INFO  c.f.f.AOP.LoggingAspect -    Result: LoginResponseDto(access_token=eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJST0xFX0xBV1lFUiJdLCJzdWIiOiJ5b3Vzc2VmZWhhYjIwNEBnbWFpbC5jb20iLCJpYXQiOjE3NzA3MzM3ODUsImV4cCI6MTc3MDczNzM4NX0.-w70Hcng-oZdNCHyUET7roSjpUTROWUod_QsCEnY2eY, refresh_token=eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJST0xFX0xBV1lFUiJdLCJzdWIiOiJ5b3Vzc2VmZWhhYjIwNEBnbWFpbC5jb20iLCJpYXQiOjE3NzA3MzM3ODUsImV4cCI6MTc3MDc1ODk4NX0.QlMQr4bg9JNvPPzHtDPyqIp4nYuGcsjoMRAvzE_oS1w, role=LAWYER, id=0e883b96-a111-4ca3-ad69-f17b87b07927)
+2026-02-10 14:29:45 [http-nio-8080-exec-9] INFO  c.f.f.AOP.LoggingAspect - ========================================
+2026-02-10 14:29:48 [http-nio-8080-exec-8] INFO  c.f.f.AOP.LoggingAspect - ========================================
+2026-02-10 14:29:48 [http-nio-8080-exec-8] INFO  c.f.f.AOP.LoggingAspect - ==== ENTERING====: AuthServiceImpl.login
+2026-02-10 14:29:48 [http-nio-8080-exec-8] INFO  c.f.f.AOP.LoggingAspect -    Arg[0]: LoginRequestDto(email=youssefehab204@gmail.com, password=12345678)
+2026-02-10 14:29:48 [http-nio-8080-exec-8] TRACE o.s.c.interceptor.CacheInterceptor - Computed cache key 'youssefehab204@gmail.com' for operation Builder[public abstract java.util.Optional com.fullDetailed.fullDetailedDemo.repository.UserRepo.findByEmail(java.lang.String)] caches=[users] | key='#email' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false'
+2026-02-10 14:29:48 [http-nio-8080-exec-8] TRACE o.s.c.interceptor.CacheInterceptor - Cache entry for key 'youssefehab204@gmail.com' found in cache(s) [users]
+2026-02-10 14:29:48 [http-nio-8080-exec-8] INFO  c.f.f.services.impl.AuthServiceImpl - ##### query take ######: 2 ms
+2026-02-10 14:29:48 [http-nio-8080-exec-8] INFO  c.f.f.services.impl.AuthServiceImpl - ###### BCrypt took ######: 71 ms
+2026-02-10 14:29:48 [http-nio-8080-exec-8] INFO  c.f.f.services.impl.AuthServiceImpl - ###### Tokens took ######: 1 ms
+2026-02-10 14:29:48 [http-nio-8080-exec-8] INFO  c.f.f.AOP.LoggingAspect - ==== COMPLETED=====: AuthServiceImpl.login
+2026-02-10 14:29:48 [http-nio-8080-exec-8] INFO  c.f.f.AOP.LoggingAspect -    Duration: 77 ms
+2026-02-10 14:29:48 [http-nio-8080-exec-8] INFO  c.f.f.AOP.LoggingAspect -    Result: LoginResponseDto(access_token=eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJST0xFX0xBV1lFUiJdLCJzdWIiOiJ5b3Vzc2VmZWhhYjIwNEBnbWFpbC5jb20iLCJpYXQiOjE3NzA3MzM3ODgsImV4cCI6MTc3MDczNzM4OH0.C91GPAQuUc51PpM8VIPu8MnOA-xI1LeDQVVqIYkXXf0, refresh_token=eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJST0xFX0xBV1lFUiJdLCJzdWIiOiJ5b3Vzc2VmZWhhYjIwNEBnbWFpbC5jb20iLCJpYXQiOjE3NzA3MzM3ODgsImV4cCI6MTc3MDc1ODk4OH0.tZLEhEBKRkrecOAIomZTZgmmWnmKrBlc2EiHxmBfz_0, role=LAWYER, id=0e883b96-a111-4ca3-ad69-f17b87b07927)
+2026-02-10 14:29:48 [http-nio-8080-exec-8] INFO  c.f.f.AOP.LoggingAspect - ========================================
+2026-02-10 14:30:09 [http-nio-8080-exec-8] INFO  c.f.f.AOP.LoggingAspect - ========================================
+2026-02-10 14:30:09 [http-nio-8080-exec-8] INFO  c.f.f.AOP.LoggingAspect - ==== ENTERING====: AuthServiceImpl.login
+2026-02-10 14:30:09 [http-nio-8080-exec-8] INFO  c.f.f.AOP.LoggingAspect -    Arg[0]: LoginRequestDto(email=youssefehab204@gmail.com, password=12345678)
+2026-02-10 14:30:09 [http-nio-8080-exec-8] TRACE o.s.c.interceptor.CacheInterceptor - Computed cache key 'youssefehab204@gmail.com' for operation Builder[public abstract java.util.Optional com.fullDetailed.fullDetailedDemo.repository.UserRepo.findByEmail(java.lang.String)] caches=[users] | key='#email' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false'
+2026-02-10 14:30:09 [http-nio-8080-exec-8] TRACE o.s.c.interceptor.CacheInterceptor - Cache entry for key 'youssefehab204@gmail.com' found in cache(s) [users]
+2026-02-10 14:30:09 [http-nio-8080-exec-8] INFO  c.f.f.services.impl.AuthServiceImpl - ##### query take ######: 2 ms
+2026-02-10 14:30:09 [http-nio-8080-exec-8] INFO  c.f.f.services.impl.AuthServiceImpl - ###### BCrypt took ######: 87 ms
+2026-02-10 14:30:09 [http-nio-8080-exec-8] INFO  c.f.f.services.impl.AuthServiceImpl - ###### Tokens took ######: 2 ms
+2026-02-10 14:30:09 [http-nio-8080-exec-8] INFO  c.f.f.AOP.LoggingAspect - ==== COMPLETED=====: AuthServiceImpl.login
+2026-02-10 14:30:09 [http-nio-8080-exec-8] INFO  c.f.f.AOP.LoggingAspect -    Duration: 94 ms
+2026-02-10 14:30:09 [http-nio-8080-exec-8] INFO  c.f.f.AOP.LoggingAspect -    Result: LoginResponseDto(access_token=eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJST0xFX0xBV1lFUiJdLCJzdWIiOiJ5b3Vzc2VmZWhhYjIwNEBnbWFpbC5jb20iLCJpYXQiOjE3NzA3MzM4MDksImV4cCI6MTc3MDczNzQwOX0.MUPnGmsZ2GPzK_frlMdoIwGK1ewEFecXk7YRRlQIuAY, refresh_token=eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJST0xFX0xBV1lFUiJdLCJzdWIiOiJ5b3Vzc2VmZWhhYjIwNEBnbWFpbC5jb20iLCJpYXQiOjE3NzA3MzM4MDksImV4cCI6MTc3MDc1OTAwOX0.wKGlBqyFINWoQgARpYWI2OnPljC2aIrQnAYz-nqSVKc, role=LAWYER, id=0e883b96-a111-4ca3-ad69-f17b87b07927)
+2026-02-10 14:30:09 [http-nio-8080-exec-8] INFO  c.f.f.AOP.LoggingAspect - ========================================
+2026-02-10 14:31:35 [main] INFO  c.f.fullDetailedDemo.Elmostashar - Starting Elmostashar v0.0.1-SNAPSHOT using Java 21.0.10 with PID 1 (/app/app.jar started by spring in /app)
+2026-02-10 14:31:35 [main] DEBUG c.f.fullDetailedDemo.Elmostashar - Running with Spring Boot v4.0.0, Spring v7.0.1
+2026-02-10 14:31:35 [main] INFO  c.f.fullDetailedDemo.Elmostashar - No active profile set, falling back to 1 default profile: "default"
+2026-02-10 14:31:37 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-02-10 14:31:37 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 89 ms. Found 5 JPA repository interfaces.
+2026-02-10 14:31:38 [main] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-02-10 14:31:38 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-02-10 14:31:38 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.14]
+2026-02-10 14:31:38 [main] INFO  o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 3326 ms
+2026-02-10 14:31:39 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-02-10 14:31:39 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@467ef400
+2026-02-10 14:31:39 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-02-10 14:31:39 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-02-10 14:31:39 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 7.1.8.Final
+2026-02-10 14:31:40 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-02-10 14:31:40 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-02-10 14:31:40 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://postgres:5432/fullDetails]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 16.11
+	Default catalog/schema: fullDetails/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DatasourceConnectionProviderImpl
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-02-10 14:31:42 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-02-10 14:31:42 [main] DEBUG org.hibernate.SQL - 
+    set client_min_messages = WARNING
+2026-02-10 14:31:42 [main] DEBUG org.hibernate.SQL - 
+    alter table if exists case_files 
+       drop constraint if exists FKga9g2n34bwd7xh4ccxsx98bfe
+2026-02-10 14:31:42 [main] DEBUG org.hibernate.SQL - 
+    alter table if exists case_files 
+       drop constraint if exists FKq97x10ysy310jckh02s0pdntv
+2026-02-10 14:31:42 [main] DEBUG org.hibernate.SQL - 
+    alter table if exists case_requests 
+       drop constraint if exists FKj7qqebncj0udvqdpntvx0yklb
+2026-02-10 14:31:42 [main] DEBUG org.hibernate.SQL - 
+    alter table if exists case_requests 
+       drop constraint if exists FKptewc89oihmrvk52bvwunvmcp
+2026-02-10 14:31:42 [main] DEBUG org.hibernate.SQL - 
+    alter table if exists cases 
+       drop constraint if exists FKeg3vv92i8tmpjd4boaeoi4f94
+2026-02-10 14:31:42 [main] DEBUG org.hibernate.SQL - 
+    alter table if exists cases 
+       drop constraint if exists FK6l9dqxm562pqp8o6bwer6oyba
+2026-02-10 14:31:42 [main] DEBUG org.hibernate.SQL - 
+    alter table if exists cases 
+       drop constraint if exists FK3xkk4p4hvu6kwe763a6i1hgu0
+2026-02-10 14:31:42 [main] DEBUG org.hibernate.SQL - 
+    alter table if exists model_results 
+       drop constraint if exists FKe3xqqgcmy88kh2kngkcumpbo9
+2026-02-10 14:31:42 [main] DEBUG org.hibernate.SQL - 
+    alter table if exists notifications 
+       drop constraint if exists FKqqnsjxlwleyjbxlmm213jaj3f
+2026-02-10 14:31:42 [main] DEBUG org.hibernate.SQL - 
+    drop table if exists case_files cascade
+2026-02-10 14:31:42 [main] DEBUG org.hibernate.SQL - 
+    drop table if exists case_requests cascade
+2026-02-10 14:31:42 [main] DEBUG org.hibernate.SQL - 
+    drop table if exists cases cascade
+2026-02-10 14:31:42 [main] DEBUG org.hibernate.SQL - 
+    drop table if exists model_results cascade
+2026-02-10 14:31:42 [main] DEBUG org.hibernate.SQL - 
+    drop table if exists notifications cascade
+2026-02-10 14:31:42 [main] DEBUG org.hibernate.SQL - 
+    drop table if exists users cascade
+2026-02-10 14:31:42 [main] DEBUG org.hibernate.SQL - 
+    create table case_files (
+        uploaded_at timestamp(6),
+        case_id uuid,
+        id uuid not null,
+        uploaded_by uuid,
+        file_name varchar(255) not null,
+        file_type varchar(255) check ((file_type in ('PDF','OTHER','DOCUMENT','IMAGE'))),
+        file_url varchar(255),
+        primary key (id)
+    )
+2026-02-10 14:31:42 [main] DEBUG org.hibernate.SQL - 
+    create table case_requests (
+        requested_at timestamp(6),
+        case_id uuid not null,
+        id uuid not null,
+        lawyer_id uuid not null,
+        status varchar(255) not null check ((status in ('PENDING','APPROVED','REJECTED'))),
+        primary key (id)
+    )
+2026-02-10 14:31:42 [main] DEBUG org.hibernate.SQL - 
+    create table cases (
+        is_deleted boolean not null,
+        created_at timestamp(6),
+        assigned_by_id uuid,
+        id uuid not null,
+        judge_id uuid,
+        lawyer_id uuid,
+        description varchar(2000),
+        case_number varchar(255) not null,
+        court_ruling varchar(255),
+        final_decision varchar(255),
+        model_judgment varchar(255),
+        model_summary varchar(255),
+        status varchar(255) not null check ((status in ('PENDING','UNDER_DISCUSSION','COMPLETED'))),
+        title varchar(255) not null,
+        primary key (id)
+    )
+2026-02-10 14:31:42 [main] DEBUG org.hibernate.SQL - 
+    create table model_results (
+        confidence_score float(53) not null,
+        created_at timestamp(6),
+        case_id uuid unique,
+        id uuid not null,
+        judgment varchar(2000),
+        summary varchar(5000),
+        primary key (id)
+    )
+2026-02-10 14:31:42 [main] DEBUG org.hibernate.SQL - 
+    create table notifications (
+        is_read boolean not null,
+        created_at timestamp(6),
+        id uuid not null,
+        recipient_id uuid not null,
+        message varchar(255) not null,
+        title varchar(255) not null,
+        primary key (id)
+    )
+2026-02-10 14:31:42 [main] DEBUG org.hibernate.SQL - 
+    create table users (
+        age integer,
+        assigned_cases_count integer,
+        is_active boolean,
+        is_approved boolean,
+        is_deleted boolean,
+        password_reseted boolean,
+        created_at timestamp(6),
+        otp_expiration_time timestamp(6),
+        updated_at timestamp(6),
+        id uuid not null,
+        court varchar(255),
+        email varchar(255) not null unique,
+        first_name varchar(255) not null,
+        last_name varchar(255) not null,
+        national_id varchar(255) not null unique,
+        otp_code varchar(255) not null,
+        password varchar(255) not null,
+        role varchar(255) not null check ((role in ('ADMIN','JUDGE','LAWYER','EMPTY'))),
+        primary key (id)
+    )
+2026-02-10 14:31:42 [main] DEBUG org.hibernate.SQL - 
+    alter table if exists case_files 
+       add constraint FKga9g2n34bwd7xh4ccxsx98bfe 
+       foreign key (case_id) 
+       references cases
+2026-02-10 14:31:42 [main] DEBUG org.hibernate.SQL - 
+    alter table if exists case_files 
+       add constraint FKq97x10ysy310jckh02s0pdntv 
+       foreign key (uploaded_by) 
+       references users
+2026-02-10 14:31:42 [main] DEBUG org.hibernate.SQL - 
+    alter table if exists case_requests 
+       add constraint FKj7qqebncj0udvqdpntvx0yklb 
+       foreign key (lawyer_id) 
+       references users
+2026-02-10 14:31:42 [main] DEBUG org.hibernate.SQL - 
+    alter table if exists case_requests 
+       add constraint FKptewc89oihmrvk52bvwunvmcp 
+       foreign key (case_id) 
+       references cases
+2026-02-10 14:31:42 [main] DEBUG org.hibernate.SQL - 
+    alter table if exists cases 
+       add constraint FKeg3vv92i8tmpjd4boaeoi4f94 
+       foreign key (assigned_by_id) 
+       references users
+2026-02-10 14:31:42 [main] DEBUG org.hibernate.SQL - 
+    alter table if exists cases 
+       add constraint FK6l9dqxm562pqp8o6bwer6oyba 
+       foreign key (judge_id) 
+       references users
+2026-02-10 14:31:42 [main] DEBUG org.hibernate.SQL - 
+    alter table if exists cases 
+       add constraint FK3xkk4p4hvu6kwe763a6i1hgu0 
+       foreign key (lawyer_id) 
+       references users
+2026-02-10 14:31:42 [main] DEBUG org.hibernate.SQL - 
+    alter table if exists model_results 
+       add constraint FKe3xqqgcmy88kh2kngkcumpbo9 
+       foreign key (case_id) 
+       references cases
+2026-02-10 14:31:42 [main] DEBUG org.hibernate.SQL - 
+    alter table if exists notifications 
+       add constraint FKqqnsjxlwleyjbxlmm213jaj3f 
+       foreign key (recipient_id) 
+       references users
+2026-02-10 14:31:42 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-02-10 14:31:43 [main] INFO  o.s.d.j.r.q.QueryEnhancerFactories - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-02-10 14:31:43 [main] DEBUG c.f.f.c.s.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2026-02-10 14:31:44 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'createCase' with operations: [Builder[public com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseResponseDto com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminCaseManagementServiceImpl.createCase(com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseRequestDto)] caches=[cases] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
+2026-02-10 14:31:44 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getAllCases' with operations: [Builder[public org.springframework.data.domain.Page com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminCaseManagementServiceImpl.getAllCases(org.springframework.data.domain.Pageable)] caches=[cases] | key=''all:'+#pageable.pageNumber+':'+ #pageable.pageSize' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
+2026-02-10 14:31:44 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getCaseById' with operations: [Builder[public com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseResponseDto com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminCaseManagementServiceImpl.getCaseById(java.util.UUID)] caches=[cases] | key=''id:' + #caseId' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
+2026-02-10 14:31:44 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'updateCase' with operations: [Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminCaseManagementServiceImpl.updateCase(java.util.UUID,com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseRequestDto)] caches=[cases] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
+2026-02-10 14:31:44 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'deleteCase' with operations: [Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminCaseManagementServiceImpl.deleteCase(java.util.UUID)] caches=[cases] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
+2026-02-10 14:31:44 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getAllFullyAssignedCases' with operations: [Builder[public org.springframework.data.domain.Page com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminCaseManagementServiceImpl.getAllFullyAssignedCases(org.springframework.data.domain.Pageable)] caches=[cases] | key=''fullyAssigned:' + #pageable.pageNumber' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
+2026-02-10 14:31:44 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'importCasesFromCsv' with operations: [Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminCaseManagementServiceImpl.importCasesFromCsv(org.springframework.web.multipart.MultipartFile)] caches=[cases] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
+2026-02-10 14:31:44 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getCasesByStatus' with operations: [Builder[public org.springframework.data.domain.Page com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminCaseManagementServiceImpl.getCasesByStatus(com.fullDetailed.fullDetailedDemo.domain.enums.CaseStatus,org.springframework.data.domain.Pageable)] caches=[cases] | key=''status:' + #status + ':' + #pageable.pageNumber + ':' + #pageable.pageSize' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
+2026-02-10 14:31:44 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getAllDeletedCases' with operations: [Builder[public org.springframework.data.domain.Page com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminCaseManagementServiceImpl.getAllDeletedCases(org.springframework.data.domain.Pageable)] caches=[cases] | key=''deleted:' + #pageable.pageNumber' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
+2026-02-10 14:31:44 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'assignCaseToJudge' with operations: [Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminCaseManagementServiceImpl.assignCaseToJudge(java.util.UUID,java.util.UUID)] caches=[cases] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
+2026-02-10 14:31:44 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'uploadCaseFiles' with operations: [Builder[public java.util.List com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminCaseManagementServiceImpl.uploadCaseFiles(java.util.UUID,java.util.List)] caches=[cases] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
+2026-02-10 14:31:44 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'createUser' with operations: [Builder[public com.fullDetailed.fullDetailedDemo.domain.dtos.judge.UserResponseDto com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.createUser(com.fullDetailed.fullDetailedDemo.domain.dtos.judge.CreateUserDto)] caches=[users_list] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
+2026-02-10 14:31:44 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getUserById' with operations: [Builder[public com.fullDetailed.fullDetailedDemo.domain.dtos.UserProfileResponseDto com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.getUserById(java.util.UUID)] caches=[user_profile] | key='#userId' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
+2026-02-10 14:31:44 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'activateUserById' with operations: [Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.activateUserById(java.util.UUID)] caches=[user_profile] | key='#userId' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',false,false, Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.activateUserById(java.util.UUID)] caches=[users_list] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
+2026-02-10 14:31:44 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'deActivateUserById' with operations: [Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.deActivateUserById(java.util.UUID)] caches=[user_profile] | key='#userId' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',false,false, Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.deActivateUserById(java.util.UUID)] caches=[users_list] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
+2026-02-10 14:31:44 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'deleteUserById' with operations: [Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.deleteUserById(java.util.UUID)] caches=[user_profile] | key='#userId' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',false,false, Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.deleteUserById(java.util.UUID)] caches=[users_list] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
+2026-02-10 14:31:44 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getAllLawyerProfile' with operations: [Builder[public org.springframework.data.domain.Page com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.getAllLawyerProfile(org.springframework.data.domain.Pageable)] caches=[users_list] | key='{#root.methodName, #pageable}' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
+2026-02-10 14:31:44 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getAllJudgesProfile' with operations: [Builder[public org.springframework.data.domain.Page com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.getAllJudgesProfile(org.springframework.data.domain.Pageable)] caches=[users_list] | key='{#root.methodName, #pageable}' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
+2026-02-10 14:31:44 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'updateJudgeProfile' with operations: [Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.updateJudgeProfile(java.util.UUID,com.fullDetailed.fullDetailedDemo.domain.dtos.judge.JudgeProfileDto)] caches=[user_profile] | key='#judgeId' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',false,false, Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.updateJudgeProfile(java.util.UUID,com.fullDetailed.fullDetailedDemo.domain.dtos.judge.JudgeProfileDto)] caches=[users_list] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
+2026-02-10 14:31:44 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getAllActivatedLawyers' with operations: [Builder[public org.springframework.data.domain.Page com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.getAllActivatedLawyers(org.springframework.data.domain.Pageable)] caches=[users_list] | key='{#root.methodName, #pageable}' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
+2026-02-10 14:31:44 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getAllDeactivatedLawyers' with operations: [Builder[public org.springframework.data.domain.Page com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.getAllDeactivatedLawyers(org.springframework.data.domain.Pageable)] caches=[users_list] | key='{#root.methodName, #pageable}' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
+2026-02-10 14:31:44 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getAllApprovedLawyers' with operations: [Builder[public org.springframework.data.domain.Page com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.getAllApprovedLawyers(org.springframework.data.domain.Pageable)] caches=[users_list] | key='{#root.methodName, #pageable}' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
+2026-02-10 14:31:44 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getAllRejectedLawyers' with operations: [Builder[public org.springframework.data.domain.Page com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.getAllRejectedLawyers(org.springframework.data.domain.Pageable)] caches=[users_list] | key='{#root.methodName, #pageable}' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
+2026-02-10 14:31:45 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'acceptLawyerApprovalById' with operations: [Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.acceptLawyerApprovalById(java.util.UUID)] caches=[user_profile] | key='#userId' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',false,false, Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.acceptLawyerApprovalById(java.util.UUID)] caches=[users_list] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
+2026-02-10 14:31:45 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'rejectLawyerApprovalById' with operations: [Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.rejectLawyerApprovalById(java.util.UUID)] caches=[user_profile] | key='#userId' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',false,false, Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.rejectLawyerApprovalById(java.util.UUID)] caches=[users_list] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
+2026-02-10 14:31:45 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getAllActivatedJudges' with operations: [Builder[public org.springframework.data.domain.Page com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.getAllActivatedJudges(org.springframework.data.domain.Pageable)] caches=[users_list] | key='{#root.methodName, #pageable}' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
+2026-02-10 14:31:45 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getAllDeactivatedJudges' with operations: [Builder[public org.springframework.data.domain.Page com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.getAllDeactivatedJudges(org.springframework.data.domain.Pageable)] caches=[users_list] | key='{#root.methodName, #pageable}' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
+2026-02-10 14:31:45 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getAllCaseRequestsByStatus' with operations: [Builder[public org.springframework.data.domain.Page com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.getAllCaseRequestsByStatus(com.fullDetailed.fullDetailedDemo.domain.enums.RequestStatus,org.springframework.data.domain.Pageable)] caches=[case_requests] | key='{#status, #pageable}' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
+2026-02-10 14:31:45 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'approveCaseAccessRequest' with operations: [Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.approveCaseAccessRequest(java.util.UUID)] caches=[case_requests] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false, Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.approveCaseAccessRequest(java.util.UUID)] caches=[users_list] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false, Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.approveCaseAccessRequest(java.util.UUID)] caches=[user_profile] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
+2026-02-10 14:31:45 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'rejectCaseAccessRequest' with operations: [Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.rejectCaseAccessRequest(java.util.UUID)] caches=[case_requests] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
+2026-02-10 14:31:45 [main] WARN  o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-02-10 14:31:45 [main] INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name customUserServiceDetails
+2026-02-10 14:31:47 [main] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - Starting...
+2026-02-10 14:31:47 [main] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@4a77d2a5]]
+2026-02-10 14:31:47 [main] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - Started.
+2026-02-10 14:31:47 [main] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2026-02-10 14:31:47 [main] INFO  c.f.fullDetailedDemo.Elmostashar - Started Elmostashar in 12.367 seconds (process running for 13.116)
+2026-02-10 14:31:52 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-02-10 14:31:52 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-02-10 14:31:52 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 4 ms
+2026-02-10 14:31:56 [http-nio-8080-exec-9] INFO  o.s.api.AbstractOpenApiResource - Init duration for springdoc-openapi is: 2198 ms
+2026-02-10 14:32:44 [http-nio-8080-exec-10] INFO  c.f.f.AOP.LoggingAspect - ========================================
+2026-02-10 14:32:44 [http-nio-8080-exec-10] INFO  c.f.f.AOP.LoggingAspect - ==== ENTERING====: AuthServiceImpl.register
+2026-02-10 14:32:44 [http-nio-8080-exec-10] INFO  c.f.f.AOP.LoggingAspect -    Arg[0]: RegisterRequestDto(firstName=يوسف ايهاب, lastName=ايهاب, email=youssefehab204@gmail.com, nationalId=30408171201237, password=12345678, confirmPassword=12345678, age=0)
+2026-02-10 14:32:45 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id 
+    from
+        users u1_0 
+    where
+        u1_0.email=? 
+    fetch
+        first ? rows only
+2026-02-10 14:32:45 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id 
+    from
+        users u1_0 
+    where
+        u1_0.national_id=? 
+    fetch
+        first ? rows only
+2026-02-10 14:32:45 [http-nio-8080-exec-10] INFO  c.f.f.AOP.LoggingAspect - ========================================
+2026-02-10 14:32:45 [http-nio-8080-exec-10] INFO  c.f.f.AOP.LoggingAspect - ==== ENTERING====: EmailServiceImpl.sendOtpEmail
+2026-02-10 14:32:45 [http-nio-8080-exec-10] INFO  c.f.f.AOP.LoggingAspect -    Arg[0]: youssefehab204@gmail.com
+2026-02-10 14:32:47 [MessageBroker-1] INFO  o.s.w.s.c.WebSocketMessageBrokerStats - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 1, active threads = 1, queued tasks = 0, completed tasks = 0]
+2026-02-10 14:32:49 [http-nio-8080-exec-10] INFO  c.f.f.AOP.LoggingAspect - ==== COMPLETED=====: EmailServiceImpl.sendOtpEmail
+2026-02-10 14:32:49 [http-nio-8080-exec-10] INFO  c.f.f.AOP.LoggingAspect -    Duration: 3207 ms
+2026-02-10 14:32:49 [http-nio-8080-exec-10] INFO  c.f.f.AOP.LoggingAspect -    Result: 958744
+2026-02-10 14:32:49 [http-nio-8080-exec-10] INFO  c.f.f.AOP.LoggingAspect - ========================================
+2026-02-10 14:32:49 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        users
+        (age, assigned_cases_count, court, created_at, email, first_name, is_active, is_approved, is_deleted, password_reseted, last_name, national_id, otp_code, otp_expiration_time, password, role, updated_at, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2026-02-10 14:32:49 [http-nio-8080-exec-10] INFO  c.f.f.AOP.LoggingAspect - ==== COMPLETED=====: AuthServiceImpl.register
+2026-02-10 14:32:49 [http-nio-8080-exec-10] INFO  c.f.f.AOP.LoggingAspect -    Duration: 4462 ms
+2026-02-10 14:32:49 [http-nio-8080-exec-10] INFO  c.f.f.AOP.LoggingAspect -    Result: RegisterResponseDto(id=8ab2efe1-2c54-496b-87cc-773129ccb41b, firstName=يوسف ايهاب, lastName=ايهاب, email=youssefehab204@gmail.com, nationalId=30408171201237, age=0)
+2026-02-10 14:32:49 [http-nio-8080-exec-10] INFO  c.f.f.AOP.LoggingAspect - ========================================
+2026-02-10 14:33:42 [http-nio-8080-exec-5] INFO  c.f.f.AOP.LoggingAspect - ========================================
+2026-02-10 14:33:42 [http-nio-8080-exec-5] INFO  c.f.f.AOP.LoggingAspect - ==== ENTERING====: AuthServiceImpl.login
+2026-02-10 14:33:42 [http-nio-8080-exec-5] INFO  c.f.f.AOP.LoggingAspect -    Arg[0]: LoginRequestDto(email=youssefehab204@gmail.com, password=12345678)
+2026-02-10 14:33:42 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    SELECT
+        * 
+    FROM
+        users u 
+    WHERE
+        u.email = ? 
+    LIMIT
+        1
+2026-02-10 14:33:42 [http-nio-8080-exec-5] INFO  c.f.f.services.impl.AuthServiceImpl - ##### query take ######: 105 ms
+2026-02-10 14:33:42 [http-nio-8080-exec-5] ERROR c.f.f.AOP.LoggingAspect - ==== FAILED ====: AuthServiceImpl.login
+2026-02-10 14:33:42 [http-nio-8080-exec-5] ERROR c.f.f.AOP.LoggingAspect -    Duration: 107 ms
+2026-02-10 14:33:42 [http-nio-8080-exec-5] ERROR c.f.f.AOP.LoggingAspect -    Exception: Account pending approval
+2026-02-10 14:33:42 [http-nio-8080-exec-5] INFO  c.f.f.AOP.LoggingAspect - ========================================
+2026-02-10 14:33:42 [http-nio-8080-exec-5] ERROR c.f.f.AOP.ExceptionAspect - ### Exception in Method ###
+2026-02-10 14:33:42 [http-nio-8080-exec-5] ERROR c.f.f.AOP.ExceptionAspect - Method: LoginResponseDto com.fullDetailed.fullDetailedDemo.services.impl.AuthServiceImpl.login(LoginRequestDto)
+2026-02-10 14:33:42 [http-nio-8080-exec-5] ERROR c.f.f.AOP.ExceptionAspect - Exception: Account pending approval
+2026-02-10 14:33:54 [http-nio-8080-exec-4] INFO  c.f.f.AOP.LoggingAspect - ========================================
+2026-02-10 14:33:54 [http-nio-8080-exec-4] INFO  c.f.f.AOP.LoggingAspect - ==== ENTERING====: AuthServiceImpl.login
+2026-02-10 14:33:54 [http-nio-8080-exec-4] INFO  c.f.f.AOP.LoggingAspect -    Arg[0]: LoginRequestDto(email=youssefehab204@gmail.com, password=12345678)
+2026-02-10 14:33:54 [http-nio-8080-exec-4] DEBUG org.hibernate.SQL - 
+    SELECT
+        * 
+    FROM
+        users u 
+    WHERE
+        u.email = ? 
+    LIMIT
+        1
+2026-02-10 14:33:54 [http-nio-8080-exec-4] INFO  c.f.f.services.impl.AuthServiceImpl - ##### query take ######: 7 ms
+2026-02-10 14:33:54 [http-nio-8080-exec-4] INFO  c.f.f.services.impl.AuthServiceImpl - ###### BCrypt took ######: 68 ms
+2026-02-10 14:33:54 [http-nio-8080-exec-4] INFO  c.f.f.services.impl.AuthServiceImpl - ###### Tokens took ######: 103 ms
+2026-02-10 14:33:54 [http-nio-8080-exec-4] INFO  c.f.f.AOP.LoggingAspect - ==== COMPLETED=====: AuthServiceImpl.login
+2026-02-10 14:33:54 [http-nio-8080-exec-4] INFO  c.f.f.AOP.LoggingAspect -    Duration: 181 ms
+2026-02-10 14:33:54 [http-nio-8080-exec-4] INFO  c.f.f.AOP.LoggingAspect -    Result: LoginResponseDto(access_token=eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJST0xFX0xBV1lFUiJdLCJzdWIiOiJ5b3Vzc2VmZWhhYjIwNEBnbWFpbC5jb20iLCJpYXQiOjE3NzA3MzQwMzQsImV4cCI6MTc3MDczNzYzNH0.nG8vD5UGdOQth0b8MQfQS-5OuLLaPDYX8vX1EF8FSNs, refresh_token=eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJST0xFX0xBV1lFUiJdLCJzdWIiOiJ5b3Vzc2VmZWhhYjIwNEBnbWFpbC5jb20iLCJpYXQiOjE3NzA3MzQwMzQsImV4cCI6MTc3MDc1OTIzNH0.skGtZWsjIfKUhOqQGxO7wxOTyRZQqCjb8U9jYHtUPU4, role=LAWYER, id=8ab2efe1-2c54-496b-87cc-773129ccb41b)
+2026-02-10 14:33:54 [http-nio-8080-exec-4] INFO  c.f.f.AOP.LoggingAspect - ========================================
+2026-02-10 14:34:05 [http-nio-8080-exec-6] INFO  c.f.f.AOP.LoggingAspect - ========================================
+2026-02-10 14:34:05 [http-nio-8080-exec-6] INFO  c.f.f.AOP.LoggingAspect - ==== ENTERING====: AuthServiceImpl.login
+2026-02-10 14:34:05 [http-nio-8080-exec-6] INFO  c.f.f.AOP.LoggingAspect -    Arg[0]: LoginRequestDto(email=youssefehab204@gmail.com, password=12345678)
+2026-02-10 14:34:05 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    SELECT
+        * 
+    FROM
+        users u 
+    WHERE
+        u.email = ? 
+    LIMIT
+        1
+2026-02-10 14:34:05 [http-nio-8080-exec-6] INFO  c.f.f.services.impl.AuthServiceImpl - ##### query take ######: 5 ms
+2026-02-10 14:34:05 [http-nio-8080-exec-6] ERROR c.f.f.AOP.LoggingAspect - ==== FAILED ====: AuthServiceImpl.login
+2026-02-10 14:34:05 [http-nio-8080-exec-6] ERROR c.f.f.AOP.LoggingAspect -    Duration: 6 ms
+2026-02-10 14:34:05 [http-nio-8080-exec-6] ERROR c.f.f.AOP.LoggingAspect -    Exception: Account pending approval
+2026-02-10 14:34:05 [http-nio-8080-exec-6] INFO  c.f.f.AOP.LoggingAspect - ========================================
+2026-02-10 14:34:05 [http-nio-8080-exec-6] ERROR c.f.f.AOP.ExceptionAspect - ### Exception in Method ###
+2026-02-10 14:34:05 [http-nio-8080-exec-6] ERROR c.f.f.AOP.ExceptionAspect - Method: LoginResponseDto com.fullDetailed.fullDetailedDemo.services.impl.AuthServiceImpl.login(LoginRequestDto)
+2026-02-10 14:34:05 [http-nio-8080-exec-6] ERROR c.f.f.AOP.ExceptionAspect - Exception: Account pending approval
+2026-02-10 14:34:14 [SpringApplicationShutdownHook] INFO  o.s.boot.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-02-10 14:34:14 [tomcat-shutdown] INFO  o.s.boot.tomcat.GracefulShutdown - Graceful shutdown complete
+2026-02-10 14:34:14 [SpringApplicationShutdownHook] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - Stopping...
+2026-02-10 14:34:14 [SpringApplicationShutdownHook] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@4a77d2a5]]
+2026-02-10 14:34:14 [SpringApplicationShutdownHook] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - Stopped.
+2026-02-10 14:34:14 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-02-10 14:34:14 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-02-10 14:34:14 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-02-10 14:34:21 [main] INFO  c.f.fullDetailedDemo.Elmostashar - Starting Elmostashar v0.0.1-SNAPSHOT using Java 21.0.10 with PID 1 (/app/app.jar started by spring in /app)
+2026-02-10 14:34:21 [main] DEBUG c.f.fullDetailedDemo.Elmostashar - Running with Spring Boot v4.0.0, Spring v7.0.1
+2026-02-10 14:34:21 [main] INFO  c.f.fullDetailedDemo.Elmostashar - No active profile set, falling back to 1 default profile: "default"
+2026-02-10 14:34:22 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-02-10 14:34:22 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 77 ms. Found 5 JPA repository interfaces.
+2026-02-10 14:34:24 [main] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-02-10 14:34:24 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-02-10 14:34:24 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.14]
+2026-02-10 14:34:24 [main] INFO  o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 3154 ms
+2026-02-10 14:34:24 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-02-10 14:34:24 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@467ef400
+2026-02-10 14:34:24 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-02-10 14:34:25 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-02-10 14:34:25 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 7.1.8.Final
+2026-02-10 14:34:25 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-02-10 14:34:26 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-02-10 14:34:26 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://postgres:5432/fullDetails]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 16.11
+	Default catalog/schema: fullDetails/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DatasourceConnectionProviderImpl
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-02-10 14:34:27 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-02-10 14:34:27 [main] DEBUG org.hibernate.SQL - 
+    set client_min_messages = WARNING
+2026-02-10 14:34:27 [main] DEBUG org.hibernate.SQL - 
+    alter table if exists case_files 
+       drop constraint if exists FKga9g2n34bwd7xh4ccxsx98bfe
+2026-02-10 14:34:27 [main] DEBUG org.hibernate.SQL - 
+    alter table if exists case_files 
+       drop constraint if exists FKq97x10ysy310jckh02s0pdntv
+2026-02-10 14:34:27 [main] DEBUG org.hibernate.SQL - 
+    alter table if exists case_requests 
+       drop constraint if exists FKj7qqebncj0udvqdpntvx0yklb
+2026-02-10 14:34:27 [main] DEBUG org.hibernate.SQL - 
+    alter table if exists case_requests 
+       drop constraint if exists FKptewc89oihmrvk52bvwunvmcp
+2026-02-10 14:34:27 [main] DEBUG org.hibernate.SQL - 
+    alter table if exists cases 
+       drop constraint if exists FKeg3vv92i8tmpjd4boaeoi4f94
+2026-02-10 14:34:27 [main] DEBUG org.hibernate.SQL - 
+    alter table if exists cases 
+       drop constraint if exists FK6l9dqxm562pqp8o6bwer6oyba
+2026-02-10 14:34:27 [main] DEBUG org.hibernate.SQL - 
+    alter table if exists cases 
+       drop constraint if exists FK3xkk4p4hvu6kwe763a6i1hgu0
+2026-02-10 14:34:27 [main] DEBUG org.hibernate.SQL - 
+    alter table if exists model_results 
+       drop constraint if exists FKe3xqqgcmy88kh2kngkcumpbo9
+2026-02-10 14:34:27 [main] DEBUG org.hibernate.SQL - 
+    alter table if exists notifications 
+       drop constraint if exists FKqqnsjxlwleyjbxlmm213jaj3f
+2026-02-10 14:34:27 [main] DEBUG org.hibernate.SQL - 
+    drop table if exists case_files cascade
+2026-02-10 14:34:27 [main] DEBUG org.hibernate.SQL - 
+    drop table if exists case_requests cascade
+2026-02-10 14:34:27 [main] DEBUG org.hibernate.SQL - 
+    drop table if exists cases cascade
+2026-02-10 14:34:27 [main] DEBUG org.hibernate.SQL - 
+    drop table if exists model_results cascade
+2026-02-10 14:34:27 [main] DEBUG org.hibernate.SQL - 
+    drop table if exists notifications cascade
+2026-02-10 14:34:27 [main] DEBUG org.hibernate.SQL - 
+    drop table if exists users cascade
+2026-02-10 14:34:27 [main] DEBUG org.hibernate.SQL - 
+    create table case_files (
+        uploaded_at timestamp(6),
+        case_id uuid,
+        id uuid not null,
+        uploaded_by uuid,
+        file_name varchar(255) not null,
+        file_type varchar(255) check ((file_type in ('PDF','OTHER','DOCUMENT','IMAGE'))),
+        file_url varchar(255),
+        primary key (id)
+    )
+2026-02-10 14:34:27 [main] DEBUG org.hibernate.SQL - 
+    create table case_requests (
+        requested_at timestamp(6),
+        case_id uuid not null,
+        id uuid not null,
+        lawyer_id uuid not null,
+        status varchar(255) not null check ((status in ('PENDING','APPROVED','REJECTED'))),
+        primary key (id)
+    )
+2026-02-10 14:34:27 [main] DEBUG org.hibernate.SQL - 
+    create table cases (
+        is_deleted boolean not null,
+        created_at timestamp(6),
+        assigned_by_id uuid,
+        id uuid not null,
+        judge_id uuid,
+        lawyer_id uuid,
+        description varchar(2000),
+        case_number varchar(255) not null,
+        court_ruling varchar(255),
+        final_decision varchar(255),
+        model_judgment varchar(255),
+        model_summary varchar(255),
+        status varchar(255) not null check ((status in ('PENDING','UNDER_DISCUSSION','COMPLETED'))),
+        title varchar(255) not null,
+        primary key (id)
+    )
+2026-02-10 14:34:27 [main] DEBUG org.hibernate.SQL - 
+    create table model_results (
+        confidence_score float(53) not null,
+        created_at timestamp(6),
+        case_id uuid unique,
+        id uuid not null,
+        judgment varchar(2000),
+        summary varchar(5000),
+        primary key (id)
+    )
+2026-02-10 14:34:27 [main] DEBUG org.hibernate.SQL - 
+    create table notifications (
+        is_read boolean not null,
+        created_at timestamp(6),
+        id uuid not null,
+        recipient_id uuid not null,
+        message varchar(255) not null,
+        title varchar(255) not null,
+        primary key (id)
+    )
+2026-02-10 14:34:27 [main] DEBUG org.hibernate.SQL - 
+    create table users (
+        age integer,
+        assigned_cases_count integer,
+        is_active boolean,
+        is_approved boolean,
+        is_deleted boolean,
+        password_reseted boolean,
+        created_at timestamp(6),
+        otp_expiration_time timestamp(6),
+        updated_at timestamp(6),
+        id uuid not null,
+        court varchar(255),
+        email varchar(255) not null unique,
+        first_name varchar(255) not null,
+        last_name varchar(255) not null,
+        national_id varchar(255) not null unique,
+        otp_code varchar(255) not null,
+        password varchar(255) not null,
+        role varchar(255) not null check ((role in ('ADMIN','JUDGE','LAWYER','EMPTY'))),
+        primary key (id)
+    )
+2026-02-10 14:34:27 [main] DEBUG org.hibernate.SQL - 
+    alter table if exists case_files 
+       add constraint FKga9g2n34bwd7xh4ccxsx98bfe 
+       foreign key (case_id) 
+       references cases
+2026-02-10 14:34:27 [main] DEBUG org.hibernate.SQL - 
+    alter table if exists case_files 
+       add constraint FKq97x10ysy310jckh02s0pdntv 
+       foreign key (uploaded_by) 
+       references users
+2026-02-10 14:34:27 [main] DEBUG org.hibernate.SQL - 
+    alter table if exists case_requests 
+       add constraint FKj7qqebncj0udvqdpntvx0yklb 
+       foreign key (lawyer_id) 
+       references users
+2026-02-10 14:34:27 [main] DEBUG org.hibernate.SQL - 
+    alter table if exists case_requests 
+       add constraint FKptewc89oihmrvk52bvwunvmcp 
+       foreign key (case_id) 
+       references cases
+2026-02-10 14:34:27 [main] DEBUG org.hibernate.SQL - 
+    alter table if exists cases 
+       add constraint FKeg3vv92i8tmpjd4boaeoi4f94 
+       foreign key (assigned_by_id) 
+       references users
+2026-02-10 14:34:27 [main] DEBUG org.hibernate.SQL - 
+    alter table if exists cases 
+       add constraint FK6l9dqxm562pqp8o6bwer6oyba 
+       foreign key (judge_id) 
+       references users
+2026-02-10 14:34:27 [main] DEBUG org.hibernate.SQL - 
+    alter table if exists cases 
+       add constraint FK3xkk4p4hvu6kwe763a6i1hgu0 
+       foreign key (lawyer_id) 
+       references users
+2026-02-10 14:34:27 [main] DEBUG org.hibernate.SQL - 
+    alter table if exists model_results 
+       add constraint FKe3xqqgcmy88kh2kngkcumpbo9 
+       foreign key (case_id) 
+       references cases
+2026-02-10 14:34:27 [main] DEBUG org.hibernate.SQL - 
+    alter table if exists notifications 
+       add constraint FKqqnsjxlwleyjbxlmm213jaj3f 
+       foreign key (recipient_id) 
+       references users
+2026-02-10 14:34:27 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-02-10 14:34:28 [main] INFO  o.s.d.j.r.q.QueryEnhancerFactories - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-02-10 14:34:28 [main] DEBUG c.f.f.c.s.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2026-02-10 14:34:29 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getAllFullyAssignedCases' with operations: [Builder[public org.springframework.data.domain.Page com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminCaseManagementServiceImpl.getAllFullyAssignedCases(org.springframework.data.domain.Pageable)] caches=[cases] | key=''fullyAssigned:' + #pageable.pageNumber' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
+2026-02-10 14:34:29 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'importCasesFromCsv' with operations: [Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminCaseManagementServiceImpl.importCasesFromCsv(org.springframework.web.multipart.MultipartFile)] caches=[cases] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
+2026-02-10 14:34:29 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getCasesByStatus' with operations: [Builder[public org.springframework.data.domain.Page com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminCaseManagementServiceImpl.getCasesByStatus(com.fullDetailed.fullDetailedDemo.domain.enums.CaseStatus,org.springframework.data.domain.Pageable)] caches=[cases] | key=''status:' + #status + ':' + #pageable.pageNumber + ':' + #pageable.pageSize' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
+2026-02-10 14:34:29 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getAllDeletedCases' with operations: [Builder[public org.springframework.data.domain.Page com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminCaseManagementServiceImpl.getAllDeletedCases(org.springframework.data.domain.Pageable)] caches=[cases] | key=''deleted:' + #pageable.pageNumber' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
+2026-02-10 14:34:29 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'assignCaseToJudge' with operations: [Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminCaseManagementServiceImpl.assignCaseToJudge(java.util.UUID,java.util.UUID)] caches=[cases] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
+2026-02-10 14:34:29 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'uploadCaseFiles' with operations: [Builder[public java.util.List com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminCaseManagementServiceImpl.uploadCaseFiles(java.util.UUID,java.util.List)] caches=[cases] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
+2026-02-10 14:34:29 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'createCase' with operations: [Builder[public com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseResponseDto com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminCaseManagementServiceImpl.createCase(com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseRequestDto)] caches=[cases] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
+2026-02-10 14:34:29 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getAllCases' with operations: [Builder[public org.springframework.data.domain.Page com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminCaseManagementServiceImpl.getAllCases(org.springframework.data.domain.Pageable)] caches=[cases] | key=''all:'+#pageable.pageNumber+':'+ #pageable.pageSize' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
+2026-02-10 14:34:29 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getCaseById' with operations: [Builder[public com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseResponseDto com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminCaseManagementServiceImpl.getCaseById(java.util.UUID)] caches=[cases] | key=''id:' + #caseId' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
+2026-02-10 14:34:29 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'updateCase' with operations: [Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminCaseManagementServiceImpl.updateCase(java.util.UUID,com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseRequestDto)] caches=[cases] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
+2026-02-10 14:34:29 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'deleteCase' with operations: [Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminCaseManagementServiceImpl.deleteCase(java.util.UUID)] caches=[cases] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
+2026-02-10 14:34:29 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'activateUserById' with operations: [Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.activateUserById(java.util.UUID)] caches=[user_profile] | key='#userId' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',false,false, Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.activateUserById(java.util.UUID)] caches=[users_list] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
+2026-02-10 14:34:29 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'deActivateUserById' with operations: [Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.deActivateUserById(java.util.UUID)] caches=[user_profile] | key='#userId' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',false,false, Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.deActivateUserById(java.util.UUID)] caches=[users_list] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
+2026-02-10 14:34:29 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'deleteUserById' with operations: [Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.deleteUserById(java.util.UUID)] caches=[user_profile] | key='#userId' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',false,false, Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.deleteUserById(java.util.UUID)] caches=[users_list] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
+2026-02-10 14:34:29 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getAllLawyerProfile' with operations: [Builder[public org.springframework.data.domain.Page com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.getAllLawyerProfile(org.springframework.data.domain.Pageable)] caches=[users_list] | key='{#root.methodName, #pageable}' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
+2026-02-10 14:34:29 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getAllJudgesProfile' with operations: [Builder[public org.springframework.data.domain.Page com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.getAllJudgesProfile(org.springframework.data.domain.Pageable)] caches=[users_list] | key='{#root.methodName, #pageable}' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
+2026-02-10 14:34:29 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'updateJudgeProfile' with operations: [Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.updateJudgeProfile(java.util.UUID,com.fullDetailed.fullDetailedDemo.domain.dtos.judge.JudgeProfileDto)] caches=[user_profile] | key='#judgeId' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',false,false, Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.updateJudgeProfile(java.util.UUID,com.fullDetailed.fullDetailedDemo.domain.dtos.judge.JudgeProfileDto)] caches=[users_list] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
+2026-02-10 14:34:29 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getAllActivatedLawyers' with operations: [Builder[public org.springframework.data.domain.Page com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.getAllActivatedLawyers(org.springframework.data.domain.Pageable)] caches=[users_list] | key='{#root.methodName, #pageable}' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
+2026-02-10 14:34:29 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getAllDeactivatedLawyers' with operations: [Builder[public org.springframework.data.domain.Page com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.getAllDeactivatedLawyers(org.springframework.data.domain.Pageable)] caches=[users_list] | key='{#root.methodName, #pageable}' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
+2026-02-10 14:34:29 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getAllApprovedLawyers' with operations: [Builder[public org.springframework.data.domain.Page com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.getAllApprovedLawyers(org.springframework.data.domain.Pageable)] caches=[users_list] | key='{#root.methodName, #pageable}' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
+2026-02-10 14:34:29 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getAllRejectedLawyers' with operations: [Builder[public org.springframework.data.domain.Page com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.getAllRejectedLawyers(org.springframework.data.domain.Pageable)] caches=[users_list] | key='{#root.methodName, #pageable}' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
+2026-02-10 14:34:29 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'acceptLawyerApprovalById' with operations: [Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.acceptLawyerApprovalById(java.util.UUID)] caches=[user_profile] | key='#userId' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',false,false, Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.acceptLawyerApprovalById(java.util.UUID)] caches=[users_list] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
+2026-02-10 14:34:29 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'rejectLawyerApprovalById' with operations: [Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.rejectLawyerApprovalById(java.util.UUID)] caches=[user_profile] | key='#userId' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',false,false, Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.rejectLawyerApprovalById(java.util.UUID)] caches=[users_list] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
+2026-02-10 14:34:29 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getAllActivatedJudges' with operations: [Builder[public org.springframework.data.domain.Page com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.getAllActivatedJudges(org.springframework.data.domain.Pageable)] caches=[users_list] | key='{#root.methodName, #pageable}' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
+2026-02-10 14:34:29 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getAllDeactivatedJudges' with operations: [Builder[public org.springframework.data.domain.Page com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.getAllDeactivatedJudges(org.springframework.data.domain.Pageable)] caches=[users_list] | key='{#root.methodName, #pageable}' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
+2026-02-10 14:34:29 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getAllCaseRequestsByStatus' with operations: [Builder[public org.springframework.data.domain.Page com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.getAllCaseRequestsByStatus(com.fullDetailed.fullDetailedDemo.domain.enums.RequestStatus,org.springframework.data.domain.Pageable)] caches=[case_requests] | key='{#status, #pageable}' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
+2026-02-10 14:34:29 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'approveCaseAccessRequest' with operations: [Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.approveCaseAccessRequest(java.util.UUID)] caches=[case_requests] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false, Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.approveCaseAccessRequest(java.util.UUID)] caches=[users_list] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false, Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.approveCaseAccessRequest(java.util.UUID)] caches=[user_profile] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
+2026-02-10 14:34:29 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'rejectCaseAccessRequest' with operations: [Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.rejectCaseAccessRequest(java.util.UUID)] caches=[case_requests] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
+2026-02-10 14:34:29 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'createUser' with operations: [Builder[public com.fullDetailed.fullDetailedDemo.domain.dtos.judge.UserResponseDto com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.createUser(com.fullDetailed.fullDetailedDemo.domain.dtos.judge.CreateUserDto)] caches=[users_list] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
+2026-02-10 14:34:29 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getUserById' with operations: [Builder[public com.fullDetailed.fullDetailedDemo.domain.dtos.UserProfileResponseDto com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.getUserById(java.util.UUID)] caches=[user_profile] | key='#userId' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
+2026-02-10 14:34:30 [main] WARN  o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-02-10 14:34:30 [main] INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name customUserServiceDetails
+2026-02-10 14:34:31 [main] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - Starting...
+2026-02-10 14:34:31 [main] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@4a77d2a5]]
+2026-02-10 14:34:31 [main] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - Started.
+2026-02-10 14:34:31 [main] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2026-02-10 14:34:31 [main] INFO  c.f.fullDetailedDemo.Elmostashar - Started Elmostashar in 11.625 seconds (process running for 12.392)
+2026-02-10 14:34:58 [SpringApplicationShutdownHook] INFO  o.s.boot.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-02-10 14:34:58 [tomcat-shutdown] INFO  o.s.boot.tomcat.GracefulShutdown - Graceful shutdown complete
+2026-02-10 14:34:58 [SpringApplicationShutdownHook] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - Stopping...
+2026-02-10 14:34:58 [SpringApplicationShutdownHook] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@4a77d2a5]]
+2026-02-10 14:34:58 [SpringApplicationShutdownHook] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - Stopped.
+2026-02-10 14:34:58 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-02-10 14:34:58 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-02-10 14:34:58 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
