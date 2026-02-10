@@ -57,29 +57,23 @@ public class AuthServiceImpl implements AuthService {
     public LoginResponseDto login(LoginRequestDto request) {
         long start = System.currentTimeMillis();
 
-        // ✅ Single database query - no Spring Security involvement
         User user = userRepo.findByEmail(request.getEmail())
                 .orElseThrow(() -> new NotFoundException("Invalid email or password"));
-        log.info("📊 DB Query took: {} ms", System.currentTimeMillis() - start);
+        log.info("##### query take ######: {} ms", System.currentTimeMillis() - start);
 
-        // Validate status
         validateUserStatus(user);
 
-        // ✅ Verify password directly (no AuthenticationManager)
         long bcryptStart = System.currentTimeMillis();
         if (!passwordEncoder.matches(request.getPassword(), user.getPassword())) {
             throw new NotFoundException("Invalid email or password");
         }
-        log.info("📊 BCrypt took: {} ms", System.currentTimeMillis() - bcryptStart);
+        log.info("###### BCrypt took ######: {} ms", System.currentTimeMillis() - bcryptStart);
 
-        // Generate tokens
         long tokenStart = System.currentTimeMillis();
         CustomUserDetails userDetails = new CustomUserDetails(user);
         String accessToken = jwtUtil.generateToken(userDetails);
         String refreshToken = jwtUtil.generateRefreshToken(userDetails);
-        log.info("📊 Tokens took: {} ms", System.currentTimeMillis() - tokenStart);
-
-        log.info("📊 TOTAL: {} ms", System.currentTimeMillis() - start);
+        log.info("###### Tokens took ######: {} ms", System.currentTimeMillis() - tokenStart);
 
         return LoginResponseDto.builder()
                 .access_token(accessToken)
