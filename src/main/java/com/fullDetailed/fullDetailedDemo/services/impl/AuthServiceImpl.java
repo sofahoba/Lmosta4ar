@@ -12,6 +12,7 @@ import com.fullDetailed.fullDetailedDemo.repository.UserRepo;
 import com.fullDetailed.fullDetailedDemo.services.interfaces.AuthService;
 import com.fullDetailed.fullDetailedDemo.services.interfaces.emailSender.EmailService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -21,13 +22,13 @@ import java.time.LocalDateTime;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class AuthServiceImpl implements AuthService {
 
     private final UserRepo userRepo;
     private final PasswordEncoder passwordEncoder;
     private final JwtUtil jwtUtil;
     private final AuthMapper authMapper;
-    private final AuthenticationManager authenticationManager;
     private final EmailService emailService;
 
     @Override
@@ -54,36 +55,47 @@ public class AuthServiceImpl implements AuthService {
 
     @Override
     public LoginResponseDto login(LoginRequestDto request) {
-        authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(
-                        request.getEmail(),
-                        request.getPassword()
-                )
-        );
-        var user = userRepo.findByEmail(request.getEmail())
-                .orElseThrow(() -> new NotFoundException("User not found"));
+        long start = System.currentTimeMillis();
 
-        if(!user.isActive()){
-            throw new NotFoundException("Sorry your account is inActive please contact the admin");
-        }
-        if(user.isDeleted()){
-            throw new NotFoundException("the email you entered is incorrect");
-        }
-        if(user.getRole()== Role.JUDGE && !user.isPasswordReseted()){
-            throw new NotFoundException("Please reset your password");
-        }
-        if(user.getRole()==Role.LAWYER && user.isApproved()==false){
-            throw new NotFoundException("Please Contact admin for approval");
-        }
-        var accessToken = jwtUtil.generateToken(new CustomUserDetails(user));
-        var refreshToken = jwtUtil.generateRefreshToken(new CustomUserDetails(user));
-        LoginResponseDto res = new LoginResponseDto();
-        res.setAccess_token(accessToken);
-        res.setRefresh_token(refreshToken);
-        res.setRole(user.getRole());
-        res.setId(user.getId());
+        User user = userRepo.findByEmail(request.getEmail())
+                .orElseThrow(() -> new NotFoundException("Invalid email or password"));
+        log.info("##### query take ######: {} ms", System.currentTimeMillis() - start);
 
-        return res;
+        validateUserStatus(user);
+
+        long bcryptStart = System.currentTimeMillis();
+        if (!passwordEncoder.matches(request.getPassword(), user.getPassword())) {
+            throw new NotFoundException("Invalid email or password");
+        }
+        log.info("###### BCrypt took ######: {} ms", System.currentTimeMillis() - bcryptStart);
+
+        long tokenStart = System.currentTimeMillis();
+        CustomUserDetails userDetails = new CustomUserDetails(user);
+        String accessToken = jwtUtil.generateToken(userDetails);
+        String refreshToken = jwtUtil.generateRefreshToken(userDetails);
+        log.info("###### Tokens took ######: {} ms", System.currentTimeMillis() - tokenStart);
+
+        return LoginResponseDto.builder()
+                .access_token(accessToken)
+                .refresh_token(refreshToken)
+                .role(user.getRole())
+                .id(user.getId())
+                .build();
+    }
+
+    private void validateUserStatus(User user) {
+        if (user.isDeleted()) {
+            throw new NotFoundException("Invalid email or password");
+        }
+        if (!user.isActive()) {
+            throw new IllegalArgumentException("Your account is inactive");
+        }
+        if (user.getRole() == Role.JUDGE && !user.isPasswordReseted()) {
+            throw new IllegalArgumentException("Please reset your password");
+        }
+        if (user.getRole() == Role.LAWYER && !user.isApproved()) {
+            throw new IllegalArgumentException("Account pending approval");
+        }
     }
 
     @Override

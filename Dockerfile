@@ -9,6 +9,10 @@ COPY pom.xml .
 # Download dependencies (cached if pom.xml doesn't change)
 RUN mvn dependency:go-offline -B
 
+RUN mkdir -p /app/logs /app/uploads/case-files
+
+RUN chmod -R 755 /app/logs
+
 # Copy source code
 COPY src ./src
 
