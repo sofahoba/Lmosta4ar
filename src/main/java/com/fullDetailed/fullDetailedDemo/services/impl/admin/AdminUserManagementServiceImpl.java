@@ -37,6 +37,7 @@ import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
+@Transactional(readOnly = true)
 public class AdminUserManagementServiceImpl implements AdminUserManagementService {
 
     private final UserRepo userRepo;
@@ -47,6 +48,7 @@ public class AdminUserManagementServiceImpl implements AdminUserManagementServic
 
 
     @Override
+    @Transactional
     @Caching(evict = {
             @CacheEvict(value = "user_profile", key = "#userId"),
             @CacheEvict(value = "users_list", allEntries = true)
@@ -64,7 +66,6 @@ public class AdminUserManagementServiceImpl implements AdminUserManagementServic
         }
 
         user.setApproved(true);
-        userRepo.save(user);
         notificationService.createAndSend(
                 user,
                 "Account Approved",
@@ -73,6 +74,7 @@ public class AdminUserManagementServiceImpl implements AdminUserManagementServic
     }
 
     @Override
+    @Transactional
     @Caching(evict = {
             @CacheEvict(value = "user_profile", key = "#userId"),
             @CacheEvict(value = "users_list", allEntries = true)
@@ -90,10 +92,10 @@ public class AdminUserManagementServiceImpl implements AdminUserManagementServic
         }
 
         user.setApproved(false);
-        userRepo.save(user);
     }
 
     @Override
+    @Transactional
     @Caching(evict = {
             @CacheEvict(value = "user_profile", key = "#userId"),
             @CacheEvict(value = "users_list", allEntries = true)
@@ -102,10 +104,10 @@ public class AdminUserManagementServiceImpl implements AdminUserManagementServic
         User user = userRepo.findById(userId)
                 .orElseThrow(() -> new NotFoundException("User not found"));
         user.setActive(false);
-        userRepo.save(user);
     }
 
     @Override
+    @Transactional
     @Caching(evict = {
             @CacheEvict(value = "user_profile", key = "#userId"),
             @CacheEvict(value = "users_list", allEntries = true)
@@ -114,10 +116,10 @@ public class AdminUserManagementServiceImpl implements AdminUserManagementServic
         User user = userRepo.findById(userId)
                 .orElseThrow(() -> new RuntimeException("User not found"));
         user.setActive(true);
-        userRepo.save(user);
     }
 
     @Override
+    @Transactional
     @Caching(evict = {
             @CacheEvict(value = "user_profile", key = "#userId"),
             @CacheEvict(value = "users_list", allEntries = true)
@@ -126,10 +128,10 @@ public class AdminUserManagementServiceImpl implements AdminUserManagementServic
         User user = userRepo.findById(userId)
                 .orElseThrow(() -> new NotFoundException("User not found"));
         user.setDeleted(true);
-        userRepo.save(user);
     }
 
     @Override
+    @Transactional
     @Caching(evict = {
             @CacheEvict(value = "user_profile", key = "#judgeId"),
             @CacheEvict(value = "users_list", allEntries = true)
@@ -141,8 +143,6 @@ public class AdminUserManagementServiceImpl implements AdminUserManagementServic
             throw new NotFoundException("Judge not found");
         }
         JudgeMapper.updateEntity(user, judgeProfileDto);
-        userRepo.save(user);
-
         notificationService.createAndSend(
                 user,
                 "Profile Updated",
@@ -203,6 +203,7 @@ public class AdminUserManagementServiceImpl implements AdminUserManagementServic
 
 
     @Override
+    @Transactional
     @CacheEvict(value = "users_list", allEntries = true)
     public UserResponseDto createUser(CreateUserDto createUserDto) {
         if (userRepo.existsByEmail(createUserDto.getEmail())) {
@@ -272,22 +273,19 @@ public class AdminUserManagementServiceImpl implements AdminUserManagementServic
         CaseRequests request = caseRequestRepository.findById(requestId)
                 .orElseThrow(() -> new NotFoundException("Request not found with id: " + requestId));
 
-        request.setStatus(RequestStatus.APPROVED);
-        caseRequestRepository.save(request);
-
-
+        if (request.getStatus() == RequestStatus.APPROVED) {
+            throw new IllegalArgumentException("request approved");
+        }
         Case legalCase = request.getLegalCase();
 
         if(legalCase.getLawyer()!=null){
             throw new IllegalArgumentException("the case already has lawyer");
         }
+        request.setStatus(RequestStatus.APPROVED);
         legalCase.setLawyer(request.getLawyer());
 
         User lawyer = request.getLawyer();
         lawyer.setAssignedCasesCount(lawyer.getAssignedCasesCount() + 1);
-        userRepo.save(lawyer);
-
-        caseRepository.save(legalCase);
 
         String caseInfo = (legalCase.getCaseNumber() != null) ? legalCase.getCaseNumber() : "the requested case";
 
@@ -299,14 +297,16 @@ public class AdminUserManagementServiceImpl implements AdminUserManagementServic
     }
 
     @Override
+    @Transactional
     @CacheEvict(value = "case_requests", allEntries = true)
     public void rejectCaseAccessRequest(UUID requestId) {
         CaseRequests request = caseRequestRepository.findById(requestId)
                 .orElseThrow(() -> new NotFoundException("Request not found with id: " + requestId));
 
+        if (request.getStatus()==RequestStatus.REJECTED){
+            throw new IllegalArgumentException("already rejected");
+        }
         request.setStatus(RequestStatus.REJECTED);
-        caseRequestRepository.save(request);
-
         String caseInfo = (request.getLegalCase().getCaseNumber() != null)
                 ? request.getLegalCase().getCaseNumber()
                 : "the requested case";

@@ -2,6 +2,7 @@ package com.fullDetailed.fullDetailedDemo.services.impl.judge;
 
 import com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseRequestDto;
 import com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseResponseDto;
+import com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseRulingDto;
 import com.fullDetailed.fullDetailedDemo.domain.dtos.judge.JudgeProfileDto;
 import com.fullDetailed.fullDetailedDemo.domain.entities.Case;
 import com.fullDetailed.fullDetailedDemo.domain.entities.User;
@@ -18,6 +19,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -26,6 +28,7 @@ import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
+@Transactional(readOnly = true)
 public class JudgeServiceImpl implements JudgeService {
 
     private final UserRepo userRepo;
@@ -34,8 +37,7 @@ public class JudgeServiceImpl implements JudgeService {
 
     @Override
     public JudgeProfileDto getJudgeProfile() {
-        UUID userId=userContextService.getCurrentUserId();
-        User user=userRepo.findById(userId).orElseThrow(()->new NotFoundException("User not fount"));
+        User user = userContextService.getCurrentUser();
         if(user.isDeleted() || !user.isActive()){
             throw new NotFoundException("User not fount");
         }
@@ -43,14 +45,14 @@ public class JudgeServiceImpl implements JudgeService {
     }
 
     @Override
+    @Transactional
     public JudgeProfileDto updateJudgeProfile(JudgeProfileDto dto) {
         User currentUser=userContextService.getCurrentUser();
         if(currentUser.isDeleted() || !currentUser.isActive() || currentUser.isDeleted()){
             throw new NotFoundException("User not fount");
         }
         JudgeMapper.updateEntity(currentUser,dto);
-        User updatedUser=userRepo.save(currentUser);
-        return JudgeMapper.toDto(updatedUser);
+        return JudgeMapper.toDto(currentUser);
     }
 
     @Override
@@ -80,12 +82,9 @@ public class JudgeServiceImpl implements JudgeService {
     public Page<CaseResponseDto> getCasesByStatus(CaseStatus status,Pageable pageable) {
 
         User judge = userContextService.getCurrentUser();
-        Page<Case> cases = caseRepository.findByJudgeAndStatusAndIsDeletedFalse(
-                judge,
-                status,
-                PagenationHandler.createCleanPageable(pageable)
-        );
-        return cases.map(CaseMapper::toDto);
+        return caseRepository.findByJudgeAndStatusAndIsDeletedFalse(
+                judge, status, PagenationHandler.createCleanPageable(pageable)
+        ).map(CaseMapper::toDto);
     }
 
     @Override
@@ -129,7 +128,8 @@ public class JudgeServiceImpl implements JudgeService {
     }
 
     @Override
-    public CaseResponseDto updateCaseRuling(UUID caseId, CaseRequestDto dto) {
+    @Transactional
+    public CaseResponseDto updateCaseRuling(UUID caseId, CaseRulingDto dto) {
         User judge = userContextService.getCurrentUser();
         if(judge.isDeleted() || !judge.isActive() || !judge.isPasswordReseted()){
             throw new NotFoundException("User not found or inactive");
@@ -141,19 +141,12 @@ public class JudgeServiceImpl implements JudgeService {
         if (caseEntity.getJudge() == null || !caseEntity.getJudge().getId().equals(judge.getId())) {
             throw new NotFoundException("You are not authorized to rule on this case");
         }
-        if (dto.getCaseNumber() != null ||
-                dto.getTitle() != null ||
-                dto.getDescription() != null ||
-                dto.getStatus() != null) {
 
-            throw new IllegalArgumentException("Judges are strictly limited to updating the 'courtRuling' field. Please remove other fields from the request.");
-        }
         if (dto.getCourtRuling() != null) {
             caseEntity.setCourtRuling(dto.getCourtRuling());
         } else {
             throw new IllegalArgumentException("Court Ruling content must be provided.");
         }
-        Case savedCase = caseRepository.save(caseEntity);
-        return CaseMapper.toDto(savedCase);
+        return CaseMapper.toDto(caseEntity);
     }
 }

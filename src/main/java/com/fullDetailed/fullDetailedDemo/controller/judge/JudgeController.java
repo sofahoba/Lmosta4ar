@@ -4,6 +4,7 @@ import com.fullDetailed.fullDetailedDemo.domain.dtos.ApiResponse;
 import com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseFileDownloadDto;
 import com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseRequestDto;
 import com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseResponseDto;
+import com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseRulingDto;
 import com.fullDetailed.fullDetailedDemo.domain.dtos.judge.JudgeProfileDto;
 import com.fullDetailed.fullDetailedDemo.domain.enums.CaseStatus;
 import com.fullDetailed.fullDetailedDemo.services.impl.cassefiles.FilesServices;
@@ -52,9 +53,9 @@ public class JudgeController {
     // ==================== CASES ====================
 
     @GetMapping("/all-cases")
-    public ResponseEntity<ApiResponse<List<CaseResponseDto>>> getJudgeCases(Pageable pageable) {
+    public ResponseEntity<ApiResponse<Page<CaseResponseDto>>> getJudgeCases(Pageable pageable) {
         Page<CaseResponseDto> cases = judgeService.getJudgeCases(pageable);
-        return ResponseHelper.ok(cases, "Judge cases retrieved successfully");
+        return ResponseHelper.okPage(cases, "Judge cases retrieved successfully");
     }
 
     @GetMapping("/case/{caseId}")
@@ -64,11 +65,11 @@ public class JudgeController {
     }
 
     @GetMapping("/status/{status}")
-    public ResponseEntity<ApiResponse<List<CaseResponseDto>>> getCasesByStatus(
+    public ResponseEntity<ApiResponse<Page<CaseResponseDto>>> getCasesByStatus(
             @PathVariable CaseStatus status,
             Pageable pageable) {
         Page<CaseResponseDto> cases = judgeService.getCasesByStatus(status, pageable);
-        return ResponseHelper.ok(cases, "Cases with status '" + status + "' retrieved successfully");
+        return ResponseHelper.okPage(cases, "Cases with status '" + status + "' retrieved successfully");
     }
 
     @GetMapping("/search-date")
@@ -76,7 +77,7 @@ public class JudgeController {
             summary = "Search cases by date range",
             description = "Retrieves cases within a specified date range. Date format: **yyyy-MM-dd** (e.g., 2026-01-15)"
     )
-    public ResponseEntity<ApiResponse<List<CaseResponseDto>>> getCasesByDateRange(
+    public ResponseEntity<ApiResponse<Page<CaseResponseDto>>> getCasesByDateRange(
             @RequestParam("from")
             @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
             @Parameter(
@@ -97,13 +98,13 @@ public class JudgeController {
 
             Pageable pageable) {
         Page<CaseResponseDto> cases = judgeService.getMyCasesByDateRange(fromDate, toDate, pageable);
-        return ResponseHelper.ok(cases, "Cases from " + fromDate + " to " + toDate + " retrieved successfully");
+        return ResponseHelper.okPage(cases, "Cases from " + fromDate + " to " + toDate + " retrieved successfully");
     }
 
     @GetMapping("/cases/recent")
-    public ResponseEntity<ApiResponse<List<CaseResponseDto>>> getRecentCases(Pageable pageable) {
+    public ResponseEntity<ApiResponse<Page<CaseResponseDto>>> getRecentCases(Pageable pageable) {
         Page<CaseResponseDto> cases = judgeService.getAllCasesLast30Days(pageable);
-        return ResponseHelper.ok(cases, "Recent cases (last 30 days) retrieved successfully");
+        return ResponseHelper.okPage(cases, "Recent cases (last 30 days) retrieved successfully");
     }
 
     // ==================== RULING ====================
@@ -111,7 +112,7 @@ public class JudgeController {
     @PatchMapping("/cases/{caseId}/ruling")
     public ResponseEntity<ApiResponse<CaseResponseDto>> updateCaseRuling(
             @PathVariable UUID caseId,
-            @Valid @RequestBody CaseRequestDto dto) {
+            @Valid @RequestBody CaseRulingDto dto) {
         CaseResponseDto updatedCase = judgeService.updateCaseRuling(caseId, dto);
         return ResponseHelper.ok(updatedCase, "Case ruling updated successfully");
     }

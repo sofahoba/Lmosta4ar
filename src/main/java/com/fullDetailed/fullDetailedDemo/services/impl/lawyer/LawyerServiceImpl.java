@@ -9,6 +9,7 @@ import com.fullDetailed.fullDetailedDemo.domain.entities.CaseRequests;
 import com.fullDetailed.fullDetailedDemo.domain.entities.User;
 import com.fullDetailed.fullDetailedDemo.domain.enums.FileType;
 import com.fullDetailed.fullDetailedDemo.domain.enums.RequestStatus;
+import com.fullDetailed.fullDetailedDemo.exceptions.DuplicateResourceException;
 import com.fullDetailed.fullDetailedDemo.exceptions.NotFoundException;
 import com.fullDetailed.fullDetailedDemo.mapper.cases.CaseMapper;
 import com.fullDetailed.fullDetailedDemo.mapper.users.lawyer.LawyerMapper;
@@ -26,6 +27,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.ArrayList;
@@ -34,6 +36,7 @@ import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
+@Transactional(readOnly = true)
 public class LawyerServiceImpl implements LawyerService {
 
     private final UserContextService contextService;
@@ -54,14 +57,14 @@ public class LawyerServiceImpl implements LawyerService {
     }
 
     @Override
+    @Transactional
     public LawyerDto updateProfile(LawyerDto dto) {
         User currLawyer=contextService.getCurrentUser();
         if(!currLawyer.isActive() || !currLawyer.isApproved() || currLawyer.isDeleted()){
             throw new NotFoundException("Lawyer not found");
         }
         LawyerMapper.updateEntity(currLawyer,dto);
-        User updatedLawyer=userRepo.save(currLawyer);
-        return LawyerMapper.toDto(updatedLawyer);
+        return LawyerMapper.toDto(currLawyer);
     }
 
     @Override
@@ -71,6 +74,7 @@ public class LawyerServiceImpl implements LawyerService {
     }
 
     @Override
+    @Transactional
     public void reqeustAccessOnCaseByCaseNumber(RequestCaseDto requestDto) {
 
         User currLawyer=contextService.getCurrentUser();
@@ -80,8 +84,7 @@ public class LawyerServiceImpl implements LawyerService {
         }
         boolean alreadyRequested=reqRepo.existsByLawyerAndLegalCase(currLawyer,c);
         if(alreadyRequested){
-            throw new IllegalArgumentException("you have already request access to this case Ya sharmot");
-        }
+            throw new DuplicateResourceException("You have already requested access to this case");        }
         CaseRequests req=CaseRequests.builder()
                 .lawyer(currLawyer)
                 .legalCase(c)
@@ -107,6 +110,7 @@ public class LawyerServiceImpl implements LawyerService {
     }
 
     @Override
+    @Transactional
     public List<String> uploadCaseFiles(UUID caseId, List<MultipartFile> files) {
         Case caseEntity = caseRepository.findById(caseId)
                 .orElseThrow(() -> new NotFoundException("Case not found with ID: " + caseId));
@@ -118,25 +122,28 @@ public class LawyerServiceImpl implements LawyerService {
         }
 
         List<String> fileUrls = new ArrayList<>();
+        List<CaseFile> filesToSave = new ArrayList<>();
 
         for (MultipartFile file : files) {
             if (file.isEmpty()) continue;
 
             String fileName = fileStorageService.storeFile(file);
-
-            // Ideally: http://localhost:8080/api/v1/files/download/{fileName}
             String fileDownloadUrl = "/api/v1/files/download/" + fileName;
+
             CaseFile caseFile = CaseFile.builder()
                     .caseEntity(caseEntity)
+                    .fileName(fileName)
                     .fileUrl(fileDownloadUrl)
                     .fileType(determineFileType(file.getContentType()))
                     .uploadedBy(currLawyer)
                     .build();
 
-            caseFileRepository.save(caseFile);
+            filesToSave.add(caseFile);
             fileUrls.add(fileDownloadUrl);
         }
-
+        if (!filesToSave.isEmpty()) {
+            caseFileRepository.saveAll(filesToSave);
+        }
         return fileUrls;
     }
 
