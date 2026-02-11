@@ -1,7 +1,7 @@
 package com.fullDetailed.fullDetailedDemo.services.interfaces.judge;
 
-import com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseRequestDto;
 import com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseResponseDto;
+import com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseRulingDto;
 import com.fullDetailed.fullDetailedDemo.domain.dtos.judge.JudgeProfileDto;
 import com.fullDetailed.fullDetailedDemo.domain.enums.CaseStatus;
 import org.springframework.data.domain.Page;
@@ -18,5 +18,5 @@ public interface JudgeService {
     Page<CaseResponseDto> getCasesByStatus(CaseStatus status,Pageable pageable);
     Page<CaseResponseDto> getMyCasesByDateRange(LocalDate fromDate, LocalDate toDate, Pageable pageable);
     Page<CaseResponseDto> getAllCasesLast30Days(Pageable pageable);
-    CaseResponseDto updateCaseRuling(UUID caseId, CaseRequestDto dto);
+    CaseResponseDto updateCaseRuling(UUID caseId, CaseRulingDto dto);
 }

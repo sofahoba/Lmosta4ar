@@ -17,7 +17,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -63,34 +62,49 @@ public class AdminUserManagementController {
 
     // ==================== LAWYER MANAGEMENT ====================
 
+    /*
+       OPTIMIZATION 1: Changed Return Type from List<Dto> to Page<Dto>.
+       Returning 'Page' includes metadata (total pages, total elements)
+       which allows the frontend to stop requesting data once it reaches the end.
+
+       OPTIMIZATION 2: Added @PageableDefault.
+       If a malicious or buggy client requests size=10000, your server CPU spikes.
+       This limits the default load.
+    */
+
     @GetMapping("/lawyers")
-    public ResponseEntity<ApiResponse<List<LawyerDto>>> getAllLawyers(Pageable pageable) {
+    public ResponseEntity<ApiResponse<Page<LawyerDto>>> getAllLawyers(
+             Pageable pageable) {
         Page<LawyerDto> lawyers = adminService.getAllLawyerProfile(pageable);
-        return ResponseHelper.ok(lawyers, "Lawyers retrieved successfully");
+        return ResponseHelper.okPage(lawyers, "Lawyers retrieved successfully");
     }
 
     @GetMapping("/lawyers/active")
-    public ResponseEntity<ApiResponse<List<LawyerDto>>> getAllActiveLawyers(Pageable pageable) {
+    public ResponseEntity<ApiResponse<Page<LawyerDto>>> getAllActiveLawyers(
+             Pageable pageable) {
         Page<LawyerDto> lawyers = adminService.getAllActivatedLawyers(pageable);
-        return ResponseHelper.ok(lawyers, "Active lawyers retrieved successfully");
+        return ResponseHelper.okPage(lawyers, "Active lawyers retrieved successfully");
     }
 
     @GetMapping("/lawyers/deactivated")
-    public ResponseEntity<ApiResponse<List<LawyerDto>>> getAllDeactivatedLawyers(Pageable pageable) {
+    public ResponseEntity<ApiResponse<Page<LawyerDto>>> getAllDeactivatedLawyers(
+             Pageable pageable) {
         Page<LawyerDto> lawyers = adminService.getAllDeactivatedLawyers(pageable);
-        return ResponseHelper.ok(lawyers, "Deactivated lawyers retrieved successfully");
+        return ResponseHelper.okPage(lawyers, "Deactivated lawyers retrieved successfully");
     }
 
     @GetMapping("/lawyers/approved")
-    public ResponseEntity<ApiResponse<List<LawyerDto>>> getAllApprovedLawyers(Pageable pageable) {
+    public ResponseEntity<ApiResponse<Page<LawyerDto>>> getAllApprovedLawyers(
+             Pageable pageable) {
         Page<LawyerDto> approvedLawyers = adminService.getAllApprovedLawyers(pageable);
-        return ResponseHelper.ok(approvedLawyers, "Approved lawyers retrieved successfully");
+        return ResponseHelper.okPage(approvedLawyers, "Approved lawyers retrieved successfully");
     }
 
     @GetMapping("/lawyers/rejected")
-    public ResponseEntity<ApiResponse<List<LawyerDto>>> getAllRejectedLawyers(Pageable pageable) {
+    public ResponseEntity<ApiResponse<Page<LawyerDto>>> getAllRejectedLawyers(
+             Pageable pageable) {
         Page<LawyerDto> rejectedLawyers = adminService.getAllRejectedLawyers(pageable);
-        return ResponseHelper.ok(rejectedLawyers, "Rejected lawyers retrieved successfully");
+        return ResponseHelper.okPage(rejectedLawyers, "Rejected lawyers retrieved successfully");
     }
 
     @PutMapping("/lawyers/{lawyerId}/approve")
@@ -108,21 +122,24 @@ public class AdminUserManagementController {
     // ==================== JUDGE MANAGEMENT ====================
 
     @GetMapping("/judges")
-    public ResponseEntity<ApiResponse<List<JudgeProfileDto>>> getAllJudges(Pageable pageable) {
+    public ResponseEntity<ApiResponse<Page<JudgeProfileDto>>> getAllJudges(
+             Pageable pageable) {
         Page<JudgeProfileDto> judges = adminService.getAllJudgesProfile(pageable);
-        return ResponseHelper.ok(judges, "Judges retrieved successfully");
+        return ResponseHelper.okPage(judges, "Judges retrieved successfully");
     }
 
     @GetMapping("/judges/active")
-    public ResponseEntity<ApiResponse<List<JudgeProfileDto>>> getAllActiveJudges(Pageable pageable) {
+    public ResponseEntity<ApiResponse<Page<JudgeProfileDto>>> getAllActiveJudges(
+             Pageable pageable) {
         Page<JudgeProfileDto> judges = adminService.getAllActivatedJudges(pageable);
-        return ResponseHelper.ok(judges, "Active judges retrieved successfully");
+        return ResponseHelper.okPage(judges, "Active judges retrieved successfully");
     }
 
     @GetMapping("/judges/deactivated")
-    public ResponseEntity<ApiResponse<List<JudgeProfileDto>>> getAllDeactivatedJudges(Pageable pageable) {
+    public ResponseEntity<ApiResponse<Page<JudgeProfileDto>>> getAllDeactivatedJudges(
+             Pageable pageable) {
         Page<JudgeProfileDto> judges = adminService.getAllDeactivatedJudges(pageable);
-        return ResponseHelper.ok(judges, "Deactivated judges retrieved successfully");
+        return ResponseHelper.okPage(judges, "Deactivated judges retrieved successfully");
     }
 
     @PutMapping("/judges/{judgeId}")
@@ -136,11 +153,11 @@ public class AdminUserManagementController {
     // ==================== CASE ACCESS REQUESTS ====================
 
     @GetMapping("/lawyer-access/status")
-    public ResponseEntity<ApiResponse<List<CaseRequestResponseDto>>> getAllCaseRequestsByStatus(
+    public ResponseEntity<ApiResponse<Page<CaseRequestResponseDto>>> getAllCaseRequestsByStatus(
             @RequestParam RequestStatus status,
             Pageable pageable) {
         Page<CaseRequestResponseDto> requests = adminService.getAllCaseRequestsByStatus(status, pageable);
-        return ResponseHelper.ok(requests, "Case requests retrieved successfully");
+        return ResponseHelper.okPage(requests, "Case requests retrieved successfully");
     }
 
     @PutMapping("/lawyer-access/{requestId}/approve")

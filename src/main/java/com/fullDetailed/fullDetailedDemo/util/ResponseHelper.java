@@ -65,4 +65,13 @@ public class ResponseHelper {
                 .message(message)
                 .build());
     }
+
+    public static <T> ResponseEntity<ApiResponse<Page<T>>> okPage(Page<T> page, String message) {
+        return ResponseEntity.ok(ApiResponse.<Page<T>>builder()
+                .success(true)
+                .message(message)
+                .data(page)
+                .build());
+    }
+
 }

@@ -54,7 +54,6 @@ public class AdminCaseManagementServiceImpl implements AdminCaseManagementServic
     private final NotificationService notificationService;
     private final JobOperator jobOperator;
     private final Job importCaseJob;
-    public static final String CASES_CACHE = "cases";
 
     @Transactional
     @Override
@@ -73,9 +72,6 @@ public class AdminCaseManagementServiceImpl implements AdminCaseManagementServic
         caseEntity.setJudge(judge);
         caseEntity.setAssignedBy(currentUser);
         judge.setAssignedCasesCount(judge.getAssignedCasesCount() + 1);
-
-        userRepo.save(judge);
-        caseRepository.save(caseEntity);
 
         notificationService.createAndSend(
                 judge,
@@ -177,7 +173,6 @@ public class AdminCaseManagementServiceImpl implements AdminCaseManagementServic
 
         CaseMapper.updateEntity(existingCase, request, newJudge, lawyerUser);
 
-        caseRepository.save(existingCase);
     }
 
     @Override
@@ -186,18 +181,17 @@ public class AdminCaseManagementServiceImpl implements AdminCaseManagementServic
     public void deleteCase(UUID caseId) {
         Case caseEntity = caseRepository.findById(caseId).orElseThrow(()->new NotFoundException("Case Not Found"));
         caseEntity.setDeleted(true);
-        caseRepository.save(caseEntity);
     }
 
     @Override
-    @Transactional
+    @Transactional(readOnly = true)
     @Cacheable(value = "cases", key = "'all:'+#pageable.pageNumber+':'+ #pageable.pageSize")
     public Page<CaseResponseDto> getAllCases(Pageable pageable) {
         return caseRepository.findByIsDeletedFalse(PagenationHandler.createCleanPageable(pageable)).map(CaseMapper::toDto);
     }
 
     @Override
-    @Transactional
+    @Transactional(readOnly = true)
     @Cacheable(value = "cases", key = "'id:' + #caseId")
     public CaseResponseDto getCaseById(UUID caseId) {
         Case caseEntity=caseRepository.findById(caseId).orElseThrow(()->new NotFoundException("Case Nott Found"));
@@ -205,7 +199,7 @@ public class AdminCaseManagementServiceImpl implements AdminCaseManagementServic
     }
 
     @Override
-    @Transactional
+    @Transactional(readOnly = true)
     @Cacheable(
             value = "cases",
             key = "'status:' + #status + ':' + #pageable.pageNumber + ':' + #pageable.pageSize"
@@ -250,14 +244,14 @@ public class AdminCaseManagementServiceImpl implements AdminCaseManagementServic
     }
 
     @Override
-    @Transactional
+    @Transactional(readOnly = true)
     @Cacheable(value = "cases", key = "'deleted:' + #pageable.pageNumber")
     public Page<CaseResponseDto> getAllDeletedCases(Pageable pageable) {
         return caseRepository.findByIsDeletedTrue(PagenationHandler.createCleanPageable(pageable)).map(CaseMapper::toDto);
     }
 
     @Override
-    @Transactional
+    @Transactional(readOnly = true)
     @Cacheable(value = "cases", key = "'fullyAssigned:' + #pageable.pageNumber")
     public Page<CaseResponseDto> getAllFullyAssignedCases(Pageable pageable) {
         return caseRepository.findByJudgeIsNotNullAndLawyerIsNotNullAndIsDeletedFalse(
