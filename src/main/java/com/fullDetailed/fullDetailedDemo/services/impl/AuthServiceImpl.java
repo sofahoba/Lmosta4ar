@@ -11,6 +11,8 @@ import com.fullDetailed.fullDetailedDemo.mapper.auth.AuthMapper;
 import com.fullDetailed.fullDetailedDemo.repository.UserRepo;
 import com.fullDetailed.fullDetailedDemo.services.interfaces.AuthService;
 import com.fullDetailed.fullDetailedDemo.services.interfaces.emailSender.EmailService;
+import com.fullDetailed.fullDetailedDemo.util.OtpUtil;
+import com.nimbusds.jose.crypto.opts.OptionUtils;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -45,11 +47,12 @@ public class AuthServiceImpl implements AuthService {
         if (userRepo.existsByNationalId(request.getNationalId())) {
             throw new AlreadyExistsException("National ID already exists");
         }
+        String otpCode = OtpUtil.generateOtp();
         User user = authMapper.toEntity(request);
-        String otp= emailService.sendOtpEmail(user.getEmail());
-        user.setOtpCode(passwordEncoder.encode(otp));
+        user.setOtpCode(passwordEncoder.encode(otpCode));
         user.setOtpExpirationTime(LocalDateTime.now().plusMinutes(10));
         userRepo.save(user);
+        emailService.sendOtpEmail(user.getEmail(),otpCode);
         return authMapper.toDto(user);
     }
 
@@ -135,10 +138,11 @@ public class AuthServiceImpl implements AuthService {
 
             throw new AlreadyExistsException("Please wait before requesting a new OTP");
         }
-        String newOtp = emailService.sendOtpEmail(user.getEmail());
+        String newOtp = OtpUtil.generateOtp();
         user.setOtpCode(passwordEncoder.encode(newOtp));
         user.setOtpExpirationTime(LocalDateTime.now().plusMinutes(10));
         userRepo.save(user);
+        emailService.sendOtpEmail(user.getEmail(),newOtp);
         return "New OTP sent successfully";
     }
 
@@ -146,11 +150,12 @@ public class AuthServiceImpl implements AuthService {
     public ForgotPasswordResponse forgotPassword(ForgotPasswordRequest dto) {
         User user = userRepo.findByEmail(dto.getEmail())
                 .orElseThrow(() -> new NotFoundException("User not found"));
-        String otp= emailService.sendOtpEmail(user.getEmail());
+        String otp= OtpUtil.generateOtp();
         user.setOtpCode(passwordEncoder.encode(otp));
         user.setOtpExpirationTime(LocalDateTime.now().plusMinutes(10));
         userRepo.save(user);
         ForgotPasswordResponse response = new ForgotPasswordResponse();
+        emailService.sendOtpEmail(user.getEmail(),otp);
         response.setMessage("OTP sent to email if exists");
         return response;
     }

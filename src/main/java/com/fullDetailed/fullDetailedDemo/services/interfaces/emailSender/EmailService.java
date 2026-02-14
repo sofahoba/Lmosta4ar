@@ -2,6 +2,6 @@ package com.fullDetailed.fullDetailedDemo.services.interfaces.emailSender;
 
 public interface EmailService {
 
-    String sendOtpEmail(String email);
+    void sendOtpEmail(String email,String otpCode);
 
 }
