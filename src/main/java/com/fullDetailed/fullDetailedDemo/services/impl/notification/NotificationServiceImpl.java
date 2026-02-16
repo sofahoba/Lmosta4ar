@@ -11,6 +11,7 @@ import com.fullDetailed.fullDetailedDemo.services.interfaces.notification.Notifi
 import com.fullDetailed.fullDetailedDemo.util.UserContextService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -26,7 +27,8 @@ public class NotificationServiceImpl implements NotificationService {
     private final UserContextService contextService;
 
     @Override
-    public void createAndSend(User receiver, String title, String message) {
+    public void createAndSend(UUID receiverId, String title, String message) {
+        User receiver=userRepo.findById(receiverId).orElseThrow(() -> new NotFoundException("User not found"));
         Notification notification = Notification.builder()
                 .recipient(receiver)
                 .title(title)

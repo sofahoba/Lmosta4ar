@@ -8,6 +8,7 @@ import com.fullDetailed.fullDetailedDemo.domain.entities.User;
 import com.fullDetailed.fullDetailedDemo.domain.enums.CaseStatus;
 import com.fullDetailed.fullDetailedDemo.domain.enums.FileType;
 import com.fullDetailed.fullDetailedDemo.domain.enums.Role;
+import com.fullDetailed.fullDetailedDemo.domain.event.NotificationEvent;
 import com.fullDetailed.fullDetailedDemo.exceptions.DuplicateResourceException;
 import com.fullDetailed.fullDetailedDemo.exceptions.NotFoundException;
 import com.fullDetailed.fullDetailedDemo.mapper.cases.CaseMapper;
@@ -28,6 +29,7 @@ import org.springframework.batch.core.job.parameters.JobParametersBuilder;
 import org.springframework.batch.core.launch.JobOperator;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -51,7 +53,7 @@ public class AdminCaseManagementServiceImpl implements AdminCaseManagementServic
     private final UserContextService userContextService;
     private final FileStorageService fileStorageService;
     private final CaseFileRepository caseFileRepo;
-    private final NotificationService notificationService;
+    private final ApplicationEventPublisher eventPublisher;
     private final JobOperator jobOperator;
     private final Job importCaseJob;
 
@@ -73,11 +75,11 @@ public class AdminCaseManagementServiceImpl implements AdminCaseManagementServic
         caseEntity.setAssignedBy(currentUser);
         judge.setAssignedCasesCount(judge.getAssignedCasesCount() + 1);
 
-        notificationService.createAndSend(
-                judge,
+        eventPublisher.publishEvent(new NotificationEvent(
+                judge.getId(),
                 "New Case Assigned",
                 "You have been assigned to case number: " + caseEntity.getCaseNumber() + "\nCase ID: " + caseEntity.getId()
-        );
+        ));
 
     }
 
@@ -119,11 +121,11 @@ public class AdminCaseManagementServiceImpl implements AdminCaseManagementServic
         Case savedCase = caseRepository.save(caseEntity);
 
         if (savedCase.getJudge() != null) {
-            notificationService.createAndSend(
-                    judgeUser,
+            eventPublisher.publishEvent(new NotificationEvent(
+                    judgeUser.getId(),
                     "New Case Assigned",
                     "You have been assigned to case number: " + caseEntity.getCaseNumber() + "\nCase ID: " + caseEntity.getId()
-            );
+            ));
             judgeUser.setAssignedCasesCount(judgeUser.getAssignedCasesCount() + 1);
             userRepo.save(judgeUser);
         }
