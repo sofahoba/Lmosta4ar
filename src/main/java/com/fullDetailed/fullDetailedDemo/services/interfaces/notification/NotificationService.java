@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.UUID;
 
 public interface NotificationService {
-    void createAndSend(User receiver,String title,String message);
+    void createAndSend(UUID receiver,String title,String message);
     List<NotificationDto>getAllNotifications();
     NotificationDto getNotificationById(UUID notId);
     void deleteById(UUID notId);

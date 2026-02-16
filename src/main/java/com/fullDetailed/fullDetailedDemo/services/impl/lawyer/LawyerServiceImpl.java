@@ -9,6 +9,7 @@ import com.fullDetailed.fullDetailedDemo.domain.entities.CaseRequests;
 import com.fullDetailed.fullDetailedDemo.domain.entities.User;
 import com.fullDetailed.fullDetailedDemo.domain.enums.FileType;
 import com.fullDetailed.fullDetailedDemo.domain.enums.RequestStatus;
+import com.fullDetailed.fullDetailedDemo.domain.event.NotificationEvent;
 import com.fullDetailed.fullDetailedDemo.exceptions.DuplicateResourceException;
 import com.fullDetailed.fullDetailedDemo.exceptions.NotFoundException;
 import com.fullDetailed.fullDetailedDemo.mapper.cases.CaseMapper;
@@ -24,6 +25,7 @@ import com.fullDetailed.fullDetailedDemo.util.PagenationHandler;
 import com.fullDetailed.fullDetailedDemo.util.UserContextService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -41,7 +43,7 @@ public class LawyerServiceImpl implements LawyerService {
 
     private final UserContextService contextService;
     private final UserRepo userRepo;
-    private final NotificationService notificationService;
+    private final ApplicationEventPublisher eventPublisher;
     private final CaseRepository caseRepository;
     private final CaseRequestRepository reqRepo;
     private final FileStorageService fileStorageService;
@@ -102,11 +104,11 @@ public class LawyerServiceImpl implements LawyerService {
                 c.getCaseNumber()
         );
 
-        notificationService.createAndSend(
-                admin,
+        eventPublisher.publishEvent(new NotificationEvent(
+                admin.getId(),
                 "New Case Access Request",
                 notificationMessage
-        );
+        ));
     }
 
     @Override

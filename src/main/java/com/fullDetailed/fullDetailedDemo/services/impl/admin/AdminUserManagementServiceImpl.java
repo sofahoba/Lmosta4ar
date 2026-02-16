@@ -8,9 +8,11 @@ import com.fullDetailed.fullDetailedDemo.domain.dtos.judge.UserResponseDto;
 import com.fullDetailed.fullDetailedDemo.domain.dtos.lawyer.LawyerDto;
 import com.fullDetailed.fullDetailedDemo.domain.entities.Case;
 import com.fullDetailed.fullDetailedDemo.domain.entities.CaseRequests;
+import com.fullDetailed.fullDetailedDemo.domain.entities.Notification;
 import com.fullDetailed.fullDetailedDemo.domain.entities.User;
 import com.fullDetailed.fullDetailedDemo.domain.enums.RequestStatus;
 import com.fullDetailed.fullDetailedDemo.domain.enums.Role;
+import com.fullDetailed.fullDetailedDemo.domain.event.NotificationEvent;
 import com.fullDetailed.fullDetailedDemo.exceptions.DuplicateResourceException;
 import com.fullDetailed.fullDetailedDemo.exceptions.NotFoundException;
 import com.fullDetailed.fullDetailedDemo.mapper.UserMapper;
@@ -27,6 +29,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.cache.annotation.Caching;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -44,8 +47,7 @@ public class AdminUserManagementServiceImpl implements AdminUserManagementServic
     private final PasswordEncoder passwordEncoder;
     private final CaseRequestRepository caseRequestRepository;
     private final CaseRepository caseRepository;
-    private final NotificationService notificationService;
-
+    private final ApplicationEventPublisher eventPublisher;
 
     @Override
     @Transactional
@@ -66,11 +68,11 @@ public class AdminUserManagementServiceImpl implements AdminUserManagementServic
         }
 
         user.setApproved(true);
-        notificationService.createAndSend(
-                user,
+        eventPublisher.publishEvent(new NotificationEvent(
+                user.getId(),
                 "Account Approved",
                 "Congratulations! Your lawyer account has been approved by the administration. You can now access the system."
-        );
+        ));
     }
 
     @Override
@@ -143,11 +145,11 @@ public class AdminUserManagementServiceImpl implements AdminUserManagementServic
             throw new NotFoundException("Judge not found");
         }
         JudgeMapper.updateEntity(user, judgeProfileDto);
-        notificationService.createAndSend(
-                user,
+        eventPublisher.publishEvent(new NotificationEvent(
+                user.getId(),
                 "Profile Updated",
                 "Your judge profile details have been updated by the administrator."
-        );
+        ));
     }
 
     /*
@@ -289,11 +291,11 @@ public class AdminUserManagementServiceImpl implements AdminUserManagementServic
 
         String caseInfo = (legalCase.getCaseNumber() != null) ? legalCase.getCaseNumber() : "the requested case";
 
-        notificationService.createAndSend(
-                lawyer,
+        eventPublisher.publishEvent(new NotificationEvent(
+                lawyer.getId(),
                 "Case Access Granted",
                 "Your request to access case '" + caseInfo + "' has been APPROVED. You are now assigned to this case."
-        );
+        ));
     }
 
     @Override
@@ -311,11 +313,11 @@ public class AdminUserManagementServiceImpl implements AdminUserManagementServic
                 ? request.getLegalCase().getCaseNumber()
                 : "the requested case";
 
-        notificationService.createAndSend(
-                request.getLawyer(),
+        eventPublisher.publishEvent(new NotificationEvent(
+                request.getLawyer().getId(),
                 "Case Access Denied",
                 "Your request to access case '" + caseInfo + "' has been REJECTED."
-        );
+        ));
     }
 
     @Override
