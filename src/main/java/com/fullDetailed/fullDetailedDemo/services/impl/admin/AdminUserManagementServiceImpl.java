@@ -327,5 +327,12 @@ public class AdminUserManagementServiceImpl implements AdminUserManagementServic
                 .map(HelperDtoConverter::mapToCaseRequestDto);
     }
 
+    @Override
+    @Cacheable(value = "case_requests", key = "{#status, #pageable}")
+    public Page<CaseRequestResponseDto> getAllCaseRequests(Pageable pageable) {
+        return caseRequestRepository.findAll(PagenationHandler.createCleanPageable(pageable))
+                .map(HelperDtoConverter::mapToCaseRequestDto);
+    }
+
 
 }
