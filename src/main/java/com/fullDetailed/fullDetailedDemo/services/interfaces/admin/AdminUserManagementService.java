@@ -52,4 +52,6 @@ public interface AdminUserManagementService {
     void rejectCaseAccessRequest(UUID requestId);
 
     Page<CaseRequestResponseDto> getAllCaseRequestsByStatus(RequestStatus status, Pageable pageable);
+
+    Page<CaseRequestResponseDto>getAllCaseRequests(Pageable pageable);
 }

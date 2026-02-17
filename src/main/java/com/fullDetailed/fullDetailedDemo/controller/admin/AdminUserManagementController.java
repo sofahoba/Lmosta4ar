@@ -160,6 +160,13 @@ public class AdminUserManagementController {
         return ResponseHelper.okPage(requests, "Case requests retrieved successfully");
     }
 
+    @GetMapping("/lawyer-access/status")
+    public ResponseEntity<ApiResponse<Page<CaseRequestResponseDto>>> getAllCaseRequests(
+            Pageable pageable) {
+        Page<CaseRequestResponseDto> requests = adminService.getAllCaseRequests(pageable);
+        return ResponseHelper.okPage(requests, "Case requests retrieved successfully");
+    }
+
     @PutMapping("/lawyer-access/{requestId}/approve")
     public ResponseEntity<ApiResponse<Void>> approveRequest(@PathVariable UUID requestId) {
         adminService.approveCaseAccessRequest(requestId);
