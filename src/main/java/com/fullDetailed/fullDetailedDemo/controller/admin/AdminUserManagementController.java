@@ -160,7 +160,7 @@ public class AdminUserManagementController {
         return ResponseHelper.okPage(requests, "Case requests retrieved successfully");
     }
 
-    @GetMapping("/lawyer-access/status")
+    @GetMapping("/lawyer-case-requests")
     public ResponseEntity<ApiResponse<Page<CaseRequestResponseDto>>> getAllCaseRequests(
             Pageable pageable) {
         Page<CaseRequestResponseDto> requests = adminService.getAllCaseRequests(pageable);
