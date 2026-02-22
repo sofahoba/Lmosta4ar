@@ -4,6 +4,7 @@ package com.fullDetailed.fullDetailedDemo.mapper.cases;
 import com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseFileDto;
 import com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseRequestDto;
 import com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseResponseDto;
+import com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseUpdateDto;
 import com.fullDetailed.fullDetailedDemo.domain.entities.Case;
 import com.fullDetailed.fullDetailedDemo.domain.entities.CaseFile;
 import com.fullDetailed.fullDetailedDemo.domain.entities.User;
@@ -82,7 +83,7 @@ public class CaseMapper {
         return c;
     }
 
-    public static void updateEntity(Case entity, CaseRequestDto dto, User judge,User lawyer) {
+    public static void updateEntity(Case entity, CaseUpdateDto dto, User judge, User lawyer) {
         if (dto.getCaseNumber() != null) {
             entity.setCaseNumber(dto.getCaseNumber());
         }

@@ -10,6 +10,7 @@ import com.fullDetailed.fullDetailedDemo.services.interfaces.lawyer.LawyerServic
 import com.fullDetailed.fullDetailedDemo.util.ResponseHelper;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springdoc.core.annotations.ParameterObject;
 import org.springframework.core.io.Resource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -38,7 +39,7 @@ public class LawyerController {
         return ResponseHelper.ok(profile, "Lawyer profile retrieved successfully");
     }
 
-    @PutMapping("/profile")
+    @PatchMapping("/profile")
     public ResponseEntity<ApiResponse<LawyerDto>> updateProfile(
             @Valid @RequestBody LawyerDto dto) {
         LawyerDto updatedProfile = lawyerService.updateProfile(dto);
@@ -48,7 +49,7 @@ public class LawyerController {
     // ==================== CASES ====================
 
     @GetMapping("/cases")
-    public ResponseEntity<ApiResponse<List<CaseResponseDto>>> getAllCases(Pageable pageable) {
+    public ResponseEntity<ApiResponse<List<CaseResponseDto>>> getAllCases(@ParameterObject Pageable pageable) {
         Page<CaseResponseDto> cases = lawyerService.getAllCases(pageable);
         return ResponseHelper.ok(cases, "Cases retrieved successfully");
     }

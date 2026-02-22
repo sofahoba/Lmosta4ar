@@ -12,6 +12,7 @@ import com.fullDetailed.fullDetailedDemo.services.interfaces.admin.AdminUserMana
 import com.fullDetailed.fullDetailedDemo.util.ResponseHelper;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springdoc.core.annotations.ParameterObject;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
@@ -74,35 +75,35 @@ public class AdminUserManagementController {
 
     @GetMapping("/lawyers")
     public ResponseEntity<ApiResponse<Page<LawyerDto>>> getAllLawyers(
-             Pageable pageable) {
+            @ParameterObject Pageable pageable) {
         Page<LawyerDto> lawyers = adminService.getAllLawyerProfile(pageable);
         return ResponseHelper.okPage(lawyers, "Lawyers retrieved successfully");
     }
 
     @GetMapping("/lawyers/active")
     public ResponseEntity<ApiResponse<Page<LawyerDto>>> getAllActiveLawyers(
-             Pageable pageable) {
+            @ParameterObject Pageable pageable) {
         Page<LawyerDto> lawyers = adminService.getAllActivatedLawyers(pageable);
         return ResponseHelper.okPage(lawyers, "Active lawyers retrieved successfully");
     }
 
     @GetMapping("/lawyers/deactivated")
     public ResponseEntity<ApiResponse<Page<LawyerDto>>> getAllDeactivatedLawyers(
-             Pageable pageable) {
+            @ParameterObject Pageable pageable) {
         Page<LawyerDto> lawyers = adminService.getAllDeactivatedLawyers(pageable);
         return ResponseHelper.okPage(lawyers, "Deactivated lawyers retrieved successfully");
     }
 
     @GetMapping("/lawyers/approved")
     public ResponseEntity<ApiResponse<Page<LawyerDto>>> getAllApprovedLawyers(
-             Pageable pageable) {
+            @ParameterObject  Pageable pageable) {
         Page<LawyerDto> approvedLawyers = adminService.getAllApprovedLawyers(pageable);
         return ResponseHelper.okPage(approvedLawyers, "Approved lawyers retrieved successfully");
     }
 
     @GetMapping("/lawyers/rejected")
     public ResponseEntity<ApiResponse<Page<LawyerDto>>> getAllRejectedLawyers(
-             Pageable pageable) {
+            @ParameterObject  Pageable pageable) {
         Page<LawyerDto> rejectedLawyers = adminService.getAllRejectedLawyers(pageable);
         return ResponseHelper.okPage(rejectedLawyers, "Rejected lawyers retrieved successfully");
     }
@@ -123,21 +124,21 @@ public class AdminUserManagementController {
 
     @GetMapping("/judges")
     public ResponseEntity<ApiResponse<Page<JudgeProfileDto>>> getAllJudges(
-             Pageable pageable) {
+            @ParameterObject Pageable pageable) {
         Page<JudgeProfileDto> judges = adminService.getAllJudgesProfile(pageable);
         return ResponseHelper.okPage(judges, "Judges retrieved successfully");
     }
 
     @GetMapping("/judges/active")
     public ResponseEntity<ApiResponse<Page<JudgeProfileDto>>> getAllActiveJudges(
-             Pageable pageable) {
+            @ParameterObject Pageable pageable) {
         Page<JudgeProfileDto> judges = adminService.getAllActivatedJudges(pageable);
         return ResponseHelper.okPage(judges, "Active judges retrieved successfully");
     }
 
     @GetMapping("/judges/deactivated")
     public ResponseEntity<ApiResponse<Page<JudgeProfileDto>>> getAllDeactivatedJudges(
-             Pageable pageable) {
+            @ParameterObject Pageable pageable) {
         Page<JudgeProfileDto> judges = adminService.getAllDeactivatedJudges(pageable);
         return ResponseHelper.okPage(judges, "Deactivated judges retrieved successfully");
     }
@@ -155,14 +156,14 @@ public class AdminUserManagementController {
     @GetMapping("/lawyer-access/status")
     public ResponseEntity<ApiResponse<Page<CaseRequestResponseDto>>> getAllCaseRequestsByStatus(
             @RequestParam RequestStatus status,
-            Pageable pageable) {
+            @ParameterObject Pageable pageable) {
         Page<CaseRequestResponseDto> requests = adminService.getAllCaseRequestsByStatus(status, pageable);
         return ResponseHelper.okPage(requests, "Case requests retrieved successfully");
     }
 
     @GetMapping("/lawyer-case-requests")
     public ResponseEntity<ApiResponse<Page<CaseRequestResponseDto>>> getAllCaseRequests(
-            Pageable pageable) {
+            @ParameterObject Pageable pageable) {
         Page<CaseRequestResponseDto> requests = adminService.getAllCaseRequests(pageable);
         return ResponseHelper.okPage(requests, "Case requests retrieved successfully");
     }

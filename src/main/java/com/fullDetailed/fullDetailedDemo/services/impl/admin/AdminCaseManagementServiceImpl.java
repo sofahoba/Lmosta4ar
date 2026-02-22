@@ -2,9 +2,11 @@ package com.fullDetailed.fullDetailedDemo.services.impl.admin;
 
 import com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseRequestDto;
 import com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseResponseDto;
+import com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseUpdateDto;
 import com.fullDetailed.fullDetailedDemo.domain.entities.Case;
 import com.fullDetailed.fullDetailedDemo.domain.entities.CaseFile;
 import com.fullDetailed.fullDetailedDemo.domain.entities.User;
+import com.fullDetailed.fullDetailedDemo.domain.enums.AssignStatus;
 import com.fullDetailed.fullDetailedDemo.domain.enums.CaseStatus;
 import com.fullDetailed.fullDetailedDemo.domain.enums.FileType;
 import com.fullDetailed.fullDetailedDemo.domain.enums.Role;
@@ -114,7 +116,7 @@ public class AdminCaseManagementServiceImpl implements AdminCaseManagementServic
         }
 
         Case caseEntity = CaseMapper.toEntity(request, judgeUser, adminUser,lawyerUser);
-
+        caseEntity.setAssignStatus(determineAssignStatus(judgeUser, lawyerUser));
         caseEntity.setStatus(CaseStatus.PENDING);
         caseEntity.setDeleted(false);
 
@@ -136,7 +138,7 @@ public class AdminCaseManagementServiceImpl implements AdminCaseManagementServic
     @Override
     @Transactional
     @CacheEvict(value = "cases", allEntries = true)
-    public void updateCase(UUID caseId, CaseRequestDto request) {
+    public void updateCase(UUID caseId, CaseUpdateDto request) {
         Case existingCase = caseRepository.findById(caseId)
                 .orElseThrow(() -> new NotFoundException("Case not found with ID: " + caseId));
 
@@ -171,6 +173,8 @@ public class AdminCaseManagementServiceImpl implements AdminCaseManagementServic
                 throw new IllegalArgumentException("User with ID " + request.getLawyerId() + " is not a Lawyer");
             }
         }
+
+        existingCase.setAssignStatus(determineAssignStatus(newJudge, lawyerUser));
 
 
         CaseMapper.updateEntity(existingCase, request, newJudge, lawyerUser);
@@ -295,6 +299,29 @@ public class AdminCaseManagementServiceImpl implements AdminCaseManagementServic
             log.error("Failed to import cases from CSV", e);
             throw new IllegalArgumentException("Failed to import cases: " + e.getMessage(), e);
         }
+    }
+
+    @Override
+    public Page<CaseResponseDto> getCasesByAssignedStatus(Pageable pageable, AssignStatus status) {
+        return caseRepository.findByAssignStatusAndIsDeletedFalse(PagenationHandler.createCleanPageable(pageable),status).map(CaseMapper::toDto);
+    }
+
+    @Override
+    public long getCasesCountByAssignedStatus(AssignStatus status) {
+        return caseRepository.countByAssignStatusAndIsDeletedFalse(status);
+    }
+
+    private AssignStatus determineAssignStatus(User judge, User lawyer) {
+        if (judge != null && lawyer != null) {
+            return AssignStatus.FULLY_ASSIGNED;
+        }
+        if (judge != null) {
+            return AssignStatus.ASSIGNED_TO_JUDGE;
+        }
+        if (lawyer != null) {
+            return AssignStatus.ASSIGNED_TO_LAWYER;
+        }
+        return null;
     }
 
     private FileType determineFileType(String contentType) {

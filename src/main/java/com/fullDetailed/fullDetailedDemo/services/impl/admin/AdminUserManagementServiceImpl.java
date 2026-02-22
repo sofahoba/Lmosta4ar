@@ -334,5 +334,9 @@ public class AdminUserManagementServiceImpl implements AdminUserManagementServic
                 .map(HelperDtoConverter::mapToCaseRequestDto);
     }
 
+    public long getAllCaseRequestsCount() {
+        return caseRequestRepository.count();
+    }
+
 
 }

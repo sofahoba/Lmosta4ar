@@ -3,6 +3,8 @@ package com.fullDetailed.fullDetailedDemo.services.interfaces.admin;
 import com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseFileDownloadDto;
 import com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseRequestDto;
 import com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseResponseDto;
+import com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseUpdateDto;
+import com.fullDetailed.fullDetailedDemo.domain.enums.AssignStatus;
 import com.fullDetailed.fullDetailedDemo.domain.enums.CaseStatus;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -16,7 +18,7 @@ public interface AdminCaseManagementService {
 
     void assignCaseToJudge(UUID judgeId,UUID caseId);
     CaseResponseDto createCase(CaseRequestDto request);
-    void updateCase(UUID caseId,CaseRequestDto request);
+    void updateCase(UUID caseId, CaseUpdateDto request);
     void deleteCase(UUID caseId);
     Page<CaseResponseDto>getAllCases(Pageable pageable);
     CaseResponseDto getCaseById(UUID caseId);
@@ -25,4 +27,6 @@ public interface AdminCaseManagementService {
     Page<CaseResponseDto> getAllDeletedCases(Pageable pageable);
     Page<CaseResponseDto> getAllFullyAssignedCases(Pageable pageable);
     void importCasesFromCsv(MultipartFile file);
+    Page<CaseResponseDto> getCasesByAssignedStatus(Pageable pageable, AssignStatus status);
+    long getCasesCountByAssignedStatus(AssignStatus status);
 }
