@@ -14,6 +14,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springdoc.core.annotations.ParameterObject;
 import org.springframework.core.io.Resource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -43,7 +44,7 @@ public class JudgeController {
         return ResponseHelper.ok(judgeProfileDto, "Judge profile retrieved successfully");
     }
 
-    @PutMapping("/profile/update")
+    @PatchMapping("/profile/update")
     public ResponseEntity<ApiResponse<JudgeProfileDto>> updateJudgeProfile(
             @Valid @RequestBody JudgeProfileDto dto) {
         JudgeProfileDto updatedDto = judgeService.updateJudgeProfile(dto);
@@ -53,7 +54,7 @@ public class JudgeController {
     // ==================== CASES ====================
 
     @GetMapping("/all-cases")
-    public ResponseEntity<ApiResponse<Page<CaseResponseDto>>> getJudgeCases(Pageable pageable) {
+    public ResponseEntity<ApiResponse<Page<CaseResponseDto>>> getJudgeCases(@ParameterObject Pageable pageable) {
         Page<CaseResponseDto> cases = judgeService.getJudgeCases(pageable);
         return ResponseHelper.okPage(cases, "Judge cases retrieved successfully");
     }
@@ -67,7 +68,7 @@ public class JudgeController {
     @GetMapping("/status/{status}")
     public ResponseEntity<ApiResponse<Page<CaseResponseDto>>> getCasesByStatus(
             @PathVariable CaseStatus status,
-            Pageable pageable) {
+            @ParameterObject Pageable pageable) {
         Page<CaseResponseDto> cases = judgeService.getCasesByStatus(status, pageable);
         return ResponseHelper.okPage(cases, "Cases with status '" + status + "' retrieved successfully");
     }
@@ -96,13 +97,13 @@ public class JudgeController {
             )
             LocalDate toDate,
 
-            Pageable pageable) {
+            @ParameterObject Pageable pageable) {
         Page<CaseResponseDto> cases = judgeService.getMyCasesByDateRange(fromDate, toDate, pageable);
         return ResponseHelper.okPage(cases, "Cases from " + fromDate + " to " + toDate + " retrieved successfully");
     }
 
     @GetMapping("/cases/recent")
-    public ResponseEntity<ApiResponse<Page<CaseResponseDto>>> getRecentCases(Pageable pageable) {
+    public ResponseEntity<ApiResponse<Page<CaseResponseDto>>> getRecentCases(@ParameterObject Pageable pageable) {
         Page<CaseResponseDto> cases = judgeService.getAllCasesLast30Days(pageable);
         return ResponseHelper.okPage(cases, "Recent cases (last 30 days) retrieved successfully");
     }

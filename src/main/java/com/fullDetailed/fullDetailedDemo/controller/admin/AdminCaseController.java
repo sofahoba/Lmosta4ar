@@ -4,6 +4,8 @@ import com.fullDetailed.fullDetailedDemo.domain.dtos.ApiResponse;
 import com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseFileDownloadDto;
 import com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseRequestDto;
 import com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseResponseDto;
+import com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseUpdateDto;
+import com.fullDetailed.fullDetailedDemo.domain.enums.AssignStatus;
 import com.fullDetailed.fullDetailedDemo.domain.enums.CaseStatus;
 import com.fullDetailed.fullDetailedDemo.services.impl.cassefiles.FilesServices;
 import com.fullDetailed.fullDetailedDemo.services.interfaces.admin.AdminCaseManagementService;
@@ -14,6 +16,7 @@ import io.swagger.v3.oas.annotations.media.Content;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springdoc.core.annotations.ParameterObject;
 import org.springframework.batch.core.job.Job;
 import org.springframework.batch.core.job.parameters.JobParameters;
 import org.springframework.batch.core.job.parameters.JobParametersBuilder;
@@ -81,7 +84,7 @@ public class AdminCaseController {
     }
 
     @GetMapping
-    public ResponseEntity<ApiResponse<List<CaseResponseDto>>> getAllCases(Pageable pageable) {
+    public ResponseEntity<ApiResponse<List<CaseResponseDto>>> getAllCases(@ParameterObject Pageable pageable) {
         Page<CaseResponseDto> cases = caseService.getAllCases(pageable);
         return ResponseHelper.ok(cases, "Cases retrieved successfully");
     }
@@ -92,10 +95,10 @@ public class AdminCaseController {
         return ResponseHelper.ok(caseDto, "Case retrieved successfully");
     }
 
-    @PutMapping("/{caseId}")
+    @PatchMapping("/{caseId}")
     public ResponseEntity<ApiResponse<Void>> updateCase(
             @PathVariable UUID caseId,
-            @Valid @RequestBody CaseRequestDto request) {
+            @Valid @RequestBody CaseUpdateDto request) {
         caseService.updateCase(caseId, request);
         return ResponseHelper.ok("Case updated successfully");
     }
@@ -111,26 +114,26 @@ public class AdminCaseController {
     @GetMapping("/status/{status}")
     public ResponseEntity<ApiResponse<List<CaseResponseDto>>> getCasesByStatus(
             @PathVariable CaseStatus status,
-            Pageable pageable) {
+            @ParameterObject Pageable pageable) {
         Page<CaseResponseDto> cases = caseService.getCasesByStatus(status, pageable);
         return ResponseHelper.ok(cases, "Cases with status '" + status + "' retrieved successfully");
     }
 
     @GetMapping("/deleted")
-    public ResponseEntity<ApiResponse<List<CaseResponseDto>>> getDeletedCases(Pageable pageable) {
+    public ResponseEntity<ApiResponse<List<CaseResponseDto>>> getDeletedCases(@ParameterObject Pageable pageable) {
         Page<CaseResponseDto> cases = caseService.getAllDeletedCases(pageable);
         return ResponseHelper.ok(cases, "Deleted cases retrieved successfully");
     }
 
     @GetMapping("/fully-assigned")
-    public ResponseEntity<ApiResponse<List<CaseResponseDto>>> getAllFullyAssignedCases(Pageable pageable) {
+    public ResponseEntity<ApiResponse<List<CaseResponseDto>>> getAllFullyAssignedCases(@ParameterObject Pageable pageable) {
         Page<CaseResponseDto> cases = caseService.getAllFullyAssignedCases(pageable);
         return ResponseHelper.ok(cases, "Fully assigned cases retrieved successfully");
     }
 
     // ==================== JUDGE ASSIGNMENT ====================
 
-    @PutMapping("/{caseId}/assign/{judgeId}")
+    @PatchMapping("/{caseId}/assign/{judgeId}")
     public ResponseEntity<ApiResponse<Void>> assignJudge(
             @PathVariable UUID caseId,
             @PathVariable UUID judgeId) {
@@ -159,4 +162,19 @@ public class AdminCaseController {
                 .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + fileDto.getResource().getFilename() + "\"")
                 .body(fileDto.getResource());
     }
+
+
+    @GetMapping("/cases-with-status")
+    public ResponseEntity<Page<CaseResponseDto>> getCasesByAssignedStatus(@RequestParam AssignStatus status,@ParameterObject Pageable pageable) {
+        Page<CaseResponseDto> cases = caseService.getCasesByAssignedStatus(pageable, status);
+        return ResponseEntity.ok(cases);
+    }
+
+    @GetMapping("/count-case-status")
+    public ResponseEntity<Long> getCasesCountByAssignedStatus(
+            @RequestParam AssignStatus status) {
+        long count = caseService.getCasesCountByAssignedStatus(status);
+        return ResponseEntity.ok(count);
+    }
+
 }

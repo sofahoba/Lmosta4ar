@@ -1,8 +1,7 @@
-package com.fullDetailed.fullDetailedDemo.config;
+package com.fullDetailed.fullDetailedDemo.config.pageable;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.config.PageableHandlerMethodArgumentResolverCustomizer;
 
@@ -10,12 +9,15 @@ import org.springframework.data.web.config.PageableHandlerMethodArgumentResolver
 public class PageableConfig {
 
     @Bean
-    public PageableHandlerMethodArgumentResolverCustomizer pageableCustomizer() {
+    public PageableHandlerMethodArgumentResolverCustomizer customize() {
         return pageableResolver -> {
             pageableResolver.setFallbackPageable(
-                    PageRequest.of(0, 10, Sort.by(Sort.Direction.DESC, "createdAt"))
+                    org.springframework.data.domain.PageRequest.of(
+                            0,
+                            10,
+                            Sort.by(Sort.Direction.DESC, "createdAt")
+                    )
             );
-            pageableResolver.setMaxPageSize(50);
         };
     }
 }

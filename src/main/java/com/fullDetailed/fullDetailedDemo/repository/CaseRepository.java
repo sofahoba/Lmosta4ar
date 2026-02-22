@@ -2,6 +2,7 @@ package com.fullDetailed.fullDetailedDemo.repository;
 
 import com.fullDetailed.fullDetailedDemo.domain.entities.Case;
 import com.fullDetailed.fullDetailedDemo.domain.entities.User;
+import com.fullDetailed.fullDetailedDemo.domain.enums.AssignStatus;
 import com.fullDetailed.fullDetailedDemo.domain.enums.CaseStatus;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -37,4 +38,6 @@ public interface CaseRepository extends JpaRepository<Case, UUID> {
             Pageable pageable
     );
     Optional<Case> findByCaseNumber(String caseNumber);
+    Page<Case> findByAssignStatusAndIsDeletedFalse(Pageable pageable, AssignStatus status);
+    long countByAssignStatusAndIsDeletedFalse(AssignStatus status);
 }

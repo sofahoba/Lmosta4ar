@@ -31,11 +31,11 @@ public class CaseRequests {
     @Column(nullable = false)
     private RequestStatus status;
 
-    private LocalDateTime requestedAt;
+    private LocalDateTime createdAt;
 
     @PrePersist
     protected void onCreate() {
-        this.requestedAt = LocalDateTime.now();
+        this.createdAt = LocalDateTime.now();
         if (this.status == null) {
             this.status = RequestStatus.PENDING;
         }

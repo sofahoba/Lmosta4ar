@@ -29,7 +29,7 @@ public class HelperDtoConverter {
                 .caseId(request.getLegalCase().getId())
                 .caseNumber(request.getLegalCase().getCaseNumber())
                 .status(request.getStatus().toString())
-                .requestedAt(request.getRequestedAt())
+                .requestedAt(request.getCreatedAt())
                 .build();
     }
 }

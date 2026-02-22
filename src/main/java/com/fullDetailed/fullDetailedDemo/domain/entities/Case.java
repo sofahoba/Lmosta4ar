@@ -1,5 +1,6 @@
 package com.fullDetailed.fullDetailedDemo.domain.entities;
 
+import com.fullDetailed.fullDetailedDemo.domain.enums.AssignStatus;
 import com.fullDetailed.fullDetailedDemo.domain.enums.CaseStatus;
 import jakarta.persistence.*;
 import lombok.*;
@@ -34,6 +35,10 @@ public class Case {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private CaseStatus status;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = true)
+    private AssignStatus assignStatus;
 
     @ManyToOne
     @JoinColumn(name = "judge_id")
