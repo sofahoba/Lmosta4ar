@@ -1,6 +1,8 @@
 package com.fullDetailed.fullDetailedDemo.config;
 
 import com.fullDetailed.fullDetailedDemo.config.securityServices.JwtAuthenticationFilter;
+import com.fullDetailed.fullDetailedDemo.config.securityServices.OAuth2SuccessHandler;
+import com.fullDetailed.fullDetailedDemo.repository.UserRepo;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -35,6 +37,8 @@ public class SecurityConfig {
 
   private final CustomUserServiceDetails userServiceDetails;
   private final JwtUtil jwtUtil;
+  private final UserRepo userRepository;
+  private final OAuth2SuccessHandler oAuth2SuccessHandler;
 
 
   @Bean
@@ -43,9 +47,9 @@ public class SecurityConfig {
     return http
             .cors(cors -> cors.configurationSource(corsConfigurationSource()))
             .csrf(csrf->csrf.disable())
-            .sessionManagement(sm->sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+            .sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED))
             .authorizeHttpRequests(auth->auth
-                    .requestMatchers("/api/auth/**").permitAll()
+                    .requestMatchers("/api/auth/**","/oauth2/**","/login/**").permitAll()
                     .requestMatchers("/api/v1/cases/**").authenticated()
                     .requestMatchers("/api/v1/notifications").authenticated()
                     .requestMatchers("/api/v1/judges/**").hasRole("JUDGE")
@@ -64,6 +68,9 @@ public class SecurityConfig {
                             "/webjars/**"
                     ).permitAll()
                     .anyRequest().authenticated()
+            )
+            .oauth2Login(oauth -> oauth
+                    .successHandler(oAuth2SuccessHandler)
             )
             .exceptionHandling(e -> e
                     .authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED))
