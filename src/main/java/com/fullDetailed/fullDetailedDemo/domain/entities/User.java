@@ -45,7 +45,7 @@ public class User {
   @Column(nullable = false, unique = true)
   private String email;
 
-  @Column(nullable = false, unique = true)
+  @Column(nullable = true, unique = true)
   private String nationalId;
 
   @Column(nullable = true)
@@ -70,7 +70,7 @@ public class User {
   @Column(name = "isApproved", nullable = true)
   private boolean isApproved = false;
 
-  @Column(nullable = false, name = "otp_code")
+  @Column(nullable = true, name = "otp_code")
   private String otpCode;
 
   @Column(name = "Otp_expiration_time", nullable = true)
