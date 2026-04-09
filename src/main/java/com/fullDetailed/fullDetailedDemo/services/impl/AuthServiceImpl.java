@@ -93,7 +93,7 @@ public class AuthServiceImpl implements AuthService {
         if (!user.isActive()) {
             throw new IllegalArgumentException("Your account is inactive");
         }
-        if (user.getRole() == Role.JUDGE && !user.isPasswordReseted()) {
+        if ((user.getRole().equals(Role.JUDGE) || user.getRole().equals(Role.LAWYER)) && !user.isPasswordReseted()) {
             throw new IllegalArgumentException("Please reset your password");
         }
         if (user.getRole() == Role.LAWYER && !user.isApproved()) {

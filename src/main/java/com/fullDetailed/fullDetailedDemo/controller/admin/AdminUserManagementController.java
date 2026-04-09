@@ -36,6 +36,12 @@ public class AdminUserManagementController {
         return ResponseHelper.created(createdUser, "User created successfully");
     }
 
+    @GetMapping("/users")
+    public ResponseEntity<ApiResponse<Page<UserProfileResponseDto>>> getUsers(@ParameterObject Pageable pageable) {
+        Page<UserProfileResponseDto> users = adminService.getAllUsers(pageable);
+        return ResponseHelper.okPage(users, "Users retrieved successfully");
+    }
+
     @GetMapping("/users/{userId}")
     public ResponseEntity<ApiResponse<UserProfileResponseDto>> getUserById(
             @PathVariable UUID userId) {
