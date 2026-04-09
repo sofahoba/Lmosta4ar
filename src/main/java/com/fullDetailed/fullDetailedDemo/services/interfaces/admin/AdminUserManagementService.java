@@ -54,4 +54,6 @@ public interface AdminUserManagementService {
     Page<CaseRequestResponseDto> getAllCaseRequestsByStatus(RequestStatus status, Pageable pageable);
 
     Page<CaseRequestResponseDto>getAllCaseRequests(Pageable pageable);
+
+    Page<UserProfileResponseDto>getAllUsers(Pageable pageable);
 }

@@ -29,6 +29,7 @@ public class AuthMapper {
                 .firstName(dto.getFirstName())
                 .lastName(dto.getLastName())
                 .assignedCasesCount(0)
+                .isPasswordReseted(true)
                 .isActive(false)
                 .build();
     }

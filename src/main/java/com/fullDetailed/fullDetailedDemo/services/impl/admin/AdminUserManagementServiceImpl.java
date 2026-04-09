@@ -239,6 +239,12 @@ public class AdminUserManagementServiceImpl implements AdminUserManagementServic
 
     @Override
     @Cacheable(value = "users_list", key = "{#root.methodName, #pageable}")
+    public Page<UserProfileResponseDto>getAllUsers(Pageable pageable){
+        return userRepo.findAll(PagenationHandler.createCleanPageable(pageable)).map(UserMapper::toDto);
+    }
+
+    @Override
+    @Cacheable(value = "users_list", key = "{#root.methodName, #pageable}")
     public Page<LawyerDto> getAllApprovedLawyers(Pageable pageable) {
         return userRepo.findByRoleAndIsApprovedTrueAndIsDeletedFalse(Role.LAWYER, PagenationHandler.createCleanPageable(pageable))
                 .map(LawyerMapper::toDto);
