@@ -13,6 +13,7 @@ import com.fullDetailed.fullDetailedDemo.domain.entities.User;
 import com.fullDetailed.fullDetailedDemo.domain.enums.RequestStatus;
 import com.fullDetailed.fullDetailedDemo.domain.enums.Role;
 import com.fullDetailed.fullDetailedDemo.domain.event.NotificationEvent;
+import com.fullDetailed.fullDetailedDemo.exceptions.AlreadyExistsException;
 import com.fullDetailed.fullDetailedDemo.exceptions.DuplicateResourceException;
 import com.fullDetailed.fullDetailedDemo.exceptions.NotFoundException;
 import com.fullDetailed.fullDetailedDemo.mapper.UserMapper;
@@ -208,8 +209,16 @@ public class AdminUserManagementServiceImpl implements AdminUserManagementServic
     @Transactional
     @CacheEvict(value = "users_list", allEntries = true)
     public UserResponseDto createUser(CreateUserDto createUserDto) {
-        if (userRepo.existsByEmail(createUserDto.getEmail())) {
+
+
+        User user1 = userRepo.findByEmail(createUserDto.getEmail()).orElseThrow(()->new NotFoundException("user not found"));
+        if (userRepo.existsByEmail(createUserDto.getEmail()) && !user1.isDeleted()) {
             throw new DuplicateResourceException("User with email " + createUserDto.getEmail() + " already exists");
+        }
+
+        User user2 = userRepo.findByNationalId(createUserDto.getEmail()).orElseThrow(()->new NotFoundException("user not found"));
+        if (userRepo.existsByNationalId(createUserDto.getNationalId()) && !user2.isDeleted()) {
+            throw new AlreadyExistsException("National ID already exists");
         }
 
         if (createUserDto.getRole() == Role.JUDGE &&
