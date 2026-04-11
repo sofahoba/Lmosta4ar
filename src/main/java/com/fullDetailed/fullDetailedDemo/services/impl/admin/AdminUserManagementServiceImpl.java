@@ -121,16 +121,16 @@ public class AdminUserManagementServiceImpl implements AdminUserManagementServic
         user.setActive(true);
     }
 
+
     @Override
     @Transactional
-    @Caching(evict = {
-            @CacheEvict(value = "user_profile", key = "#userId"),
-            @CacheEvict(value = "users_list", allEntries = true)
-    })
     public void deleteUserById(UUID userId) {
         User user = userRepo.findById(userId)
                 .orElseThrow(() -> new NotFoundException("User not found"));
         user.setDeleted(true);
+        user.setEmail("deleted_" + userId + "_" + user.getEmail());
+        user.setNationalId("deleted_" + userId + "_" + user.getNationalId());
+        userRepo.save(user);
     }
 
     @Override
@@ -211,13 +211,13 @@ public class AdminUserManagementServiceImpl implements AdminUserManagementServic
     public UserResponseDto createUser(CreateUserDto createUserDto) {
 
 
-        User user1 = userRepo.findByEmail(createUserDto.getEmail()).orElseThrow(()->new NotFoundException("user not found"));
-        if (userRepo.existsByEmail(createUserDto.getEmail()) && !user1.isDeleted()) {
+//        User user1 = userRepo.findByEmail(createUserDto.getEmail()).orElseThrow(()->new NotFoundException("user not found"));
+        if (userRepo.existsByEmail(createUserDto.getEmail())) {
             throw new DuplicateResourceException("User with email " + createUserDto.getEmail() + " already exists");
         }
 
-        User user2 = userRepo.findByNationalId(createUserDto.getEmail()).orElseThrow(()->new NotFoundException("user not found"));
-        if (userRepo.existsByNationalId(createUserDto.getNationalId()) && !user2.isDeleted()) {
+//        User user2 = userRepo.findByNationalId(createUserDto.getEmail()).orElseThrow(()->new NotFoundException("user not found"));
+        if (userRepo.existsByNationalId(createUserDto.getNationalId())) {
             throw new AlreadyExistsException("National ID already exists");
         }
 

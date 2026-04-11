@@ -41,13 +41,13 @@ public class AuthServiceImpl implements AuthService {
         }
 
         boolean userChecking = userRepo.existsByEmail((request.getEmail()));
-        User user1 = userRepo.findByEmail(request.getEmail()).orElseThrow(()->new NotFoundException("user not found"));
-        if (userChecking && !user1.isDeleted()) {
+//        User user1 = userRepo.findByEmail(request.getEmail()).orElseThrow(()->new NotFoundException("user not found"));
+        if (userChecking) {
             throw new AlreadyExistsException("Email already exists");
         }
 
-        User user2 = userRepo.findByNationalId(request.getEmail()).orElseThrow(()->new NotFoundException("user not found"));
-        if (userRepo.existsByNationalId(request.getNationalId()) && !user2.isDeleted()) {
+//        User user2 = userRepo.findByNationalId(request.getEmail()).orElseThrow(()->new NotFoundException("user not found"));
+        if (userRepo.existsByNationalId(request.getNationalId())) {
             throw new AlreadyExistsException("National ID already exists");
         }
         String otpCode = OtpUtil.generateOtp();
