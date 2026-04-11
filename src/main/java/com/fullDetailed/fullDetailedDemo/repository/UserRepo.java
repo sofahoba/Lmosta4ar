@@ -3,8 +3,8 @@ package com.fullDetailed.fullDetailedDemo.repository;
 import java.util.Optional;
 import java.util.UUID;
 
-import aj.org.objectweb.asm.commons.Remapper;
 import com.fullDetailed.fullDetailedDemo.domain.enums.Role;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import org.springframework.cache.annotation.Cacheable;
@@ -14,6 +14,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.fullDetailed.fullDetailedDemo.domain.entities.User;
 import org.springframework.data.jpa.repository.Query;
+
+import javax.swing.text.html.Option;
 
 public interface UserRepo extends JpaRepository<User,UUID>{
 
@@ -32,4 +34,6 @@ public interface UserRepo extends JpaRepository<User,UUID>{
   Page<User> findByRoleAndIsApprovedFalseAndIsDeletedFalse(Role role, Pageable pageable);
 
   boolean existsByNationalId(String nationalId);
+
+  Optional<User> findByNationalId(String nationalId);
 }

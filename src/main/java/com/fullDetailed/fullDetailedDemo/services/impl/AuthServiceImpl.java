@@ -40,11 +40,14 @@ public class AuthServiceImpl implements AuthService {
             throw new IllegalArgumentException("Password and Confirm Password do not match");
         }
 
-        if (userRepo.existsByEmail(request.getEmail())) {
+        boolean userChecking = userRepo.existsByEmail((request.getEmail()));
+        User user1 = userRepo.findByEmail(request.getEmail()).orElseThrow(()->new NotFoundException("user not found"));
+        if (userChecking && !user1.isDeleted()) {
             throw new AlreadyExistsException("Email already exists");
         }
 
-        if (userRepo.existsByNationalId(request.getNationalId())) {
+        User user2 = userRepo.findByNationalId(request.getEmail()).orElseThrow(()->new NotFoundException("user not found"));
+        if (userRepo.existsByNationalId(request.getNationalId()) && !user2.isDeleted()) {
             throw new AlreadyExistsException("National ID already exists");
         }
         String otpCode = OtpUtil.generateOtp();
