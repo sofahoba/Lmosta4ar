@@ -223,7 +223,7 @@ public class AdminUserManagementServiceImpl implements AdminUserManagementServic
                 .email(createUserDto.getEmail())
                 .password(passwordEncoder.encode(createUserDto.getPassword()))
                 .age(createUserDto.getAge())
-                .role(createUserDto.getRole())
+                .role(Role.JUDGE)
                 .court(createUserDto.getCourt())
                 .nationalId(createUserDto.getNationalId())
                 .isActive(true)
@@ -240,7 +240,7 @@ public class AdminUserManagementServiceImpl implements AdminUserManagementServic
     @Override
     @Cacheable(value = "users_list", key = "{#root.methodName, #pageable}")
     public Page<UserProfileResponseDto>getAllUsers(Pageable pageable){
-        return userRepo.findAll(PagenationHandler.createCleanPageable(pageable)).map(UserMapper::toDto);
+        return userRepo.findAllByIsDeletedFalse(PagenationHandler.createCleanPageable(pageable)).map(UserMapper::toDto);
     }
 
     @Override

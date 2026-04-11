@@ -27,7 +27,6 @@ public class CreateUserDto {
     @Size(min = 10, max = 20, message = "National ID must be valid")
     private String nationalId;
 
-    @NotNull(message = "Role is required")
     private Role role;
 
     private String court;
