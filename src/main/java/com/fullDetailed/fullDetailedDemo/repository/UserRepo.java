@@ -21,7 +21,7 @@ public interface UserRepo extends JpaRepository<User,UUID>{
     Optional<User>findByEmail(String email);
     Page<User> findByRoleAndIsDeletedFalse(Role role, Pageable pageable);
   boolean existsByEmail(String email);
-  Page<User> findAll(Pageable pageable);
+  Page<User> findAllByIsDeletedFalse(Pageable pageable);
 
   Page<User> findByRoleAndIsActiveFalseAndIsDeletedFalse(Role role, Pageable pageable);
 
