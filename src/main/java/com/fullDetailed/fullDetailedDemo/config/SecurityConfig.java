@@ -47,7 +47,7 @@ public class SecurityConfig {
     return http
             .cors(cors -> cors.configurationSource(corsConfigurationSource()))
             .csrf(csrf->csrf.disable())
-            .sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED))
+            .sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authorizeHttpRequests(auth->auth
                     .requestMatchers("/api/auth/**","/oauth2/**","/login/**").permitAll()
                     .requestMatchers("/api/v1/cases/**").authenticated()
@@ -67,6 +67,7 @@ public class SecurityConfig {
                             "/swagger-resources/**",
                             "/webjars/**"
                     ).permitAll()
+                    .requestMatchers("/api/ai/**").permitAll()
                     .anyRequest().authenticated()
             )
             .oauth2Login(oauth -> oauth
