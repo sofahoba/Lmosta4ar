@@ -13,6 +13,9 @@ import java.util.Optional;
 import java.util.UUID;
 
 public interface CaseRepository extends JpaRepository<Case, UUID> {
+
+            Optional<Case> findByCaseNumberAndIsDeletedFalse(String caseNumber);
+
     Page<Case>findByJudge(User user, Pageable pageable);
     boolean existsByCaseNumber(String caseNumber);
     Page<Case> findByIsDeletedFalse(Pageable pageable);

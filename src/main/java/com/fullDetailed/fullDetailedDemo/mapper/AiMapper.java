@@ -16,8 +16,8 @@ public class AiMapper {
             .toList();
 
     return AiInvokeRequest.builder()
-            .case_id(dto.getId().toString())
-            .source_documents(documents)
+            .caseId(dto.getCaseNumber())
+            .sourceDocuments(documents)
             .build();
 }
 }
