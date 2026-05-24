@@ -1,7 +1,6 @@
 package com.fullDetailed.fullDetailedDemo.controller.aiController;
 
-import com.fullDetailed.fullDetailedDemo.domain.dtos.ai.AiInvokeRequest;
-import com.fullDetailed.fullDetailedDemo.services.impl.ai_integration.AiIntegration;
+import com.fullDetailed.fullDetailedDemo.services.impl.ai_integration.AiCaseInvokerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,11 +10,13 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class AiIntegrationController {
 
-    private final AiIntegration aiIntegration;
+    private final AiCaseInvokerService aiCaseInvokerService;
 
-    @PostMapping("/invoke-case")
-    public ResponseEntity<String> invokeCase(@RequestBody AiInvokeRequest caseDto) {
-        String response = aiIntegration.invokeCase(caseDto);
+    @PostMapping("/invoke-case/{caseNumber}")
+    public ResponseEntity<String> invokeCase(@PathVariable String caseNumber) {
+
+        String response = aiCaseInvokerService.invokeCase(caseNumber);
+
         return ResponseEntity.ok(response);
     }
 }

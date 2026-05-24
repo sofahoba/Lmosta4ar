@@ -1,5 +1,6 @@
 package com.fullDetailed.fullDetailedDemo.domain.dtos.ai;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
 import java.util.List;
@@ -11,7 +12,9 @@ import java.util.List;
 @Builder
 public class AiInvokeRequest {
 
-    private String case_id;
+    @JsonProperty("case_id")
+    private String caseId;
 
-    private List<String> source_documents;
+    @JsonProperty("source_documents")
+    private List<String> sourceDocuments;
 }
