@@ -1,20 +1,19 @@
 package com.fullDetailed.fullDetailedDemo.domain.dtos.ai;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
-@Getter
-@Setter
+@Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 public class AiInvokeRequest {
 
-    @JsonProperty("case_id")
     private String caseId;
-
-    @JsonProperty("source_documents")
-    private List<String> sourceDocuments;
+    private List<MultipartFile> files;
 }

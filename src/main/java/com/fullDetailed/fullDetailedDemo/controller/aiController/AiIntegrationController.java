@@ -12,11 +12,9 @@ public class AiIntegrationController {
 
     private final AiCaseInvokerService aiCaseInvokerService;
 
-    @PostMapping("/invoke-case/{caseNumber}")
+    @PostMapping("/invoke/{caseNumber}")
     public ResponseEntity<String> invokeCase(@PathVariable String caseNumber) {
-
-        String response = aiCaseInvokerService.invokeCase(caseNumber);
-
-        return ResponseEntity.ok(response);
+        String result = aiCaseInvokerService.invokeCase(caseNumber);
+        return ResponseEntity.ok(result);
     }
 }
