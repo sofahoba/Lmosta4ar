@@ -7,6 +7,7 @@ import com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseResponseDto;
 import com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseUpdateDto;
 import com.fullDetailed.fullDetailedDemo.domain.enums.AssignStatus;
 import com.fullDetailed.fullDetailedDemo.domain.enums.CaseStatus;
+import com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminCaseManagementServiceImpl;
 import com.fullDetailed.fullDetailedDemo.services.impl.cassefiles.FilesServices;
 import com.fullDetailed.fullDetailedDemo.services.interfaces.admin.AdminCaseManagementService;
 import com.fullDetailed.fullDetailedDemo.util.ResponseHelper;
@@ -18,8 +19,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springdoc.core.annotations.ParameterObject;
 import org.springframework.batch.core.job.Job;
-import org.springframework.batch.core.job.parameters.JobParameters;
-import org.springframework.batch.core.job.parameters.JobParametersBuilder;
 import org.springframework.batch.core.launch.JobOperator;
 import org.springframework.core.io.Resource;
 import org.springframework.data.domain.Page;
@@ -43,8 +42,6 @@ public class AdminCaseController {
 
     private final AdminCaseManagementService caseService;
     private final FilesServices filesServices;
-    private final JobOperator operator;
-    private final Job importCases;
 
     // ==================== CASE CRUD ====================
 
@@ -175,6 +172,12 @@ public class AdminCaseController {
             @RequestParam AssignStatus status) {
         long count = caseService.getCasesCountByAssignedStatus(status);
         return ResponseEntity.ok(count);
+    }
+
+    @DeleteMapping("/case-file/{fileId}")
+    public ResponseEntity<Void> deleteFile(@PathVariable UUID fileId) {
+        caseService.deleteFile(fileId);
+        return ResponseEntity.noContent().build();
     }
 
 }

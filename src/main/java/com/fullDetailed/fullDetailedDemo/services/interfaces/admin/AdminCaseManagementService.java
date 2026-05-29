@@ -1,5 +1,6 @@
 package com.fullDetailed.fullDetailedDemo.services.interfaces.admin;
 
+import com.fullDetailed.fullDetailedDemo.domain.dtos.ApiResponse;
 import com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseFileDownloadDto;
 import com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseRequestDto;
 import com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseResponseDto;
@@ -9,7 +10,6 @@ import com.fullDetailed.fullDetailedDemo.domain.enums.CaseStatus;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.core.io.Resource;
 
 import java.util.List;
 import java.util.UUID;
@@ -29,4 +29,5 @@ public interface AdminCaseManagementService {
     void importCasesFromCsv(MultipartFile file);
     Page<CaseResponseDto> getCasesByAssignedStatus(Pageable pageable, AssignStatus status);
     long getCasesCountByAssignedStatus(AssignStatus status);
+    ApiResponse<Void> deleteFile(UUID fileId);
 }

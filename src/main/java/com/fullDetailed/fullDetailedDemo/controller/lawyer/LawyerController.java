@@ -90,4 +90,10 @@ public class LawyerController {
                 .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + fileDto.getResource().getFilename() + "\"")
                 .body(fileDto.getResource());
     }
+
+    @DeleteMapping("/case-file/{fileId}")
+    public ResponseEntity<Void> deleteFile(@PathVariable UUID fileId) {
+        lawyerService.deleteFile(fileId);
+        return ResponseEntity.noContent().build();
+    }
 }
