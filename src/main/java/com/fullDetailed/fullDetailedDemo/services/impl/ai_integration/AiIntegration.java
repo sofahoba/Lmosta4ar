@@ -1,6 +1,8 @@
 package com.fullDetailed.fullDetailedDemo.services.impl.ai_integration;
 
 import com.fullDetailed.fullDetailedDemo.domain.dtos.ai.AiInvokeRequest;
+import com.fullDetailed.fullDetailedDemo.domain.dtos.ai.AiResponse;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.http.HttpEntity;
@@ -18,13 +20,11 @@ public class AiIntegration {
 
     private final WebClient webClient;
 
-    public String invokeCase(AiInvokeRequest request) {
+    public AiResponse invokeCase(AiInvokeRequest request) {
         MultipartBodyBuilder builder = new MultipartBodyBuilder();
 
-        // Add case_id as form field
         builder.part("case_id", request.getCaseId());
 
-        // Add files
         if (request.getFiles() != null) {
             for (MultipartFile file : request.getFiles()) {
                 builder.part("files", file.getResource())
@@ -38,7 +38,7 @@ public class AiIntegration {
                 .contentType(MediaType.MULTIPART_FORM_DATA)
                 .body(BodyInserters.fromMultipartData(builder.build()))
                 .retrieve()
-                .bodyToMono(String.class)
+                .bodyToMono(AiResponse.class)
                 .block();
     }
 }

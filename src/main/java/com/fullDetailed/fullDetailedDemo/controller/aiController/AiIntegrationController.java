@@ -1,5 +1,7 @@
 package com.fullDetailed.fullDetailedDemo.controller.aiController;
 
+import com.fullDetailed.fullDetailedDemo.domain.dtos.ai.AiResponse;
+import com.fullDetailed.fullDetailedDemo.domain.dtos.ai.CaseAnalysisResponse;
 import com.fullDetailed.fullDetailedDemo.services.impl.ai_integration.AiCaseInvokerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -13,8 +15,8 @@ public class AiIntegrationController {
     private final AiCaseInvokerService aiCaseInvokerService;
 
     @PostMapping("/invoke/{caseNumber}")
-    public ResponseEntity<String> invokeCase(@PathVariable String caseNumber) {
-        String result = aiCaseInvokerService.invokeCase(caseNumber);
+    public ResponseEntity<CaseAnalysisResponse> invokeCase(@PathVariable String caseNumber) {
+        CaseAnalysisResponse result = aiCaseInvokerService.invokeCase(caseNumber);
         return ResponseEntity.ok(result);
     }
 }

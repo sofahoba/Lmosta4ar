@@ -1,5 +1,6 @@
 package com.fullDetailed.fullDetailedDemo.services.impl.lawyer;
 
+import com.fullDetailed.fullDetailedDemo.domain.dtos.ApiResponse;
 import com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseResponseDto;
 import com.fullDetailed.fullDetailedDemo.domain.dtos.Case.RequestCaseDto;
 import com.fullDetailed.fullDetailedDemo.domain.dtos.lawyer.LawyerDto;
@@ -20,11 +21,11 @@ import com.fullDetailed.fullDetailedDemo.repository.CaseRequestRepository;
 import com.fullDetailed.fullDetailedDemo.repository.UserRepo;
 import com.fullDetailed.fullDetailedDemo.services.impl.FileStorageService;
 import com.fullDetailed.fullDetailedDemo.services.interfaces.lawyer.LawyerService;
-import com.fullDetailed.fullDetailedDemo.services.interfaces.notification.NotificationService;
 import com.fullDetailed.fullDetailedDemo.util.PagenationHandler;
 import com.fullDetailed.fullDetailedDemo.util.UserContextService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -147,6 +148,22 @@ public class LawyerServiceImpl implements LawyerService {
             caseFileRepository.saveAll(filesToSave);
         }
         return fileUrls;
+    }
+
+    @Override
+    @Transactional
+    @CacheEvict(value = "cases", allEntries = true)
+    public ApiResponse<Void> deleteFile(UUID fileId) {
+        CaseFile file = caseFileRepository.findById(fileId)
+                .orElseThrow(() -> new NotFoundException("File not found with ID: " + fileId));
+        
+        Case c = file.getCaseEntity();
+        User currUser=contextService.getCurrentUser();
+        if(!c.getLawyer().equals(currUser) && !file.getUploadedBy().equals(currUser)){
+            throw new NotFoundException("Case not Exist");
+        }
+        caseFileRepository.delete(file);
+        return ApiResponse.success("File deleted successfully");
     }
 
     @Override

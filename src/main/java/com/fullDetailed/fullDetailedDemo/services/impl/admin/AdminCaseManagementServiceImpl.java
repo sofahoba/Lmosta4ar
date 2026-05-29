@@ -1,5 +1,6 @@
 package com.fullDetailed.fullDetailedDemo.services.impl.admin;
 
+import com.fullDetailed.fullDetailedDemo.domain.dtos.ApiResponse;
 import com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseRequestDto;
 import com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseResponseDto;
 import com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseUpdateDto;
@@ -19,13 +20,11 @@ import com.fullDetailed.fullDetailedDemo.repository.CaseRepository;
 import com.fullDetailed.fullDetailedDemo.repository.UserRepo;
 import com.fullDetailed.fullDetailedDemo.services.impl.FileStorageService;
 import com.fullDetailed.fullDetailedDemo.services.interfaces.admin.AdminCaseManagementService;
-import com.fullDetailed.fullDetailedDemo.services.interfaces.notification.NotificationService;
 import com.fullDetailed.fullDetailedDemo.util.PagenationHandler;
 import com.fullDetailed.fullDetailedDemo.util.UserContextService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.job.Job;
-import org.springframework.batch.core.job.JobExecution;
 import org.springframework.batch.core.job.parameters.JobParameters;
 import org.springframework.batch.core.job.parameters.JobParametersBuilder;
 import org.springframework.batch.core.launch.JobOperator;
@@ -42,7 +41,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Properties;
 import java.util.UUID;
 
 @Service
@@ -292,9 +290,9 @@ public class AdminCaseManagementServiceImpl implements AdminCaseManagementServic
                     .toJobParameters();
 
             jobOperator.start(importCaseJob, params);
-
+            
             log.info("Batch job completed");
-
+            
         } catch (Exception e) {
             log.error("Failed to import cases from CSV", e);
             throw new IllegalArgumentException("Failed to import cases: " + e.getMessage(), e);
@@ -305,10 +303,20 @@ public class AdminCaseManagementServiceImpl implements AdminCaseManagementServic
     public Page<CaseResponseDto> getCasesByAssignedStatus(Pageable pageable, AssignStatus status) {
         return caseRepository.findByAssignStatusAndIsDeletedFalse(PagenationHandler.createCleanPageable(pageable),status).map(CaseMapper::toDto);
     }
-
+    
     @Override
     public long getCasesCountByAssignedStatus(AssignStatus status) {
         return caseRepository.countByAssignStatusAndIsDeletedFalse(status);
+    }
+    
+    @Override
+    @Transactional
+    @CacheEvict(value = "cases", allEntries = true)
+    public ApiResponse<Void> deleteFile(UUID fileId) {
+        CaseFile file = caseFileRepo.findById(fileId)
+                .orElseThrow(() -> new NotFoundException("File not found with ID: " + fileId));
+        caseFileRepo.delete(file);
+        return ApiResponse.success("File deleted successfully");
     }
 
     private AssignStatus determineAssignStatus(User judge, User lawyer) {
@@ -330,5 +338,6 @@ public class AdminCaseManagementServiceImpl implements AdminCaseManagementServic
         if (contentType.contains("image")) return FileType.IMAGE;
         return FileType.DOCUMENT;
     }
+
 
 }

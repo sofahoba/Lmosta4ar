@@ -1,0 +1,9 @@
+package com.fullDetailed.fullDetailedDemo.repository;
+
+import com.fullDetailed.fullDetailedDemo.domain.entities.ModelResult;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.UUID;
+
+public interface ModelResultRepository extends JpaRepository<ModelResult, UUID> {
+}

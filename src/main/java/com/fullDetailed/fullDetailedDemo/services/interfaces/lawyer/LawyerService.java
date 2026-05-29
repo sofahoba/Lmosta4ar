@@ -1,5 +1,6 @@
 package com.fullDetailed.fullDetailedDemo.services.interfaces.lawyer;
 
+import com.fullDetailed.fullDetailedDemo.domain.dtos.ApiResponse;
 import com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseResponseDto;
 import com.fullDetailed.fullDetailedDemo.domain.dtos.Case.RequestCaseDto;
 import com.fullDetailed.fullDetailedDemo.domain.dtos.lawyer.LawyerDto;
@@ -18,4 +19,5 @@ public interface LawyerService {
     void reqeustAccessOnCaseByCaseNumber(RequestCaseDto requestDto);
     List<String> uploadCaseFiles(UUID caseId, List<MultipartFile> files);
     CaseResponseDto getCaseById(UUID caseId);
+    ApiResponse<Void> deleteFile(UUID fileId);
 }
