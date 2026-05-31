@@ -65,7 +65,7 @@ public class AiResultDto {
     private List<String> errors;
 
     @JsonProperty("suggested_verdict")
-    private String suggestedVerdict;
+    private SuggestedVerdictDto suggestedVerdict;
 
     @JsonProperty("last_updated")
     private String lastUpdated;

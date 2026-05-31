@@ -45,7 +45,7 @@ public class CaseAnalysisResponse {
         private String jurisdiction;
         private String filingDate;
         private String prosecutorName;
-        private String suggestedVerdict;
+        private SuggestedVerdictDto suggestedVerdict; 
         private int defendantCount;
         private int chargeCount;
         private boolean hasProceduralViolations;
