@@ -1,5 +1,8 @@
 package com.fullDetailed.fullDetailedDemo.services.impl.ai_integration;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.fullDetailed.fullDetailedDemo.domain.dtos.ai.AiInvokeRequest;
 import com.fullDetailed.fullDetailedDemo.domain.dtos.ai.AiResponse;
 
@@ -19,10 +22,10 @@ import reactor.core.publisher.Mono;
 public class AiIntegration {
 
     private final WebClient webClient;
+    private final ObjectMapper objectMapper;
 
     public AiResponse invokeCase(AiInvokeRequest request) {
         MultipartBodyBuilder builder = new MultipartBodyBuilder();
-
         builder.part("case_id", request.getCaseId());
 
         if (request.getFiles() != null) {
@@ -33,12 +36,18 @@ public class AiIntegration {
             }
         }
 
-        return webClient.post()
+        String rawJson = webClient.post()
                 .uri("/cases/invoke_case")
                 .contentType(MediaType.MULTIPART_FORM_DATA)
                 .body(BodyInserters.fromMultipartData(builder.build()))
                 .retrieve()
-                .bodyToMono(AiResponse.class)
+                .bodyToMono(String.class)
                 .block();
+
+        try {
+            return objectMapper.readValue(rawJson, AiResponse.class);
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to parse AI response: " + e.getMessage(), e);
+        }
     }
 }

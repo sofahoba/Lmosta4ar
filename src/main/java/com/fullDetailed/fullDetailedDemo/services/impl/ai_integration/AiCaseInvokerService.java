@@ -81,7 +81,7 @@ public class AiCaseInvokerService {
                     .courtLevel(result.getCourtLevel())
                     .jurisdiction(result.getJurisdiction())
                     .prosecutorName(result.getProsecutorName())
-                    .suggestedVerdict(result.getSuggestedVerdict())
+                    .suggestedVerdict(toJson(result.getSuggestedVerdict()))  // was: result.getSuggestedVerdict()
                     .completedAgents(joinList(result.getCompletedAgents()))
                     .processingErrors(joinList(result.getErrors()))
                     .hasProceduralViolations(hasViolations)

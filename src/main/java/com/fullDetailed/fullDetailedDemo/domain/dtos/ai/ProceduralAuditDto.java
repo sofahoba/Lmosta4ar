@@ -11,10 +11,19 @@ import lombok.Data;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ProceduralAuditDto {
     private List<ViolationDto> violations;
+    
     @JsonProperty("overall_assessment")
     private String overallAssessment;
+    
     @JsonProperty("critical_nullities")
     private List<String> criticalNullities;
+
     @JsonProperty("kg_articles_used")
     private List<String> kgArticlesUsed;
+
+    @JsonProperty("excluded_defense_claims")
+    private List<ExcludedDefenseClaimDto> excludedDefenseClaims;
+
+    @JsonProperty("meta")
+    private Object meta;
 }
