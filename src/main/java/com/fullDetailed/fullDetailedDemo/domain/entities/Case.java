@@ -65,6 +65,9 @@ public class Case {
     private String modelJudgment;
     private String finalDecision;
 
+    @OneToOne(mappedBy = "caseEntity", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private ModelResult modelResult;
+
     private LocalDateTime createdAt;
 
     @PrePersist

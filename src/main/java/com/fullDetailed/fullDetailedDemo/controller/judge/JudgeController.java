@@ -2,11 +2,12 @@ package com.fullDetailed.fullDetailedDemo.controller.judge;
 
 import com.fullDetailed.fullDetailedDemo.domain.dtos.ApiResponse;
 import com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseFileDownloadDto;
-import com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseRequestDto;
 import com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseResponseDto;
 import com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseRulingDto;
+import com.fullDetailed.fullDetailedDemo.domain.dtos.ai.ModelResultResponse;
 import com.fullDetailed.fullDetailedDemo.domain.dtos.judge.JudgeProfileDto;
 import com.fullDetailed.fullDetailedDemo.domain.enums.CaseStatus;
+import com.fullDetailed.fullDetailedDemo.services.impl.ai_integration.ModelResultService;
 import com.fullDetailed.fullDetailedDemo.services.impl.cassefiles.FilesServices;
 import com.fullDetailed.fullDetailedDemo.services.interfaces.judge.JudgeService;
 import com.fullDetailed.fullDetailedDemo.util.ResponseHelper;
@@ -25,7 +26,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
-import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -35,6 +35,7 @@ public class JudgeController {
 
     private final JudgeService judgeService;
     private final FilesServices filesServices;
+    private final ModelResultService modelResultService;
 
     // ==================== PROFILE ====================
 
@@ -128,5 +129,11 @@ public class JudgeController {
                 .contentType(MediaType.parseMediaType(fileDto.getContentType()))
                 .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + fileDto.getResource().getFilename() + "\"")
                 .body(fileDto.getResource());
+    }
+
+    @GetMapping("/cases/{caseId}/result")
+    public ResponseEntity<ApiResponse<ModelResultResponse>> getCaseResult(@PathVariable UUID caseId) {
+        ModelResultResponse result = modelResultService.getResultByCaseId(caseId);
+        return ResponseHelper.ok(result, "Model result retrieved successfully");
     }
 }

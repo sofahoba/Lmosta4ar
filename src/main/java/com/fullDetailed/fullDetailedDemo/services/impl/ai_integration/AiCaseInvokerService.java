@@ -68,20 +68,21 @@ public class AiCaseInvokerService {
                     .caseEntity(caseEntity)
                     .summary(aiResponse.getMessage())
                     .rawResponse(objectMapper.writeValueAsString(result))
-                    .defendantsJson(toJson(result.getDefendants()))
-                    .chargesJson(toJson(result.getCharges()))
-                    .incidentsJson(toJson(result.getIncidents()))
-                    .evidencesJson(toJson(result.getEvidences()))
-                    .witnessStatementsJson(toJson(result.getWitnessStatements()))
-                    .confessionsJson(toJson(result.getConfessions()))
-                    .labReportsJson(toJson(result.getLabReports()))
-                    .proceduralAuditJson(toJson(audit))
-                    .defenseDocumentsJson(toJson(result.getDefenseDocuments()))
+                    .defendants(result.getDefendants())
+                    .charges(result.getCharges())
+                    .incidents(result.getIncidents())
+                    .evidences(result.getEvidences())
+                    .witnessStatements(result.getWitnessStatements())
+                    .confessions(result.getConfessions())
+                    .labReports(result.getLabReports())
+                    .criminalProceedings(result.getCriminalProceedings())
+                    .defenseDocuments(result.getDefenseDocuments())
+                    .proceduralAudit(audit)
+                    .suggestedVerdict(result.getSuggestedVerdict())
                     .court(result.getCourt())
                     .courtLevel(result.getCourtLevel())
                     .jurisdiction(result.getJurisdiction())
                     .prosecutorName(result.getProsecutorName())
-                    .suggestedVerdict(toJson(result.getSuggestedVerdict()))  // was: result.getSuggestedVerdict()
                     .completedAgents(joinList(result.getCompletedAgents()))
                     .processingErrors(joinList(result.getErrors()))
                     .hasProceduralViolations(hasViolations)
@@ -140,18 +141,6 @@ public class AiCaseInvokerService {
                 .processingErrors(result.getErrors())
                 .processedAt(result.getLastUpdated())
                 .build();
-    }
-
-    // ── helpers ──────────────────────────────────────────────────────────────
-
-    private String toJson(Object obj) {
-        if (obj == null) return null;
-        try {
-            return objectMapper.writeValueAsString(obj);
-        } catch (Exception e) {
-            log.warn("Could not serialize object to JSON", e);
-            return null;
-        }
     }
 
     private String joinList(List<String> list) {
