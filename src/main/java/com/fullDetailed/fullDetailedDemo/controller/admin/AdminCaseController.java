@@ -5,9 +5,10 @@ import com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseFileDownloadDto;
 import com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseRequestDto;
 import com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseResponseDto;
 import com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseUpdateDto;
+import com.fullDetailed.fullDetailedDemo.domain.dtos.ai.ModelResultResponse;
 import com.fullDetailed.fullDetailedDemo.domain.enums.AssignStatus;
 import com.fullDetailed.fullDetailedDemo.domain.enums.CaseStatus;
-import com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminCaseManagementServiceImpl;
+import com.fullDetailed.fullDetailedDemo.services.impl.ai_integration.ModelResultService;
 import com.fullDetailed.fullDetailedDemo.services.impl.cassefiles.FilesServices;
 import com.fullDetailed.fullDetailedDemo.services.interfaces.admin.AdminCaseManagementService;
 import com.fullDetailed.fullDetailedDemo.util.ResponseHelper;
@@ -18,8 +19,6 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springdoc.core.annotations.ParameterObject;
-import org.springframework.batch.core.job.Job;
-import org.springframework.batch.core.launch.JobOperator;
 import org.springframework.core.io.Resource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -42,6 +41,7 @@ public class AdminCaseController {
 
     private final AdminCaseManagementService caseService;
     private final FilesServices filesServices;
+    private final ModelResultService modelResultService;
 
     // ==================== CASE CRUD ====================
 
@@ -178,6 +178,12 @@ public class AdminCaseController {
     public ResponseEntity<Void> deleteFile(@PathVariable UUID fileId) {
         caseService.deleteFile(fileId);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/cases/{caseId}/result")
+    public ResponseEntity<ApiResponse<ModelResultResponse>> getCaseResult(@PathVariable UUID caseId) {
+        ModelResultResponse result = modelResultService.getResultByCaseId(caseId);
+        return ResponseHelper.ok(result, "Model result retrieved successfully");
     }
 
 }
