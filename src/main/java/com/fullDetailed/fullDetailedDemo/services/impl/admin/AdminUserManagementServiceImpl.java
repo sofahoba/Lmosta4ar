@@ -8,8 +8,8 @@ import com.fullDetailed.fullDetailedDemo.domain.dtos.judge.UserResponseDto;
 import com.fullDetailed.fullDetailedDemo.domain.dtos.lawyer.LawyerDto;
 import com.fullDetailed.fullDetailedDemo.domain.entities.Case;
 import com.fullDetailed.fullDetailedDemo.domain.entities.CaseRequests;
-import com.fullDetailed.fullDetailedDemo.domain.entities.Notification;
 import com.fullDetailed.fullDetailedDemo.domain.entities.User;
+import com.fullDetailed.fullDetailedDemo.domain.enums.AssignStatus;
 import com.fullDetailed.fullDetailedDemo.domain.enums.RequestStatus;
 import com.fullDetailed.fullDetailedDemo.domain.enums.Role;
 import com.fullDetailed.fullDetailedDemo.domain.event.NotificationEvent;
@@ -19,11 +19,9 @@ import com.fullDetailed.fullDetailedDemo.exceptions.NotFoundException;
 import com.fullDetailed.fullDetailedDemo.mapper.UserMapper;
 import com.fullDetailed.fullDetailedDemo.mapper.users.judge.JudgeMapper;
 import com.fullDetailed.fullDetailedDemo.mapper.users.lawyer.LawyerMapper;
-import com.fullDetailed.fullDetailedDemo.repository.CaseRepository;
 import com.fullDetailed.fullDetailedDemo.repository.CaseRequestRepository;
 import com.fullDetailed.fullDetailedDemo.repository.UserRepo;
 import com.fullDetailed.fullDetailedDemo.services.interfaces.admin.AdminUserManagementService;
-import com.fullDetailed.fullDetailedDemo.services.interfaces.notification.NotificationService;
 import com.fullDetailed.fullDetailedDemo.util.HelperDtoConverter;
 import com.fullDetailed.fullDetailedDemo.util.PagenationHandler;
 import lombok.RequiredArgsConstructor;
@@ -47,7 +45,6 @@ public class AdminUserManagementServiceImpl implements AdminUserManagementServic
     private final UserRepo userRepo;
     private final PasswordEncoder passwordEncoder;
     private final CaseRequestRepository caseRequestRepository;
-    private final CaseRepository caseRepository;
     private final ApplicationEventPublisher eventPublisher;
 
     @Override
@@ -300,8 +297,15 @@ public class AdminUserManagementServiceImpl implements AdminUserManagementServic
         }
         request.setStatus(RequestStatus.APPROVED);
         legalCase.setLawyer(request.getLawyer());
-
         User lawyer = request.getLawyer();
+
+        if(legalCase.getJudge()!=null){
+            legalCase.setAssignStatus(AssignStatus.ASSIGNED_TO_LAWYER);
+        }
+        else{
+            legalCase.setAssignStatus(AssignStatus.FULLY_ASSIGNED);
+        }
+
         lawyer.setAssignedCasesCount(lawyer.getAssignedCasesCount() + 1);
 
         String caseInfo = (legalCase.getCaseNumber() != null) ? legalCase.getCaseNumber() : "the requested case";

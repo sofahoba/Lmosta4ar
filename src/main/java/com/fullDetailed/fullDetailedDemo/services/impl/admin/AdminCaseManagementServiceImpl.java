@@ -71,6 +71,12 @@ public class AdminCaseManagementServiceImpl implements AdminCaseManagementServic
         if(caseEntity.getJudge()!=null){
             throw new IllegalArgumentException("the case is already assigned to an existing judge");
         }
+        if(caseEntity.getLawyer()==null){
+            caseEntity.setAssignStatus(AssignStatus.ASSIGNED_TO_JUDGE);
+        }
+        else if(caseEntity.getLawyer()!=null){
+            caseEntity.setAssignStatus(AssignStatus.FULLY_ASSIGNED);
+        }
         caseEntity.setJudge(judge);
         caseEntity.setAssignedBy(currentUser);
         judge.setAssignedCasesCount(judge.getAssignedCasesCount() + 1);
@@ -323,10 +329,10 @@ public class AdminCaseManagementServiceImpl implements AdminCaseManagementServic
         if (judge != null && lawyer != null) {
             return AssignStatus.FULLY_ASSIGNED;
         }
-        if (judge != null) {
+        if (judge != null && lawyer==null) {
             return AssignStatus.ASSIGNED_TO_JUDGE;
         }
-        if (lawyer != null) {
+        if (lawyer != null && judge==null) {
             return AssignStatus.ASSIGNED_TO_LAWYER;
         }
         return null;
