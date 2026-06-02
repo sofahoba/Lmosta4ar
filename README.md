@@ -1,4 +1,4 @@
-<![CDATA[<div align="center">
+<div align="center">
 
 # ⚖️ Lmosta4ar — المستشار
 
@@ -912,4 +912,3 @@ The project includes test dependencies for comprehensive testing:
 *"Code is law. But law... now that needs an AI." — Lmosta4ar*
 
 </div>
-]]>
