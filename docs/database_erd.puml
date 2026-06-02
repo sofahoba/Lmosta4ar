@@ -1,4 +1,4 @@
-<![CDATA[@startuml Lmosta4ar_Database_ERD
+@startuml Lmosta4ar_Database_ERD
 
 !theme cerulean
 skinparam linetype ortho
@@ -166,4 +166,3 @@ Case ||--o{ CaseRequest : "has requests\n(case_id)"
 Case ||--|| ModelResult : "has AI result\n(case_id)"
 
 @enduml
-]]>

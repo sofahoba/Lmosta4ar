@@ -1,4 +1,4 @@
-<![CDATA[-- ============================================================
+-- ============================================================
 -- Lmosta4ar (المستشار) — Database Schema
 -- PostgreSQL 16
 -- Generated from JPA Entity definitions
@@ -156,4 +156,3 @@ CREATE INDEX idx_notification_recipient_read ON notifications (recipient_id, is_
 -- BATCH_JOB_EXECUTION_CONTEXT
 -- BATCH_STEP_EXECUTION
 -- BATCH_STEP_EXECUTION_CONTEXT
-]]>
