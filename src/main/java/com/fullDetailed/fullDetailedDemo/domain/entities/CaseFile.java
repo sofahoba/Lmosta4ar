@@ -27,6 +27,9 @@ public class CaseFile {
     @Column(nullable = false)
     private String fileName;
 
+    @Column(nullable = false)
+    private String originalFileName;
+
     private String fileUrl;
 
     @Enumerated(EnumType.STRING)

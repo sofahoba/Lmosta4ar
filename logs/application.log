@@ -1,32 +1,20 @@
-2026-06-01 00:03:18 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
-2026-06-01 00:03:18 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
-2026-06-01 00:03:18 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 7 ms
-2026-06-01 00:03:21 [http-nio-8080-exec-8] INFO  o.s.api.AbstractOpenApiResource - Init duration for springdoc-openapi is: 2483 ms
-2026-06-01 00:12:23 [SpringApplicationShutdownHook] INFO  o.s.boot.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
-2026-06-01 00:12:23 [tomcat-shutdown] INFO  o.s.boot.tomcat.GracefulShutdown - Graceful shutdown complete
-2026-06-01 00:12:23 [SpringApplicationShutdownHook] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - Stopping...
-2026-06-01 00:12:23 [SpringApplicationShutdownHook] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@6a75b8d3]]
-2026-06-01 00:12:23 [SpringApplicationShutdownHook] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - Stopped.
-2026-06-01 00:12:23 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-2026-06-01 00:12:23 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
-2026-06-01 00:12:23 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
-2026-06-01 00:12:27 [main] INFO  c.f.fullDetailedDemo.Elmostashar - Starting Elmostashar v0.0.1-SNAPSHOT using Java 21.0.11 with PID 1 (/app/app.jar started by spring in /app)
-2026-06-01 00:12:27 [main] DEBUG c.f.fullDetailedDemo.Elmostashar - Running with Spring Boot v4.0.0, Spring v7.0.1
-2026-06-01 00:12:27 [main] INFO  c.f.fullDetailedDemo.Elmostashar - No active profile set, falling back to 1 default profile: "default"
-2026-06-01 00:12:30 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-06-01 00:12:31 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 275 ms. Found 6 JPA repository interfaces.
-2026-06-01 00:12:32 [main] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
-2026-06-01 00:12:32 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
-2026-06-01 00:12:32 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.14]
-2026-06-01 00:12:32 [main] INFO  o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 5169 ms
-2026-06-01 00:12:33 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-2026-06-01 00:12:33 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@7d4d65f5
-2026-06-01 00:12:33 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
-2026-06-01 00:12:33 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
-2026-06-01 00:12:33 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 7.1.8.Final
-2026-06-01 00:12:34 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-06-01 00:12:34 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2026-06-01 00:12:34 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+2026-06-02 22:26:32 [main] INFO  c.f.fullDetailedDemo.Elmostashar - Starting Elmostashar v0.0.1-SNAPSHOT using Java 21.0.11 with PID 1 (/app/app.jar started by spring in /app)
+2026-06-02 22:26:32 [main] DEBUG c.f.fullDetailedDemo.Elmostashar - Running with Spring Boot v4.0.0, Spring v7.0.1
+2026-06-02 22:26:32 [main] INFO  c.f.fullDetailedDemo.Elmostashar - No active profile set, falling back to 1 default profile: "default"
+2026-06-02 22:26:34 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-06-02 22:26:34 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 291 ms. Found 6 JPA repository interfaces.
+2026-06-02 22:26:36 [main] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-06-02 22:26:36 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-06-02 22:26:36 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.14]
+2026-06-02 22:26:36 [main] INFO  o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 4696 ms
+2026-06-02 22:26:37 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-06-02 22:26:37 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@70c205bf
+2026-06-02 22:26:37 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-06-02 22:26:38 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-06-02 22:26:38 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 7.1.8.Final
+2026-06-02 22:26:40 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-06-02 22:26:40 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-06-02 22:26:40 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
 	Database JDBC URL [jdbc:postgresql://postgres:5432/fullDetails]
 	Database driver: PostgreSQL JDBC Driver
 	Database dialect: PostgreSQLDialect
@@ -38,55 +26,1405 @@
 	Pool: DatasourceConnectionProviderImpl
 	Minimum pool size: undefined/unknown
 	Maximum pool size: undefined/unknown
-2026-06-01 00:12:36 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2026-06-01 00:12:37 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-06-01 00:12:37 [main] INFO  o.s.d.j.r.q.QueryEnhancerFactories - Hibernate is in classpath; If applicable, HQL parser will be used.
-2026-06-01 00:12:37 [main] DEBUG c.f.f.c.s.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
-2026-06-01 00:12:38 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getAllFullyAssignedCases' with operations: [Builder[public org.springframework.data.domain.Page com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminCaseManagementServiceImpl.getAllFullyAssignedCases(org.springframework.data.domain.Pageable)] caches=[cases] | key=''fullyAssigned:' + #pageable.pageNumber' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
-2026-06-01 00:12:38 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'importCasesFromCsv' with operations: [Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminCaseManagementServiceImpl.importCasesFromCsv(org.springframework.web.multipart.MultipartFile)] caches=[cases] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
-2026-06-01 00:12:38 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getCasesByStatus' with operations: [Builder[public org.springframework.data.domain.Page com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminCaseManagementServiceImpl.getCasesByStatus(com.fullDetailed.fullDetailedDemo.domain.enums.CaseStatus,org.springframework.data.domain.Pageable)] caches=[cases] | key=''status:' + #status + ':' + #pageable.pageNumber + ':' + #pageable.pageSize' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
-2026-06-01 00:12:38 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getAllDeletedCases' with operations: [Builder[public org.springframework.data.domain.Page com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminCaseManagementServiceImpl.getAllDeletedCases(org.springframework.data.domain.Pageable)] caches=[cases] | key=''deleted:' + #pageable.pageNumber' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
-2026-06-01 00:12:38 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'assignCaseToJudge' with operations: [Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminCaseManagementServiceImpl.assignCaseToJudge(java.util.UUID,java.util.UUID)] caches=[cases] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
-2026-06-01 00:12:38 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'uploadCaseFiles' with operations: [Builder[public java.util.List com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminCaseManagementServiceImpl.uploadCaseFiles(java.util.UUID,java.util.List)] caches=[cases] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
-2026-06-01 00:12:38 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'createCase' with operations: [Builder[public com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseResponseDto com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminCaseManagementServiceImpl.createCase(com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseRequestDto)] caches=[cases] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
-2026-06-01 00:12:38 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getAllCases' with operations: [Builder[public org.springframework.data.domain.Page com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminCaseManagementServiceImpl.getAllCases(org.springframework.data.domain.Pageable)] caches=[cases] | key=''all:'+#pageable.pageNumber+':'+ #pageable.pageSize' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
-2026-06-01 00:12:38 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getCaseById' with operations: [Builder[public com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseResponseDto com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminCaseManagementServiceImpl.getCaseById(java.util.UUID)] caches=[cases] | key=''id:' + #caseId' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
-2026-06-01 00:12:38 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'updateCase' with operations: [Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminCaseManagementServiceImpl.updateCase(java.util.UUID,com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseUpdateDto)] caches=[cases] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
-2026-06-01 00:12:38 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'deleteCase' with operations: [Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminCaseManagementServiceImpl.deleteCase(java.util.UUID)] caches=[cases] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
-2026-06-01 00:12:38 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'deleteFile' with operations: [Builder[public com.fullDetailed.fullDetailedDemo.domain.dtos.ApiResponse com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminCaseManagementServiceImpl.deleteFile(java.util.UUID)] caches=[cases] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
-2026-06-01 00:12:38 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'activateUserById' with operations: [Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.activateUserById(java.util.UUID)] caches=[user_profile] | key='#userId' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',false,false, Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.activateUserById(java.util.UUID)] caches=[users_list] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
-2026-06-01 00:12:38 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'deActivateUserById' with operations: [Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.deActivateUserById(java.util.UUID)] caches=[user_profile] | key='#userId' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',false,false, Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.deActivateUserById(java.util.UUID)] caches=[users_list] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
-2026-06-01 00:12:38 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getAllLawyerProfile' with operations: [Builder[public org.springframework.data.domain.Page com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.getAllLawyerProfile(org.springframework.data.domain.Pageable)] caches=[users_list] | key='{#root.methodName, #pageable}' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
-2026-06-01 00:12:38 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getAllJudgesProfile' with operations: [Builder[public org.springframework.data.domain.Page com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.getAllJudgesProfile(org.springframework.data.domain.Pageable)] caches=[users_list] | key='{#root.methodName, #pageable}' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
-2026-06-01 00:12:38 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'updateJudgeProfile' with operations: [Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.updateJudgeProfile(java.util.UUID,com.fullDetailed.fullDetailedDemo.domain.dtos.judge.JudgeProfileDto)] caches=[user_profile] | key='#judgeId' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',false,false, Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.updateJudgeProfile(java.util.UUID,com.fullDetailed.fullDetailedDemo.domain.dtos.judge.JudgeProfileDto)] caches=[users_list] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
-2026-06-01 00:12:38 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getAllCaseRequests' with operations: [Builder[public org.springframework.data.domain.Page com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.getAllCaseRequests(org.springframework.data.domain.Pageable)] caches=[case_requests] | key='{#status, #pageable}' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
-2026-06-01 00:12:38 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getAllActivatedLawyers' with operations: [Builder[public org.springframework.data.domain.Page com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.getAllActivatedLawyers(org.springframework.data.domain.Pageable)] caches=[users_list] | key='{#root.methodName, #pageable}' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
-2026-06-01 00:12:38 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getAllDeactivatedLawyers' with operations: [Builder[public org.springframework.data.domain.Page com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.getAllDeactivatedLawyers(org.springframework.data.domain.Pageable)] caches=[users_list] | key='{#root.methodName, #pageable}' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
-2026-06-01 00:12:38 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getAllApprovedLawyers' with operations: [Builder[public org.springframework.data.domain.Page com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.getAllApprovedLawyers(org.springframework.data.domain.Pageable)] caches=[users_list] | key='{#root.methodName, #pageable}' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
-2026-06-01 00:12:38 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getAllRejectedLawyers' with operations: [Builder[public org.springframework.data.domain.Page com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.getAllRejectedLawyers(org.springframework.data.domain.Pageable)] caches=[users_list] | key='{#root.methodName, #pageable}' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
-2026-06-01 00:12:38 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'acceptLawyerApprovalById' with operations: [Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.acceptLawyerApprovalById(java.util.UUID)] caches=[user_profile] | key='#userId' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',false,false, Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.acceptLawyerApprovalById(java.util.UUID)] caches=[users_list] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
-2026-06-01 00:12:38 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'rejectLawyerApprovalById' with operations: [Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.rejectLawyerApprovalById(java.util.UUID)] caches=[user_profile] | key='#userId' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',false,false, Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.rejectLawyerApprovalById(java.util.UUID)] caches=[users_list] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
-2026-06-01 00:12:38 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getAllActivatedJudges' with operations: [Builder[public org.springframework.data.domain.Page com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.getAllActivatedJudges(org.springframework.data.domain.Pageable)] caches=[users_list] | key='{#root.methodName, #pageable}' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
-2026-06-01 00:12:38 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getAllDeactivatedJudges' with operations: [Builder[public org.springframework.data.domain.Page com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.getAllDeactivatedJudges(org.springframework.data.domain.Pageable)] caches=[users_list] | key='{#root.methodName, #pageable}' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
-2026-06-01 00:12:38 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getAllCaseRequestsByStatus' with operations: [Builder[public org.springframework.data.domain.Page com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.getAllCaseRequestsByStatus(com.fullDetailed.fullDetailedDemo.domain.enums.RequestStatus,org.springframework.data.domain.Pageable)] caches=[case_requests] | key='{#status, #pageable}' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
-2026-06-01 00:12:38 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'approveCaseAccessRequest' with operations: [Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.approveCaseAccessRequest(java.util.UUID)] caches=[case_requests] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false, Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.approveCaseAccessRequest(java.util.UUID)] caches=[users_list] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false, Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.approveCaseAccessRequest(java.util.UUID)] caches=[user_profile] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
-2026-06-01 00:12:38 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'rejectCaseAccessRequest' with operations: [Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.rejectCaseAccessRequest(java.util.UUID)] caches=[case_requests] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
-2026-06-01 00:12:38 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'createUser' with operations: [Builder[public com.fullDetailed.fullDetailedDemo.domain.dtos.judge.UserResponseDto com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.createUser(com.fullDetailed.fullDetailedDemo.domain.dtos.judge.CreateUserDto)] caches=[users_list] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
-2026-06-01 00:12:38 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getAllUsers' with operations: [Builder[public org.springframework.data.domain.Page com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.getAllUsers(org.springframework.data.domain.Pageable)] caches=[users_list] | key='{#root.methodName, #pageable}' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
-2026-06-01 00:12:38 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getUserById' with operations: [Builder[public com.fullDetailed.fullDetailedDemo.domain.dtos.UserProfileResponseDto com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.getUserById(java.util.UUID)] caches=[user_profile] | key='#userId' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
-2026-06-01 00:12:39 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'deleteFile' with operations: [Builder[public com.fullDetailed.fullDetailedDemo.domain.dtos.ApiResponse com.fullDetailed.fullDetailedDemo.services.impl.lawyer.LawyerServiceImpl.deleteFile(java.util.UUID)] caches=[cases] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
-2026-06-01 00:12:39 [main] WARN  o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2026-06-01 00:12:39 [main] INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name customUserServiceDetails
-2026-06-01 00:12:41 [main] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - Starting...
-2026-06-01 00:12:41 [main] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@214faadd]]
-2026-06-01 00:12:41 [main] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - Started.
-2026-06-01 00:12:42 [main] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
-2026-06-01 00:12:42 [main] INFO  c.f.fullDetailedDemo.Elmostashar - Started Elmostashar in 15.952 seconds (process running for 17.05)
-2026-06-01 00:13:33 [SpringApplicationShutdownHook] INFO  o.s.boot.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
-2026-06-01 00:13:33 [tomcat-shutdown] INFO  o.s.boot.tomcat.GracefulShutdown - Graceful shutdown complete
-2026-06-01 00:13:33 [SpringApplicationShutdownHook] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - Stopping...
-2026-06-01 00:13:33 [SpringApplicationShutdownHook] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@214faadd]]
-2026-06-01 00:13:33 [SpringApplicationShutdownHook] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - Stopped.
-2026-06-01 00:13:33 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-2026-06-01 00:13:33 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
-2026-06-01 00:13:33 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-06-02 22:26:42 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-06-02 22:26:42 [main] DEBUG org.hibernate.SQL - 
+    alter table if exists case_files 
+       add column original_file_name varchar(255) not null
+2026-06-02 22:26:42 [main] WARN  o.h.t.s.i.ExceptionHandlerLoggedImpl - GenerationTarget encountered exception accepting command : Error executing DDL "
+    alter table if exists case_files 
+       add column original_file_name varchar(255) not null" via JDBC [ERROR: column "original_file_name" of relation "case_files" contains null values]
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "
+    alter table if exists case_files 
+       add column original_file_name varchar(255) not null" via JDBC [ERROR: column "original_file_name" of relation "case_files" contains null values]
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:93)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlString(AbstractSchemaMigrator.java:573)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlStrings(AbstractSchemaMigrator.java:513)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.migrateTable(AbstractSchemaMigrator.java:331)
+	at org.hibernate.tool.schema.internal.GroupedSchemaMigratorImpl.performTablesMigration(GroupedSchemaMigratorImpl.java:82)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.performMigration(AbstractSchemaMigrator.java:230)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.doMigration(AbstractSchemaMigrator.java:109)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:267)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.lambda$process$5(SchemaManagementToolCoordinator.java:142)
+	at java.base/java.util.HashMap.forEach(Unknown Source)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:139)
+	at org.hibernate.boot.internal.SessionFactoryObserverForSchemaExport.sessionFactoryCreated(SessionFactoryObserverForSchemaExport.java:35)
+	at org.hibernate.internal.SessionFactoryObserverChain.sessionFactoryCreated(SessionFactoryObserverChain.java:33)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:350)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:436)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1459)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:66)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:433)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:416)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:409)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1864)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1813)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:603)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:196)
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveReference(BeanDefinitionValueResolver.java:365)
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveValueIfNecessary(BeanDefinitionValueResolver.java:135)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveConstructorArguments(ConstructorResolver.java:691)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:513)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1362)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1194)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:565)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:201)
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveReference(BeanDefinitionValueResolver.java:356)
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveValueIfNecessary(BeanDefinitionValueResolver.java:135)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyPropertyValues(AbstractAutowireCapableBeanFactory.java:1712)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1461)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:602)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:201)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveBean(DefaultListableBeanFactory.java:1225)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1704)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1651)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:912)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:240)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1382)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1221)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:565)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:201)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:229)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1762)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1651)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:912)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:240)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1382)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1221)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:565)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:201)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.getOrderedBeansOfType(ServletContextInitializerBeans.java:231)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAsRegistrationBean(ServletContextInitializerBeans.java:185)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAsRegistrationBean(ServletContextInitializerBeans.java:180)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAdaptableBeans(ServletContextInitializerBeans.java:165)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.<init>(ServletContextInitializerBeans.java:97)
+	at org.springframework.boot.web.context.servlet.WebApplicationContextInitializer.initialize(WebApplicationContextInitializer.java:53)
+	at org.springframework.boot.tomcat.servlet.DeferredServletContainerInitializers.onStartup(DeferredServletContainerInitializers.java:55)
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:4416)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1162)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1158)
+	at java.base/java.util.concurrent.FutureTask.run(Unknown Source)
+	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:81)
+	at java.base/java.util.concurrent.AbstractExecutorService.submit(Unknown Source)
+	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:714)
+	at org.apache.catalina.core.StandardHost.startInternal(StandardHost.java:767)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1162)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1158)
+	at java.base/java.util.concurrent.FutureTask.run(Unknown Source)
+	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:81)
+	at java.base/java.util.concurrent.AbstractExecutorService.submit(Unknown Source)
+	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:714)
+	at org.apache.catalina.core.StandardEngine.startInternal(StandardEngine.java:201)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+	at org.apache.catalina.core.StandardService.startInternal(StandardService.java:410)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+	at org.apache.catalina.core.StandardServer.startInternal(StandardServer.java:864)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+	at org.apache.catalina.startup.Tomcat.start(Tomcat.java:435)
+	at org.springframework.boot.tomcat.TomcatWebServer.initialize(TomcatWebServer.java:131)
+	at org.springframework.boot.tomcat.TomcatWebServer.<init>(TomcatWebServer.java:110)
+	at org.springframework.boot.tomcat.servlet.TomcatServletWebServerFactory.getTomcatWebServer(TomcatServletWebServerFactory.java:408)
+	at org.springframework.boot.tomcat.servlet.TomcatServletWebServerFactory.getWebServer(TomcatServletWebServerFactory.java:166)
+	at org.springframework.boot.web.server.servlet.context.ServletWebServerApplicationContext.createWebServer(ServletWebServerApplicationContext.java:190)
+	at org.springframework.boot.web.server.servlet.context.ServletWebServerApplicationContext.onRefresh(ServletWebServerApplicationContext.java:164)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:614)
+	at org.springframework.boot.web.server.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:143)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:765)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:454)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:321)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1374)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363)
+	at com.fullDetailed.fullDetailedDemo.Elmostashar.main(Elmostashar.java:12)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(Unknown Source)
+	at java.base/java.lang.reflect.Method.invoke(Unknown Source)
+	at org.springframework.boot.loader.launch.Launcher.launch(Launcher.java:106)
+	at org.springframework.boot.loader.launch.Launcher.launch(Launcher.java:64)
+	at org.springframework.boot.loader.launch.JarLauncher.main(JarLauncher.java:40)
+Caused by: org.postgresql.util.PSQLException: ERROR: column "original_file_name" of relation "case_files" contains null values
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2736)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2421)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:372)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:525)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:435)
+	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:357)
+	at org.postgresql.jdbc.PgStatement.executeCachedSql(PgStatement.java:342)
+	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:318)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:313)
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:95)
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:79)
+	... 127 common frames omitted
+2026-06-02 22:26:42 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-06-02 22:26:43 [main] INFO  o.s.d.j.r.q.QueryEnhancerFactories - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-06-02 22:26:44 [main] DEBUG c.f.f.c.s.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2026-06-02 22:26:45 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'importCasesFromCsv' with operations: [Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminCaseManagementServiceImpl.importCasesFromCsv(org.springframework.web.multipart.MultipartFile)] caches=[cases] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
+2026-06-02 22:26:45 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getCasesByStatus' with operations: [Builder[public org.springframework.data.domain.Page com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminCaseManagementServiceImpl.getCasesByStatus(com.fullDetailed.fullDetailedDemo.domain.enums.CaseStatus,org.springframework.data.domain.Pageable)] caches=[cases] | key=''status:' + #status + ':' + #pageable.pageNumber + ':' + #pageable.pageSize' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
+2026-06-02 22:26:45 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getAllDeletedCases' with operations: [Builder[public org.springframework.data.domain.Page com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminCaseManagementServiceImpl.getAllDeletedCases(org.springframework.data.domain.Pageable)] caches=[cases] | key=''deleted:' + #pageable.pageNumber' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
+2026-06-02 22:26:45 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'assignCaseToJudge' with operations: [Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminCaseManagementServiceImpl.assignCaseToJudge(java.util.UUID,java.util.UUID)] caches=[cases] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
+2026-06-02 22:26:45 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'uploadCaseFiles' with operations: [Builder[public java.util.List com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminCaseManagementServiceImpl.uploadCaseFiles(java.util.UUID,java.util.List)] caches=[cases] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
+2026-06-02 22:26:45 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getAllFullyAssignedCases' with operations: [Builder[public org.springframework.data.domain.Page com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminCaseManagementServiceImpl.getAllFullyAssignedCases(org.springframework.data.domain.Pageable)] caches=[cases] | key=''fullyAssigned:' + #pageable.pageNumber' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
+2026-06-02 22:26:45 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'createCase' with operations: [Builder[public com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseResponseDto com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminCaseManagementServiceImpl.createCase(com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseRequestDto)] caches=[cases] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
+2026-06-02 22:26:45 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getAllCases' with operations: [Builder[public org.springframework.data.domain.Page com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminCaseManagementServiceImpl.getAllCases(org.springframework.data.domain.Pageable)] caches=[cases] | key=''all:'+#pageable.pageNumber+':'+ #pageable.pageSize' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
+2026-06-02 22:26:45 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getCaseById' with operations: [Builder[public com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseResponseDto com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminCaseManagementServiceImpl.getCaseById(java.util.UUID)] caches=[cases] | key=''id:' + #caseId' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
+2026-06-02 22:26:45 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'updateCase' with operations: [Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminCaseManagementServiceImpl.updateCase(java.util.UUID,com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseUpdateDto)] caches=[cases] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
+2026-06-02 22:26:45 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'deleteCase' with operations: [Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminCaseManagementServiceImpl.deleteCase(java.util.UUID)] caches=[cases] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
+2026-06-02 22:26:45 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'deleteFile' with operations: [Builder[public com.fullDetailed.fullDetailedDemo.domain.dtos.ApiResponse com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminCaseManagementServiceImpl.deleteFile(java.util.UUID)] caches=[cases] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
+2026-06-02 22:26:45 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'activateUserById' with operations: [Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.activateUserById(java.util.UUID)] caches=[user_profile] | key='#userId' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',false,false, Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.activateUserById(java.util.UUID)] caches=[users_list] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
+2026-06-02 22:26:45 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'deActivateUserById' with operations: [Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.deActivateUserById(java.util.UUID)] caches=[user_profile] | key='#userId' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',false,false, Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.deActivateUserById(java.util.UUID)] caches=[users_list] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
+2026-06-02 22:26:45 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getAllLawyerProfile' with operations: [Builder[public org.springframework.data.domain.Page com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.getAllLawyerProfile(org.springframework.data.domain.Pageable)] caches=[users_list] | key='{#root.methodName, #pageable}' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
+2026-06-02 22:26:45 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getAllJudgesProfile' with operations: [Builder[public org.springframework.data.domain.Page com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.getAllJudgesProfile(org.springframework.data.domain.Pageable)] caches=[users_list] | key='{#root.methodName, #pageable}' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
+2026-06-02 22:26:45 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'updateJudgeProfile' with operations: [Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.updateJudgeProfile(java.util.UUID,com.fullDetailed.fullDetailedDemo.domain.dtos.judge.JudgeProfileDto)] caches=[user_profile] | key='#judgeId' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',false,false, Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.updateJudgeProfile(java.util.UUID,com.fullDetailed.fullDetailedDemo.domain.dtos.judge.JudgeProfileDto)] caches=[users_list] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
+2026-06-02 22:26:45 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getAllCaseRequests' with operations: [Builder[public org.springframework.data.domain.Page com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.getAllCaseRequests(org.springframework.data.domain.Pageable)] caches=[case_requests] | key='{#status, #pageable}' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
+2026-06-02 22:26:45 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getAllActivatedLawyers' with operations: [Builder[public org.springframework.data.domain.Page com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.getAllActivatedLawyers(org.springframework.data.domain.Pageable)] caches=[users_list] | key='{#root.methodName, #pageable}' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
+2026-06-02 22:26:45 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getAllDeactivatedLawyers' with operations: [Builder[public org.springframework.data.domain.Page com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.getAllDeactivatedLawyers(org.springframework.data.domain.Pageable)] caches=[users_list] | key='{#root.methodName, #pageable}' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
+2026-06-02 22:26:45 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getAllApprovedLawyers' with operations: [Builder[public org.springframework.data.domain.Page com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.getAllApprovedLawyers(org.springframework.data.domain.Pageable)] caches=[users_list] | key='{#root.methodName, #pageable}' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
+2026-06-02 22:26:45 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getAllRejectedLawyers' with operations: [Builder[public org.springframework.data.domain.Page com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.getAllRejectedLawyers(org.springframework.data.domain.Pageable)] caches=[users_list] | key='{#root.methodName, #pageable}' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
+2026-06-02 22:26:45 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'acceptLawyerApprovalById' with operations: [Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.acceptLawyerApprovalById(java.util.UUID)] caches=[user_profile] | key='#userId' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',false,false, Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.acceptLawyerApprovalById(java.util.UUID)] caches=[users_list] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
+2026-06-02 22:26:45 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'rejectLawyerApprovalById' with operations: [Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.rejectLawyerApprovalById(java.util.UUID)] caches=[user_profile] | key='#userId' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',false,false, Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.rejectLawyerApprovalById(java.util.UUID)] caches=[users_list] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
+2026-06-02 22:26:45 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getAllActivatedJudges' with operations: [Builder[public org.springframework.data.domain.Page com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.getAllActivatedJudges(org.springframework.data.domain.Pageable)] caches=[users_list] | key='{#root.methodName, #pageable}' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
+2026-06-02 22:26:45 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getAllDeactivatedJudges' with operations: [Builder[public org.springframework.data.domain.Page com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.getAllDeactivatedJudges(org.springframework.data.domain.Pageable)] caches=[users_list] | key='{#root.methodName, #pageable}' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
+2026-06-02 22:26:45 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getAllCaseRequestsByStatus' with operations: [Builder[public org.springframework.data.domain.Page com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.getAllCaseRequestsByStatus(com.fullDetailed.fullDetailedDemo.domain.enums.RequestStatus,org.springframework.data.domain.Pageable)] caches=[case_requests] | key='{#status, #pageable}' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
+2026-06-02 22:26:45 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'approveCaseAccessRequest' with operations: [Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.approveCaseAccessRequest(java.util.UUID)] caches=[case_requests] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false, Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.approveCaseAccessRequest(java.util.UUID)] caches=[users_list] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false, Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.approveCaseAccessRequest(java.util.UUID)] caches=[user_profile] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
+2026-06-02 22:26:45 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'rejectCaseAccessRequest' with operations: [Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.rejectCaseAccessRequest(java.util.UUID)] caches=[case_requests] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
+2026-06-02 22:26:45 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'createUser' with operations: [Builder[public com.fullDetailed.fullDetailedDemo.domain.dtos.judge.UserResponseDto com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.createUser(com.fullDetailed.fullDetailedDemo.domain.dtos.judge.CreateUserDto)] caches=[users_list] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
+2026-06-02 22:26:45 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getAllUsers' with operations: [Builder[public org.springframework.data.domain.Page com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.getAllUsers(org.springframework.data.domain.Pageable)] caches=[users_list] | key='{#root.methodName, #pageable}' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
+2026-06-02 22:26:45 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getUserById' with operations: [Builder[public com.fullDetailed.fullDetailedDemo.domain.dtos.UserProfileResponseDto com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.getUserById(java.util.UUID)] caches=[user_profile] | key='#userId' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
+2026-06-02 22:26:46 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'deleteFile' with operations: [Builder[public com.fullDetailed.fullDetailedDemo.domain.dtos.ApiResponse com.fullDetailed.fullDetailedDemo.services.impl.lawyer.LawyerServiceImpl.deleteFile(java.util.UUID)] caches=[cases] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
+2026-06-02 22:26:47 [main] WARN  o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-06-02 22:26:47 [main] INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name customUserServiceDetails
+2026-06-02 22:26:50 [main] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - Starting...
+2026-06-02 22:26:50 [main] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@65ea3961]]
+2026-06-02 22:26:50 [main] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - Started.
+2026-06-02 22:26:50 [main] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2026-06-02 22:26:50 [main] INFO  c.f.fullDetailedDemo.Elmostashar - Started Elmostashar in 19.545 seconds (process running for 20.619)
+2026-06-02 22:27:50 [MessageBroker-1] INFO  o.s.w.s.c.WebSocketMessageBrokerStats - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 1, active threads = 1, queued tasks = 0, completed tasks = 0]
+2026-06-02 22:29:44 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-06-02 22:29:44 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-06-02 22:29:44 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 7 ms
+2026-06-02 22:29:47 [http-nio-8080-exec-8] INFO  o.s.api.AbstractOpenApiResource - Init duration for springdoc-openapi is: 1962 ms
+2026-06-02 22:30:10 [http-nio-8080-exec-9] INFO  c.f.f.AOP.LoggingAspect - ========================================
+2026-06-02 22:30:10 [http-nio-8080-exec-9] INFO  c.f.f.AOP.LoggingAspect - ==== ENTERING====: AuthServiceImpl.login
+2026-06-02 22:30:10 [http-nio-8080-exec-9] INFO  c.f.f.AOP.LoggingAspect -    Arg[0]: LoginRequestDto(email=admin@lmosta4ar.com, password=StrongPass@123)
+2026-06-02 22:30:10 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - 
+    SELECT
+        * 
+    FROM
+        users u 
+    WHERE
+        u.email = ? 
+    LIMIT
+        1
+2026-06-02 22:30:10 [http-nio-8080-exec-9] INFO  c.f.f.services.impl.AuthServiceImpl - ##### query take ######: 280 ms
+2026-06-02 22:30:10 [http-nio-8080-exec-9] INFO  c.f.f.services.impl.AuthServiceImpl - ###### BCrypt took ######: 125 ms
+2026-06-02 22:30:10 [http-nio-8080-exec-9] INFO  c.f.f.services.impl.AuthServiceImpl - ###### Tokens took ######: 154 ms
+2026-06-02 22:30:10 [http-nio-8080-exec-9] INFO  c.f.f.AOP.LoggingAspect - ==== COMPLETED=====: AuthServiceImpl.login
+2026-06-02 22:30:10 [http-nio-8080-exec-9] INFO  c.f.f.AOP.LoggingAspect -    Duration: 564 ms
+2026-06-02 22:30:10 [http-nio-8080-exec-9] INFO  c.f.f.AOP.LoggingAspect -    Result: LoginResponseDto(access_token=eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJST0xFX0FETUlOIl0sInN1YiI6ImFkbWluQGxtb3N0YTRhci5jb20iLCJpYXQiOjE3ODA0Mzk0MTAsImV4cCI6MTc4MDQ0MzAxMH0.Pi9HVdnk_fhvFC2e_X_9m_2tSUW3AgoXKos4VhDi4GQ, refresh_token=eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJST0xFX0FETUlOIl0sInN1YiI6ImFkbWluQGxtb3N0YTRhci5jb20iLCJpYXQiOjE3ODA0Mzk0MTAsImV4cCI6MTc4MDQ2NDYxMH0.73nRcpnY0OjsKvGhuMD2LO8VzG-vD0SWKPbrisqadTc, role=ADMIN, id=746911f0-703c-4bb2-914c-be366f65831e)
+2026-06-02 22:30:10 [http-nio-8080-exec-9] INFO  c.f.f.AOP.LoggingAspect - ========================================
+2026-06-02 22:30:24 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - 
+    SELECT
+        * 
+    FROM
+        users u 
+    WHERE
+        u.email = ? 
+    LIMIT
+        1
+2026-06-02 22:30:24 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - 
+    SELECT
+        * 
+    FROM
+        users u 
+    WHERE
+        u.email = ? 
+    LIMIT
+        1
+2026-06-02 22:30:24 [http-nio-8080-exec-10] TRACE o.s.c.interceptor.CacheInterceptor - Computed cache key 'all:0:20' for operation Builder[public org.springframework.data.domain.Page com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminCaseManagementServiceImpl.getAllCases(org.springframework.data.domain.Pageable)] caches=[cases] | key=''all:'+#pageable.pageNumber+':'+ #pageable.pageSize' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false'
+2026-06-02 22:30:24 [http-nio-8080-exec-10] TRACE o.s.c.interceptor.CacheInterceptor - No cache entry for key 'all:0:20' in cache(s) [cases]
+2026-06-02 22:30:24 [http-nio-8080-exec-10] INFO  c.f.f.AOP.LoggingAspect - ========================================
+2026-06-02 22:30:24 [http-nio-8080-exec-10] INFO  c.f.f.AOP.LoggingAspect - ==== ENTERING====: AdminCaseManagementServiceImpl.getAllCases
+2026-06-02 22:30:24 [http-nio-8080-exec-10] INFO  c.f.f.AOP.LoggingAspect -    Arg[0]: Page request [number: 0, size 20, sort: createdAt: DESC]
+2026-06-02 22:30:24 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        c1_0.id,
+        c1_0.assign_status,
+        c1_0.assigned_by_id,
+        c1_0.case_number,
+        c1_0.court_ruling,
+        c1_0.created_at,
+        c1_0.description,
+        c1_0.final_decision,
+        c1_0.is_deleted,
+        c1_0.judge_id,
+        c1_0.lawyer_id,
+        c1_0.model_judgment,
+        c1_0.model_summary,
+        c1_0.status,
+        c1_0.title 
+    from
+        cases c1_0 
+    where
+        c1_0.is_deleted=false 
+    order by
+        c1_0.created_at desc 
+    fetch
+        first ? rows only
+2026-06-02 22:30:24 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.age,
+        u1_0.assigned_cases_count,
+        u1_0.court,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.is_active,
+        u1_0.is_approved,
+        u1_0.is_deleted,
+        u1_0.password_reseted,
+        u1_0.last_name,
+        u1_0.national_id,
+        u1_0.otp_code,
+        u1_0.otp_expiration_time,
+        u1_0.password,
+        u1_0.role,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-06-02 22:30:24 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.age,
+        u1_0.assigned_cases_count,
+        u1_0.court,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.is_active,
+        u1_0.is_approved,
+        u1_0.is_deleted,
+        u1_0.password_reseted,
+        u1_0.last_name,
+        u1_0.national_id,
+        u1_0.otp_code,
+        u1_0.otp_expiration_time,
+        u1_0.password,
+        u1_0.role,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-06-02 22:30:24 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        mr1_0.id,
+        mr1_0.case_id,
+        mr1_0.charge_count,
+        mr1_0.charges,
+        mr1_0.completed_agents,
+        mr1_0.confessions,
+        mr1_0.confidence_score,
+        mr1_0.court,
+        mr1_0.court_level,
+        mr1_0.created_at,
+        mr1_0.criminal_proceedings,
+        mr1_0.defendant_count,
+        mr1_0.defendants,
+        mr1_0.defense_documents,
+        mr1_0.evidences,
+        mr1_0.has_procedural_violations,
+        mr1_0.incidents,
+        mr1_0.jurisdiction,
+        mr1_0.lab_reports,
+        mr1_0.procedural_audit,
+        mr1_0.processing_errors,
+        mr1_0.prosecutor_name,
+        mr1_0.raw_response,
+        mr1_0.suggested_verdict,
+        mr1_0.summary,
+        mr1_0.witness_statements 
+    from
+        model_results mr1_0 
+    where
+        mr1_0.case_id=?
+2026-06-02 22:30:24 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        mr1_0.id,
+        mr1_0.case_id,
+        mr1_0.charge_count,
+        mr1_0.charges,
+        mr1_0.completed_agents,
+        mr1_0.confessions,
+        mr1_0.confidence_score,
+        mr1_0.court,
+        mr1_0.court_level,
+        mr1_0.created_at,
+        mr1_0.criminal_proceedings,
+        mr1_0.defendant_count,
+        mr1_0.defendants,
+        mr1_0.defense_documents,
+        mr1_0.evidences,
+        mr1_0.has_procedural_violations,
+        mr1_0.incidents,
+        mr1_0.jurisdiction,
+        mr1_0.lab_reports,
+        mr1_0.procedural_audit,
+        mr1_0.processing_errors,
+        mr1_0.prosecutor_name,
+        mr1_0.raw_response,
+        mr1_0.suggested_verdict,
+        mr1_0.summary,
+        mr1_0.witness_statements 
+    from
+        model_results mr1_0 
+    where
+        mr1_0.case_id=?
+2026-06-02 22:30:25 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        f1_0.case_id,
+        f1_0.id,
+        f1_0.file_name,
+        f1_0.file_type,
+        f1_0.file_url,
+        f1_0.original_file_name,
+        f1_0.uploaded_at,
+        ub1_0.id,
+        ub1_0.age,
+        ub1_0.assigned_cases_count,
+        ub1_0.court,
+        ub1_0.created_at,
+        ub1_0.email,
+        ub1_0.first_name,
+        ub1_0.is_active,
+        ub1_0.is_approved,
+        ub1_0.is_deleted,
+        ub1_0.password_reseted,
+        ub1_0.last_name,
+        ub1_0.national_id,
+        ub1_0.otp_code,
+        ub1_0.otp_expiration_time,
+        ub1_0.password,
+        ub1_0.role,
+        ub1_0.updated_at 
+    from
+        case_files f1_0 
+    left join
+        users ub1_0 
+            on ub1_0.id=f1_0.uploaded_by 
+    where
+        f1_0.case_id=?
+2026-06-02 22:30:25 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        f1_0.case_id,
+        f1_0.id,
+        f1_0.file_name,
+        f1_0.file_type,
+        f1_0.file_url,
+        f1_0.original_file_name,
+        f1_0.uploaded_at,
+        ub1_0.id,
+        ub1_0.age,
+        ub1_0.assigned_cases_count,
+        ub1_0.court,
+        ub1_0.created_at,
+        ub1_0.email,
+        ub1_0.first_name,
+        ub1_0.is_active,
+        ub1_0.is_approved,
+        ub1_0.is_deleted,
+        ub1_0.password_reseted,
+        ub1_0.last_name,
+        ub1_0.national_id,
+        ub1_0.otp_code,
+        ub1_0.otp_expiration_time,
+        ub1_0.password,
+        ub1_0.role,
+        ub1_0.updated_at 
+    from
+        case_files f1_0 
+    left join
+        users ub1_0 
+            on ub1_0.id=f1_0.uploaded_by 
+    where
+        f1_0.case_id=?
+2026-06-02 22:30:25 [http-nio-8080-exec-10] INFO  c.f.f.AOP.LoggingAspect - ==== COMPLETED=====: AdminCaseManagementServiceImpl.getAllCases
+2026-06-02 22:30:25 [http-nio-8080-exec-10] INFO  c.f.f.AOP.LoggingAspect -    Duration: 749 ms
+2026-06-02 22:30:25 [http-nio-8080-exec-10] INFO  c.f.f.AOP.LoggingAspect -    Result: Page 1 of 1 containing com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseResponseDto instances
+2026-06-02 22:30:25 [http-nio-8080-exec-10] INFO  c.f.f.AOP.LoggingAspect - ========================================
+2026-06-02 22:30:25 [http-nio-8080-exec-10] TRACE o.s.c.interceptor.CacheInterceptor - Creating cache entry for key 'all:0:20' in cache(s) [cases]
+2026-06-02 22:31:34 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    SELECT
+        * 
+    FROM
+        users u 
+    WHERE
+        u.email = ? 
+    LIMIT
+        1
+2026-06-02 22:31:34 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    SELECT
+        * 
+    FROM
+        users u 
+    WHERE
+        u.email = ? 
+    LIMIT
+        1
+2026-06-02 22:31:34 [http-nio-8080-exec-6] INFO  c.f.f.AOP.LoggingAspect - ========================================
+2026-06-02 22:31:34 [http-nio-8080-exec-6] INFO  c.f.f.AOP.LoggingAspect - ==== ENTERING====: AdminCaseManagementServiceImpl.uploadCaseFiles
+2026-06-02 22:31:34 [http-nio-8080-exec-6] INFO  c.f.f.AOP.LoggingAspect -    Arg[0]: a58cfe45-1099-485c-ac81-ce74720f3cfd
+2026-06-02 22:31:34 [http-nio-8080-exec-6] INFO  c.f.f.AOP.LoggingAspect -    Arg[1]: [org.springframework.web.multipart.support.StandardMultipartHttpServletRequest$StandardMultipartFile@203d8d60, org.springframework.web.multipart.support.StandardMultipartHttpServletRequest$StandardMultipartFile@5065eea, org.springframework.web.multipart.support.StandardMultipartHttpServletRequest$StandardMultipartFile@7b40c50c, org.springframework.web.multipart.support.StandardMultipartHttpServletRequest$StandardMultipartFile@65a9063a, org.springframework.web.multipart.support.StandardMultipartHttpServletRequest$StandardMultipartFile@2933c162, org.springframework.web.multipart.support.StandardMultipartHttpServletRequest$StandardMultipartFile@1e753ba0]
+2026-06-02 22:31:34 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        c1_0.id,
+        c1_0.assign_status,
+        ab1_0.id,
+        ab1_0.age,
+        ab1_0.assigned_cases_count,
+        ab1_0.court,
+        ab1_0.created_at,
+        ab1_0.email,
+        ab1_0.first_name,
+        ab1_0.is_active,
+        ab1_0.is_approved,
+        ab1_0.is_deleted,
+        ab1_0.password_reseted,
+        ab1_0.last_name,
+        ab1_0.national_id,
+        ab1_0.otp_code,
+        ab1_0.otp_expiration_time,
+        ab1_0.password,
+        ab1_0.role,
+        ab1_0.updated_at,
+        c1_0.case_number,
+        c1_0.court_ruling,
+        c1_0.created_at,
+        c1_0.description,
+        c1_0.final_decision,
+        c1_0.is_deleted,
+        j1_0.id,
+        j1_0.age,
+        j1_0.assigned_cases_count,
+        j1_0.court,
+        j1_0.created_at,
+        j1_0.email,
+        j1_0.first_name,
+        j1_0.is_active,
+        j1_0.is_approved,
+        j1_0.is_deleted,
+        j1_0.password_reseted,
+        j1_0.last_name,
+        j1_0.national_id,
+        j1_0.otp_code,
+        j1_0.otp_expiration_time,
+        j1_0.password,
+        j1_0.role,
+        j1_0.updated_at,
+        l1_0.id,
+        l1_0.age,
+        l1_0.assigned_cases_count,
+        l1_0.court,
+        l1_0.created_at,
+        l1_0.email,
+        l1_0.first_name,
+        l1_0.is_active,
+        l1_0.is_approved,
+        l1_0.is_deleted,
+        l1_0.password_reseted,
+        l1_0.last_name,
+        l1_0.national_id,
+        l1_0.otp_code,
+        l1_0.otp_expiration_time,
+        l1_0.password,
+        l1_0.role,
+        l1_0.updated_at,
+        c1_0.model_judgment,
+        c1_0.model_summary,
+        c1_0.status,
+        c1_0.title 
+    from
+        cases c1_0 
+    left join
+        users ab1_0 
+            on ab1_0.id=c1_0.assigned_by_id 
+    left join
+        users j1_0 
+            on j1_0.id=c1_0.judge_id 
+    left join
+        users l1_0 
+            on l1_0.id=c1_0.lawyer_id 
+    where
+        c1_0.id=?
+2026-06-02 22:31:34 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        mr1_0.id,
+        mr1_0.case_id,
+        mr1_0.charge_count,
+        mr1_0.charges,
+        mr1_0.completed_agents,
+        mr1_0.confessions,
+        mr1_0.confidence_score,
+        mr1_0.court,
+        mr1_0.court_level,
+        mr1_0.created_at,
+        mr1_0.criminal_proceedings,
+        mr1_0.defendant_count,
+        mr1_0.defendants,
+        mr1_0.defense_documents,
+        mr1_0.evidences,
+        mr1_0.has_procedural_violations,
+        mr1_0.incidents,
+        mr1_0.jurisdiction,
+        mr1_0.lab_reports,
+        mr1_0.procedural_audit,
+        mr1_0.processing_errors,
+        mr1_0.prosecutor_name,
+        mr1_0.raw_response,
+        mr1_0.suggested_verdict,
+        mr1_0.summary,
+        mr1_0.witness_statements 
+    from
+        model_results mr1_0 
+    where
+        mr1_0.case_id=?
+2026-06-02 22:31:34 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    SELECT
+        * 
+    FROM
+        users u 
+    WHERE
+        u.email = ? 
+    LIMIT
+        1
+2026-06-02 22:31:34 [http-nio-8080-exec-6] INFO  c.f.f.AOP.LoggingAspect - ========================================
+2026-06-02 22:31:34 [http-nio-8080-exec-6] INFO  c.f.f.AOP.LoggingAspect - ==== ENTERING====: FileStorageService.storeFile
+2026-06-02 22:31:34 [http-nio-8080-exec-6] INFO  c.f.f.AOP.LoggingAspect -    Arg[0]: org.springframework.web.multipart.support.StandardMultipartHttpServletRequest$StandardMultipartFile@203d8d60
+2026-06-02 22:31:34 [http-nio-8080-exec-6] INFO  c.f.f.AOP.LoggingAspect - ==== COMPLETED=====: FileStorageService.storeFile
+2026-06-02 22:31:34 [http-nio-8080-exec-6] INFO  c.f.f.AOP.LoggingAspect -    Duration: 3 ms
+2026-06-02 22:31:34 [http-nio-8080-exec-6] INFO  c.f.f.AOP.LoggingAspect -    Result: 9c0408e7-2c71-4576-ace7-722e5e58db20_amr_ihala.txt
+2026-06-02 22:31:34 [http-nio-8080-exec-6] INFO  c.f.f.AOP.LoggingAspect - ========================================
+2026-06-02 22:31:34 [http-nio-8080-exec-6] INFO  c.f.f.AOP.LoggingAspect - ========================================
+2026-06-02 22:31:34 [http-nio-8080-exec-6] INFO  c.f.f.AOP.LoggingAspect - ==== ENTERING====: FileStorageService.storeFile
+2026-06-02 22:31:34 [http-nio-8080-exec-6] INFO  c.f.f.AOP.LoggingAspect -    Arg[0]: org.springframework.web.multipart.support.StandardMultipartHttpServletRequest$StandardMultipartFile@5065eea
+2026-06-02 22:31:34 [http-nio-8080-exec-6] INFO  c.f.f.AOP.LoggingAspect - ==== COMPLETED=====: FileStorageService.storeFile
+2026-06-02 22:31:34 [http-nio-8080-exec-6] INFO  c.f.f.AOP.LoggingAspect -    Duration: 1 ms
+2026-06-02 22:31:34 [http-nio-8080-exec-6] INFO  c.f.f.AOP.LoggingAspect -    Result: 8cc27581-682a-4fcb-8685-a4df8f92aa29_aqual_shuhud.txt
+2026-06-02 22:31:34 [http-nio-8080-exec-6] INFO  c.f.f.AOP.LoggingAspect - ========================================
+2026-06-02 22:31:34 [http-nio-8080-exec-6] INFO  c.f.f.AOP.LoggingAspect - ========================================
+2026-06-02 22:31:34 [http-nio-8080-exec-6] INFO  c.f.f.AOP.LoggingAspect - ==== ENTERING====: FileStorageService.storeFile
+2026-06-02 22:31:34 [http-nio-8080-exec-6] INFO  c.f.f.AOP.LoggingAspect -    Arg[0]: org.springframework.web.multipart.support.StandardMultipartHttpServletRequest$StandardMultipartFile@7b40c50c
+2026-06-02 22:31:34 [http-nio-8080-exec-6] INFO  c.f.f.AOP.LoggingAspect - ==== COMPLETED=====: FileStorageService.storeFile
+2026-06-02 22:31:34 [http-nio-8080-exec-6] INFO  c.f.f.AOP.LoggingAspect -    Duration: 1 ms
+2026-06-02 22:31:34 [http-nio-8080-exec-6] INFO  c.f.f.AOP.LoggingAspect -    Result: a5882a22-8fa4-4711-89f9-d563a34f65a9_mahdar_dabt.txt
+2026-06-02 22:31:34 [http-nio-8080-exec-6] INFO  c.f.f.AOP.LoggingAspect - ========================================
+2026-06-02 22:31:34 [http-nio-8080-exec-6] INFO  c.f.f.AOP.LoggingAspect - ========================================
+2026-06-02 22:31:34 [http-nio-8080-exec-6] INFO  c.f.f.AOP.LoggingAspect - ==== ENTERING====: FileStorageService.storeFile
+2026-06-02 22:31:34 [http-nio-8080-exec-6] INFO  c.f.f.AOP.LoggingAspect -    Arg[0]: org.springframework.web.multipart.support.StandardMultipartHttpServletRequest$StandardMultipartFile@65a9063a
+2026-06-02 22:31:34 [http-nio-8080-exec-6] INFO  c.f.f.AOP.LoggingAspect - ==== COMPLETED=====: FileStorageService.storeFile
+2026-06-02 22:31:34 [http-nio-8080-exec-6] INFO  c.f.f.AOP.LoggingAspect -    Duration: 1 ms
+2026-06-02 22:31:34 [http-nio-8080-exec-6] INFO  c.f.f.AOP.LoggingAspect -    Result: e8a16ce9-4c83-4b97-a5cc-a269036656b5_mahdar_istijwab.txt
+2026-06-02 22:31:34 [http-nio-8080-exec-6] INFO  c.f.f.AOP.LoggingAspect - ========================================
+2026-06-02 22:31:34 [http-nio-8080-exec-6] INFO  c.f.f.AOP.LoggingAspect - ========================================
+2026-06-02 22:31:34 [http-nio-8080-exec-6] INFO  c.f.f.AOP.LoggingAspect - ==== ENTERING====: FileStorageService.storeFile
+2026-06-02 22:31:34 [http-nio-8080-exec-6] INFO  c.f.f.AOP.LoggingAspect -    Arg[0]: org.springframework.web.multipart.support.StandardMultipartHttpServletRequest$StandardMultipartFile@2933c162
+2026-06-02 22:31:34 [http-nio-8080-exec-6] INFO  c.f.f.AOP.LoggingAspect - ==== COMPLETED=====: FileStorageService.storeFile
+2026-06-02 22:31:34 [http-nio-8080-exec-6] INFO  c.f.f.AOP.LoggingAspect -    Duration: 1 ms
+2026-06-02 22:31:34 [http-nio-8080-exec-6] INFO  c.f.f.AOP.LoggingAspect -    Result: 406a3686-8dc4-4e87-ab11-cdb89aa65b27_mozakeret_difa.txt
+2026-06-02 22:31:34 [http-nio-8080-exec-6] INFO  c.f.f.AOP.LoggingAspect - ========================================
+2026-06-02 22:31:34 [http-nio-8080-exec-6] INFO  c.f.f.AOP.LoggingAspect - ========================================
+2026-06-02 22:31:34 [http-nio-8080-exec-6] INFO  c.f.f.AOP.LoggingAspect - ==== ENTERING====: FileStorageService.storeFile
+2026-06-02 22:31:34 [http-nio-8080-exec-6] INFO  c.f.f.AOP.LoggingAspect -    Arg[0]: org.springframework.web.multipart.support.StandardMultipartHttpServletRequest$StandardMultipartFile@1e753ba0
+2026-06-02 22:31:34 [http-nio-8080-exec-6] INFO  c.f.f.AOP.LoggingAspect - ==== COMPLETED=====: FileStorageService.storeFile
+2026-06-02 22:31:34 [http-nio-8080-exec-6] INFO  c.f.f.AOP.LoggingAspect -    Duration: 1 ms
+2026-06-02 22:31:34 [http-nio-8080-exec-6] INFO  c.f.f.AOP.LoggingAspect -    Result: 11a353c8-5b8d-458a-ac85-8b1a6806295a_tqrir_tibbi.txt
+2026-06-02 22:31:34 [http-nio-8080-exec-6] INFO  c.f.f.AOP.LoggingAspect - ========================================
+2026-06-02 22:31:34 [http-nio-8080-exec-6] INFO  c.f.f.AOP.LoggingAspect - ==== COMPLETED=====: AdminCaseManagementServiceImpl.uploadCaseFiles
+2026-06-02 22:31:34 [http-nio-8080-exec-6] INFO  c.f.f.AOP.LoggingAspect -    Duration: 348 ms
+2026-06-02 22:31:34 [http-nio-8080-exec-6] INFO  c.f.f.AOP.LoggingAspect -    Result: [/api/v1/admin/cases/a58cfe45-1099-485c-ac81-ce74720f3cfd/files/9c0408e7-2c71-4576-ace7-722e5e58db20_amr_ihala.txt, /api/v1/admin/cases/a58cfe45-1099-485c-ac81-ce74720f3cfd/files/8cc27581-682a-4fcb-8685-a4df8f92aa29_aqual_shuhud.txt, /api/v1/admin/cases/a58cfe45-1099-485c-ac81-ce74720f3cfd/files/a5882a22-8fa4-4711-89f9-d563a34f65a9_mahdar_dabt.txt, /api/v1/admin/cases/a58cfe45-1099-485c-ac81-ce74720f3cfd/files/e8a16ce9-4c83-4b97-a5cc-a269036656b5_mahdar_istijwab.txt, /api/v1/admin/cases/a58cfe45-1099-485c-ac81-ce74720f3cfd/files/406a3686-8dc4-4e87-ab11-cdb89aa65b27_mozakeret_difa.txt, /api/v1/admin/cases/a58cfe45-1099-485c-ac81-ce74720f3cfd/files/11a353c8-5b8d-458a-ac85-8b1a6806295a_tqrir_tibbi.txt]
+2026-06-02 22:31:34 [http-nio-8080-exec-6] INFO  c.f.f.AOP.LoggingAspect - ========================================
+2026-06-02 22:31:34 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        case_files
+        (case_id, file_name, file_type, file_url, original_file_name, uploaded_at, uploaded_by, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?)
+2026-06-02 22:31:34 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        case_files
+        (case_id, file_name, file_type, file_url, original_file_name, uploaded_at, uploaded_by, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?)
+2026-06-02 22:31:34 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        case_files
+        (case_id, file_name, file_type, file_url, original_file_name, uploaded_at, uploaded_by, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?)
+2026-06-02 22:31:34 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        case_files
+        (case_id, file_name, file_type, file_url, original_file_name, uploaded_at, uploaded_by, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?)
+2026-06-02 22:31:34 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        case_files
+        (case_id, file_name, file_type, file_url, original_file_name, uploaded_at, uploaded_by, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?)
+2026-06-02 22:31:34 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        case_files
+        (case_id, file_name, file_type, file_url, original_file_name, uploaded_at, uploaded_by, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?)
+2026-06-02 22:31:34 [http-nio-8080-exec-6] TRACE o.s.c.interceptor.CacheInterceptor - Invalidating entire cache for operation Builder[public java.util.List com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminCaseManagementServiceImpl.uploadCaseFiles(java.util.UUID,java.util.List)] caches=[cases] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false on method public java.util.List com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminCaseManagementServiceImpl.uploadCaseFiles(java.util.UUID,java.util.List)
+2026-06-02 22:34:46 [SpringApplicationShutdownHook] INFO  o.s.boot.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-06-02 22:34:46 [tomcat-shutdown] INFO  o.s.boot.tomcat.GracefulShutdown - Graceful shutdown complete
+2026-06-02 22:34:46 [SpringApplicationShutdownHook] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - Stopping...
+2026-06-02 22:34:46 [SpringApplicationShutdownHook] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@65ea3961]]
+2026-06-02 22:34:46 [SpringApplicationShutdownHook] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - Stopped.
+2026-06-02 22:34:46 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-06-02 22:34:46 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-06-02 22:34:46 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-06-02 22:35:44 [main] INFO  c.f.fullDetailedDemo.Elmostashar - Starting Elmostashar v0.0.1-SNAPSHOT using Java 21.0.11 with PID 1 (/app/app.jar started by spring in /app)
+2026-06-02 22:35:44 [main] DEBUG c.f.fullDetailedDemo.Elmostashar - Running with Spring Boot v4.0.0, Spring v7.0.1
+2026-06-02 22:35:44 [main] INFO  c.f.fullDetailedDemo.Elmostashar - No active profile set, falling back to 1 default profile: "default"
+2026-06-02 22:35:46 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-06-02 22:35:46 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 285 ms. Found 6 JPA repository interfaces.
+2026-06-02 22:35:48 [main] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-06-02 22:35:48 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-06-02 22:35:48 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.14]
+2026-06-02 22:35:48 [main] INFO  o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 4576 ms
+2026-06-02 22:35:49 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-06-02 22:35:49 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@7d4d65f5
+2026-06-02 22:35:49 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-06-02 22:35:49 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-06-02 22:35:50 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 7.1.8.Final
+2026-06-02 22:35:50 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-06-02 22:35:51 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-06-02 22:35:51 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://postgres:5432/fullDetails]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 16.11
+	Default catalog/schema: fullDetails/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DatasourceConnectionProviderImpl
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-06-02 22:35:52 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-06-02 22:35:53 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-06-02 22:35:53 [main] INFO  o.s.d.j.r.q.QueryEnhancerFactories - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-06-02 22:35:53 [main] DEBUG c.f.f.c.s.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2026-06-02 22:35:54 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getAllFullyAssignedCases' with operations: [Builder[public org.springframework.data.domain.Page com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminCaseManagementServiceImpl.getAllFullyAssignedCases(org.springframework.data.domain.Pageable)] caches=[cases] | key=''fullyAssigned:' + #pageable.pageNumber' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
+2026-06-02 22:35:54 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'importCasesFromCsv' with operations: [Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminCaseManagementServiceImpl.importCasesFromCsv(org.springframework.web.multipart.MultipartFile)] caches=[cases] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
+2026-06-02 22:35:54 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getCasesByStatus' with operations: [Builder[public org.springframework.data.domain.Page com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminCaseManagementServiceImpl.getCasesByStatus(com.fullDetailed.fullDetailedDemo.domain.enums.CaseStatus,org.springframework.data.domain.Pageable)] caches=[cases] | key=''status:' + #status + ':' + #pageable.pageNumber + ':' + #pageable.pageSize' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
+2026-06-02 22:35:54 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getAllDeletedCases' with operations: [Builder[public org.springframework.data.domain.Page com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminCaseManagementServiceImpl.getAllDeletedCases(org.springframework.data.domain.Pageable)] caches=[cases] | key=''deleted:' + #pageable.pageNumber' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
+2026-06-02 22:35:54 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'assignCaseToJudge' with operations: [Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminCaseManagementServiceImpl.assignCaseToJudge(java.util.UUID,java.util.UUID)] caches=[cases] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
+2026-06-02 22:35:54 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'uploadCaseFiles' with operations: [Builder[public java.util.List com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminCaseManagementServiceImpl.uploadCaseFiles(java.util.UUID,java.util.List)] caches=[cases] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
+2026-06-02 22:35:54 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'createCase' with operations: [Builder[public com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseResponseDto com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminCaseManagementServiceImpl.createCase(com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseRequestDto)] caches=[cases] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
+2026-06-02 22:35:54 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getAllCases' with operations: [Builder[public org.springframework.data.domain.Page com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminCaseManagementServiceImpl.getAllCases(org.springframework.data.domain.Pageable)] caches=[cases] | key=''all:'+#pageable.pageNumber+':'+ #pageable.pageSize' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
+2026-06-02 22:35:54 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getCaseById' with operations: [Builder[public com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseResponseDto com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminCaseManagementServiceImpl.getCaseById(java.util.UUID)] caches=[cases] | key=''id:' + #caseId' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
+2026-06-02 22:35:54 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'updateCase' with operations: [Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminCaseManagementServiceImpl.updateCase(java.util.UUID,com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseUpdateDto)] caches=[cases] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
+2026-06-02 22:35:54 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'deleteCase' with operations: [Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminCaseManagementServiceImpl.deleteCase(java.util.UUID)] caches=[cases] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
+2026-06-02 22:35:54 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'deleteFile' with operations: [Builder[public com.fullDetailed.fullDetailedDemo.domain.dtos.ApiResponse com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminCaseManagementServiceImpl.deleteFile(java.util.UUID)] caches=[cases] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
+2026-06-02 22:35:54 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getAllActivatedLawyers' with operations: [Builder[public org.springframework.data.domain.Page com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.getAllActivatedLawyers(org.springframework.data.domain.Pageable)] caches=[users_list] | key='{#root.methodName, #pageable}' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
+2026-06-02 22:35:54 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getAllDeactivatedLawyers' with operations: [Builder[public org.springframework.data.domain.Page com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.getAllDeactivatedLawyers(org.springframework.data.domain.Pageable)] caches=[users_list] | key='{#root.methodName, #pageable}' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
+2026-06-02 22:35:54 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getAllApprovedLawyers' with operations: [Builder[public org.springframework.data.domain.Page com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.getAllApprovedLawyers(org.springframework.data.domain.Pageable)] caches=[users_list] | key='{#root.methodName, #pageable}' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
+2026-06-02 22:35:54 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getAllRejectedLawyers' with operations: [Builder[public org.springframework.data.domain.Page com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.getAllRejectedLawyers(org.springframework.data.domain.Pageable)] caches=[users_list] | key='{#root.methodName, #pageable}' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
+2026-06-02 22:35:54 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'acceptLawyerApprovalById' with operations: [Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.acceptLawyerApprovalById(java.util.UUID)] caches=[user_profile] | key='#userId' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',false,false, Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.acceptLawyerApprovalById(java.util.UUID)] caches=[users_list] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
+2026-06-02 22:35:54 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'rejectLawyerApprovalById' with operations: [Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.rejectLawyerApprovalById(java.util.UUID)] caches=[user_profile] | key='#userId' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',false,false, Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.rejectLawyerApprovalById(java.util.UUID)] caches=[users_list] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
+2026-06-02 22:35:54 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getAllActivatedJudges' with operations: [Builder[public org.springframework.data.domain.Page com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.getAllActivatedJudges(org.springframework.data.domain.Pageable)] caches=[users_list] | key='{#root.methodName, #pageable}' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
+2026-06-02 22:35:54 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getAllDeactivatedJudges' with operations: [Builder[public org.springframework.data.domain.Page com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.getAllDeactivatedJudges(org.springframework.data.domain.Pageable)] caches=[users_list] | key='{#root.methodName, #pageable}' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
+2026-06-02 22:35:54 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getAllCaseRequestsByStatus' with operations: [Builder[public org.springframework.data.domain.Page com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.getAllCaseRequestsByStatus(com.fullDetailed.fullDetailedDemo.domain.enums.RequestStatus,org.springframework.data.domain.Pageable)] caches=[case_requests] | key='{#status, #pageable}' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
+2026-06-02 22:35:54 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'approveCaseAccessRequest' with operations: [Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.approveCaseAccessRequest(java.util.UUID)] caches=[case_requests] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false, Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.approveCaseAccessRequest(java.util.UUID)] caches=[users_list] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false, Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.approveCaseAccessRequest(java.util.UUID)] caches=[user_profile] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
+2026-06-02 22:35:54 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'rejectCaseAccessRequest' with operations: [Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.rejectCaseAccessRequest(java.util.UUID)] caches=[case_requests] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
+2026-06-02 22:35:54 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'activateUserById' with operations: [Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.activateUserById(java.util.UUID)] caches=[user_profile] | key='#userId' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',false,false, Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.activateUserById(java.util.UUID)] caches=[users_list] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
+2026-06-02 22:35:54 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'deActivateUserById' with operations: [Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.deActivateUserById(java.util.UUID)] caches=[user_profile] | key='#userId' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',false,false, Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.deActivateUserById(java.util.UUID)] caches=[users_list] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
+2026-06-02 22:35:54 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getAllLawyerProfile' with operations: [Builder[public org.springframework.data.domain.Page com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.getAllLawyerProfile(org.springframework.data.domain.Pageable)] caches=[users_list] | key='{#root.methodName, #pageable}' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
+2026-06-02 22:35:54 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getAllJudgesProfile' with operations: [Builder[public org.springframework.data.domain.Page com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.getAllJudgesProfile(org.springframework.data.domain.Pageable)] caches=[users_list] | key='{#root.methodName, #pageable}' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
+2026-06-02 22:35:54 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'updateJudgeProfile' with operations: [Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.updateJudgeProfile(java.util.UUID,com.fullDetailed.fullDetailedDemo.domain.dtos.judge.JudgeProfileDto)] caches=[user_profile] | key='#judgeId' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',false,false, Builder[public void com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.updateJudgeProfile(java.util.UUID,com.fullDetailed.fullDetailedDemo.domain.dtos.judge.JudgeProfileDto)] caches=[users_list] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
+2026-06-02 22:35:54 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getAllCaseRequests' with operations: [Builder[public org.springframework.data.domain.Page com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.getAllCaseRequests(org.springframework.data.domain.Pageable)] caches=[case_requests] | key='{#status, #pageable}' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
+2026-06-02 22:35:54 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'createUser' with operations: [Builder[public com.fullDetailed.fullDetailedDemo.domain.dtos.judge.UserResponseDto com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.createUser(com.fullDetailed.fullDetailedDemo.domain.dtos.judge.CreateUserDto)] caches=[users_list] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
+2026-06-02 22:35:54 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getAllUsers' with operations: [Builder[public org.springframework.data.domain.Page com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.getAllUsers(org.springframework.data.domain.Pageable)] caches=[users_list] | key='{#root.methodName, #pageable}' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
+2026-06-02 22:35:54 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'getUserById' with operations: [Builder[public com.fullDetailed.fullDetailedDemo.domain.dtos.UserProfileResponseDto com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminUserManagementServiceImpl.getUserById(java.util.UUID)] caches=[user_profile] | key='#userId' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false']
+2026-06-02 22:35:55 [main] TRACE o.s.c.a.AnnotationCacheOperationSource - Adding cacheable method 'deleteFile' with operations: [Builder[public com.fullDetailed.fullDetailedDemo.domain.dtos.ApiResponse com.fullDetailed.fullDetailedDemo.services.impl.lawyer.LawyerServiceImpl.deleteFile(java.util.UUID)] caches=[cases] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='',true,false]
+2026-06-02 22:35:56 [main] WARN  o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-06-02 22:35:56 [main] INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name customUserServiceDetails
+2026-06-02 22:35:58 [main] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - Starting...
+2026-06-02 22:35:58 [main] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@53cddaec]]
+2026-06-02 22:35:58 [main] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - Started.
+2026-06-02 22:35:58 [main] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2026-06-02 22:35:58 [main] INFO  c.f.fullDetailedDemo.Elmostashar - Started Elmostashar in 15.31 seconds (process running for 16.572)
+2026-06-02 22:36:58 [MessageBroker-1] INFO  o.s.w.s.c.WebSocketMessageBrokerStats - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 1, active threads = 1, queued tasks = 0, completed tasks = 0]
+2026-06-02 22:37:45 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-06-02 22:37:45 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-06-02 22:37:45 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 8 ms
+2026-06-02 22:37:48 [http-nio-8080-exec-9] INFO  o.s.api.AbstractOpenApiResource - Init duration for springdoc-openapi is: 2056 ms
+2026-06-02 22:37:56 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - 
+    SELECT
+        * 
+    FROM
+        users u 
+    WHERE
+        u.email = ? 
+    LIMIT
+        1
+2026-06-02 22:37:56 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - 
+    SELECT
+        * 
+    FROM
+        users u 
+    WHERE
+        u.email = ? 
+    LIMIT
+        1
+2026-06-02 22:37:56 [http-nio-8080-exec-10] TRACE o.s.c.interceptor.CacheInterceptor - Computed cache key 'all:0:20' for operation Builder[public org.springframework.data.domain.Page com.fullDetailed.fullDetailedDemo.services.impl.admin.AdminCaseManagementServiceImpl.getAllCases(org.springframework.data.domain.Pageable)] caches=[cases] | key=''all:'+#pageable.pageNumber+':'+ #pageable.pageSize' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false'
+2026-06-02 22:37:56 [http-nio-8080-exec-10] TRACE o.s.c.interceptor.CacheInterceptor - No cache entry for key 'all:0:20' in cache(s) [cases]
+2026-06-02 22:37:56 [http-nio-8080-exec-10] INFO  c.f.f.AOP.LoggingAspect - ========================================
+2026-06-02 22:37:56 [http-nio-8080-exec-10] INFO  c.f.f.AOP.LoggingAspect - ==== ENTERING====: AdminCaseManagementServiceImpl.getAllCases
+2026-06-02 22:37:56 [http-nio-8080-exec-10] INFO  c.f.f.AOP.LoggingAspect -    Arg[0]: Page request [number: 0, size 20, sort: createdAt: DESC]
+2026-06-02 22:37:56 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        c1_0.id,
+        c1_0.assign_status,
+        c1_0.assigned_by_id,
+        c1_0.case_number,
+        c1_0.court_ruling,
+        c1_0.created_at,
+        c1_0.description,
+        c1_0.final_decision,
+        c1_0.is_deleted,
+        c1_0.judge_id,
+        c1_0.lawyer_id,
+        c1_0.model_judgment,
+        c1_0.model_summary,
+        c1_0.status,
+        c1_0.title 
+    from
+        cases c1_0 
+    where
+        c1_0.is_deleted=false 
+    order by
+        c1_0.created_at desc 
+    fetch
+        first ? rows only
+2026-06-02 22:37:56 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.age,
+        u1_0.assigned_cases_count,
+        u1_0.court,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.is_active,
+        u1_0.is_approved,
+        u1_0.is_deleted,
+        u1_0.password_reseted,
+        u1_0.last_name,
+        u1_0.national_id,
+        u1_0.otp_code,
+        u1_0.otp_expiration_time,
+        u1_0.password,
+        u1_0.role,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-06-02 22:37:56 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.age,
+        u1_0.assigned_cases_count,
+        u1_0.court,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.is_active,
+        u1_0.is_approved,
+        u1_0.is_deleted,
+        u1_0.password_reseted,
+        u1_0.last_name,
+        u1_0.national_id,
+        u1_0.otp_code,
+        u1_0.otp_expiration_time,
+        u1_0.password,
+        u1_0.role,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-06-02 22:37:56 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        mr1_0.id,
+        mr1_0.case_id,
+        mr1_0.charge_count,
+        mr1_0.charges,
+        mr1_0.completed_agents,
+        mr1_0.confessions,
+        mr1_0.confidence_score,
+        mr1_0.court,
+        mr1_0.court_level,
+        mr1_0.created_at,
+        mr1_0.criminal_proceedings,
+        mr1_0.defendant_count,
+        mr1_0.defendants,
+        mr1_0.defense_documents,
+        mr1_0.evidences,
+        mr1_0.has_procedural_violations,
+        mr1_0.incidents,
+        mr1_0.jurisdiction,
+        mr1_0.lab_reports,
+        mr1_0.procedural_audit,
+        mr1_0.processing_errors,
+        mr1_0.prosecutor_name,
+        mr1_0.raw_response,
+        mr1_0.suggested_verdict,
+        mr1_0.summary,
+        mr1_0.witness_statements 
+    from
+        model_results mr1_0 
+    where
+        mr1_0.case_id=?
+2026-06-02 22:37:56 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        mr1_0.id,
+        mr1_0.case_id,
+        mr1_0.charge_count,
+        mr1_0.charges,
+        mr1_0.completed_agents,
+        mr1_0.confessions,
+        mr1_0.confidence_score,
+        mr1_0.court,
+        mr1_0.court_level,
+        mr1_0.created_at,
+        mr1_0.criminal_proceedings,
+        mr1_0.defendant_count,
+        mr1_0.defendants,
+        mr1_0.defense_documents,
+        mr1_0.evidences,
+        mr1_0.has_procedural_violations,
+        mr1_0.incidents,
+        mr1_0.jurisdiction,
+        mr1_0.lab_reports,
+        mr1_0.procedural_audit,
+        mr1_0.processing_errors,
+        mr1_0.prosecutor_name,
+        mr1_0.raw_response,
+        mr1_0.suggested_verdict,
+        mr1_0.summary,
+        mr1_0.witness_statements 
+    from
+        model_results mr1_0 
+    where
+        mr1_0.case_id=?
+2026-06-02 22:37:56 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        f1_0.case_id,
+        f1_0.id,
+        f1_0.file_name,
+        f1_0.file_type,
+        f1_0.file_url,
+        f1_0.original_file_name,
+        f1_0.uploaded_at,
+        ub1_0.id,
+        ub1_0.age,
+        ub1_0.assigned_cases_count,
+        ub1_0.court,
+        ub1_0.created_at,
+        ub1_0.email,
+        ub1_0.first_name,
+        ub1_0.is_active,
+        ub1_0.is_approved,
+        ub1_0.is_deleted,
+        ub1_0.password_reseted,
+        ub1_0.last_name,
+        ub1_0.national_id,
+        ub1_0.otp_code,
+        ub1_0.otp_expiration_time,
+        ub1_0.password,
+        ub1_0.role,
+        ub1_0.updated_at 
+    from
+        case_files f1_0 
+    left join
+        users ub1_0 
+            on ub1_0.id=f1_0.uploaded_by 
+    where
+        f1_0.case_id=?
+2026-06-02 22:37:56 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        f1_0.case_id,
+        f1_0.id,
+        f1_0.file_name,
+        f1_0.file_type,
+        f1_0.file_url,
+        f1_0.original_file_name,
+        f1_0.uploaded_at,
+        ub1_0.id,
+        ub1_0.age,
+        ub1_0.assigned_cases_count,
+        ub1_0.court,
+        ub1_0.created_at,
+        ub1_0.email,
+        ub1_0.first_name,
+        ub1_0.is_active,
+        ub1_0.is_approved,
+        ub1_0.is_deleted,
+        ub1_0.password_reseted,
+        ub1_0.last_name,
+        ub1_0.national_id,
+        ub1_0.otp_code,
+        ub1_0.otp_expiration_time,
+        ub1_0.password,
+        ub1_0.role,
+        ub1_0.updated_at 
+    from
+        case_files f1_0 
+    left join
+        users ub1_0 
+            on ub1_0.id=f1_0.uploaded_by 
+    where
+        f1_0.case_id=?
+2026-06-02 22:37:56 [http-nio-8080-exec-10] INFO  c.f.f.AOP.LoggingAspect - ==== COMPLETED=====: AdminCaseManagementServiceImpl.getAllCases
+2026-06-02 22:37:56 [http-nio-8080-exec-10] INFO  c.f.f.AOP.LoggingAspect -    Duration: 690 ms
+2026-06-02 22:37:56 [http-nio-8080-exec-10] INFO  c.f.f.AOP.LoggingAspect -    Result: Page 1 of 1 containing com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseResponseDto instances
+2026-06-02 22:37:56 [http-nio-8080-exec-10] INFO  c.f.f.AOP.LoggingAspect - ========================================
+2026-06-02 22:37:56 [http-nio-8080-exec-10] TRACE o.s.c.interceptor.CacheInterceptor - Creating cache entry for key 'all:0:20' in cache(s) [cases]
+2026-06-02 22:38:16 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    SELECT
+        * 
+    FROM
+        users u 
+    WHERE
+        u.email = ? 
+    LIMIT
+        1
+2026-06-02 22:38:16 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    SELECT
+        * 
+    FROM
+        users u 
+    WHERE
+        u.email = ? 
+    LIMIT
+        1
+2026-06-02 22:38:16 [http-nio-8080-exec-1] INFO  c.f.f.AOP.LoggingAspect - ========================================
+2026-06-02 22:38:16 [http-nio-8080-exec-1] INFO  c.f.f.AOP.LoggingAspect - ==== ENTERING====: AiCaseInvokerService.invokeCase
+2026-06-02 22:38:16 [http-nio-8080-exec-1] INFO  c.f.f.AOP.LoggingAspect -    Arg[0]: a58cfe45-1099-485c-ac81-ce74720f3cfd
+2026-06-02 22:38:16 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        c1_0.id,
+        c1_0.assign_status,
+        ab1_0.id,
+        ab1_0.age,
+        ab1_0.assigned_cases_count,
+        ab1_0.court,
+        ab1_0.created_at,
+        ab1_0.email,
+        ab1_0.first_name,
+        ab1_0.is_active,
+        ab1_0.is_approved,
+        ab1_0.is_deleted,
+        ab1_0.password_reseted,
+        ab1_0.last_name,
+        ab1_0.national_id,
+        ab1_0.otp_code,
+        ab1_0.otp_expiration_time,
+        ab1_0.password,
+        ab1_0.role,
+        ab1_0.updated_at,
+        c1_0.case_number,
+        c1_0.court_ruling,
+        c1_0.created_at,
+        c1_0.description,
+        c1_0.final_decision,
+        c1_0.is_deleted,
+        j1_0.id,
+        j1_0.age,
+        j1_0.assigned_cases_count,
+        j1_0.court,
+        j1_0.created_at,
+        j1_0.email,
+        j1_0.first_name,
+        j1_0.is_active,
+        j1_0.is_approved,
+        j1_0.is_deleted,
+        j1_0.password_reseted,
+        j1_0.last_name,
+        j1_0.national_id,
+        j1_0.otp_code,
+        j1_0.otp_expiration_time,
+        j1_0.password,
+        j1_0.role,
+        j1_0.updated_at,
+        l1_0.id,
+        l1_0.age,
+        l1_0.assigned_cases_count,
+        l1_0.court,
+        l1_0.created_at,
+        l1_0.email,
+        l1_0.first_name,
+        l1_0.is_active,
+        l1_0.is_approved,
+        l1_0.is_deleted,
+        l1_0.password_reseted,
+        l1_0.last_name,
+        l1_0.national_id,
+        l1_0.otp_code,
+        l1_0.otp_expiration_time,
+        l1_0.password,
+        l1_0.role,
+        l1_0.updated_at,
+        c1_0.model_judgment,
+        c1_0.model_summary,
+        c1_0.status,
+        c1_0.title 
+    from
+        cases c1_0 
+    left join
+        users ab1_0 
+            on ab1_0.id=c1_0.assigned_by_id 
+    left join
+        users j1_0 
+            on j1_0.id=c1_0.judge_id 
+    left join
+        users l1_0 
+            on l1_0.id=c1_0.lawyer_id 
+    where
+        c1_0.id=?
+2026-06-02 22:38:16 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        mr1_0.id,
+        mr1_0.case_id,
+        mr1_0.charge_count,
+        mr1_0.charges,
+        mr1_0.completed_agents,
+        mr1_0.confessions,
+        mr1_0.confidence_score,
+        mr1_0.court,
+        mr1_0.court_level,
+        mr1_0.created_at,
+        mr1_0.criminal_proceedings,
+        mr1_0.defendant_count,
+        mr1_0.defendants,
+        mr1_0.defense_documents,
+        mr1_0.evidences,
+        mr1_0.has_procedural_violations,
+        mr1_0.incidents,
+        mr1_0.jurisdiction,
+        mr1_0.lab_reports,
+        mr1_0.procedural_audit,
+        mr1_0.processing_errors,
+        mr1_0.prosecutor_name,
+        mr1_0.raw_response,
+        mr1_0.suggested_verdict,
+        mr1_0.summary,
+        mr1_0.witness_statements 
+    from
+        model_results mr1_0 
+    where
+        mr1_0.case_id=?
+2026-06-02 22:38:16 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        f1_0.case_id,
+        f1_0.id,
+        f1_0.file_name,
+        f1_0.file_type,
+        f1_0.file_url,
+        f1_0.original_file_name,
+        f1_0.uploaded_at,
+        ub1_0.id,
+        ub1_0.age,
+        ub1_0.assigned_cases_count,
+        ub1_0.court,
+        ub1_0.created_at,
+        ub1_0.email,
+        ub1_0.first_name,
+        ub1_0.is_active,
+        ub1_0.is_approved,
+        ub1_0.is_deleted,
+        ub1_0.password_reseted,
+        ub1_0.last_name,
+        ub1_0.national_id,
+        ub1_0.otp_code,
+        ub1_0.otp_expiration_time,
+        ub1_0.password,
+        ub1_0.role,
+        ub1_0.updated_at 
+    from
+        case_files f1_0 
+    left join
+        users ub1_0 
+            on ub1_0.id=f1_0.uploaded_by 
+    where
+        f1_0.case_id=?
+2026-06-02 22:38:16 [http-nio-8080-exec-1] INFO  c.f.f.AOP.LoggingAspect - ========================================
+2026-06-02 22:38:16 [http-nio-8080-exec-1] INFO  c.f.f.AOP.LoggingAspect - ==== ENTERING====: FileStorageService.getFile
+2026-06-02 22:38:16 [http-nio-8080-exec-1] INFO  c.f.f.AOP.LoggingAspect -    Arg[0]: 9c0408e7-2c71-4576-ace7-722e5e58db20_amr_ihala.txt
+2026-06-02 22:38:16 [http-nio-8080-exec-1] INFO  c.f.f.AOP.LoggingAspect - ==== COMPLETED=====: FileStorageService.getFile
+2026-06-02 22:38:16 [http-nio-8080-exec-1] INFO  c.f.f.AOP.LoggingAspect -    Duration: 1 ms
+2026-06-02 22:38:16 [http-nio-8080-exec-1] INFO  c.f.f.AOP.LoggingAspect -    Result: /app/uploads/case-files/9c0408e7-2c71-4576-ace7-722e5e58db20_amr_ihala.txt
+2026-06-02 22:38:16 [http-nio-8080-exec-1] INFO  c.f.f.AOP.LoggingAspect - ========================================
+2026-06-02 22:38:16 [http-nio-8080-exec-1] INFO  c.f.f.s.i.a.AiCaseInvokerService - Prepared Case Files: 9c0408e7-2c71-4576-ace7-722e5e58db20_amr_ihala.txt
+2026-06-02 22:38:16 [http-nio-8080-exec-1] INFO  c.f.f.AOP.LoggingAspect - ========================================
+2026-06-02 22:38:16 [http-nio-8080-exec-1] INFO  c.f.f.AOP.LoggingAspect - ==== ENTERING====: FileStorageService.getFile
+2026-06-02 22:38:16 [http-nio-8080-exec-1] INFO  c.f.f.AOP.LoggingAspect -    Arg[0]: 8cc27581-682a-4fcb-8685-a4df8f92aa29_aqual_shuhud.txt
+2026-06-02 22:38:16 [http-nio-8080-exec-1] INFO  c.f.f.AOP.LoggingAspect - ==== COMPLETED=====: FileStorageService.getFile
+2026-06-02 22:38:16 [http-nio-8080-exec-1] INFO  c.f.f.AOP.LoggingAspect -    Duration: 0 ms
+2026-06-02 22:38:16 [http-nio-8080-exec-1] INFO  c.f.f.AOP.LoggingAspect -    Result: /app/uploads/case-files/8cc27581-682a-4fcb-8685-a4df8f92aa29_aqual_shuhud.txt
+2026-06-02 22:38:16 [http-nio-8080-exec-1] INFO  c.f.f.AOP.LoggingAspect - ========================================
+2026-06-02 22:38:16 [http-nio-8080-exec-1] INFO  c.f.f.s.i.a.AiCaseInvokerService - Prepared Case Files: 8cc27581-682a-4fcb-8685-a4df8f92aa29_aqual_shuhud.txt
+2026-06-02 22:38:16 [http-nio-8080-exec-1] INFO  c.f.f.AOP.LoggingAspect - ========================================
+2026-06-02 22:38:16 [http-nio-8080-exec-1] INFO  c.f.f.AOP.LoggingAspect - ==== ENTERING====: FileStorageService.getFile
+2026-06-02 22:38:16 [http-nio-8080-exec-1] INFO  c.f.f.AOP.LoggingAspect -    Arg[0]: a5882a22-8fa4-4711-89f9-d563a34f65a9_mahdar_dabt.txt
+2026-06-02 22:38:16 [http-nio-8080-exec-1] INFO  c.f.f.AOP.LoggingAspect - ==== COMPLETED=====: FileStorageService.getFile
+2026-06-02 22:38:16 [http-nio-8080-exec-1] INFO  c.f.f.AOP.LoggingAspect -    Duration: 0 ms
+2026-06-02 22:38:16 [http-nio-8080-exec-1] INFO  c.f.f.AOP.LoggingAspect -    Result: /app/uploads/case-files/a5882a22-8fa4-4711-89f9-d563a34f65a9_mahdar_dabt.txt
+2026-06-02 22:38:16 [http-nio-8080-exec-1] INFO  c.f.f.AOP.LoggingAspect - ========================================
+2026-06-02 22:38:16 [http-nio-8080-exec-1] INFO  c.f.f.s.i.a.AiCaseInvokerService - Prepared Case Files: a5882a22-8fa4-4711-89f9-d563a34f65a9_mahdar_dabt.txt
+2026-06-02 22:38:16 [http-nio-8080-exec-1] INFO  c.f.f.AOP.LoggingAspect - ========================================
+2026-06-02 22:38:16 [http-nio-8080-exec-1] INFO  c.f.f.AOP.LoggingAspect - ==== ENTERING====: FileStorageService.getFile
+2026-06-02 22:38:16 [http-nio-8080-exec-1] INFO  c.f.f.AOP.LoggingAspect -    Arg[0]: e8a16ce9-4c83-4b97-a5cc-a269036656b5_mahdar_istijwab.txt
+2026-06-02 22:38:16 [http-nio-8080-exec-1] INFO  c.f.f.AOP.LoggingAspect - ==== COMPLETED=====: FileStorageService.getFile
+2026-06-02 22:38:16 [http-nio-8080-exec-1] INFO  c.f.f.AOP.LoggingAspect -    Duration: 1 ms
+2026-06-02 22:38:16 [http-nio-8080-exec-1] INFO  c.f.f.AOP.LoggingAspect -    Result: /app/uploads/case-files/e8a16ce9-4c83-4b97-a5cc-a269036656b5_mahdar_istijwab.txt
+2026-06-02 22:38:16 [http-nio-8080-exec-1] INFO  c.f.f.AOP.LoggingAspect - ========================================
+2026-06-02 22:38:16 [http-nio-8080-exec-1] INFO  c.f.f.s.i.a.AiCaseInvokerService - Prepared Case Files: e8a16ce9-4c83-4b97-a5cc-a269036656b5_mahdar_istijwab.txt
+2026-06-02 22:38:16 [http-nio-8080-exec-1] INFO  c.f.f.AOP.LoggingAspect - ========================================
+2026-06-02 22:38:16 [http-nio-8080-exec-1] INFO  c.f.f.AOP.LoggingAspect - ==== ENTERING====: FileStorageService.getFile
+2026-06-02 22:38:16 [http-nio-8080-exec-1] INFO  c.f.f.AOP.LoggingAspect -    Arg[0]: 406a3686-8dc4-4e87-ab11-cdb89aa65b27_mozakeret_difa.txt
+2026-06-02 22:38:16 [http-nio-8080-exec-1] INFO  c.f.f.AOP.LoggingAspect - ==== COMPLETED=====: FileStorageService.getFile
+2026-06-02 22:38:16 [http-nio-8080-exec-1] INFO  c.f.f.AOP.LoggingAspect -    Duration: 0 ms
+2026-06-02 22:38:16 [http-nio-8080-exec-1] INFO  c.f.f.AOP.LoggingAspect -    Result: /app/uploads/case-files/406a3686-8dc4-4e87-ab11-cdb89aa65b27_mozakeret_difa.txt
+2026-06-02 22:38:16 [http-nio-8080-exec-1] INFO  c.f.f.AOP.LoggingAspect - ========================================
+2026-06-02 22:38:16 [http-nio-8080-exec-1] INFO  c.f.f.s.i.a.AiCaseInvokerService - Prepared Case Files: 406a3686-8dc4-4e87-ab11-cdb89aa65b27_mozakeret_difa.txt
+2026-06-02 22:38:16 [http-nio-8080-exec-1] INFO  c.f.f.AOP.LoggingAspect - ========================================
+2026-06-02 22:38:16 [http-nio-8080-exec-1] INFO  c.f.f.AOP.LoggingAspect - ==== ENTERING====: FileStorageService.getFile
+2026-06-02 22:38:16 [http-nio-8080-exec-1] INFO  c.f.f.AOP.LoggingAspect -    Arg[0]: 11a353c8-5b8d-458a-ac85-8b1a6806295a_tqrir_tibbi.txt
+2026-06-02 22:38:16 [http-nio-8080-exec-1] INFO  c.f.f.AOP.LoggingAspect - ==== COMPLETED=====: FileStorageService.getFile
+2026-06-02 22:38:16 [http-nio-8080-exec-1] INFO  c.f.f.AOP.LoggingAspect -    Duration: 0 ms
+2026-06-02 22:38:16 [http-nio-8080-exec-1] INFO  c.f.f.AOP.LoggingAspect -    Result: /app/uploads/case-files/11a353c8-5b8d-458a-ac85-8b1a6806295a_tqrir_tibbi.txt
+2026-06-02 22:38:16 [http-nio-8080-exec-1] INFO  c.f.f.AOP.LoggingAspect - ========================================
+2026-06-02 22:38:16 [http-nio-8080-exec-1] INFO  c.f.f.s.i.a.AiCaseInvokerService - Prepared Case Files: 11a353c8-5b8d-458a-ac85-8b1a6806295a_tqrir_tibbi.txt
+2026-06-02 22:38:16 [http-nio-8080-exec-1] INFO  c.f.f.AOP.LoggingAspect - ========================================
+2026-06-02 22:38:16 [http-nio-8080-exec-1] INFO  c.f.f.AOP.LoggingAspect - ==== ENTERING====: AiIntegration.invokeCase
+2026-06-02 22:38:16 [http-nio-8080-exec-1] INFO  c.f.f.AOP.LoggingAspect -    Arg[0]: AiInvokeRequest(caseId=a58cfe45-1099-485c-ac81-ce74720f3cfd, files=[com.fullDetailed.fullDetailedDemo.util.CustomMultipartFile@66d3e3ad, com.fullDetailed.fullDetailedDemo.util.CustomMultipartFile@6bf29238, com.fullDetailed.fullDetailedDemo.util.CustomMultipartFile@7945f1e4, com.fullDetailed.fullDetailedDemo.util.CustomMultipartFile@9b13302, com.fullDetailed.fullDetailedDemo.util.CustomMultipartFile@70866712, com.fullDetailed.fullDetailedDemo.util.CustomMultipartFile@f1a5868])
+2026-06-02 22:39:37 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    SELECT
+        * 
+    FROM
+        users u 
+    WHERE
+        u.email = ? 
+    LIMIT
+        1
+2026-06-02 22:39:37 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    SELECT
+        * 
+    FROM
+        users u 
+    WHERE
+        u.email = ? 
+    LIMIT
+        1
+2026-06-02 22:39:37 [http-nio-8080-exec-6] INFO  c.f.f.AOP.LoggingAspect - ========================================
+2026-06-02 22:39:37 [http-nio-8080-exec-6] INFO  c.f.f.AOP.LoggingAspect - ==== ENTERING====: FilesServices.getCaseFile
+2026-06-02 22:39:37 [http-nio-8080-exec-6] INFO  c.f.f.AOP.LoggingAspect -    Arg[0]: a58cfe45-1099-485c-ac81-ce74720f3cfd
+2026-06-02 22:39:37 [http-nio-8080-exec-6] INFO  c.f.f.AOP.LoggingAspect -    Arg[1]: 9c0408e7-2c71-4576-ace7-722e5e58db20_amr_ihala.txt
+2026-06-02 22:39:37 [http-nio-8080-exec-6] INFO  c.f.f.AOP.LoggingAspect - ========================================
+2026-06-02 22:39:37 [http-nio-8080-exec-6] INFO  c.f.f.AOP.LoggingAspect - ==== ENTERING====: FileStorageService.loadFileAsResource
+2026-06-02 22:39:37 [http-nio-8080-exec-6] INFO  c.f.f.AOP.LoggingAspect -    Arg[0]: 9c0408e7-2c71-4576-ace7-722e5e58db20_amr_ihala.txt
+2026-06-02 22:39:37 [http-nio-8080-exec-6] INFO  c.f.f.AOP.LoggingAspect - ==== COMPLETED=====: FileStorageService.loadFileAsResource
+2026-06-02 22:39:37 [http-nio-8080-exec-6] INFO  c.f.f.AOP.LoggingAspect -    Duration: 1 ms
+2026-06-02 22:39:37 [http-nio-8080-exec-6] INFO  c.f.f.AOP.LoggingAspect -    Result: URL [file:///app/uploads/case-files/9c0408e7-2c71-4576-ace7-722e5e58db20_amr_ihala.txt]
+2026-06-02 22:39:37 [http-nio-8080-exec-6] INFO  c.f.f.AOP.LoggingAspect - ========================================
+2026-06-02 22:39:37 [http-nio-8080-exec-6] INFO  c.f.f.AOP.LoggingAspect - ==== COMPLETED=====: FilesServices.getCaseFile
+2026-06-02 22:39:37 [http-nio-8080-exec-6] INFO  c.f.f.AOP.LoggingAspect -    Duration: 26 ms
+2026-06-02 22:39:37 [http-nio-8080-exec-6] INFO  c.f.f.AOP.LoggingAspect -    Result: CaseFileDownloadDto(resource=URL [file:///app/uploads/case-files/9c0408e7-2c71-4576-ace7-722e5e58db20_amr_ihala.txt], contentType=text/plain)
+2026-06-02 22:39:37 [http-nio-8080-exec-6] INFO  c.f.f.AOP.LoggingAspect - ========================================
+2026-06-02 22:48:41 [http-nio-8080-exec-1] INFO  c.f.f.AOP.LoggingAspect - ==== COMPLETED=====: AiIntegration.invokeCase
+2026-06-02 22:48:41 [http-nio-8080-exec-1] INFO  c.f.f.AOP.LoggingAspect -    Duration: 624221 ms
+2026-06-02 22:48:41 [http-nio-8080-exec-1] INFO  c.f.f.AOP.LoggingAspect -    Result: AiResponse(caseId=a58cfe45-1099-485c-ac81-ce74720f3cfd, filesReceived=6, message=Case processed successfully, result=AiResultDto(caseId=a58cfe45-1099-485c-ac81-ce74720f3cfd, court=null, courtLevel=null, jurisdiction=null, filingDate=null, prosecutorName=null, defendants=[DefendantDto(name=علي محمد محمد جنيدي, alias=null, nationalId=null, gender=ذكر, dateOfBirth=null, age=45, occupation=مشرف بإحدى الشركات بالخارج, nationality=مصري, address=منطقة كفر العلو — قسم حلوان — القاهرة, complicityRole=فاعل أصلي)], charges=[ChargeDto(lawCode=قانون العقوبات المصري, articleNumber=236, description=إحداث إصابة عمدية أفضت إلى الموت دون سبق إصرار أو ترصد أو نية القتل., incidentType=إصابة عمدية أدت إلى الموت, chargeClassification=جناية, attemptFlag=false, chargeDate=2025-12-21, chargeLocation=أمام صيدلية الدكتور أحمد سعيد حسين شارع كفر العلو — دائرة قسم شرطة حلوان محافظة القاهرة, linkedDefendantNames=[علي محمد محمد جنيدي])], incidents=[IncidentDto(incidentType=مشاجرة, incidentDate=2025-12-21, incidentLocation=أمام صيدلية الدكتور أحمد سعيد حسين، منطقة كفر العلو، دائرة قسم شرطة حلوان، القاهرة, incidentDescription=نشبت مشادة كلامية بين المتهم علي محمد محمد جنيدي والمجني عليه صلاح بدوي جمعة أمام صيدلية، تحولت إلى اشتباك جسدي حيث وجه المتهم صفعة واحدة على وجه المجني عليه مما أدى لسقوطه فاقداً للوعي وتوفي لاحقاً في المستشفى., perpetratorNames=[علي محمد محمد جنيدي], victimNames=[صلاح بدوي جمعة])], evidences=[EvidenceDto(evidenceType=فيديو, description=مقطع فيديو مسجل من كاميرات المراقبة بالمنطقة يظهر المتهم يوجه صفعة بيده اليسرى على وجه المجني عليه., detailedText=ثبت من خلال مقطع فيديو مسجل من كاميرات المراقبة بالمنطقة أن المتهم وجّه بيده اليسرى صفعة واحدة على الجانب الأيمن من وجه المجني عليه، أعقبها سقوط المجني عليه أرضاً بصورة مفاجئة., seizureDate=null, seizureLocation=منطقة كفر العلو, seizedBy=الرائد محمود عز الدين, seizureWarrantPresent=false, linkedDefendantName=علي محمد محمد جنيدي)], witnessStatements=[WitnessStatementDto(witnessName=الدكتور/ أحمد سعيد حسين, witnessType=عيان, occupation=صيدلاني — مالك صيدلية بمنطقة كفر العلو — حلوان — القاهرة, relationToDefendant=null, statementSummary=أخبر أنَّه كان داخل صيدليته في 2025-12-21 عندما سمع جلبة وضوضاء خارج الصيدلية، فخرج فوجد مشادة كلامية بين المتهم علي محمد محمد جنيدي والمجني عليه صلاح بدوي جمعة أمام صيدليته. رأى المتهم يتجه بغضب إلى المجني عليه، ثم وجه صفعة قوية باليد اليسرى على الجانب الأيمن من وجهه، فسقط المجني عليه أرضاً فاقداً الوعي. أكد أن المجني عليه لم يحمل سلاحاً وأن الشجار كان كلامياً قبل الصفعة، وأنه تدخل كطبيب لتقديم الإسعاف الأولي. أشار إلى وجود خلافات سابقة بين العائلتين بسبب مشاكل الأطفال وجلسات صلح عرفية لم تحل النزاع. أضاف أن مقطع مراقبة الصيدلية يوثق لحظة الصفعة., wasSwornIn=true, presenceAtScene=true), WitnessStatementDto(witnessName=[اسم الشاهد الثاني من سكان المنطقة], witnessType=عيان, occupation=null, relationToDefendant=null, statementSummary=قال إنه كان في الشارع وقت الواقعة ورأى علي جنيدي وصلاح يتشاجران كلامياً أمام الصيدلية، ثم رفع علي يده اليسرى وضرب صلاح على وجهه فسقط على الأرض. أشار إلى أن هذه ليست المرة الأولى التي تشهد فيها خلافات بين العائلتين بسبب مشاكل الأطفال، وأنه كان هناك جلسات صلح سابقة لكن المشاكل لم تُحل. أكد عدم حمل أي من الطرفين سلاحاً وأن الضرب كان باليد., wasSwornIn=true, presenceAtScene=true), WitnessStatementDto(witnessName=[اسم الشاهد الثالث من سكان المنطقة], witnessType=عيان, occupation=null, relationToDefendant=null, statementSummary=أفاد أنه رأى الحادث بأم عينه وكان قريباً من مكان الشجار، حيث ضرب المتهم علي جنيدي الشاب صلاح بيده اليسرى على الجانب الأيمن من وجهه، فسقط صلاح على الأرض ولم يستيقظ. أوضح أن الطرفين كانا يتشاجران كلامياً دون أي ضرب مسبق، وأنه لا يعرف ما إذا كان المتهم يقصد القتل، مشيراً إلى أن الحادث كان مفاجئاً وغير متوقع., wasSwornIn=true, presenceAtScene=true), WitnessStatementDto(witnessName=الرائد محمود عز الدين, witnessType=ضابط, occupation=معاون مباحث قسم شرطة حلوان, relationToDefendant=null, statementSummary=ذكر أنه أجرى التحريات الأمنية في القضية وتوصل إلى أن المتهم علي محمد محمد جنيدي تعدى على المجني عليه صلاح بدوي جمعة خلال مشادة كلامية بسبب خلافات عائلية متكررة، وأن المتهم ضرب المجني عليه باليد دون سلاح مما أدى إلى وفاة المجني عليه نتيجة إصابة وعصبية شديدة. أوضح أن التحريات لم تجد نية قتل مسبقة وأن المصدر كان شهادات أهالي المنطقة ومقاطع فيديو مراقبة., wasSwornIn=true, presenceAtScene=false)], confessions=[ConfessionDto(defendantName=علي محمد محمد جنيدي, text=اعترف المتهم بأنه صفع المجني عليه على وجهه بيده اليسرى، وأقر بصحة مقطع الفيديو الذي يظهره وهو يصفع، وأقر بصحة شهادة الشهود الثلاثة التي رأوه يصفع، وأقر بأن الواقعة حدثت في لحظة غضب آني دون نية قتل أو إيذاء متعمد، وأبدى ندمه على ما وقع., confessionDate=2025-12-22, confessionStage=تحقيق, legalCounselPresent=false, coercionClaimed=false, keyAdmissions=[الصفعة التي وجهها للضحية, صحة مقطع الفيديو الذي يظهره وهو يصفع, صحة شهادة الشهود الثلاثة])], labReports=[LabReportDto(reportType=طبي شرعي, reportNumber=null, examinationDate=2025-12-21, examinerName=null, result=أظهر الفحص الداخلي وجود إجهاد حاد بعضلة القلب، نزيف دماغي داخلي وتغيرات في أنسجة المخ، نزيف في أنسجة الرئتين، ولا توجد آثار لأي مواد سامة أو مخدرة., linkedDefendantName=صلاح بدوي جمعة)], criminalProceedings=[CriminalProceedingDto(procedureType=ضبط, description=تم ضبط المتهم علي محمد محمد جنيدي وعرضه على النيابة العامة., warrantPresent=false, conductingOfficer=الرائد محمود عز الدين), CriminalProceedingDto(procedureType=إخطار, description=تم إخطار النيابة العامة بكافة المستجدات., warrantPresent=false, conductingOfficer=الرائد محمود عز الدين), CriminalProceedingDto(procedureType=تأمين, description=تم تأمين مقطع الفيديو المسجل وضمّه للأوراق., warrantPresent=false, conductingOfficer=الرائد محمود عز الدين), CriminalProceedingDto(procedureType=نقل, description=تم نقل المجني عليه إلى المستشفى في حالة حرجة., warrantPresent=false, conductingOfficer=null), CriminalProceedingDto(procedureType=نقل, description=نُقلت الجثة إلى المشرحة لتوقيع الكشف الطبي الشرعي عليها., warrantPresent=false, conductingOfficer=null), CriminalProceedingDto(procedureType=تحريات, description=أُجريت تحريات أمنية مستفيضة حول ملابسات الواقعة., warrantPresent=false, conductingOfficer=الرائد محمود عز الدين)], defenseDocuments=[DefenseDocumentDto(submittedBy=null, defendantName=علي محمد محمد جنيدي, formalDefenses=[], substantiveDefenses=[انتفاء نية القتل, الطابع الآني للجريمة وانتفاء سبق الإصرار, السببية الطبية وانقطاع العلاقة بين الفعل والنتيجة, استثارة المتهم وإسهام سلوك المجني عليه, شخصية المتهم ووضعه الاجتماعي], alibiClaimed=false, alibiDescription=null)], proceduralAudit=ProceduralAuditDto(violations=[ViolationDto(procedureType=ضبط, issueDescription=تم ضبط المتهم علي محمد محمد جنيدي وعرضه على النيابة العامة دون وجود أمر القبض., nullityType=بطلان مطلق, nullityEffect=بطلان جميع الإجراءات اللاحقة التي تعتمد على هذا الضبط., articleBasis=المادة 126 من قانون الإجراءات الجنائية, conductingOfficer=الرائد محمود عز الدين), ViolationDto(procedureType=إخطار, issueDescription=تم إخطار النيابة العامة بكافة المستجدات دون وجود أمر القبض., nullityType=بطلان نسبي, nullityEffect=لا يؤثر على صحة الإجراءات اللاحقة إذا تم تصحيح الخطأ., articleBasis=المادة 126 من قانون الإجراءات الجنائية, conductingOfficer=الرائد محمود عز الدين), ViolationDto(procedureType=تأمين, issueDescription=تم تأمين مقطع الفيديو المسجل وضمّه للأوراق دون وجود أمر القبض., nullityType=بطلان نسبي, nullityEffect=لا يؤثر على صحة الإجراءات اللاحقة إذا تم تصحيح الخطأ., articleBasis=المادة 126 من قانون الإجراءات الجنائية, conductingOfficer=الرائد محمود عز الدين), ViolationDto(procedureType=نقل, issueDescription=تم نقل المجني عليه إلى المستشفى في حالة حرجة دون وجود أمر نقل., nullityType=بطلان نسبي, nullityEffect=لا يؤثر على صحة الإجراءات اللاحقة إذا تم تصحيح الخطأ., articleBasis=المادة 133 من قانون الإجراءات الجنائية, conductingOfficer=غير معروف), ViolationDto(procedureType=نقل, issueDescription=نُقلت الجثة إلى المشرحة لتوقيع الكشف الطبي الشرعي عليها دون وجود أمر نقل., nullityType=بطلان نسبي, nullityEffect=لا يؤثر على صحة الإجراءات اللاحقة إذا تم تصحيح الخطأ., articleBasis=المادة 133 من قانون الإجراءات الجنائية, conductingOfficer=غير معروف), ViolationDto(procedureType=تحريات, issueDescription=أُجريت تحريات أمنية مستفيضة حول ملابسات الواقعة دون وجود أمر القبض., nullityType=بطلان نسبي, nullityEffect=لا يؤثر على صحة الإجراءات اللاحقة إذا تم تصحيح الخطأ., articleBasis=المادة 126 من قانون الإجراءات الجنائية, conductingOfficer=الرائد محمود عز الدين)], overallAssessment=توجد عدة مخالفات إجرائية في الإجراءات التي تم اتخاذها، منها عدم وجود أمر القبض في عدة إجراءات، مما يتطلب مراجعة هذه الإجراءات وتعديلها وفقًا للقانون., criticalNullities=[عدم وجود أمر القبض في إجراءات الضبط], kgArticlesUsed=[المادة 126 من قانون الإجراءات الجنائية, المادة 133 من قانون الإجراءات الجنائية], excludedDefenseClaims=[], meta={}), completedAgents=[data_ingestion, procedural_auditor, judge], errors=[], suggestedVerdict=SuggestedVerdictDto(verdict=براءة, recommendedPenalty=لا عقوبة, perChargeRulings=[PerChargeRulingDto(chargeDescription=إحداث إصابة عمدية أفضت إلى الموت دون سبق إصرار أو ترصد أو نية القتل، المادة 236 من قانون العقوبات المصري, verdict=براءة, penalty=لا عقوبة, reasoning=نظراً لوجود شك جدي في التهمة، وعدم وجود دليل قاطع يثبت إصرار المتهم على إحداث الإصابة، ووجود مخالفات إجرائية في الإجراءات التي تم اتخاذها، فإن البراءة هي النتيجة المناسبة.)], operativeText=حكمت المحكمة حضورياً: ببراءة المتهم علي محمد محمد جنيدي عن التهمة المؤثمة بالمادة 236 من قانون العقوبات المصري وعاقبته بالمصاريف., confidenceScore=0.8), lastUpdated=2026-06-02T22:38:19.806742), success=true)
+2026-06-02 22:48:41 [http-nio-8080-exec-1] INFO  c.f.f.AOP.LoggingAspect - ========================================
+2026-06-02 22:48:41 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        model_results
+        (case_id, charge_count, charges, completed_agents, confessions, confidence_score, court, court_level, created_at, criminal_proceedings, defendant_count, defendants, defense_documents, evidences, has_procedural_violations, incidents, jurisdiction, lab_reports, procedural_audit, processing_errors, prosecutor_name, raw_response, suggested_verdict, summary, witness_statements, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2026-06-02 22:48:41 [http-nio-8080-exec-1] INFO  c.f.f.AOP.LoggingAspect - ==== COMPLETED=====: AiCaseInvokerService.invokeCase
+2026-06-02 22:48:41 [http-nio-8080-exec-1] INFO  c.f.f.AOP.LoggingAspect -    Duration: 624588 ms
+2026-06-02 22:48:41 [http-nio-8080-exec-1] INFO  c.f.f.AOP.LoggingAspect -    Result: CaseAnalysisResponse(resultId=fb69362c-8964-4081-98c5-c84dc53db590, caseNumber=a58cfe45-1099-485c-ac81-ce74720f3cfd, message=Case processed successfully, success=true, caseSummary=CaseAnalysisResponse.CaseSummary(caseId=a58cfe45-1099-485c-ac81-ce74720f3cfd, court=null, courtLevel=null, jurisdiction=null, filingDate=null, prosecutorName=null, suggestedVerdict=SuggestedVerdictDto(verdict=براءة, recommendedPenalty=لا عقوبة, perChargeRulings=[PerChargeRulingDto(chargeDescription=إحداث إصابة عمدية أفضت إلى الموت دون سبق إصرار أو ترصد أو نية القتل، المادة 236 من قانون العقوبات المصري, verdict=براءة, penalty=لا عقوبة, reasoning=نظراً لوجود شك جدي في التهمة، وعدم وجود دليل قاطع يثبت إصرار المتهم على إحداث الإصابة، ووجود مخالفات إجرائية في الإجراءات التي تم اتخاذها، فإن البراءة هي النتيجة المناسبة.)], operativeText=حكمت المحكمة حضورياً: ببراءة المتهم علي محمد محمد جنيدي عن التهمة المؤثمة بالمادة 236 من قانون العقوبات المصري وعاقبته بالمصاريف., confidenceScore=0.8), defendantCount=1, chargeCount=1, hasProceduralViolations=true), defendants=[DefendantDto(name=علي محمد محمد جنيدي, alias=null, nationalId=null, gender=ذكر, dateOfBirth=null, age=45, occupation=مشرف بإحدى الشركات بالخارج, nationality=مصري, address=منطقة كفر العلو — قسم حلوان — القاهرة, complicityRole=فاعل أصلي)], charges=[ChargeDto(lawCode=قانون العقوبات المصري, articleNumber=236, description=إحداث إصابة عمدية أفضت إلى الموت دون سبق إصرار أو ترصد أو نية القتل., incidentType=إصابة عمدية أدت إلى الموت, chargeClassification=جناية, attemptFlag=false, chargeDate=2025-12-21, chargeLocation=أمام صيدلية الدكتور أحمد سعيد حسين شارع كفر العلو — دائرة قسم شرطة حلوان محافظة القاهرة, linkedDefendantNames=[علي محمد محمد جنيدي])], incidents=[IncidentDto(incidentType=مشاجرة, incidentDate=2025-12-21, incidentLocation=أمام صيدلية الدكتور أحمد سعيد حسين، منطقة كفر العلو، دائرة قسم شرطة حلوان، القاهرة, incidentDescription=نشبت مشادة كلامية بين المتهم علي محمد محمد جنيدي والمجني عليه صلاح بدوي جمعة أمام صيدلية، تحولت إلى اشتباك جسدي حيث وجه المتهم صفعة واحدة على وجه المجني عليه مما أدى لسقوطه فاقداً للوعي وتوفي لاحقاً في المستشفى., perpetratorNames=[علي محمد محمد جنيدي], victimNames=[صلاح بدوي جمعة])], evidences=[EvidenceDto(evidenceType=فيديو, description=مقطع فيديو مسجل من كاميرات المراقبة بالمنطقة يظهر المتهم يوجه صفعة بيده اليسرى على وجه المجني عليه., detailedText=ثبت من خلال مقطع فيديو مسجل من كاميرات المراقبة بالمنطقة أن المتهم وجّه بيده اليسرى صفعة واحدة على الجانب الأيمن من وجه المجني عليه، أعقبها سقوط المجني عليه أرضاً بصورة مفاجئة., seizureDate=null, seizureLocation=منطقة كفر العلو, seizedBy=الرائد محمود عز الدين, seizureWarrantPresent=false, linkedDefendantName=علي محمد محمد جنيدي)], witnessStatements=[WitnessStatementDto(witnessName=الدكتور/ أحمد سعيد حسين, witnessType=عيان, occupation=صيدلاني — مالك صيدلية بمنطقة كفر العلو — حلوان — القاهرة, relationToDefendant=null, statementSummary=أخبر أنَّه كان داخل صيدليته في 2025-12-21 عندما سمع جلبة وضوضاء خارج الصيدلية، فخرج فوجد مشادة كلامية بين المتهم علي محمد محمد جنيدي والمجني عليه صلاح بدوي جمعة أمام صيدليته. رأى المتهم يتجه بغضب إلى المجني عليه، ثم وجه صفعة قوية باليد اليسرى على الجانب الأيمن من وجهه، فسقط المجني عليه أرضاً فاقداً الوعي. أكد أن المجني عليه لم يحمل سلاحاً وأن الشجار كان كلامياً قبل الصفعة، وأنه تدخل كطبيب لتقديم الإسعاف الأولي. أشار إلى وجود خلافات سابقة بين العائلتين بسبب مشاكل الأطفال وجلسات صلح عرفية لم تحل النزاع. أضاف أن مقطع مراقبة الصيدلية يوثق لحظة الصفعة., wasSwornIn=true, presenceAtScene=true), WitnessStatementDto(witnessName=[اسم الشاهد الثاني من سكان المنطقة], witnessType=عيان, occupation=null, relationToDefendant=null, statementSummary=قال إنه كان في الشارع وقت الواقعة ورأى علي جنيدي وصلاح يتشاجران كلامياً أمام الصيدلية، ثم رفع علي يده اليسرى وضرب صلاح على وجهه فسقط على الأرض. أشار إلى أن هذه ليست المرة الأولى التي تشهد فيها خلافات بين العائلتين بسبب مشاكل الأطفال، وأنه كان هناك جلسات صلح سابقة لكن المشاكل لم تُحل. أكد عدم حمل أي من الطرفين سلاحاً وأن الضرب كان باليد., wasSwornIn=true, presenceAtScene=true), WitnessStatementDto(witnessName=[اسم الشاهد الثالث من سكان المنطقة], witnessType=عيان, occupation=null, relationToDefendant=null, statementSummary=أفاد أنه رأى الحادث بأم عينه وكان قريباً من مكان الشجار، حيث ضرب المتهم علي جنيدي الشاب صلاح بيده اليسرى على الجانب الأيمن من وجهه، فسقط صلاح على الأرض ولم يستيقظ. أوضح أن الطرفين كانا يتشاجران كلامياً دون أي ضرب مسبق، وأنه لا يعرف ما إذا كان المتهم يقصد القتل، مشيراً إلى أن الحادث كان مفاجئاً وغير متوقع., wasSwornIn=true, presenceAtScene=true), WitnessStatementDto(witnessName=الرائد محمود عز الدين, witnessType=ضابط, occupation=معاون مباحث قسم شرطة حلوان, relationToDefendant=null, statementSummary=ذكر أنه أجرى التحريات الأمنية في القضية وتوصل إلى أن المتهم علي محمد محمد جنيدي تعدى على المجني عليه صلاح بدوي جمعة خلال مشادة كلامية بسبب خلافات عائلية متكررة، وأن المتهم ضرب المجني عليه باليد دون سلاح مما أدى إلى وفاة المجني عليه نتيجة إصابة وعصبية شديدة. أوضح أن التحريات لم تجد نية قتل مسبقة وأن المصدر كان شهادات أهالي المنطقة ومقاطع فيديو مراقبة., wasSwornIn=true, presenceAtScene=false)], confessions=[ConfessionDto(defendantName=علي محمد محمد جنيدي, text=اعترف المتهم بأنه صفع المجني عليه على وجهه بيده اليسرى، وأقر بصحة مقطع الفيديو الذي يظهره وهو يصفع، وأقر بصحة شهادة الشهود الثلاثة التي رأوه يصفع، وأقر بأن الواقعة حدثت في لحظة غضب آني دون نية قتل أو إيذاء متعمد، وأبدى ندمه على ما وقع., confessionDate=2025-12-22, confessionStage=تحقيق, legalCounselPresent=false, coercionClaimed=false, keyAdmissions=[الصفعة التي وجهها للضحية, صحة مقطع الفيديو الذي يظهره وهو يصفع, صحة شهادة الشهود الثلاثة])], labReports=[LabReportDto(reportType=طبي شرعي, reportNumber=null, examinationDate=2025-12-21, examinerName=null, result=أظهر الفحص الداخلي وجود إجهاد حاد بعضلة القلب، نزيف دماغي داخلي وتغيرات في أنسجة المخ، نزيف في أنسجة الرئتين، ولا توجد آثار لأي مواد سامة أو مخدرة., linkedDefendantName=صلاح بدوي جمعة)], criminalProceedings=[CriminalProceedingDto(procedureType=ضبط, description=تم ضبط المتهم علي محمد محمد جنيدي وعرضه على النيابة العامة., warrantPresent=false, conductingOfficer=الرائد محمود عز الدين), CriminalProceedingDto(procedureType=إخطار, description=تم إخطار النيابة العامة بكافة المستجدات., warrantPresent=false, conductingOfficer=الرائد محمود عز الدين), CriminalProceedingDto(procedureType=تأمين, description=تم تأمين مقطع الفيديو المسجل وضمّه للأوراق., warrantPresent=false, conductingOfficer=الرائد محمود عز الدين), CriminalProceedingDto(procedureType=نقل, description=تم نقل المجني عليه إلى المستشفى في حالة حرجة., warrantPresent=false, conductingOfficer=null), CriminalProceedingDto(procedureType=نقل, description=نُقلت الجثة إلى المشرحة لتوقيع الكشف الطبي الشرعي عليها., warrantPresent=false, conductingOfficer=null), CriminalProceedingDto(procedureType=تحريات, description=أُجريت تحريات أمنية مستفيضة حول ملابسات الواقعة., warrantPresent=false, conductingOfficer=الرائد محمود عز الدين)], defenseDocuments=[DefenseDocumentDto(submittedBy=null, defendantName=علي محمد محمد جنيدي, formalDefenses=[], substantiveDefenses=[انتفاء نية القتل, الطابع الآني للجريمة وانتفاء سبق الإصرار, السببية الطبية وانقطاع العلاقة بين الفعل والنتيجة, استثارة المتهم وإسهام سلوك المجني عليه, شخصية المتهم ووضعه الاجتماعي], alibiClaimed=false, alibiDescription=null)], proceduralAudit=ProceduralAuditDto(violations=[ViolationDto(procedureType=ضبط, issueDescription=تم ضبط المتهم علي محمد محمد جنيدي وعرضه على النيابة العامة دون وجود أمر القبض., nullityType=بطلان مطلق, nullityEffect=بطلان جميع الإجراءات اللاحقة التي تعتمد على هذا الضبط., articleBasis=المادة 126 من قانون الإجراءات الجنائية, conductingOfficer=الرائد محمود عز الدين), ViolationDto(procedureType=إخطار, issueDescription=تم إخطار النيابة العامة بكافة المستجدات دون وجود أمر القبض., nullityType=بطلان نسبي, nullityEffect=لا يؤثر على صحة الإجراءات اللاحقة إذا تم تصحيح الخطأ., articleBasis=المادة 126 من قانون الإجراءات الجنائية, conductingOfficer=الرائد محمود عز الدين), ViolationDto(procedureType=تأمين, issueDescription=تم تأمين مقطع الفيديو المسجل وضمّه للأوراق دون وجود أمر القبض., nullityType=بطلان نسبي, nullityEffect=لا يؤثر على صحة الإجراءات اللاحقة إذا تم تصحيح الخطأ., articleBasis=المادة 126 من قانون الإجراءات الجنائية, conductingOfficer=الرائد محمود عز الدين), ViolationDto(procedureType=نقل, issueDescription=تم نقل المجني عليه إلى المستشفى في حالة حرجة دون وجود أمر نقل., nullityType=بطلان نسبي, nullityEffect=لا يؤثر على صحة الإجراءات اللاحقة إذا تم تصحيح الخطأ., articleBasis=المادة 133 من قانون الإجراءات الجنائية, conductingOfficer=غير معروف), ViolationDto(procedureType=نقل, issueDescription=نُقلت الجثة إلى المشرحة لتوقيع الكشف الطبي الشرعي عليها دون وجود أمر نقل., nullityType=بطلان نسبي, nullityEffect=لا يؤثر على صحة الإجراءات اللاحقة إذا تم تصحيح الخطأ., articleBasis=المادة 133 من قانون الإجراءات الجنائية, conductingOfficer=غير معروف), ViolationDto(procedureType=تحريات, issueDescription=أُجريت تحريات أمنية مستفيضة حول ملابسات الواقعة دون وجود أمر القبض., nullityType=بطلان نسبي, nullityEffect=لا يؤثر على صحة الإجراءات اللاحقة إذا تم تصحيح الخطأ., articleBasis=المادة 126 من قانون الإجراءات الجنائية, conductingOfficer=الرائد محمود عز الدين)], overallAssessment=توجد عدة مخالفات إجرائية في الإجراءات التي تم اتخاذها، منها عدم وجود أمر القبض في عدة إجراءات، مما يتطلب مراجعة هذه الإجراءات وتعديلها وفقًا للقانون., criticalNullities=[عدم وجود أمر القبض في إجراءات الضبط], kgArticlesUsed=[المادة 126 من قانون الإجراءات الجنائية, المادة 133 من قانون الإجراءات الجنائية], excludedDefenseClaims=[], meta={}), completedAgents=[data_ingestion, procedural_auditor, judge], processingErrors=[], processedAt=2026-06-02T22:38:19.806742)
+2026-06-02 22:48:41 [http-nio-8080-exec-1] INFO  c.f.f.AOP.LoggingAspect - ========================================
+2026-06-02 22:52:07 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - 
+    SELECT
+        * 
+    FROM
+        users u 
+    WHERE
+        u.email = ? 
+    LIMIT
+        1
+2026-06-02 22:52:07 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - 
+    SELECT
+        * 
+    FROM
+        users u 
+    WHERE
+        u.email = ? 
+    LIMIT
+        1
+2026-06-02 22:52:07 [http-nio-8080-exec-9] INFO  c.f.f.AOP.LoggingAspect - ========================================
+2026-06-02 22:52:07 [http-nio-8080-exec-9] INFO  c.f.f.AOP.LoggingAspect - ==== ENTERING====: ModelResultService.getResultByCaseId
+2026-06-02 22:52:07 [http-nio-8080-exec-9] INFO  c.f.f.AOP.LoggingAspect -    Arg[0]: a58cfe45-1099-485c-ac81-ce74720f3cfd
+2026-06-02 22:52:07 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        c1_0.id,
+        c1_0.assign_status,
+        c1_0.assigned_by_id,
+        c1_0.case_number,
+        c1_0.court_ruling,
+        c1_0.created_at,
+        c1_0.description,
+        c1_0.final_decision,
+        c1_0.is_deleted,
+        c1_0.judge_id,
+        c1_0.lawyer_id,
+        c1_0.model_judgment,
+        c1_0.model_summary,
+        c1_0.status,
+        c1_0.title 
+    from
+        cases c1_0 
+    where
+        c1_0.id=? 
+        and c1_0.is_deleted=false
+2026-06-02 22:52:07 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.age,
+        u1_0.assigned_cases_count,
+        u1_0.court,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.is_active,
+        u1_0.is_approved,
+        u1_0.is_deleted,
+        u1_0.password_reseted,
+        u1_0.last_name,
+        u1_0.national_id,
+        u1_0.otp_code,
+        u1_0.otp_expiration_time,
+        u1_0.password,
+        u1_0.role,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-06-02 22:52:07 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.age,
+        u1_0.assigned_cases_count,
+        u1_0.court,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.is_active,
+        u1_0.is_approved,
+        u1_0.is_deleted,
+        u1_0.password_reseted,
+        u1_0.last_name,
+        u1_0.national_id,
+        u1_0.otp_code,
+        u1_0.otp_expiration_time,
+        u1_0.password,
+        u1_0.role,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-06-02 22:52:07 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        mr1_0.id,
+        mr1_0.case_id,
+        mr1_0.charge_count,
+        mr1_0.charges,
+        mr1_0.completed_agents,
+        mr1_0.confessions,
+        mr1_0.confidence_score,
+        mr1_0.court,
+        mr1_0.court_level,
+        mr1_0.created_at,
+        mr1_0.criminal_proceedings,
+        mr1_0.defendant_count,
+        mr1_0.defendants,
+        mr1_0.defense_documents,
+        mr1_0.evidences,
+        mr1_0.has_procedural_violations,
+        mr1_0.incidents,
+        mr1_0.jurisdiction,
+        mr1_0.lab_reports,
+        mr1_0.procedural_audit,
+        mr1_0.processing_errors,
+        mr1_0.prosecutor_name,
+        mr1_0.raw_response,
+        mr1_0.suggested_verdict,
+        mr1_0.summary,
+        mr1_0.witness_statements 
+    from
+        model_results mr1_0 
+    where
+        mr1_0.case_id=?
+2026-06-02 22:52:07 [http-nio-8080-exec-9] INFO  c.f.f.AOP.LoggingAspect - ==== COMPLETED=====: ModelResultService.getResultByCaseId
+2026-06-02 22:52:07 [http-nio-8080-exec-9] INFO  c.f.f.AOP.LoggingAspect -    Duration: 142 ms
+2026-06-02 22:52:07 [http-nio-8080-exec-9] INFO  c.f.f.AOP.LoggingAspect -    Result: ModelResultResponse(id=fb69362c-8964-4081-98c5-c84dc53db590, caseNumber=CASE-2026-002, caseTitle=Breach of Contract Dispute, summary=Case processed successfully, court=null, courtLevel=null, jurisdiction=null, prosecutorName=null, suggestedVerdict=SuggestedVerdictDto(verdict=براءة, recommendedPenalty=لا عقوبة, perChargeRulings=[PerChargeRulingDto(chargeDescription=إحداث إصابة عمدية أفضت إلى الموت دون سبق إصرار أو ترصد أو نية القتل، المادة 236 من قانون العقوبات المصري, verdict=براءة, penalty=لا عقوبة, reasoning=نظراً لوجود شك جدي في التهمة، وعدم وجود دليل قاطع يثبت إصرار المتهم على إحداث الإصابة، ووجود مخالفات إجرائية في الإجراءات التي تم اتخاذها، فإن البراءة هي النتيجة المناسبة.)], operativeText=حكمت المحكمة حضورياً: ببراءة المتهم علي محمد محمد جنيدي عن التهمة المؤثمة بالمادة 236 من قانون العقوبات المصري وعاقبته بالمصاريف., confidenceScore=0.8), completedAgents=data_ingestion | procedural_auditor | judge, processingErrors=null, hasProceduralViolations=true, defendantCount=1, chargeCount=1, confidenceScore=0.95, createdAt=2026-06-02T22:48:41.182755, defendants=[DefendantDto(name=علي محمد محمد جنيدي, alias=null, nationalId=null, gender=ذكر, dateOfBirth=null, age=45, occupation=مشرف بإحدى الشركات بالخارج, nationality=مصري, address=منطقة كفر العلو — قسم حلوان — القاهرة, complicityRole=فاعل أصلي)], charges=[ChargeDto(lawCode=قانون العقوبات المصري, articleNumber=236, description=إحداث إصابة عمدية أفضت إلى الموت دون سبق إصرار أو ترصد أو نية القتل., incidentType=إصابة عمدية أدت إلى الموت, chargeClassification=جناية, attemptFlag=false, chargeDate=2025-12-21, chargeLocation=أمام صيدلية الدكتور أحمد سعيد حسين شارع كفر العلو — دائرة قسم شرطة حلوان محافظة القاهرة, linkedDefendantNames=[علي محمد محمد جنيدي])], incidents=[IncidentDto(incidentType=مشاجرة, incidentDate=2025-12-21, incidentLocation=أمام صيدلية الدكتور أحمد سعيد حسين، منطقة كفر العلو، دائرة قسم شرطة حلوان، القاهرة, incidentDescription=نشبت مشادة كلامية بين المتهم علي محمد محمد جنيدي والمجني عليه صلاح بدوي جمعة أمام صيدلية، تحولت إلى اشتباك جسدي حيث وجه المتهم صفعة واحدة على وجه المجني عليه مما أدى لسقوطه فاقداً للوعي وتوفي لاحقاً في المستشفى., perpetratorNames=[علي محمد محمد جنيدي], victimNames=[صلاح بدوي جمعة])], evidences=[EvidenceDto(evidenceType=فيديو, description=مقطع فيديو مسجل من كاميرات المراقبة بالمنطقة يظهر المتهم يوجه صفعة بيده اليسرى على وجه المجني عليه., detailedText=ثبت من خلال مقطع فيديو مسجل من كاميرات المراقبة بالمنطقة أن المتهم وجّه بيده اليسرى صفعة واحدة على الجانب الأيمن من وجه المجني عليه، أعقبها سقوط المجني عليه أرضاً بصورة مفاجئة., seizureDate=null, seizureLocation=منطقة كفر العلو, seizedBy=الرائد محمود عز الدين, seizureWarrantPresent=false, linkedDefendantName=علي محمد محمد جنيدي)], witnessStatements=[WitnessStatementDto(witnessName=الدكتور/ أحمد سعيد حسين, witnessType=عيان, occupation=صيدلاني — مالك صيدلية بمنطقة كفر العلو — حلوان — القاهرة, relationToDefendant=null, statementSummary=أخبر أنَّه كان داخل صيدليته في 2025-12-21 عندما سمع جلبة وضوضاء خارج الصيدلية، فخرج فوجد مشادة كلامية بين المتهم علي محمد محمد جنيدي والمجني عليه صلاح بدوي جمعة أمام صيدليته. رأى المتهم يتجه بغضب إلى المجني عليه، ثم وجه صفعة قوية باليد اليسرى على الجانب الأيمن من وجهه، فسقط المجني عليه أرضاً فاقداً الوعي. أكد أن المجني عليه لم يحمل سلاحاً وأن الشجار كان كلامياً قبل الصفعة، وأنه تدخل كطبيب لتقديم الإسعاف الأولي. أشار إلى وجود خلافات سابقة بين العائلتين بسبب مشاكل الأطفال وجلسات صلح عرفية لم تحل النزاع. أضاف أن مقطع مراقبة الصيدلية يوثق لحظة الصفعة., wasSwornIn=true, presenceAtScene=true), WitnessStatementDto(witnessName=[اسم الشاهد الثاني من سكان المنطقة], witnessType=عيان, occupation=null, relationToDefendant=null, statementSummary=قال إنه كان في الشارع وقت الواقعة ورأى علي جنيدي وصلاح يتشاجران كلامياً أمام الصيدلية، ثم رفع علي يده اليسرى وضرب صلاح على وجهه فسقط على الأرض. أشار إلى أن هذه ليست المرة الأولى التي تشهد فيها خلافات بين العائلتين بسبب مشاكل الأطفال، وأنه كان هناك جلسات صلح سابقة لكن المشاكل لم تُحل. أكد عدم حمل أي من الطرفين سلاحاً وأن الضرب كان باليد., wasSwornIn=true, presenceAtScene=true), WitnessStatementDto(witnessName=[اسم الشاهد الثالث من سكان المنطقة], witnessType=عيان, occupation=null, relationToDefendant=null, statementSummary=أفاد أنه رأى الحادث بأم عينه وكان قريباً من مكان الشجار، حيث ضرب المتهم علي جنيدي الشاب صلاح بيده اليسرى على الجانب الأيمن من وجهه، فسقط صلاح على الأرض ولم يستيقظ. أوضح أن الطرفين كانا يتشاجران كلامياً دون أي ضرب مسبق، وأنه لا يعرف ما إذا كان المتهم يقصد القتل، مشيراً إلى أن الحادث كان مفاجئاً وغير متوقع., wasSwornIn=true, presenceAtScene=true), WitnessStatementDto(witnessName=الرائد محمود عز الدين, witnessType=ضابط, occupation=معاون مباحث قسم شرطة حلوان, relationToDefendant=null, statementSummary=ذكر أنه أجرى التحريات الأمنية في القضية وتوصل إلى أن المتهم علي محمد محمد جنيدي تعدى على المجني عليه صلاح بدوي جمعة خلال مشادة كلامية بسبب خلافات عائلية متكررة، وأن المتهم ضرب المجني عليه باليد دون سلاح مما أدى إلى وفاة المجني عليه نتيجة إصابة وعصبية شديدة. أوضح أن التحريات لم تجد نية قتل مسبقة وأن المصدر كان شهادات أهالي المنطقة ومقاطع فيديو مراقبة., wasSwornIn=true, presenceAtScene=false)], confessions=[ConfessionDto(defendantName=علي محمد محمد جنيدي, text=اعترف المتهم بأنه صفع المجني عليه على وجهه بيده اليسرى، وأقر بصحة مقطع الفيديو الذي يظهره وهو يصفع، وأقر بصحة شهادة الشهود الثلاثة التي رأوه يصفع، وأقر بأن الواقعة حدثت في لحظة غضب آني دون نية قتل أو إيذاء متعمد، وأبدى ندمه على ما وقع., confessionDate=2025-12-22, confessionStage=تحقيق, legalCounselPresent=false, coercionClaimed=false, keyAdmissions=[الصفعة التي وجهها للضحية, صحة مقطع الفيديو الذي يظهره وهو يصفع, صحة شهادة الشهود الثلاثة])], labReports=[LabReportDto(reportType=طبي شرعي, reportNumber=null, examinationDate=2025-12-21, examinerName=null, result=أظهر الفحص الداخلي وجود إجهاد حاد بعضلة القلب، نزيف دماغي داخلي وتغيرات في أنسجة المخ، نزيف في أنسجة الرئتين، ولا توجد آثار لأي مواد سامة أو مخدرة., linkedDefendantName=صلاح بدوي جمعة)], criminalProceedings=[CriminalProceedingDto(procedureType=ضبط, description=تم ضبط المتهم علي محمد محمد جنيدي وعرضه على النيابة العامة., warrantPresent=false, conductingOfficer=الرائد محمود عز الدين), CriminalProceedingDto(procedureType=إخطار, description=تم إخطار النيابة العامة بكافة المستجدات., warrantPresent=false, conductingOfficer=الرائد محمود عز الدين), CriminalProceedingDto(procedureType=تأمين, description=تم تأمين مقطع الفيديو المسجل وضمّه للأوراق., warrantPresent=false, conductingOfficer=الرائد محمود عز الدين), CriminalProceedingDto(procedureType=نقل, description=تم نقل المجني عليه إلى المستشفى في حالة حرجة., warrantPresent=false, conductingOfficer=null), CriminalProceedingDto(procedureType=نقل, description=نُقلت الجثة إلى المشرحة لتوقيع الكشف الطبي الشرعي عليها., warrantPresent=false, conductingOfficer=null), CriminalProceedingDto(procedureType=تحريات, description=أُجريت تحريات أمنية مستفيضة حول ملابسات الواقعة., warrantPresent=false, conductingOfficer=الرائد محمود عز الدين)], defenseDocuments=[DefenseDocumentDto(submittedBy=null, defendantName=علي محمد محمد جنيدي, formalDefenses=[], substantiveDefenses=[انتفاء نية القتل, الطابع الآني للجريمة وانتفاء سبق الإصرار, السببية الطبية وانقطاع العلاقة بين الفعل والنتيجة, استثارة المتهم وإسهام سلوك المجني عليه, شخصية المتهم ووضعه الاجتماعي], alibiClaimed=false, alibiDescription=null)], proceduralAudit=ProceduralAuditDto(violations=[ViolationDto(procedureType=ضبط, issueDescription=تم ضبط المتهم علي محمد محمد جنيدي وعرضه على النيابة العامة دون وجود أمر القبض., nullityType=بطلان مطلق, nullityEffect=بطلان جميع الإجراءات اللاحقة التي تعتمد على هذا الضبط., articleBasis=المادة 126 من قانون الإجراءات الجنائية, conductingOfficer=الرائد محمود عز الدين), ViolationDto(procedureType=إخطار, issueDescription=تم إخطار النيابة العامة بكافة المستجدات دون وجود أمر القبض., nullityType=بطلان نسبي, nullityEffect=لا يؤثر على صحة الإجراءات اللاحقة إذا تم تصحيح الخطأ., articleBasis=المادة 126 من قانون الإجراءات الجنائية, conductingOfficer=الرائد محمود عز الدين), ViolationDto(procedureType=تأمين, issueDescription=تم تأمين مقطع الفيديو المسجل وضمّه للأوراق دون وجود أمر القبض., nullityType=بطلان نسبي, nullityEffect=لا يؤثر على صحة الإجراءات اللاحقة إذا تم تصحيح الخطأ., articleBasis=المادة 126 من قانون الإجراءات الجنائية, conductingOfficer=الرائد محمود عز الدين), ViolationDto(procedureType=نقل, issueDescription=تم نقل المجني عليه إلى المستشفى في حالة حرجة دون وجود أمر نقل., nullityType=بطلان نسبي, nullityEffect=لا يؤثر على صحة الإجراءات اللاحقة إذا تم تصحيح الخطأ., articleBasis=المادة 133 من قانون الإجراءات الجنائية, conductingOfficer=غير معروف), ViolationDto(procedureType=نقل, issueDescription=نُقلت الجثة إلى المشرحة لتوقيع الكشف الطبي الشرعي عليها دون وجود أمر نقل., nullityType=بطلان نسبي, nullityEffect=لا يؤثر على صحة الإجراءات اللاحقة إذا تم تصحيح الخطأ., articleBasis=المادة 133 من قانون الإجراءات الجنائية, conductingOfficer=غير معروف), ViolationDto(procedureType=تحريات, issueDescription=أُجريت تحريات أمنية مستفيضة حول ملابسات الواقعة دون وجود أمر القبض., nullityType=بطلان نسبي, nullityEffect=لا يؤثر على صحة الإجراءات اللاحقة إذا تم تصحيح الخطأ., articleBasis=المادة 126 من قانون الإجراءات الجنائية, conductingOfficer=الرائد محمود عز الدين)], overallAssessment=توجد عدة مخالفات إجرائية في الإجراءات التي تم اتخاذها، منها عدم وجود أمر القبض في عدة إجراءات، مما يتطلب مراجعة هذه الإجراءات وتعديلها وفقًا للقانون., criticalNullities=[عدم وجود أمر القبض في إجراءات الضبط], kgArticlesUsed=[المادة 126 من قانون الإجراءات الجنائية, المادة 133 من قانون الإجراءات الجنائية], excludedDefenseClaims=[], meta={}))
+2026-06-02 22:52:07 [http-nio-8080-exec-9] INFO  c.f.f.AOP.LoggingAspect - ========================================
+2026-06-02 22:55:54 [SpringApplicationShutdownHook] INFO  o.s.boot.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-06-02 22:55:54 [tomcat-shutdown] INFO  o.s.boot.tomcat.GracefulShutdown - Graceful shutdown complete
+2026-06-02 22:55:54 [SpringApplicationShutdownHook] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - Stopping...
+2026-06-02 22:55:54 [SpringApplicationShutdownHook] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@53cddaec]]
+2026-06-02 22:55:54 [SpringApplicationShutdownHook] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - Stopped.
