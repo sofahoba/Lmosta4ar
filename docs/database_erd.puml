@@ -1,0 +1,169 @@
+<![CDATA[@startuml Lmosta4ar_Database_ERD
+
+!theme cerulean
+skinparam linetype ortho
+skinparam roundcorner 10
+skinparam classFontSize 13
+skinparam classAttributeFontSize 11
+
+title **⚖️ Lmosta4ar — Database Entity Relationship Diagram**\n
+
+' ============================================================
+' ENUMS
+' ============================================================
+
+enum Role {
+  ADMIN
+  JUDGE
+  LAWYER
+  EMPTY
+}
+
+enum CaseStatus {
+  PENDING
+  UNDER_DISCUSSION
+  COMPLETED
+}
+
+enum AssignStatus {
+  FULLY_ASSIGNED
+  ASSIGNED_TO_LAWYER
+  ASSIGNED_TO_JUDGE
+}
+
+enum RequestStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+enum FileType {
+  PDF
+  DOCUMENT
+  IMAGE
+  OTHER
+}
+
+' ============================================================
+' ENTITIES
+' ============================================================
+
+entity "users" as User {
+  * **id** : UUID <<PK>>
+  --
+  * first_name : VARCHAR(255)
+  * last_name : VARCHAR(255)
+  * password : VARCHAR(255)
+  * email : VARCHAR(255) <<UNIQUE>>
+  national_id : VARCHAR(255) <<UNIQUE>>
+  age : INTEGER
+  * role : Role
+  assigned_cases_count : INTEGER = 0
+  is_active : BOOLEAN = true
+  is_deleted : BOOLEAN = false
+  passwordReseted : BOOLEAN = false
+  isApproved : BOOLEAN = false
+  otp_code : VARCHAR(255)
+  Otp_expiration_time : TIMESTAMP
+  court : VARCHAR(255)
+  created_at : TIMESTAMP <<auto>>
+  updated_at : TIMESTAMP <<auto>>
+}
+
+entity "cases" as Case {
+  * **id** : UUID <<PK>>
+  --
+  * case_number : VARCHAR(255)
+  * title : VARCHAR(255)
+  description : VARCHAR(2000)
+  * status : CaseStatus
+  assign_status : AssignStatus
+  judge_id : UUID <<FK users>>
+  lawyer_id : UUID <<FK users>>
+  assigned_by_id : UUID <<FK users>>
+  is_deleted : BOOLEAN = false
+  court_ruling : VARCHAR(255)
+  model_summary : TEXT
+  model_judgment : TEXT
+  final_decision : TEXT
+  created_at : TIMESTAMP <<auto>>
+}
+
+entity "case_files" as CaseFile {
+  * **id** : UUID <<PK>>
+  --
+  case_id : UUID <<FK cases>>
+  * file_name : VARCHAR(255)
+  * original_file_name : VARCHAR(255)
+  file_url : VARCHAR(255)
+  file_type : FileType
+  uploaded_by : UUID <<FK users>>
+  uploaded_at : TIMESTAMP <<auto>>
+}
+
+entity "case_requests" as CaseRequest {
+  * **id** : UUID <<PK>>
+  --
+  * lawyer_id : UUID <<FK users>>
+  * case_id : UUID <<FK cases>>
+  * status : RequestStatus = PENDING
+  created_at : TIMESTAMP <<auto>>
+}
+
+entity "model_results" as ModelResult {
+  * **id** : UUID <<PK>>
+  --
+  * case_id : UUID <<FK cases>> <<UNIQUE>>
+  summary : TEXT
+  raw_response : TEXT
+  defendants : TEXT (JSON)
+  charges : TEXT (JSON)
+  incidents : TEXT (JSON)
+  evidences : TEXT (JSON)
+  witness_statements : TEXT (JSON)
+  confessions : TEXT (JSON)
+  lab_reports : TEXT (JSON)
+  criminal_proceedings : TEXT (JSON)
+  defense_documents : TEXT (JSON)
+  procedural_audit : TEXT (JSON)
+  suggested_verdict : TEXT (JSON)
+  court : TEXT
+  court_level : TEXT
+  jurisdiction : TEXT
+  prosecutor_name : TEXT
+  completed_agents : TEXT
+  processing_errors : TEXT
+  has_procedural_violations : BOOLEAN
+  defendant_count : INTEGER
+  charge_count : INTEGER
+  confidence_score : DOUBLE
+  created_at : TIMESTAMP <<auto>>
+}
+
+entity "notifications" as Notification {
+  * **id** : UUID <<PK>>
+  --
+  * title : VARCHAR(255)
+  * message : VARCHAR(255)
+  * is_read : BOOLEAN = false
+  * recipient_id : UUID <<FK users>>
+  created_at : TIMESTAMP <<auto>>
+}
+
+' ============================================================
+' RELATIONSHIPS
+' ============================================================
+
+User ||--o{ Case : "judges\n(judge_id)"
+User ||--o{ Case : "represents\n(lawyer_id)"
+User ||--o{ Case : "assigns\n(assigned_by_id)"
+User ||--o{ CaseFile : "uploads\n(uploaded_by)"
+User ||--o{ CaseRequest : "requests\n(lawyer_id)"
+User ||--o{ Notification : "receives\n(recipient_id)"
+
+Case ||--o{ CaseFile : "has files\n(case_id)"
+Case ||--o{ CaseRequest : "has requests\n(case_id)"
+Case ||--|| ModelResult : "has AI result\n(case_id)"
+
+@enduml
+]]>
