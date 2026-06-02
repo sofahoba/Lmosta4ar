@@ -241,6 +241,7 @@ public class AdminCaseManagementServiceImpl implements AdminCaseManagementServic
             CaseFile caseFile = CaseFile.builder()
                     .caseEntity(caseEntity)
                     .fileName(fileName)
+                    .originalFileName(file.getOriginalFilename())
                     .fileUrl(fileDownloadUrl)
                     .fileType(determineFileType(file.getContentType()))
                     .uploadedBy(adminUser)

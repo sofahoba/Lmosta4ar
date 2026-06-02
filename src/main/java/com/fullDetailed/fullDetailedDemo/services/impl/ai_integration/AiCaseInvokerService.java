@@ -8,6 +8,7 @@ import com.fullDetailed.fullDetailedDemo.domain.entities.ModelResult;
 import com.fullDetailed.fullDetailedDemo.exceptions.NotFoundException;
 import com.fullDetailed.fullDetailedDemo.repository.CaseRepository;
 import com.fullDetailed.fullDetailedDemo.repository.ModelResultRepository;
+import com.fullDetailed.fullDetailedDemo.services.impl.FileStorageService;
 import com.fullDetailed.fullDetailedDemo.util.CustomMultipartFile;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -18,6 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Slf4j
 @Service
@@ -25,6 +27,7 @@ import java.util.List;
 public class AiCaseInvokerService {
 
     private final CaseRepository caseRepository;
+    private final FileStorageService fileStorageService;
     private final AiIntegration aiIntegration;
     private final ModelResultRepository modelResultRepository;
     private final ObjectMapper objectMapper;
@@ -32,20 +35,20 @@ public class AiCaseInvokerService {
     @Value("${file.upload-dir:/app/uploads/case-files}")
     private String uploadDir;
 
-    public CaseAnalysisResponse invokeCase(String caseNumber) {
+    public CaseAnalysisResponse invokeCase(UUID caseId) {
 
-        Case caseEntity = caseRepository.findByCaseNumberAndIsDeletedFalse(caseNumber)
-                .orElseThrow(() -> new NotFoundException("Case Not Found: " + caseNumber));
+        Case caseEntity = caseRepository.findById(caseId)
+                .orElseThrow(() -> new NotFoundException("Case Not Found: " + caseId));
 
         List<MultipartFile> filesToSend = new ArrayList<>();
         addFiles(caseEntity.getFiles(), filesToSend, "Case Files");
 
         if (filesToSend.isEmpty()) {
-            throw new RuntimeException("No valid files found for case: " + caseNumber);
+            throw new RuntimeException("No valid files found for case: " + caseId);
         }
 
         AiInvokeRequest request = AiInvokeRequest.builder()
-                .caseId(caseNumber)
+                .caseId(caseId.toString())
                 .files(filesToSend)
                 .build();
 
@@ -54,7 +57,7 @@ public class AiCaseInvokerService {
 
         ModelResult modelResult = persistResult(caseEntity, aiResponse, result);
 
-        return buildCleanResponse(caseNumber, aiResponse, result, modelResult);
+        return buildCleanResponse(caseId.toString(), aiResponse, result, modelResult);
     }
 
     private ModelResult persistResult(Case caseEntity, AiResponse aiResponse, AiResultDto result) {
@@ -168,24 +171,14 @@ public class AiCaseInvokerService {
     }
 
     private MultipartFile convertToMultipartFile(CaseFile caseFile) {
-        String caseId = caseFile.getCaseEntity().getId().toString();
-        String fileName = caseFile.getFileName();
 
-        String[] possiblePaths = {
-                uploadDir + "/" + caseId + "/" + fileName,
-                uploadDir + "/" + fileName,
-                "/app/uploads/case-files/" + caseId + "/" + fileName,
-                "/app/uploads/case-files/" + fileName,
-                uploadDir + "/cases/" + caseId + "/" + fileName
-        };
+    File file = fileStorageService.getFile(
+            caseFile.getFileName()
+    );
 
-        for (String path : possiblePaths) {
-            File file = new File(path);
-            if (file.exists() && file.isFile()) {
-                log.info("File found: {}", file.getAbsolutePath());
-                return new CustomMultipartFile(file, fileName);
-            }
-        }
-        throw new RuntimeException("File not found on disk: " + fileName);
-    }
+    return new CustomMultipartFile(
+            file,
+            caseFile.getOriginalFileName()
+    );
+}
 }

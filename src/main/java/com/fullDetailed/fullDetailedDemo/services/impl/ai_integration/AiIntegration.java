@@ -36,6 +36,14 @@ public class AiIntegration {
             }
         }
 
+        if (request.getFiles() != null) {
+            for (MultipartFile file : request.getFiles()) {
+
+                System.out.println("Sending file to AI: "
+                        + file.getOriginalFilename());
+
+            }
+        }
         String rawJson = webClient.post()
                 .uri("/cases/invoke_case")
                 .contentType(MediaType.MULTIPART_FORM_DATA)
