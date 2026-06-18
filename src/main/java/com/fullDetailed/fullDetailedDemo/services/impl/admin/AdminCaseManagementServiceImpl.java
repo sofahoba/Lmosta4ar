@@ -195,14 +195,12 @@ public class AdminCaseManagementServiceImpl implements AdminCaseManagementServic
 
     @Override
     @Transactional(readOnly = true)
-    @Cacheable(value = "cases", key = "'all:'+#pageable.pageNumber+':'+ #pageable.pageSize")
     public Page<CaseResponseDto> getAllCases(Pageable pageable) {
         return caseRepository.findByIsDeletedFalse(PagenationHandler.createCleanPageable(pageable)).map(CaseMapper::toDto);
     }
 
     @Override
     @Transactional(readOnly = true)
-    @Cacheable(value = "cases", key = "'id:' + #caseId")
     public CaseResponseDto getCaseById(UUID caseId) {
         Case caseEntity=caseRepository.findById(caseId).orElseThrow(()->new NotFoundException("Case Nott Found"));
         return CaseMapper.toDto(caseEntity);
@@ -210,10 +208,6 @@ public class AdminCaseManagementServiceImpl implements AdminCaseManagementServic
 
     @Override
     @Transactional(readOnly = true)
-    @Cacheable(
-            value = "cases",
-            key = "'status:' + #status + ':' + #pageable.pageNumber + ':' + #pageable.pageSize"
-    )
     public Page<CaseResponseDto> getCasesByStatus(CaseStatus status, Pageable pageable) {
         return caseRepository.findByStatusAndIsDeletedFalse(status,PagenationHandler.createCleanPageable(pageable)).map(CaseMapper::toDto);
     }
