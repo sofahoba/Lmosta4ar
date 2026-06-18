@@ -5,6 +5,7 @@ import com.fullDetailed.fullDetailedDemo.domain.dtos.ai.*;
 import com.fullDetailed.fullDetailedDemo.domain.entities.Case;
 import com.fullDetailed.fullDetailedDemo.domain.entities.CaseFile;
 import com.fullDetailed.fullDetailedDemo.domain.entities.ModelResult;
+import com.fullDetailed.fullDetailedDemo.domain.enums.CaseStatus;
 import com.fullDetailed.fullDetailedDemo.exceptions.NotFoundException;
 import com.fullDetailed.fullDetailedDemo.repository.CaseRepository;
 import com.fullDetailed.fullDetailedDemo.repository.ModelResultRepository;
@@ -94,6 +95,9 @@ public class AiCaseInvokerService {
                     .confidenceScore(0.95)
                     .build();
 
+            Case savedCase = caseRepository.findById(caseEntity.getId()).orElseThrow(()-> new NotFoundException("Case Not Found"));
+            savedCase.setStatus(CaseStatus.COMPLETED);
+            caseRepository.save(savedCase);
             return modelResultRepository.save(modelResult);
 
         } catch (Exception e) {
