@@ -101,7 +101,7 @@ public class LawyerController {
 
     // ==================== CASE REQUESTS ====================
 
-    @GetMapping("/case-requests")
+    @GetMapping("/request-status")
     public ResponseEntity<ApiResponse<List<CaseRequestResponseDto>>> getAllCaseRequests(
             @ParameterObject Pageable pageable) {
 
