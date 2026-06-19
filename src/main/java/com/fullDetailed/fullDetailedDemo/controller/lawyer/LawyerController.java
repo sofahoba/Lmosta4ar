@@ -2,9 +2,11 @@ package com.fullDetailed.fullDetailedDemo.controller.lawyer;
 
 import com.fullDetailed.fullDetailedDemo.domain.dtos.ApiResponse;
 import com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseFileDownloadDto;
+import com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseRequestResponseDto;
 import com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseResponseDto;
 import com.fullDetailed.fullDetailedDemo.domain.dtos.Case.RequestCaseDto;
 import com.fullDetailed.fullDetailedDemo.domain.dtos.lawyer.LawyerDto;
+import com.fullDetailed.fullDetailedDemo.domain.enums.RequestStatus;
 import com.fullDetailed.fullDetailedDemo.services.impl.cassefiles.FilesServices;
 import com.fullDetailed.fullDetailedDemo.services.interfaces.lawyer.LawyerService;
 import com.fullDetailed.fullDetailedDemo.util.ResponseHelper;
@@ -95,5 +97,34 @@ public class LawyerController {
     public ResponseEntity<Void> deleteFile(@PathVariable UUID fileId) {
         lawyerService.deleteFile(fileId);
         return ResponseEntity.noContent().build();
+    }
+
+    // ==================== CASE REQUESTS ====================
+
+    @GetMapping("/case-requests")
+    public ResponseEntity<ApiResponse<List<CaseRequestResponseDto>>> getAllCaseRequests(
+            @ParameterObject Pageable pageable) {
+
+        Page<CaseRequestResponseDto> requests =
+                lawyerService.getAllCaseRequests(pageable);
+
+        return ResponseHelper.ok(
+                requests,
+                "Case requests retrieved successfully"
+        );
+    }
+
+    @GetMapping("/case-requests")
+    public ResponseEntity<ApiResponse<List<CaseRequestResponseDto>>> getCaseRequestsByStatus(
+            @RequestParam RequestStatus status,
+            @ParameterObject Pageable pageable) {
+
+        Page<CaseRequestResponseDto> requests =
+                lawyerService.getAllCaseRequestsByStatus(status, pageable);
+
+        return ResponseHelper.ok(
+                requests,
+                "Case requests retrieved successfully"
+        );
     }
 }

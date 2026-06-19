@@ -1,6 +1,7 @@
 package com.fullDetailed.fullDetailedDemo.services.impl.lawyer;
 
 import com.fullDetailed.fullDetailedDemo.domain.dtos.ApiResponse;
+import com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseRequestResponseDto;
 import com.fullDetailed.fullDetailedDemo.domain.dtos.Case.CaseResponseDto;
 import com.fullDetailed.fullDetailedDemo.domain.dtos.Case.RequestCaseDto;
 import com.fullDetailed.fullDetailedDemo.domain.dtos.lawyer.LawyerDto;
@@ -10,6 +11,7 @@ import com.fullDetailed.fullDetailedDemo.domain.entities.CaseRequests;
 import com.fullDetailed.fullDetailedDemo.domain.entities.User;
 import com.fullDetailed.fullDetailedDemo.domain.enums.FileType;
 import com.fullDetailed.fullDetailedDemo.domain.enums.RequestStatus;
+import com.fullDetailed.fullDetailedDemo.domain.enums.Role;
 import com.fullDetailed.fullDetailedDemo.domain.event.NotificationEvent;
 import com.fullDetailed.fullDetailedDemo.exceptions.DuplicateResourceException;
 import com.fullDetailed.fullDetailedDemo.exceptions.NotFoundException;
@@ -21,6 +23,7 @@ import com.fullDetailed.fullDetailedDemo.repository.CaseRequestRepository;
 import com.fullDetailed.fullDetailedDemo.repository.UserRepo;
 import com.fullDetailed.fullDetailedDemo.services.impl.FileStorageService;
 import com.fullDetailed.fullDetailedDemo.services.interfaces.lawyer.LawyerService;
+import com.fullDetailed.fullDetailedDemo.util.HelperDtoConverter;
 import com.fullDetailed.fullDetailedDemo.util.PagenationHandler;
 import com.fullDetailed.fullDetailedDemo.util.UserContextService;
 import lombok.RequiredArgsConstructor;
@@ -29,6 +32,7 @@ import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -183,4 +187,42 @@ public class LawyerServiceImpl implements LawyerService {
         if (contentType.contains("image")) return FileType.IMAGE;
         return FileType.DOCUMENT;
     }
+
+    @Override
+    public Page<CaseRequestResponseDto> getAllCaseRequestsByStatus(
+            RequestStatus status,
+            Pageable pageable
+    ) {
+
+        User currLawyer = getCurrentLawyer();
+
+        return reqRepo.findByLawyerAndStatus(
+                        currLawyer,
+                        status,
+                        PagenationHandler.createCleanPageable(pageable)
+                )
+                .map(HelperDtoConverter::mapToCaseRequestDto);
+    }
+
+    @Override
+    public Page<CaseRequestResponseDto> getAllCaseRequests(Pageable pageable) {
+
+        User currLawyer = getCurrentLawyer();
+
+        return reqRepo.findByLawyer(
+                        currLawyer,
+                        PagenationHandler.createCleanPageable(pageable)
+                )
+                .map(HelperDtoConverter::mapToCaseRequestDto);
+    }
+
+    private User getCurrentLawyer() {
+    User user = contextService.getCurrentUser();
+
+    if (user.getRole() != Role.LAWYER) {
+        throw new AccessDeniedException("Only lawyers can access this resource");
+    }
+
+    return user;
+}
 }
