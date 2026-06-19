@@ -12,4 +12,12 @@ import java.util.UUID;
 public interface CaseRequestRepository extends JpaRepository<CaseRequests, UUID> {
     boolean existsByLawyerAndLegalCase(User lawyer, Case legalCase);
     Page<CaseRequests> findByStatus(RequestStatus status, Pageable pageable);
+
+    Page<CaseRequests> findByLawyer(User lawyer, Pageable pageable);
+
+    Page<CaseRequests> findByLawyerAndStatus(
+            User lawyer,
+            RequestStatus status,
+            Pageable pageable
+    );
 }
