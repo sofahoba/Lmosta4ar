@@ -6,6 +6,7 @@ import com.fullDetailed.fullDetailedDemo.domain.entities.Case;
 import com.fullDetailed.fullDetailedDemo.domain.entities.CaseFile;
 import com.fullDetailed.fullDetailedDemo.domain.entities.ModelResult;
 import com.fullDetailed.fullDetailedDemo.domain.enums.CaseStatus;
+import com.fullDetailed.fullDetailedDemo.exceptions.CaseAlreadyProcessedException;
 import com.fullDetailed.fullDetailedDemo.exceptions.NotFoundException;
 import com.fullDetailed.fullDetailedDemo.repository.CaseRepository;
 import com.fullDetailed.fullDetailedDemo.repository.ModelResultRepository;
@@ -37,19 +38,17 @@ public class AiCaseInvokerService {
     @Value("${file.upload-dir:/app/uploads/case-files}")
     private String uploadDir;
 
+    @CacheEvict(value = "cases", allEntries = true)
     public CaseAnalysisResponse invokeCase(UUID caseId) {
 
         Case caseEntity = caseRepository.findById(caseId)
                 .orElseThrow(() -> new NotFoundException("Case Not Found: " + caseId));
 
-        modelResultRepository.findByCaseEntity_id(caseId)
-                .ifPresent(existingResult -> {
-                    log.info("Deleting old AI result: {}", existingResult.getId());
-                    modelResultRepository.delete(existingResult);
-                });
-
-        caseEntity.setStatus(CaseStatus.PENDING);
-        caseRepository.save(caseEntity);
+        if (modelResultRepository.existsByCaseEntity_Id(caseId)) {
+            throw new CaseAlreadyProcessedException(
+                    "This case already has an AI result and cannot be processed again."
+            );
+        }
 
         List<MultipartFile> filesToSend = new ArrayList<>();
         addFiles(caseEntity.getFiles(), filesToSend, "Case Files");
@@ -68,13 +67,9 @@ public class AiCaseInvokerService {
 
         ModelResult modelResult = persistResult(caseEntity, aiResponse, result);
 
-        return buildCleanResponse(
-                caseId.toString(),
-                aiResponse,
-                result,
-                modelResult
-        );
+        return buildCleanResponse(caseId.toString(), aiResponse, result, modelResult);
     }
+
     private ModelResult persistResult(Case caseEntity, AiResponse aiResponse, AiResultDto result) {
         try {
             ProceduralAuditDto audit = result.getProceduralAudit();
