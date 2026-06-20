@@ -72,22 +72,20 @@ public class AiCaseInvokerService {
     }
 
     @Transactional
-    public void deleteResultById(UUID resultId) {
+    public void deleteResultByCaseId(UUID caseId) {
 
-        ModelResult result = modelResultRepository.findById(resultId)
+        Case caseEntity = caseRepository.findById(caseId)
                 .orElseThrow(() ->
-                        new NotFoundException("Result not found: " + resultId));
+                        new NotFoundException("Case not found: " + caseId));
 
-        Case caseEntity = result.getCaseEntity();
-
-        modelResultRepository.delete(result);
+        modelResultRepository.findByCaseEntity_id(caseId)
+                .ifPresent(modelResultRepository::delete);
 
         caseEntity.setStatus(CaseStatus.PENDING);
         caseRepository.save(caseEntity);
 
-        log.info("Deleted AI result {} and reset case {} to PENDING",
-                resultId,
-                caseEntity.getId());
+        log.info("Deleted AI result for case {} and reset status to PENDING",
+                caseId);
     }
 
     private ModelResult persistResult(Case caseEntity, AiResponse aiResponse, AiResultDto result) {
