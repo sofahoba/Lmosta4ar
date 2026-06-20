@@ -161,4 +161,14 @@ public class GlobalExceptionHandler {
                 HttpStatus.BAD_REQUEST
         );
     }
+
+    @ExceptionHandler(CaseAlreadyProcessedException.class)
+    public ResponseEntity<?> handleCaseAlreadyProcessed(CaseAlreadyProcessedException ex) {
+        return ResponseEntity
+                .status(HttpStatus.BAD_REQUEST)
+                .body(Map.of(
+                        "error", "CASE_ALREADY_PROCESSED",
+                        "message", ex.getMessage()
+                ));
+    }
 }
