@@ -28,7 +28,7 @@ public class AiIntegrationController {
             @PathVariable UUID resultId
     ) {
 
-        aiCaseInvokerService.deleteResultById(resultId);
+        aiCaseInvokerService.deleteResultByCaseId(resultId);
 
         return ResponseEntity.ok(
                 "AI result deleted successfully and case status updated to PENDING"
