@@ -37,17 +37,19 @@ public class AiCaseInvokerService {
     @Value("${file.upload-dir:/app/uploads/case-files}")
     private String uploadDir;
 
-    @CacheEvict(value = "cases", allEntries = true)
     public CaseAnalysisResponse invokeCase(UUID caseId) {
 
         Case caseEntity = caseRepository.findById(caseId)
                 .orElseThrow(() -> new NotFoundException("Case Not Found: " + caseId));
 
-        ModelResult mr = modelResultRepository.findByCaseEntity_id(caseId).orElseThrow(()->new NotFoundException("result Not found for this case "));
+        modelResultRepository.findByCaseEntity_id(caseId)
+                .ifPresent(existingResult -> {
+                    log.info("Deleting old AI result: {}", existingResult.getId());
+                    modelResultRepository.delete(existingResult);
+                });
 
-        if (modelResultRepository.existsByCaseEntity_Id(caseId)) {
-            modelResultRepository.delete(mr);
-        }
+        caseEntity.setStatus(CaseStatus.PENDING);
+        caseRepository.save(caseEntity);
 
         List<MultipartFile> filesToSend = new ArrayList<>();
         addFiles(caseEntity.getFiles(), filesToSend, "Case Files");
@@ -66,9 +68,13 @@ public class AiCaseInvokerService {
 
         ModelResult modelResult = persistResult(caseEntity, aiResponse, result);
 
-        return buildCleanResponse(caseId.toString(), aiResponse, result, modelResult);
+        return buildCleanResponse(
+                caseId.toString(),
+                aiResponse,
+                result,
+                modelResult
+        );
     }
-
     private ModelResult persistResult(Case caseEntity, AiResponse aiResponse, AiResultDto result) {
         try {
             ProceduralAuditDto audit = result.getProceduralAudit();
