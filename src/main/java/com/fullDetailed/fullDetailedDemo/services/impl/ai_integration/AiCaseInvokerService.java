@@ -94,7 +94,7 @@ public class AiCaseInvokerService {
                     .hasProceduralViolations(hasViolations)
                     .defendantCount(size(result.getDefendants()))
                     .chargeCount(size(result.getCharges()))
-                    .confidenceScore(0.95)
+                    .confidenceScore(0.0)
                     .build();
 
             Case savedCase = caseRepository.findById(caseEntity.getId()).orElseThrow(()-> new NotFoundException("Case Not Found"));
