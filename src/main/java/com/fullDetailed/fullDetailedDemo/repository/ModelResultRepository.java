@@ -6,4 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.UUID;
 
 public interface ModelResultRepository extends JpaRepository<ModelResult, UUID> {
+
+  boolean existsByCaseEntity_Id(UUID caseId);
+
 }
