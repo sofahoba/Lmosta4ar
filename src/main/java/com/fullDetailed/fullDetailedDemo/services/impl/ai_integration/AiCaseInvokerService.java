@@ -78,11 +78,19 @@ public class AiCaseInvokerService {
                 .orElseThrow(() ->
                         new NotFoundException("Case not found: " + caseId));
 
-        modelResultRepository.findByCaseEntity_id(caseId)
-                .ifPresent(modelResultRepository::delete);
+        ModelResult result = modelResultRepository.findByCaseEntity_id(caseId)
+                .orElseThrow(() ->
+                        new NotFoundException("Result not found for case: " + caseId));
+
+        // break relationship
+        caseEntity.setModelResult(null);
+        result.setCaseEntity(null);
 
         caseEntity.setStatus(CaseStatus.PENDING);
+
         caseRepository.save(caseEntity);
+
+        modelResultRepository.delete(result);
 
         log.info("Deleted AI result for case {} and reset status to PENDING",
                 caseId);
