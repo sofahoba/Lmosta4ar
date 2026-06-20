@@ -17,6 +17,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
@@ -68,6 +69,25 @@ public class AiCaseInvokerService {
         ModelResult modelResult = persistResult(caseEntity, aiResponse, result);
 
         return buildCleanResponse(caseId.toString(), aiResponse, result, modelResult);
+    }
+
+    @Transactional
+    public void deleteResultById(UUID resultId) {
+
+        ModelResult result = modelResultRepository.findById(resultId)
+                .orElseThrow(() ->
+                        new NotFoundException("Result not found: " + resultId));
+
+        Case caseEntity = result.getCaseEntity();
+
+        modelResultRepository.delete(result);
+
+        caseEntity.setStatus(CaseStatus.PENDING);
+        caseRepository.save(caseEntity);
+
+        log.info("Deleted AI result {} and reset case {} to PENDING",
+                resultId,
+                caseEntity.getId());
     }
 
     private ModelResult persistResult(Case caseEntity, AiResponse aiResponse, AiResultDto result) {

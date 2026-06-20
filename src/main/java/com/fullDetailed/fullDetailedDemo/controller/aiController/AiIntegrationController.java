@@ -22,4 +22,16 @@ public class AiIntegrationController {
         CaseAnalysisResponse result = aiCaseInvokerService.invokeCase(caseId);
         return ResponseEntity.ok(result);
     }
+
+    @DeleteMapping("/results/{resultId}")
+    public ResponseEntity<String> deleteResult(
+            @PathVariable UUID resultId
+    ) {
+
+        aiCaseInvokerService.deleteResultById(resultId);
+
+        return ResponseEntity.ok(
+                "AI result deleted successfully and case status updated to PENDING"
+        );
+    }
 }
