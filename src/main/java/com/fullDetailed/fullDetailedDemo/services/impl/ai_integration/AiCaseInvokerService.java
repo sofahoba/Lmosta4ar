@@ -6,7 +6,6 @@ import com.fullDetailed.fullDetailedDemo.domain.entities.Case;
 import com.fullDetailed.fullDetailedDemo.domain.entities.CaseFile;
 import com.fullDetailed.fullDetailedDemo.domain.entities.ModelResult;
 import com.fullDetailed.fullDetailedDemo.domain.enums.CaseStatus;
-import com.fullDetailed.fullDetailedDemo.exceptions.CaseAlreadyProcessedException;
 import com.fullDetailed.fullDetailedDemo.exceptions.NotFoundException;
 import com.fullDetailed.fullDetailedDemo.repository.CaseRepository;
 import com.fullDetailed.fullDetailedDemo.repository.ModelResultRepository;
@@ -44,10 +43,10 @@ public class AiCaseInvokerService {
         Case caseEntity = caseRepository.findById(caseId)
                 .orElseThrow(() -> new NotFoundException("Case Not Found: " + caseId));
 
+        ModelResult mr = modelResultRepository.findByCaseEntity_id(caseId).orElseThrow(()->new NotFoundException("result Not found for this case "));
+
         if (modelResultRepository.existsByCaseEntity_Id(caseId)) {
-            throw new CaseAlreadyProcessedException(
-                    "This case already has an AI result and cannot be processed again."
-            );
+            modelResultRepository.delete(mr);
         }
 
         List<MultipartFile> filesToSend = new ArrayList<>();
